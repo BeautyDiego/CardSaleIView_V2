@@ -1,0 +1,16 @@
+{
+    "extends": "standard",
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "plugins": [ "html", "standard" ],
+    "rules": {
+        "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }]
+    }
+}
