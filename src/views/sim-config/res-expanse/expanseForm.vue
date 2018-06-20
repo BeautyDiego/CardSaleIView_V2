@@ -50,13 +50,13 @@
       </Row>
       <Row>
         <Form-item label="标准价格" prop="OfficialPirce" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-          <InputNumber v-model="modalForm.OfficialPirce" :max="9999" :min="1"></InputNumber>&nbsp元
+          <InputNumber v-model="modalForm.OfficialPirce" :max="9999" :min="0"></InputNumber>&nbsp元
         </Form-item>
 
       </Row>
       <Row>
         <Form-item label="代理商价格" prop="AgentPrice" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-        <InputNumber v-model="modalForm.AgentPrice" :max="9999" :min="1" ></InputNumber>&nbsp元
+        <InputNumber v-model="modalForm.AgentPrice" :max="9999" :min="0" ></InputNumber>&nbsp元
         </Form-item>
       </Row>
     </Form>
