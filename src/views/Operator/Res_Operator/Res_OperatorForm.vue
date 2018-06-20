@@ -82,7 +82,7 @@ export default {
       },
       modalFormTitle:{
         type: String,
-        default: '添加用户',
+        default: '添加运营商',
       },
     },
     data() {
@@ -120,7 +120,7 @@ export default {
             const params = this.modalForm;
             try{
               let result;
-              if (this.modalFormTitle ==='添加客户'){
+              if (this.modalFormTitle ==='添加运营商'){
                  result = await addResOperator(params);
               }else{
                  result = await editResOperator(params);
