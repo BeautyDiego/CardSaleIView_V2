@@ -108,6 +108,8 @@ export const appRouter = [
         component: Main,
         children: [
           { path: 'simExpanseConfigTable', title: '资费配置',access: 0, name: 'sim-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/expanse-config/simExpanseConfigTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-config/expanse-config/simExpanseConfigTable.vue') }
+          { path: 'expanseTable', title: '新资费配置',access: 0, name: 'res-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/res-expanse/expanseTable.vue'],resolve)),}, 
+         // { path: 'simExpanseConfigTable', title: '资费配置',access: 0, name: 'sim-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/expanse-config/simExpanseConfigTable.vue'],resolve)),}, 
         ]
       },
   {

@@ -235,6 +235,7 @@
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
         const res = await customerBasicInfoList(params);
+        console.log(res)
         this.total = res.total;
         this.tableData = res.rows;
         this.tableLoading=false;

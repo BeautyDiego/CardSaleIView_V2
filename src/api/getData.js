@@ -175,6 +175,13 @@ export const getPoolList = data => fetch('/Cus_FlowPool/Get_FlowPoolList', data,
  * 获取SIM卡资费配置
  */
 export const simExpanseConfigPagedList = data => fetch('/Sim_FreeExpenseConfig/List_Sim_FreeExpenseConfig', data, 'POST');
+//新版资费
+export const Res_ExpensesPagedList = data => fetch('/Res_Expenses/List_Res_Expenses', data, 'POST');
+export const addRes_Expenses = data => fetch('/Res_Expenses/Add_Res_Expenses', data, 'POST');
+export const delRes_Expenses = data => fetch('/Res_Expenses/Delete_Res_Expenses', data, 'POST');
+export const editRes_Expenses = data => fetch('/Res_Expenses/Edit_Res_Expenses', data, 'POST');
+
+
 /**
  * 添加SIM卡资费配置
  */
