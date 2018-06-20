@@ -169,8 +169,8 @@ export const remitCusOrder = data => fetch('/Cus_Order/Remit_Cus_Order', data, '
 // 获取流量池
 export const getPoolList = data => fetch('/Cus_FlowPool/Get_FlowPoolList', data, 'POST');
 //   endregion
-
 //  region SIM卡资费配置
+/**
 /**
  * 获取SIM卡资费配置
  */
@@ -261,3 +261,19 @@ export const orderPagedList = data => fetch('/BackCashOrder/List_BackCashOrder',
  * 报名
  */
 export const enrollDrivingSchool = data => fetch('/BackCashOrder/EnrollDrivingSchool', data, 'POST');
+/**
+ * 获取运营商列表
+ */
+export const ResOperatorList = data => fetch('/Res_Operator/List_Res_Operator', data, 'POST');
+/**
+ * 删除运营商
+ */
+export const delResOperator = data => fetch('/Res_Operator/Delete_Res_Operator', data, 'POST');
+/**
+ * 添加运营商
+ */
+export const addResOperator = data => fetch('/Res_Operator/Add_Res_Operator', data, 'POST');
+/**
+ * 修改运营商
+ */
+export const editResOperator = data => fetch('/Res_Operator/Delete_Res_Operator', data, 'POST');

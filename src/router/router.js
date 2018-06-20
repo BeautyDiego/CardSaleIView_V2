@@ -110,6 +110,17 @@ export const appRouter = [
           { path: 'simExpanseConfigTable', title: '资费配置',access: 0, name: 'sim-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/expanse-config/simExpanseConfigTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-config/expanse-config/simExpanseConfigTable.vue') }
         ]
       },
+  {
+    path: '/Operator',
+    icon: 'ios-infinite',
+    name: 'Operator',
+    access: 0,
+    title: '运营商管理',
+    component: Main,
+    children: [
+      { path: 'Res_OperatorTable', title: '客户资料',access: 0, name: 'Res_OperatorTable', icon: 'link', component: resolve => void(require(['@/views/Operator/Res_Operator/Res_OperatorTable.vue'],resolve)),}, // 懒加载 () => import('@/views/Operator/Res_Operator/Res_OperatorTable.vue') },
+    ]
+  },
 ];
 
 // 所有上面定义的路由都要写在下面的routers里

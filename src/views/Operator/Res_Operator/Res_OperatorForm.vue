@@ -1,0 +1,148 @@
+<style scoped>
+
+</style>
+
+<template>
+
+<div>
+  
+  <Modal
+    v-model="IsModalShow"
+    :title="modalFormTitle"
+    :mask-closable="false"
+    @on-cancel="cancel"
+    width="600">
+    <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 3px 60px">
+      <Form-item label="运营商名称" prop="OperName" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.OperName" ></Input>
+      </Form-item>
+      <Form-item label="运营商类别"  >
+      <Select v-model="modalForm.OperType" placeholder="请选择">
+      <Option v-for="item in OperType" :value="item.key" :key="item.key">{{ item.value }}</Option>
+        <Option value="电信">电信</Option>
+        <Option value="移动">移动</Option>
+        <Option value="联通">联通</Option>
+      </Select>
+      </Form-item>
+      <Form-item label="用户KEY"  >
+        <Input v-model="modalForm.UserKey" ></Input>
+      </Form-item>
+      <Form-item label="接口密码">
+        <Input v-model="modalForm.UserPwd" ></Input>
+      </Form-item>
+      <Form-item label="联系人名称" prop="ContactName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.ContactName" ></Input>
+      </Form-item>
+      <Form-item label="联系人电话" prop="ComtactMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
+        <Input v-model="modalForm.ComtactMobile" ></Input>
+      </Form-item>
+      <!--<Form-item label="性别"  >-->
+        <!--<Select v-model="modalForm.Sex" placeholder="请选择">-->
+          <!--<Option v-for="item in SexCombo" :value="item.key" :key="item.key">{{ item.value }}</Option>-->
+        <!--</Select>-->
+      <!--</Form-item>-->
+      <!--<Form-item label="角色" prop="Rbac_RoleId" :rules="{required: true, message: '必填', trigger:'change',type:'number'}"  >-->
+        <!--<Select v-model="modalForm.Sys_RoleId" placeholder="请选择">-->
+          <!--<Option v-for="item in roleComboList" :value="item.Id" :key="item.Id">{{ item.RoleName }}</Option>-->
+        <!--</Select>-->
+      <!--</Form-item>-->
+    </Form>
+    <div slot="footer">
+      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="primary"  :loading="modalForm_loading" @click="saveForm('modalForm')">保存</Button>
+    </div>
+  </Modal>
+</div>
+
+</template>
+
+<script>
+import {addResOperator,editResOperator} from './../../../api/getData'
+export default {
+    props:{
+      parentForm: {
+        type: Object,
+        default: function () {
+          return {
+            Id:'',
+            OperName: '',
+            OperType: 0,
+            ContactName: '',
+            ComtactMobile: '',
+            UserKey: '',
+            UserName: '',
+            UserPwd: '',
+            Enabled:'',
+          }
+        }
+      },
+      modalShow:{
+        type: Boolean,
+        default: true,
+      },
+      modalFormTitle:{
+        type: String,
+        default: '添加用户',
+      },
+    },
+    data() {
+        return {
+          IsModalShow:false,
+          modalForm:{
+          },
+          modalForm_loading:false
+        }
+    },
+    watch:{
+      modalShow(curVal,oldVal){
+        this.modalForm=Object.assign(this.parentForm);
+        this.IsModalShow = curVal;
+      }
+    },
+    created(){
+     // this.getRoleComboList();
+    },
+    mounted(){
+    
+    },
+    methods: {
+//      async getRoleComboList(){
+//        this.roleComboList=await roleComboList();
+//        console.log(this.roleComboList)
+//      },
+      cancel() {
+          this.$emit('listenModalForm');
+      },
+      saveForm(name) {
+        this.$refs[name].validate( async (valid) => {
+          if (valid) {
+            this.modalForm_loading=true;
+            const params = this.modalForm;
+            try{
+              let result;
+              if (this.modalFormTitle ==='添加客户'){
+                 result = await addResOperator(params);
+              }else{
+                 result = await editResOperator(params);
+              }
+              if (result.success) {
+                this.$Message.success('提交成功!');
+                this.$emit('listenModalForm');
+                this.$emit('refreshTableList');
+              }else{
+                this.$Message.error(result.msg);
+              }
+            }catch(err){
+              console.log(err);
+              this.$Message.error('服务器异常，稍后再试');
+            }
+            this.modalForm_loading=false;
+          } else {
+            this.$Message.error('表单验证失败!');
+          }
+        })
+      },
+    }
+}
+
+</script>
