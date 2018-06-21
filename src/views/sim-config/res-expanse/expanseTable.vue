@@ -70,12 +70,12 @@
           {
             align:'center',
             title: '运营商',
-            key: 'OperTypeText',
+            key: 'OperType',
           },
           {
             align:'center',
             title: 'SIM类型',
-            key: 'CardTypeText',
+            key: 'CardType',
           },
           {
             align:'center',
