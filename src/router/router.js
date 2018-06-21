@@ -120,7 +120,7 @@ export const appRouter = [
     title: '运营商管理',
     component: Main,
     children: [
-      { path: 'Res_OperatorTable', title: '客户资料',access: 0, name: 'Res_OperatorTable', icon: 'link', component: resolve => void(require(['@/views/Operator/Res_Operator/Res_OperatorTable.vue'],resolve)),}, // 懒加载 () => import('@/views/Operator/Res_Operator/Res_OperatorTable.vue') },
+      { path: 'Res_OperatorTable', title: '运营商管理',access: 0, name: 'Res_OperatorTable', icon: 'link', component: resolve => void(require(['@/views/Operator/Res_Operator/Res_OperatorTable.vue'],resolve)),}, // 懒加载 () => import('@/views/Operator/Res_Operator/Res_OperatorTable.vue') },
     ]
   },
 ];

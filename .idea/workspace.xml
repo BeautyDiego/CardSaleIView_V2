@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbff26f9-689b-4ec5-bea7-bb1b3634f4e3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/getData.js" afterPath="$PROJECT_DIR$/src/api/getData.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,28 +21,52 @@
       <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/getData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="278" column="28" lean-forward="false" selection-start-line="278" selection-start-column="13" selection-end-line="278" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="6555">
+              <caret line="285" column="28" lean-forward="false" selection-start-line="285" selection-start-column="13" selection-end-line="285" selection-end-column="28" />
+              <folding>
+                <marker date="1529465877537" expanded="true" signature="6652:7070" ph="/** 添加SIM卡资费配置 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7187:7208" ph="/** 修改SIM卡资费配置 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7327:7348" ph="/** 删除SIM卡资费配置 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7484:7505" ph="/** 获取商品发布list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7602:7617" ph="/** 添加商品 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7707:7722" ph="/** 修改商品 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7814:7829" ph="/** 删除商品 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="7922:7937" ph="/** 发布商品 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8035:8054" ph="/** 获取活动list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8132:8147" ph="/** 添加活动 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8218:8233" ph="/** 修改活动 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8306:8321" ph="/** 删除活动 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8395:8410" ph="/** 发布活动 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8489:8514" ph="/** 获取app首页轮播图list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8611:8627" ph="/** 添加轮播图 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8722:8738" ph="/** 修改轮播图 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8835:8851" ph="/** 删除轮播图 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="8949:8973" ph="/** 获取app用户分页list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="9062:9086" ph="/** 获取app用户分页list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="9196:9217" ph="/** 获取订单分页list ...*/" />
+                <marker date="1529465877537" expanded="true" signature="9314:9327" ph="/** 报名 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="9430:9448" ph="/** 获取运营商列表 ...*/" />
+                <marker date="1529465877537" expanded="true" signature="9544:9560" ph="/** 删除运营商 ...*/" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/router/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-923">
-              <caret line="68" column="8" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+            <state relative-caret-position="507">
+              <caret line="122" column="48" lean-forward="false" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Res_OperatorForm.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Res_OperatorForm.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+            <state relative-caret-position="53">
+              <caret line="122" column="47" lean-forward="false" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -53,13 +75,25 @@
       <file leaf-file-name="Res_OperatorTable.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="38" selection-end-column="50" />
+            <state relative-caret-position="2254">
+              <caret line="98" column="13" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#Card#0;n#transition#0;n#Row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#3109#3209#0" expanded="true" />
                 <marker date="1529461871873" expanded="false" signature="641:678" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,10 +194,10 @@
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_Operator.html" />
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.html" />
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.vue" />
-        <option value="$PROJECT_DIR$/src/router/router.js" />
         <option value="$PROJECT_DIR$/src/api/getData.js" />
         <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
         <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
+        <option value="$PROJECT_DIR$/src/router/router.js" />
       </list>
     </option>
   </component>
@@ -175,7 +209,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -198,7 +232,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,23 +274,7 @@
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="basic_info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="Operator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
-              <item name="Res_Operator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -278,6 +295,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -363,27 +381,27 @@
       <workItem from="1529378922898" duration="6127000" />
       <workItem from="1529396511252" duration="4290000" />
       <workItem from="1529455732307" duration="2431000" />
-      <workItem from="1529458249703" duration="5515000" />
+      <workItem from="1529458249703" duration="5522000" />
+      <workItem from="1529467248791" duration="2660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195257000" />
+    <option name="totallyTimeSpent" value="197924000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21775898" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21775898" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25652173" sideWeight="0.50421494" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33143508" sideWeight="0.49578503" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -425,13 +443,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/role/roleTree.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="88" column="26" lean-forward="false" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/modules/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1955">
@@ -565,7 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3151">
           <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -573,7 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7613">
           <caret line="332" column="9" lean-forward="false" selection-start-line="332" selection-start-column="9" selection-end-line="332" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -605,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1958">
           <caret line="163" column="36" lean-forward="true" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -613,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -621,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -702,15 +708,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1610">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/getData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="278" column="28" lean-forward="false" selection-start-line="278" selection-start-column="13" selection-end-line="278" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="6555">
+          <caret line="285" column="28" lean-forward="false" selection-start-line="285" selection-start-column="13" selection-end-line="285" selection-end-column="28" />
+          <folding>
+            <marker date="1529465877537" expanded="true" signature="6652:7070" ph="/** 添加SIM卡资费配置 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7187:7208" ph="/** 修改SIM卡资费配置 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7327:7348" ph="/** 删除SIM卡资费配置 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7484:7505" ph="/** 获取商品发布list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7602:7617" ph="/** 添加商品 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7707:7722" ph="/** 修改商品 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7814:7829" ph="/** 删除商品 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="7922:7937" ph="/** 发布商品 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8035:8054" ph="/** 获取活动list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8132:8147" ph="/** 添加活动 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8218:8233" ph="/** 修改活动 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8306:8321" ph="/** 删除活动 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8395:8410" ph="/** 发布活动 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8489:8514" ph="/** 获取app首页轮播图list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8611:8627" ph="/** 添加轮播图 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8722:8738" ph="/** 修改轮播图 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8835:8851" ph="/** 删除轮播图 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="8949:8973" ph="/** 获取app用户分页list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="9062:9086" ph="/** 获取app用户分页list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="9196:9217" ph="/** 获取订单分页list ...*/" />
+            <marker date="1529465877537" expanded="true" signature="9314:9327" ph="/** 报名 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="9430:9448" ph="/** 获取运营商列表 ...*/" />
+            <marker date="1529465877537" expanded="true" signature="9544:9560" ph="/** 删除运营商 ...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -718,9 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="80" column="6" lean-forward="false" selection-start-line="80" selection-start-column="6" selection-end-line="80" selection-end-column="6" />
-          <folding>
-            <element signature="e#2930#2984#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -728,22 +754,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="215" column="6" lean-forward="true" selection-start-line="215" selection-start-column="6" selection-end-line="215" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/router.js">
+    <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-923">
-          <caret line="68" column="8" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+        <state relative-caret-position="53">
+          <caret line="122" column="47" lean-forward="false" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="38" selection-end-column="50" />
+        <state relative-caret-position="2254">
+          <caret line="98" column="13" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#Card#0;n#transition#0;n#Row#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -753,10 +778,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue">
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="122" column="48" lean-forward="false" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
           <folding />
         </state>
       </provider>
