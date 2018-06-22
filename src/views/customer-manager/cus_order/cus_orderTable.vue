@@ -128,7 +128,11 @@
             align:'center',
             title: '订单号',
             key: 'OrderNum',
-            width:'200'
+          },
+          {
+            align:'center',
+            title: '卡种类',
+            key: 'Sim_Type',
           },
           {
             align:'center',
@@ -163,7 +167,7 @@
           {
             align:'center',
             title: '订单状态',
-            key: 'OrderStatusTxt',
+            key: 'OrderStatus',
           },
           {
             title: '操作',

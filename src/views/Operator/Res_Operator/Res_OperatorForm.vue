@@ -16,19 +16,18 @@
       <Form-item label="运营商名称" prop="OperName" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.OperName" ></Input>
       </Form-item>
-      <Form-item label="运营商类别"  >
-      <Select v-model="modalForm.OperType" placeholder="请选择">
-      <Option v-for="item in OperType" :value="item.key" :key="item.key">{{ item.value }}</Option>
-        <Option value="电信">电信</Option>
-        <Option value="移动">移动</Option>
-        <Option value="联通">联通</Option>
-      </Select>
+      <Form-item label="运营商" prop="OperType" :rules="{required: true, message: '必填', trigger:'blur'}" >
+        <RadioGroup v-model="modalForm.OperType" type="button" size="large" >
+          <Radio label="中国电信"></Radio>
+          <Radio label="中国移动"></Radio>
+          <Radio label="中国联通"></Radio>
+        </RadioGroup>
       </Form-item>
-      <Form-item label="用户KEY"  >
-        <Input v-model="modalForm.UserKey" ></Input>
-      </Form-item>
-      <Form-item label="接口密码">
-        <Input v-model="modalForm.UserPwd" ></Input>
+      <Form-item label="状态" prop="Enabled" :rules="{required: true, message: '必填', trigger:'blur'}" >
+        <RadioGroup v-model="modalForm.Enabled" type="button" size="large" >
+          <Radio label="正常"></Radio>
+          <Radio label="注销"></Radio>
+        </RadioGroup>
       </Form-item>
       <Form-item label="联系人名称" prop="ContactName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.ContactName" ></Input>
@@ -66,13 +65,13 @@ export default {
           return {
             Id:'',
             OperName: '',
-            OperType: 0,
+            OperType: '1',
             ContactName: '',
             ComtactMobile: '',
             UserKey: '',
             UserName: '',
             UserPwd: '',
-            Enabled:'',
+            Enabled:'1',
           }
         }
       },

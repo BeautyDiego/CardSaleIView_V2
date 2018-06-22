@@ -104,6 +104,11 @@
           },
           {
             align:'center',
+            title: '折扣',
+            key: 'Discount',
+          },
+          {
+            align:'center',
             title: '客户地址',
             key: 'Cus_Address',
           },
@@ -131,7 +136,6 @@
             align:'center',
             title: '负责人邮箱',
             key: 'ManagerEmail',
-            width:'180'
           },
           {
             align:'center',

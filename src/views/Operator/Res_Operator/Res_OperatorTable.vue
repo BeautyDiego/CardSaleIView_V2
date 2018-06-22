@@ -17,7 +17,7 @@
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search"  >搜索</Button>
         </Col>
         <transition name="fade">
-          <Card v-show="searchPaneShow" style="position:absolute;top:1px;z-index:100;right:185px; :padding=12>
+          <Card v-show="searchPaneShow" style="position:absolute;top:1px;right:185px;z-index:100;" :padding=12>
             <p style="text-align:center;margin-bottom:10px;"><Icon type="search"></Icon>搜索</p>
             <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:400px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
               <Row>
@@ -28,16 +28,6 @@
               <Row>
                 <Form-item label="联系人姓名"  >
                   <Input v-model="searchForm.ContactName" ></Input>
-                </Form-item>
-              </Row>
-              <Row>
-                <Form-item label="运营商种类"  >
-                  <Select v-model="searchForm.OperType" >
-                    <Option value="全部">全部</Option>
-                    <Option value="电信">电信</Option>
-                    <Option value="移动">移动</Option>
-                    <Option value="联通">联通</Option>
-                  </Select>
                 </Form-item>
               </Row>
             </Form>
@@ -115,11 +105,6 @@
           },
           {
             align:'center',
-            title: '接口用户名',
-            key: 'UserName',
-          },
-          {
-            align:'center',
             title: '状态',
             key: 'Enabled',
           },
@@ -172,13 +157,13 @@
         parentForm:{
           Id:'',
           OperName: '',
-          OperType: 0,
+          OperType: '1',
           ContactName: '',
           ComtactMobile: '',
           UserKey: '',
           UserName: '',
           UserPwd: '',
-          Enabled:'',
+          Enabled:'1',
 
         },
         delModal:false,
@@ -206,7 +191,7 @@
          this.searchPaneShow=!this.searchPaneShow;
       },
       resetSearch(){
-         this.searchForm.cus_Name='';
+         this.searchForm.OperName='';
       },
       doSearchTableList(){
         this.currentPage=1;
