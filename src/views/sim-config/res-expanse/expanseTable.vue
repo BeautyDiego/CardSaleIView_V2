@@ -30,6 +30,11 @@
                  :parentForm="parentForm"
                  @listenModalForm="hideModel"
                  @refreshTableList="getTableList" ></simExpanseConfigForm>
+        <!--订购-->       
+        <exp_orderForm   :modalShow="exp_orderShow"
+                     :modalFormTitle="exp_orderTitle"
+                     :parentForm="exp_orderFormData"
+                     @listenModalForm="hideExpModel"></exp_orderForm>
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -55,13 +60,16 @@
 </style>
 
 <script>
+  import Cookies from 'js-cookie'
   import {Res_ExpensesPagedList,delRes_Expenses} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import simExpanseConfigForm from './expanseForm.vue'
+    import exp_orderForm from './exp_orderForm.vue'
   export default {
     name:'userManagement',
     components:{
       simExpanseConfigForm,
+      exp_orderForm
     },
     data() {
       return {
@@ -70,12 +78,12 @@
           {
             align:'center',
             title: '运营商',
-            key: 'OperTypeText',
+            key: 'OperType',
           },
           {
             align:'center',
             title: 'SIM类型',
-            key: 'CardTypeText',
+            key: 'CardType',
           },
           {
             align:'center',
@@ -89,20 +97,25 @@
           },
           {
             align:'center',
-            title: '标准价格',
+            title: '标准价格(元)',
             key: 'OfficialPirce',render: (h, params) => { return params.row.OfficialPirce.toFixed(2);}
           },
           {
             align:'center',
-            title: '代理商价格',
+            title: '代理商价格(元)',
             key: 'AgentPrice',render: (h, params) => { return params.row.AgentPrice.toFixed(2);}
           },
-         
+           {
+            align:'center',
+            title: '有效时长（月）',
+            key: 'ValidMonth'
+          },
           {
             title: '操作',
             align: 'center',
             render: (h, params) => {
               let actions=[];
+              if(this.IsAdmin){
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',
@@ -132,7 +145,25 @@
                     }
                   }
                 }, '删除'));
-              
+              }
+
+               if(this.IsAgent){
+                actions.push( h('Button', {
+                  props: {
+                    type: 'warning',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.buyAction(params.row)
+                    }
+                  }
+                }, '订购'));
+               }
+
               return h('div', actions);
             }
           }
@@ -143,12 +174,15 @@
         currentPage:1,
         formShow:false,
         formTitle:'添加资费配置',
+        exp_orderShow:false,
+        exp_orderTitle:'套餐订购',
         resetForm:{
           Id:'',
           OperType: '中国电信',
           CardType:'单卡',
           FLowTypeRadio:'MB',
           ExpName:'',
+          ValidMonth:1,
           FlowSize:0,
           OfficialPirce:0,
           AgentPrice:0
@@ -158,9 +192,32 @@
           OperType: '',
           CardType:'',
           ExpName:'',
+          ValidMonth:1,
           FlowSize:0,
           OfficialPirce:0,
           AgentPrice:0
+        },
+          exp_orderFormData:{
+          Id:'',
+          OperType:'',
+          ExpName:'',
+          Sim_Count: 20,
+          FlowCount: 10,
+          FlowCountUint:'MB',
+          OriginSinglePrice:0,
+          SinglePrice: 0,
+          ChargePrice: 0,
+          OrderPrice:0,
+          ReceiveName:'',
+          ReceiveMobile:'',
+          ReceiveAddress:'',
+          OrderStatus:'',
+          OrderNum:'',
+          RemittanceUrl:'',
+          RemittancePhone:'',
+          Sim_Type:1,
+          ValidMonth:1,
+          UseCase:'',
         },
         delModal:false,
         delId:'', //删除的Id
@@ -169,9 +226,16 @@
           OperType: '中国电信',
           rows:10,
           page:1,
-        },
-
+        }
       }
+    },
+    computed:{
+      IsAdmin: function () {
+        return  Cookies.get('roleName')=='管理员';
+      },
+      IsAgent: function () {
+        return  Cookies.get('roleName')=='代理商';
+      },
     },
     created(){
 
@@ -194,6 +258,7 @@
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
         const res = await Res_ExpensesPagedList(params);
+        console.log(res)
         this.total = res.total;
         this.tableData = res.rows;
       },
@@ -209,9 +274,19 @@
       },
       editAction(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
-        console.log(this.parentForm)
         this.formTitle='修改资费配置';
         this.formShow=true;
+      },
+       buyAction(row){
+        //this.exp_orderFormData=JSON.parse(JSON.stringify(row));
+        this.exp_orderFormData.SinglePrice=row.AgentPrice;
+        this.exp_orderFormData.ValidMonth=row.ValidMonth;
+        this.exp_orderFormData.FlowCount = row.FlowSize;
+        this.exp_orderFormData.OriginSinglePrice=row.OfficialPirce;
+        this.exp_orderFormData.OperType = row.OperType;
+        this.exp_orderFormData.ExpName = row.ExpName;
+        this.exp_orderTitle='套餐订购';
+        this.exp_orderShow=true;
       },
       delAction(Id){
         this.delId=Id;
@@ -236,6 +311,9 @@
       },
       hideModel(){
         this.formShow=false;
+      },
+      hideExpModel(){
+        this.exp_orderShow=false;
       },
     }
   }
