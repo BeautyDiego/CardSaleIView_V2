@@ -21,6 +21,11 @@ export const functionTreeGrid = data => fetch('/Sys_Function/GetList', data, 'PO
  */
 export const parentFunctionList = data => fetch('/Sys_Function/GetParentFunction', data, 'POST');
 /**
+ *  * 获取余额
+ */
+export const GetCustomer = data => fetch('/Cus_Customer/Get_Cus_Customer', data, 'POST');
+/**
+
  * 添加菜单
  */
 export const addFunction = data => fetch('/Sys_Function/Add_Sys_Function', data, 'POST');
@@ -283,4 +288,4 @@ export const addResOperator = data => fetch('/Res_Operator/Add_Res_Operator', da
 /**
  * 修改运营商
  */
-export const editResOperator = data => fetch('/Res_Operator/Delete_Res_Operator', data, 'POST');
+export const editResOperator = data => fetch('/Res_Operator/Edit_Res_Operator', data, 'POST');

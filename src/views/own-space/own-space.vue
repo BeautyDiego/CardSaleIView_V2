@@ -29,6 +29,9 @@
                     <FormItem label="角色：">
                         <span>{{ userForm.RoleName }}</span>
                     </FormItem>
+                    <FormItem v-if="IsAdmin" label="余额：">
+                        <span>{{ userForm.RestCash }}</span>
+                    </FormItem>
                     <FormItem label="登录密码：">
                         <Button type="text" size="small" @click="showEditPassword">修改密码</Button>
                     </FormItem>
@@ -62,7 +65,7 @@
 <script>
 
 import { mapState } from 'vuex'
-import {editUserPwd} from './../../api/getData'
+import {editUserPwd,GetCustomer} from './../../api/getData'
 
 export default {
     name: 'ownspace_index',
@@ -79,7 +82,8 @@ export default {
                 name: '',
               loginName:'',
                 cellphone: '',
-                RoleName: ''
+                RoleName: '',
+              RestCash:''
             },
             save_loading: false,
             identifyError: '', // 验证码错误
@@ -112,6 +116,9 @@ export default {
     ...mapState({
       adminInfo: state => state.user.adminInfo,
     }),
+    IsAdmin: function () {
+      return this.adminInfo.RoleName != "管理员";
+    },
   },
   methods: {
         init () {
@@ -119,7 +126,15 @@ export default {
             this.userForm.loginName = this.adminInfo.LoginName;
             this.userForm.cellphone = this.adminInfo.Phone;
             this.userForm.RoleName = this.adminInfo.RoleName;
+            if(this.adminInfo.RoleName != "管理员"){
+              this.GetCustomer(this.adminInfo.Id);
+            }
         },
+        async GetCustomer(userId){
+         const params = {userId:userId}
+         const res = await GetCustomer(params);
+        },
+    
         showEditPassword(){
           this.editPasswordModal=true;
         },
