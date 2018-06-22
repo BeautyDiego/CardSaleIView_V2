@@ -35,8 +35,8 @@
       </Row>
     </div>
     <!--table-->
-    <Row>
-      <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
+    <Row><Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
+      
     </Row>
     <Row>
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
@@ -130,8 +130,7 @@
           {
             align:'center',
             title: '负责人邮箱',
-            key: 'ManagerEmail',
-            width:'180'
+            key: 'ManagerEmail'
           },
           {
             align:'center',

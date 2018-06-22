@@ -127,8 +127,7 @@
           {
             align:'center',
             title: '订单号',
-            key: 'OrderNum',
-            width:'200'
+            key: 'OrderNum'
           },
           {
             align:'center',

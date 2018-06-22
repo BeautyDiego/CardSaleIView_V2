@@ -54,9 +54,10 @@
         </Form-item>
 
       </Row>
-      <Row>
-        <Form-item label="代理商价格" prop="AgentPrice" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-        <InputNumber v-model="modalForm.AgentPrice" :max="9999" :min="0" ></InputNumber>&nbsp元
+
+       <Row>
+        <Form-item label="有效时长" prop="ValidMonth" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
+        <InputNumber v-model="modalForm.ValidMonth" :max="9999" :min="1" ></InputNumber>&nbsp月
         </Form-item>
       </Row>
     </Form>
