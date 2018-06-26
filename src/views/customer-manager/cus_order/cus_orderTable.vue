@@ -129,10 +129,20 @@
             title: '订单号',
             key: 'OrderNum',
           },
+           {
+            align:'center',
+            title: '运营商',
+            key: 'OperTypeText',
+          },
+           {
+            align:'center',
+            title: '购买种类',
+            key: 'SingleOrPoolText',
+          },
           {
             align:'center',
-            title: '卡种类',
-            key: 'Sim_Type',
+            title: 'SIM卡类型',
+            key: 'Sim_TypeText',
           },
           {
             align:'center',
@@ -141,18 +151,18 @@
           },
           {
             align:'center',
-            title: '流量(G)',
-            key: 'FlowCount',render: (h, params) => { return params.row.FlowCount/(1024*1024);},
+            title: '流量',
+            key: 'FlowCount',render: (h, params) => {
+               if(params.row.FlowCount/1024<1024)
+                 return params.row.FlowCount/1024+'MB';
+               else
+                return params.row.FlowCount/(1024*1024)+'GB';
+               },
           },
           {
             align:'center',
-            title: '购买单价(元/GB)',
-            key: 'SinglePrice',render: (h, params) => { return params.row.SinglePrice.toFixed(2);},
-          },
-          {
-            align:'center',
-            title: '续费单价(元/GB)',
-            key: 'ChargePrice',render: (h, params) => { return params.row.ChargePrice.toFixed(2);},
+            title: '购买单价（元）',
+            key: 'SinglePrice',render: (h, params) => {  return '￥'+ params.row.SinglePrice.toFixed(2);},
           },
           {
             align:'center',
@@ -167,7 +177,7 @@
           {
             align:'center',
             title: '订单状态',
-            key: 'OrderStatus',
+            key: 'OrderStatusTxt',
           },
           {
             title: '操作',
@@ -270,6 +280,7 @@
         parentForm:{
           Id:'',
           Sim_Count: 20,
+          SingleOrPoolText:'',
           FlowCount: 10,
           SinglePrice: 0,
           ChargePrice: 0,
