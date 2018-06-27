@@ -186,13 +186,13 @@
       <Row style="background-color: #f2f2f2;padding:20px;">
         <Col span="18">
           <Row>订单编号：{{modalForm.OrderNum}}</Row>
-          <Row>订单类型：{{modalForm.SingleOrPoolText}}购买</Row>
+          <Row>订单类型：{{modalForm.Res_ExpensesName}}</Row>
         </Col>
         <Col span="6" style="line-height: 36px;">
           <Row>应付金额：￥{{modalForm.OrderPrice.toFixed(2)}}</Row>
         </Col>
       </Row>
-      <Tabs v-model="tabValue"  @on-click="GetOrderAliQRCode">
+      <Tabs v-model="tabValue"  @on-click="GetOrderPayMethod">
        <TabPane label="余额支付" name="name0">
            <div>
              余额支付
@@ -435,6 +435,7 @@ export default {
             Sim_Type:1,
             ValidMonth:'',
             UseCase:'',
+            Res_ExpensesName:'',
           },
           modalForm_loading:false,
           simExpanseConfigList:[],
@@ -586,16 +587,17 @@ export default {
     
     },
     methods: {
-      async getOrderWxQRCode(name){
-        if (name === 'name1'){
+      async GetOrderPayMethod(name){
+        console.log(name)
+        if(name=='name0'){
+          this.GetOrderRestCash();
+        }else if (name === 'name1'){
         let res = await getWxQRCode(this.modalForm);
+        console.log(res)
         if (res.success){
           this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
         }
-        }
-      },
-      async GetOrderAliQRCode(name){
-        if (name === 'name2'){
+        }else if (name === 'name2'){
           let res = await getAliQRCode(this.modalForm);
           if (res.success){
             this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
@@ -606,7 +608,7 @@ export default {
           let res = await getCusRestCash(this.modalForm);
           if (res.success){
             this.RestCash = res.result.toFixed(2);
-          }        
+          } 
       },
       /*
       @获取sim卡花费配置

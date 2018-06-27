@@ -134,6 +134,11 @@
             title: '运营商',
             key: 'OperTypeText',
           },
+          {
+            align:'center',
+            title: '资费类型',
+            key: 'Res_ExpensesName',
+          },
            {
             align:'center',
             title: '购买种类',
@@ -281,6 +286,7 @@
           Id:'',
           Sim_Count: 20,
           SingleOrPoolText:'',
+          Res_ExpensesName:'',
           FlowCount: 10,
           SinglePrice: 0,
           ChargePrice: 0,
