@@ -13,38 +13,27 @@
     @on-cancel="cancel"
     width="600">
     <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 3px 60px">
-      <Form-item label="客户名称" prop="Cus_Name" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
-        <Input v-model="modalForm.Cus_Name" ></Input>
+      <Form-item label="运营商名称" prop="OperName" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.OperName" ></Input>
       </Form-item>
-      <Form-item label="登录名" prop="LoginName" :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
-        <Input v-model="modalForm.LoginName" ></Input>
+      <Form-item label="运营商" prop="OperType" :rules="{required: true, message: '必填', trigger:'blur'}" >
+        <RadioGroup v-model="modalForm.OperType" type="button" size="large" >
+          <Radio label="中国电信"></Radio>
+          <Radio label="中国移动"></Radio>
+          <Radio label="中国联通"></Radio>
+        </RadioGroup>
       </Form-item>
-      <Form-item v-if="modalFormTitle==='添加客户'" label="密码" prop="Password"  :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
-        <Input v-model="modalForm.Password" type="password"></Input>
+      <Form-item label="状态" prop="Enabled" :rules="{required: true, message: '必填', trigger:'blur'}" >
+        <RadioGroup v-model="modalForm.Enabled" type="button" size="large" >
+          <Radio label="正常"></Radio>
+          <Radio label="注销"></Radio>
+        </RadioGroup>
       </Form-item>
-      <Form-item label="折扣" prop="Discount" :rules="{required: true, message: '必填一位小数',min:0,max:1,  trigger:'blur',pattern:/^0(.\d{1,2})?$/}" >
-        <Input v-model="modalForm.Discount" ></Input>
+      <Form-item label="联系人名称" prop="ContactName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.ContactName" ></Input>
       </Form-item>
-      <Form-item label="地址"  >
-        <Input v-model="modalForm.Cus_Address" ></Input>
-      </Form-item>
-      <Form-item label="行业"  >
-        <Input v-model="modalForm.Industry" ></Input>
-      </Form-item>
-      <Form-item label="区域"  >
-        <Input v-model="modalForm.Region" ></Input>
-      </Form-item>
-      <Form-item label="负责人姓名" prop="ManagerName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
-        <Input v-model="modalForm.ManagerName" ></Input>
-      </Form-item>
-      <Form-item label="负责人手机" prop="ManagerMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
-        <Input v-model="modalForm.ManagerMobile" ></Input>
-      </Form-item>
-      <Form-item label="负责人邮箱" prop="ManagerEmail" :rules="{required: true, message: '输入正确邮箱', trigger:'blur',type:'string',pattern:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}"  >
-        <Input v-model="modalForm.ManagerEmail" ></Input>
-      </Form-item>
-      <Form-item label="备注"  >
-        <Input v-model="modalForm.Remark" ></Input>
+      <Form-item label="联系人电话" prop="ComtactMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
+        <Input v-model="modalForm.ComtactMobile" ></Input>
       </Form-item>
       <!--<Form-item label="性别"  >-->
         <!--<Select v-model="modalForm.Sex" placeholder="请选择">-->
@@ -67,7 +56,7 @@
 </template>
 
 <script>
-import {addCustomer,editCustomer} from './../../../api/getData'
+import {addResOperator,editResOperator} from './../../../api/getData'
 export default {
     props:{
       parentForm: {
@@ -75,16 +64,14 @@ export default {
         default: function () {
           return {
             Id:'',
-            Cus_Name: '',
-            LoginName: '',
-            Cus_Address: '',
-            Industry: '',
-            Region: '',
-            ManagerName: '',
-            ManagerEmail: '',
-            ManagerMobile:'',
-            Remark:'',
-            Discount:''
+            OperName: '',
+            OperType: '1',
+            ContactName: '',
+            ComtactMobile: '',
+            UserKey: '',
+            UserName: '',
+            UserPwd: '',
+            Enabled:'1',
           }
         }
       },
@@ -94,7 +81,7 @@ export default {
       },
       modalFormTitle:{
         type: String,
-        default: '添加用户',
+        default: '添加运营商',
       },
     },
     data() {
@@ -132,10 +119,10 @@ export default {
             const params = this.modalForm;
             try{
               let result;
-              if (this.modalFormTitle ==='添加客户'){
-                 result = await addCustomer(params);
+              if (this.modalFormTitle ==='添加运营商'){
+                 result = await addResOperator(params);
               }else{
-                 result = await editCustomer(params);
+                 result = await editResOperator(params);
               }
               if (result.success) {
                 this.$Message.success('提交成功!');

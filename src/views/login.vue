@@ -10,9 +10,9 @@
                     <img src="./../images/loginChaoda.png" alt="" style="width:245px;">
                 </div>
                 <div class="form-con">
-                    <Form ref="loginForm" :model="form" :rules="rules">
+                    <Form ref="loginForm" :model="form" :rules="rules" >
                         <FormItem prop="userName">
-                            <Input v-model="form.userName" placeholder="请输入用户名" size="large">
+                            <Input v-model="form.userName" placeholder="请输入用户名" size="large" >
                             <span slot="prepend">
                                     <Icon :size="20" type="person"></Icon>
                                 </span>

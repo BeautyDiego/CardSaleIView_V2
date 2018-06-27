@@ -1,6 +1,6 @@
 <style>
   
-  .basic_Info {
+  .Cus_AccountDetail {
     padding:10px;
     min-height:600px;
   }
@@ -9,11 +9,11 @@
 
 <template>
   
-  <div class="basic_Info">
+  <div class="Cus_AccountDetail">
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-          <Button class="top-right-btn" size="large" icon="plus"  @click="addUser" v-if="IsAdmin">添加</Button>
+          <!--<Button class="top-right-btn" size="large" icon="plus"  @click="addUser" v-if="IsAdmin">充值</Button>-->
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search"  >搜索</Button>
         </Col>
         <transition name="fade">
@@ -22,7 +22,7 @@
             <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:400px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
               <Row>
                 <Form-item label="用户名称"  >
-                  <Input v-model="searchForm.cus_Name" ></Input>
+                  <Input v-model="searchForm.CustomerName" ></Input>
                 </Form-item>
               </Row>
             </Form>
@@ -35,18 +35,18 @@
       </Row>
     </div>
     <!--table-->
-    <Row><Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
-      
+    <Row>
+      <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
     </Row>
     <Row>
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
     </Row>
     <!--新增编辑-->
-    <basic_info-form    :modalShow="formShow"
+    <Cus_AccountDetail-form    :modalShow="formShow"
                  :modalFormTitle="formTitle"
                  :parentForm="parentForm"
                  @listenModalForm="hideModel"
-                 @refreshTableList="getTableList" ></basic_info-form>
+                 @refreshTableList="getTableList" ></Cus_AccountDetail-form>
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -79,13 +79,13 @@
 
 <script>
   import Cookies from 'js-cookie'
-  import {customerBasicInfoList,delCustomer,resetUserPwd} from './../../../api/getData'
+  import {Cus_AccountDetailList,delCus_AccountDetail} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
-  import basic_infoForm from './basic_infoForm.vue'
+  import Cus_AccountDetailForm from './Cus_AccountDetailForm.vue'
   export default {
     name:'basic_Info',
     components:{
-      basic_infoForm,
+      Cus_AccountDetailForm,
     },
     data() {
       return {
@@ -95,47 +95,32 @@
           {
             align:'center',
             title: '客户名称',
-            key: 'Cus_Name',
+            key: 'CustomerName',
           },
           {
             align:'center',
-            title: '登录名',
-            key: 'LoginName',
+            title: '类型',
+            key: 'ActionType',
           },
           {
             align:'center',
-            title: '折扣',
-            key: 'Discount',
+            title: '渠道',
+            key: 'Channel',
           },
           {
             align:'center',
-            title: '客户地址',
-            key: 'Cus_Address',
+            title: '消费或新增金额',
+            key: 'AccountCash',
           },
           {
             align:'center',
-            title: '行业',
-            key: 'Industry'
+            title: '变动前余额',
+            key: 'RestCash',
           },
           {
             align:'center',
-            title: '区域',
-            key: 'Region',
-          },
-          {
-            align:'center',
-            title: '负责人姓名',
-            key: 'ManagerName',
-          },
-          {
-            align:'center',
-            title: '负责人电话',
-            key: 'ManagerMobile',
-          },
-          {
-            align:'center',
-            title: '负责人邮箱',
-            key: 'ManagerEmail',
+            title: '变动后余额',
+            key: 'AfterCash',
           },
           {
             align:'center',
@@ -161,22 +146,22 @@
                       this.editUser(params.row)
                     }
                   }
-                }, '修改'));
+                }, '充值'));
 
-                actions.push(  h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.delCustomer(params.row.Id)
-                    }
-                  }
-                }, '删除'));
+//                actions.push(  h('Button', {
+//                  props: {
+//                    type: 'error',
+//                    size: 'small'
+//                  },
+//                  style: {
+//                    marginRight: '5px'
+//                  },
+//                  on: {
+//                    click: () => {
+//                      this.delCus_AccountDetail(params.row.Id)
+//                    }
+//                  }
+//                }, '删除'));
               }
               return h('div', actions);
             }
@@ -187,27 +172,26 @@
         total:0,
         currentPage:1,
         formShow:false,
-        formTitle:'添加用户',
+//        formTitle:'添加用户',
         parentForm:{
           Id:'',
-          Cus_Name: '',
-          LoginName: '',
-          Cus_Address: '',
-          Industry: '',
-          Region: '',
-          ManagerName: '',
-          ManagerEmail: '',
-          ManagerMobile:'',
+          CustomerId: '',
+          CustomerName: '',
+          ActionType: '',
+          Channel: '',
+          AccountCash: '',
+          BeforeCash: '',
+          AfterCash: '',
           Remark:'',
-
+          RestCash:''
         },
         delModal:false,
-        delId:'', //删除的Id
+//        delId:'', //删除的Id
         resetModal:false,
-        resetId:'',//密码重置Id
+//        resetId:'',//密码重置Id
         btnLoading:false,
         searchForm:{
-          cus_Name: '',
+          CustomerName: '',
           rows:10,
           page:1,
         },
@@ -227,8 +211,12 @@
       searchEnter(){
          this.searchPaneShow=!this.searchPaneShow;
       },
+      async GetCusAccountDetail(Id){
+        const params = {Id:Id}
+        const res = await GetCusAccountDetail(params);
+      },
       resetSearch(){
-         this.searchForm.cus_Name='';
+         this.searchForm.CustomerName='';
       },
       doSearchTableList(){
         this.currentPage=1;
@@ -238,7 +226,7 @@
         this.tableLoading=true;
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
-        const res = await customerBasicInfoList(params);
+        const res = await Cus_AccountDetailList(params);
         console.log(res)
         this.total = res.total;
         this.tableData = res.rows;
@@ -248,58 +236,58 @@
         this.currentPage=num;
         this.getTableList();
       },
-      addUser() {
-        clearObj(this.parentForm);
-       // this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
-        this.formTitle='添加客户';
-        this.formShow=true;
-      },
+//      addUser() {
+//        clearObj(this.parentForm);
+//       // this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
+//        this.formTitle='客户充值';
+//        this.formShow=true;
+//      },
       editUser(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
-        this.formTitle='修改客户';
+        this.formTitle='充值';
         this.formShow=true;
       },
-      delCustomer(Id){
-        this.delId=Id;
-        this.delModal=true;
-      },
-      async comfirmDel(){
-        this.btnLoading=true;
-        try{
-          const res= await delCustomer({Id:this.delId});
-          if (res.success) {
-            this.$Message.success('删除成功!');
-            this.getTableList();
-            this.delModal=false;
-          }else{
-            this.$Message.error(res.msg);
-          }
-        }catch(err){
-          console.log(err);
-          this.$Message.error('服务器异常，稍后再试');
-        }
-        this.btnLoading=false;
-      },
-      resetUserPwd(Id){
-        this.resetId=Id;
-        this.resetModal=true;
-      },
-      async comfirmReset(){
-        this.btnLoading=true;
-        try{
-          const res= await resetUserPwd({Id:this.resetId});
-          if (res.success) {
-            this.$Message.success('重置成功!');
-            this.resetModal=false;
-          }else{
-            this.$Message.error(res.msg);
-          }
-        }catch(err){
-          console.log(err);
-          this.$Message.error('服务器异常，稍后再试');
-        }
-        this.btnLoading=false;
-      },
+//      delCus_AccountDetail(Id){
+//        this.delId=Id;
+//        this.delModal=true;
+//      },
+//      async comfirmDel(){
+//        this.btnLoading=true;
+//        try{
+//          const res= await delCus_AccountDetail({Id:this.delId});
+//          if (res.success) {
+//            this.$Message.success('删除成功!');
+//            this.getTableList();
+//            this.delModal=false;
+//          }else{
+//            this.$Message.error(res.msg);
+//          }
+//        }catch(err){
+//          console.log(err);
+//          this.$Message.error('服务器异常，稍后再试');
+//        }
+//        this.btnLoading=false;
+//      },
+//      resetUserPwd(Id){
+//        this.resetId=Id;
+//        this.resetModal=true;
+//      },
+//      async comfirmReset(){
+//        this.btnLoading=true;
+//        try{
+//          const res= await resetUserPwd({Id:this.resetId});
+//          if (res.success) {
+//            this.$Message.success('重置成功!');
+//            this.resetModal=false;
+//          }else{
+//            this.$Message.error(res.msg);
+//          }
+//        }catch(err){
+//          console.log(err);
+//          this.$Message.error('服务器异常，稍后再试');
+//        }
+//        this.btnLoading=false;
+//      },
       hideModel(){
         this.formShow=false;
       },
