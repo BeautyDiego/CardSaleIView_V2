@@ -80,115 +80,24 @@
     :mask-closable="false"
     :title="modalFormTitle"
     @on-cancel="cancel"
-    width="850">
+    width="720">
     <Row>
-      <div style="padding-left:65px;">
+      <div style="padding-left:160px;">
         <Steps :current="currentStep" >
-          <Step title="下单"></Step>
-          <Step title="收货信息"></Step>
           <Step title="支付订单"></Step>
           <Step title="完成"></Step>
         </Steps>
       </div>
     </Row>
-
-    <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 35px 30px 5px">
-      <div v-show="currentStep==0">
-        <Row>
-          <Col span="17">
-            <Form-item label="SIM卡类型：" >
-              <Row>
-                <RadioGroup v-model="modalForm.Sim_Type"  type="button" size="large">
-                  <Radio v-for="item in SimTypeList" :label="item.value" :key="item.value" :disabled="IsPayStatus" >  <span>{{ item.label }}</span></Radio>
-                </RadioGroup>
-              </Row>
-            </Form-item>
-            <Form-item label="套餐有效时长：" >
-              <Row>
-                <Select v-model="modalForm.ValidMonth" :disabled="IsPayStatus" style="width:200px;">
-                  <Option v-for="item in ValidMonthList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                </Select>
-              </Row>
-            </Form-item>
-            <Form-item label="使用场景：" >
-              <Row>
-                <Input v-model="modalForm.UseCase" :readonly="IsPayStatus" style="width: 200px"></Input>
-              </Row>
-            </Form-item>
-            <Form-item label="SIM卡数量：" >
-              <Row>
-                <Col span="18">
-                <vueSlider ref="simSlider" v-model="Sim_Count" :disabled="IsPayStatus" :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onSIMdrageend" :min="Sim_CountMin" :max="Sim_CountMax"></vueSlider>
-                </Col>
-                <Col span="6">
-                <InputNumber v-model="Sim_Count" :precision=0   @on-blur="onSIMblur" @on-focus="onfocus" @on-change="onSIMChange" :readonly="IsPayStatus"></InputNumber>&nbsp个
-                </Col>
-              </Row>
-            </Form-item>
-            <Form-item label="总流量："  >
-              <Row>
-                <Col span="18">
-                <vueSlider ref="flowSlider" v-model="FlowCount" :disabled="IsPayStatus" :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onFlowdrageend"  :min="Flow_CountMin" :max="Flow_CountMax"></vueSlider>
-                </Col>
-                <Col span="6">
-                <InputNumber v-model="FlowCount" :precision=0 @on-blur="onFlowblur" @on-focus="onfocus" @on-change="onFlowChange"  :readonly="IsPayStatus"></InputNumber>&nbspGB
-                </Col>
-              </Row>
-            </Form-item>
-            <Form-item label="购买单价："  >
-              ￥{{modalForm.SinglePrice.toFixed(2)}} &nbsp/GB
-            </Form-item>
-            <Form-item label="订单金额："  >
-              <Row>
-                <Col span="18">
-                ￥{{OrderPrice.toFixed(2)}}
-                </Col>
-              </Row>
-            </Form-item>
-          </Col>
-          <Col span="7">
-            <Card :bordered="true" style="background-color: #fafafa">
-              <p slot="title">当前配置</p>
-              <div class="current-setting">
-                  <Row class="setting-row"><Col span="12" class="setting-title">运营商：</Col><Col span="12">中国电信</Col> </Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">SIM卡类型：</Col><Col span="12">{{SIMTypeTxt}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">套餐有效时长：</Col><Col span="12">{{ValidMonthTxt}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">使用场景：</Col><Col span="12">{{modalForm.UseCase}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">购买数量：</Col><Col span="12">{{Sim_Count}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">流量数量：</Col><Col span="12">{{FlowCount}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">原单价：</Col><Col span="12">￥{{OriginalSinglePrice}} &nbsp/GB</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">活动单价：</Col><Col span="12">￥{{modalForm.SinglePrice.toFixed(2)}} &nbsp/GB</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">订单金额：</Col><Col span="12"></Col></Row>
-                  <Row style="font-size:28px;color:#ea6219;">￥{{OrderPrice.toFixed(2)}}</Row>
-                  <Row style="font-size:18px;color:#47b348;">省￥{{SaveMoney.toFixed(2)}}</Row>
-              </div>
-            </Card>
-          </Col>
-        </Row>
-     
-       
-       
-      </div>
-      <div v-show="currentStep==1" style="padding-right:70px;">
-        <Form-item label="收货人：" prop="ReceiveName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10, trigger:'blur',type:'string'}" >
-          <Input v-model="modalForm.ReceiveName"  :readonly="IsPayStatus"></Input>
-        </Form-item>
-        <Form-item label="收货电话：" prop="ReceiveMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
-          <Input v-model="modalForm.ReceiveMobile" :readonly="IsPayStatus" ></Input>
-        </Form-item>
-        <Form-item label="收货地址：" prop="ReceiveAddress" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
-          <Input v-model="modalForm.ReceiveAddress" :readonly="IsPayStatus" ></Input>
-        </Form-item>
-      </div>
-    </Form>
-    <div class="pay-part" v-show="currentStep==2">
+    <div class="pay-part" v-show="currentStep==0">
       <h2>收银台</h2>
       <Row style="background-color: #f2f2f2;padding:20px;">
         <Col span="18">
           <Row>订单编号：{{modalForm.OrderNum}}</Row>
           <Row>订单类型：{{modalForm.Res_ExpensesName}}</Row>
         </Col>
-        <Col span="6" style="line-height: 36px;">
+        <Col span="6" >
+          <Row>卡数量：{{modalForm.Sim_Count}}</Row>
           <Row>应付金额：￥{{modalForm.OrderPrice.toFixed(2)}}</Row>
         </Col>
       </Row>
@@ -319,7 +228,7 @@
       </Tabs>
     </div>
     <!--充值成功-->
-    <div class="pay-success" v-if="currentStep==3">
+    <div class="pay-success" v-if="currentStep==1">
       <div>
         <Row>
           <Col span="3">
@@ -356,10 +265,7 @@
     </div>
     <div slot="footer">
       <Button type="ghost"   @click="cancel" >取消</Button>
-      <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep!=3&&currentStep!=2">上一步</Button>
-      <Button type="ghost" :loading="modalForm_loading"  @click="nextStep" v-show="currentStep==0||(currentStep==1&&IsPayStatus)">下一步</Button>
-      <Button type="primary" v-show="currentStep==1&&!IsPayStatus" :loading="modalForm_loading" @click="saveForm('modalForm')">提交订单</Button>
-      <Button type="primary"  v-show="currentStep==2&&tabValue=='name3'" :loading="modalForm_loading" @click="saveRemit('remitForm')">提交</Button>
+      <Button type="primary"  v-show="tabValue=='name3'" :loading="modalForm_loading" @click="saveRemit('remitForm')">提交</Button>
     </div>
   </Modal>
   <Modal title="汇款单凭证" v-model="visible">
@@ -374,7 +280,7 @@
 <script>
 import {baseUrl} from './../../../api/env'
 import vueSlider from 'vue-slider-component'
-import {simExpanseConfigList,addCusOrder,editCusOrder,getWxQRCode,getAliQRCode,remitCusOrder,getCusRestCash,payOrderbyRestCash} from './../../../api/getData'
+import {getWxQRCode,getAliQRCode,remitCusOrder,getCusRestCash,payOrderbyRestCash} from './../../../api/getData'
 export default {
     components:{
       vueSlider,
@@ -415,8 +321,6 @@ export default {
     data() {
         return {
           currentStep:0,
-          Sim_Count:10,
-          FlowCount:10,
           IsModalShow:false,
           modalForm:{
             Id:'',
@@ -438,61 +342,16 @@ export default {
             Res_ExpensesName:'',
           },
           modalForm_loading:false,
-          simExpanseConfigList:[],
-          isDragging:false, //是否在拖动滑块
-          isInputNumber:false, //是否在输入
           WxQRCode:'',//微信支付二维码
           AliQRCode:'',//支付宝二维码
           conn:{}, //signal 连接
           visible:false,
           tabValue:'name0',
-          ValidMonthList:[{value:1,label:'一个月'},{value:2,label:'二个月'},{value:3,label:'三个月'},{value:6,label:'半年'},{value:12,label:'一年'},{value:24,label:'二年'},{value:36,label:'三年'},],
-          SimTypeList:[{value:1,label:'普通'},{value:2,label:'micro-SIM'},{value:3,label:'nano-SIM'},{value:4,label:'安全SIM卡'},],
           OriginalSinglePrice:50, //原单价
           RestCash:0
         }
     },
     computed: {
-      Sim_CountMin: function () {
-        if (this.simExpanseConfigList.length>0){
-          return this.simExpanseConfigList[0].MinSimCount;
-        }else{
-          return 0;
-        }
-        
-      },
-      Sim_CountMax: function () {
-        if (this.simExpanseConfigList.length>0){
-          return this.simExpanseConfigList[this.simExpanseConfigList.length-1].MaxSimCount;
-        }else{
-          return 1000;
-        }
-      },
-      Flow_CountMin: function () {
-        if (this.simExpanseConfigList.length>0){
-          return this.simExpanseConfigList[0].MinFlowCount;
-        }else{
-          return 0;
-        }
-
-      },
-      Flow_CountMax: function () {
-        if (this.simExpanseConfigList.length>0){
-          return this.simExpanseConfigList[this.simExpanseConfigList.length-1].MaxFlowCount;
-        }else{
-          return 1000;
-        }
-      },
-      OrderPrice:function () {
-        return this.modalForm.SinglePrice*this.FlowCount*this.modalForm.ValidMonth;
-      },
-      //节省下来的钱
-      SaveMoney:function () {
-        return  (this.OriginalSinglePrice-this.modalForm.SinglePrice)*this.FlowCount*this.modalForm.ValidMonth;
-      },
-      ConfigListLength:function () {
-        return this.simExpanseConfigList.length;
-      },
       //是否是待付款状态
       IsPayStatus:function () {
         return this.modalForm.OrderStatus===1;
@@ -528,24 +387,12 @@ export default {
         if (curVal){
           this.tabValue='name0' //默认进入微信支付tab
           this.modalForm=Object.assign(this.parentForm);
-
-          this.Sim_Count=10;
-          this.FlowCount=10;
-          this.$nextTick(() => this.$refs.simSlider.refresh())
-          this.$nextTick(() => this.$refs.flowSlider.refresh())
+          
           this.IsModalShow = curVal;
-          this.currentStep=0;
-          if (this.modalFormTitle==='添加订单'){
-            this.modalForm.SinglePrice=this.simExpanseConfigList[0].SinglePrice
-            this.modalForm.ChargePrice=this.simExpanseConfigList[0].ChargePrice
-            this.OriginalSinglePrice=this.simExpanseConfigList[0].OriginalPrice
-            this.Sim_Count=this.simExpanseConfigList[0].MinSimCount;
-            this.FlowCount=this.simExpanseConfigList[0].MinFlowCount;
-          }
         
           //如果状态是支付
           if (this.IsPayStatus){
-            this.currentStep=2;
+            this.currentStep=0;
             this.Sim_Count= this.modalForm.Sim_Count;
             this.FlowCount= this.modalForm.FlowCount;
             this.GetOrderRestCash();
@@ -562,7 +409,7 @@ export default {
             this.conn.received(function (data) {
               var obj = JSON.parse(data);
               if(obj.success){
-                me.currentStep=3;
+                me.currentStep=0;
                 me.$emit('refreshTableList');
               }
              // console.log("收到数据： " + data + "\r\n");
@@ -579,7 +426,6 @@ export default {
       },
     },
     created(){
-       this.getSimExpanseConfigList();
  
     },
     mounted(){
@@ -610,52 +456,6 @@ export default {
             this.RestCash = res.result.toFixed(2);
           } 
       },
-      /*
-      @获取sim卡花费配置
-      * **/
-      async getSimExpanseConfigList(){
-          this.simExpanseConfigList= await simExpanseConfigList();
-          this.modalForm.SinglePrice=this.simExpanseConfigList[0].SinglePrice
-          this.modalForm.ChargePrice=this.simExpanseConfigList[0].ChargePrice
-         
-      },
-      /*@@上一步*/
-      prevStep(){
-        this.modalForm_loading=true;
-        if (this.currentStep>0){
-          this.currentStep--;
-        }
-        this.modalForm_loading=false;
-      },
-      nextStep(){
-        this.modalForm_loading=true;
-        this.currentStep++;
-        this.modalForm_loading=false;
-      },
-      ondragstart(){
-         this.isDragging=true;
-      },
-      onSIMdrageend(){
-         this.isDragging=false;
-      },
-      onFlowdrageend(){
-
-      },
-      onfocus(){
-         this.isInputNumber=true;
-      },
-      onSIMblur(){
-        this.isInputNumber=false;   
-      },
-      onSIMChange(){
-    
-      },
-      onFlowblur(){
-        this.isInputNumber=false;
-      },
-      onFlowChange(){
-
-      },
       cancel() {
           this.$emit('listenModalForm');
       },
@@ -666,7 +466,7 @@ export default {
                     title: '支付成功',
                     desc: '余额支付成功，请等待后台审核订单。 '
                 });
-             this.currentStep=3;
+             this.currentStep=1;
           }else
           {
             this.$Notice.error({
@@ -675,64 +475,6 @@ export default {
                 });
           }
          
-      },
-      /*
-      * @@提交订单
-      * */
-      saveForm(name) {
-        this.$refs[name].validate( async (valid) => {
-          if (valid) {
-            this.modalForm_loading=true;
-            const params = this.modalForm;
-            params.Sim_Count=this.Sim_Count;
-            params.FlowCount=parseInt(this.FlowCount)*1024*1024;
-            params.OrderPrice=this.OrderPrice;
-            try{
-              let result;
-              if (this.modalFormTitle ==='添加订单'){
-                 result = await addCusOrder(params);
-              }else{
-                 result = await editCusOrder(params);
-              }
-              if (result.success) {
-                this.$Message.success('提交成功!');
-                this.modalForm.OrderNum=result.OrderNum;
-                this.modalForm.OrderStatus=1;
-                this.WxQRCode='data:image/jpeg;base64,'+result.QRCode;
-               // this.$emit('listenModalForm');
-                this.currentStep++;
-                this.$emit('refreshTableList');
-
-                var me =this;
-                this.conn = $.connection(baseUrl+"/Signalr/PayConnection");
-              //  console.log(baseUrl+"/Signalr/PayConnection");
-                this.conn.start().done(function (data) {
-               //   console.log("连接成功，connectionId 为： " + data.id + "\r\n");
-                  me.conn.send(result.OrderNum);
-                //  console.log("send:"+result.OrderNum)
-                });
-
-                this.conn.received(function (data) {
-                  var obj = JSON.parse(data);
-                  if(obj.success){
-                    me.currentStep=3;
-                    me.$emit('refreshTableList');
-                  }
-               //   console.log("收到数据： " + data + "\r\n");
-
-                });
-              }else{
-                this.$Message.error(result.msg);
-              }
-            }catch(err){
-              console.log(err);
-              this.$Message.error('服务器异常，稍后再试');
-            }
-            this.modalForm_loading=false;
-          } else {
-            this.$Message.error('表单验证失败!');
-          }
-        })
       },
       //提交汇款信息
       saveRemit(name){
@@ -748,7 +490,7 @@ export default {
               let result;
               result = await remitCusOrder(params);
               if (result.success) {
-                this.currentStep=3;
+                this.currentStep=1;
                 this.$Message.success('提交成功!');
                 this.$emit('refreshTableList');
               }else{

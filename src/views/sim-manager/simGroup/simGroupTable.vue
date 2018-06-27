@@ -13,8 +13,9 @@
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" id="" v-if="!IsAdmin">添加</Button>
+        
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
+          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" >添加</Button>
         </Col>
         <transition name="fade">
           <Card v-show="searchPaneShow" style="position:absolute;top:1px;z-index:100;"  :style="{right:IsAdmin?'85px':'185px'}" :padding=12>
@@ -123,37 +124,36 @@
             align: 'center',
             render: (h, params) => {
               let actions=[];
-              if (!this.IsAdmin){
-                actions.push( h('Button', {
-                  props: {
-                    type: 'warning',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.editSIMGroup(params.row)
-                    }
+              actions.push( h('Button', {
+                props: {
+                  type: 'warning',
+                  size: 'small'
+                },
+                style: {
+                  marginRight: '5px'
+                },
+                on: {
+                  click: () => {
+                    this.editSIMGroup(params.row)
                   }
-                }, '修改'));
+                }
+              }, '修改'));
 
-                actions.push(  h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.delSIMGroup(params.row.Id)
-                    }
+              actions.push(  h('Button', {
+                props: {
+                  type: 'error',
+                  size: 'small'
+                },
+                style: {
+                  marginRight: '5px'
+                },
+                on: {
+                  click: () => {
+                    this.delSIMGroup(params.row.Id)
                   }
-                }, '删除'));
-
+                }
+              }, '删除'));
+              if (!this.IsAdmin||!params.row.IsBind){
                 actions.push( h('Button', {
                   props: {
                     type: 'primary',
@@ -168,7 +168,9 @@
                     }
                   }
                 }, '添加组员'));
-              }else{
+              }
+             
+
                 actions.push( h('Button', {
                   props: {
                     type: 'primary',
@@ -180,7 +182,7 @@
                     }
                   }
                 }, '查看组员'));
-              }
+              
              
               
               return h('div', actions);
@@ -198,6 +200,8 @@
           GroupName: '',
           GroupDescribe: '',
           Remark:'',
+          OwerType:'',
+          IsBind:false,
         },
         searchForm:{
           PoolNum: '',

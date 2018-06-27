@@ -96,14 +96,21 @@ export default {
         }
     },
     computed: {
-    
+      IsSingleType:function () {
+        return this.modalForm.SingleOrPool==1 //1代表是单卡
+      }
     },
     watch:{
       modalShow(curVal,oldVal){
         this.IsModalShow = curVal;
         if (curVal){
           this.modalForm=Object.assign(this.parentForm);
-          this.getPoolList();
+          if(this.IsSingleType){ //代表是单卡
+          
+          }else{
+            this.getPoolList();
+          }
+         
         }
       },
     },
