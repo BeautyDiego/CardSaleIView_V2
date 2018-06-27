@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbff26f9-689b-4ec5-bea7-bb1b3634f4e3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/getData.js" afterPath="$PROJECT_DIR$/src/api/getData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/own-space/own-space.vue" afterPath="$PROJECT_DIR$/src/views/own-space/own-space.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,53 +23,52 @@
       <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/getData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+            <state relative-caret-position="572">
+              <caret line="302" column="68" lean-forward="false" selection-start-line="302" selection-start-column="68" selection-end-line="302" selection-end-column="68" />
               <folding>
-                <marker date="1529552163179" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
+                <marker date="1529646561091" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fetch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/fetch.js">
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="35" />
+            <state relative-caret-position="263">
+              <caret line="85" column="295" lean-forward="false" selection-start-line="85" selection-start-column="295" selection-end-line="85" selection-end-column="295" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_infoTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue">
+      <file leaf-file-name="Cus_AccountDetailTable.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2392">
-              <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+            <state relative-caret-position="346">
+              <caret line="246" column="26" lean-forward="false" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#3080#3111#0" expanded="true" />
+                <element signature="e#3119#3150#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basic_infoForm.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue">
+      <file leaf-file-name="own-space.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/own-space/own-space.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="86" column="14" lean-forward="true" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
+            <state relative-caret-position="345">
+              <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simcardTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue">
+      <file leaf-file-name="Cus_AccountDetailForm.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1771">
-              <caret line="80" column="6" lean-forward="false" selection-start-line="80" selection-start-column="6" selection-end-line="80" selection-end-column="6" />
+            <state relative-caret-position="2415">
+              <caret line="105" column="46" lean-forward="false" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -89,8 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jq</find>
-      <find>simExpanseConfigList</find>
       <find>payHisOrder</find>
       <find>modalForm</find>
       <find>Current_Step</find>
@@ -119,6 +113,8 @@
       <find>currentPage</find>
       <find>state</find>
       <find>editCustomer</find>
+      <find>customerBasicInfoList</find>
+      <find>delCustomer</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -170,15 +166,17 @@
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_Operator.html" />
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.html" />
         <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.vue" />
-        <option value="$PROJECT_DIR$/src/router/router.js" />
         <option value="$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseForm.vue" />
         <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
         <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
         <option value="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" />
-        <option value="$PROJECT_DIR$/src/api/getData.js" />
         <option value="$PROJECT_DIR$/src/views/own-space/own-space.vue" />
         <option value="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue" />
         <option value="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue" />
+        <option value="$PROJECT_DIR$/src/router/router.js" />
+        <option value="$PROJECT_DIR$/src/api/getData.js" />
+        <option value="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" />
+        <option value="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" />
       </list>
     </option>
   </component>
@@ -190,7 +188,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -212,8 +210,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,26 +226,7 @@
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -277,15 +254,8 @@
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
-              <item name="Res_Operator" type="462c0819:PsiDirectoryNode" />
+              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="Cus_AccountDetail" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -294,87 +264,12 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="own-space" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-config" type="462c0819:PsiDirectoryNode" />
-              <item name="res-expanse" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="flowpool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="simcard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys-manage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="function" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="role" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys-manage" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,17 +285,18 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\function" />
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage" />
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\component" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\CardSaleIView_V2\src\views\customer-manager\Cus_AccountDetail" />
       <recent name="D:\GitHub\CardSaleIView_V2\src\views\Operator\Res_Operator" />
       <recent name="D:\GitHub\CardSaleIView_V2\src\views\Res_Operator" />
       <recent name="E:\cloud_tfs\CardSale\CardSaleIView_V1\src\views\sim-manager\simcard" />
       <recent name="E:\cloud_tfs\CardSale\CardSaleIView_V1\src\libs" />
-      <recent name="E:\cloud_tfs\CardSale\CardSaleIView_V1\src\views\sim-manager\chargeHis" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\CardSaleIView_V2\src\views\customer-manager" />
+      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\function" />
+      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage" />
+      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\component" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,15 +361,18 @@
       <workItem from="1529542579361" duration="587000" />
       <workItem from="1529543186113" duration="16193000" />
       <workItem from="1529569512680" duration="180000" />
-      <workItem from="1529629914660" duration="4000" />
+      <workItem from="1529629914660" duration="79000" />
+      <workItem from="1529630019363" duration="1838000" />
+      <workItem from="1529636381898" duration="7448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220623000" />
+    <option name="totallyTimeSpent" value="229984000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19503172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -501,10 +400,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25652173" sideWeight="0.50421494" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33143508" sideWeight="0.49578503" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27272728" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19503172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -526,20 +425,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build/webpack.dev.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/webpack.prod.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-149">
@@ -554,13 +439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2806">
-          <caret line="122" column="48" lean-forward="false" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -823,14 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1771">
@@ -839,27 +709,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/own-space/own-space.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="134" column="47" lean-forward="false" selection-start-line="134" selection-start-column="47" selection-end-line="134" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="25" column="50" lean-forward="false" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding>
-            <marker date="1529552163179" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
-          </folding>
+        <state relative-caret-position="23">
+          <caret line="86" column="23" lean-forward="true" selection-start-line="86" selection-start-column="23" selection-end-line="89" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2392">
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+        <state relative-caret-position="23">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#3080#3111#0" expanded="true" />
@@ -867,11 +728,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue">
+    <entry file="file://$PROJECT_DIR$/src/api/fetch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="86" column="14" lean-forward="true" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
+        <state relative-caret-position="69">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="85" column="295" lean-forward="false" selection-start-line="85" selection-start-column="295" selection-end-line="85" selection-end-column="295" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="302" column="68" lean-forward="false" selection-start-line="302" selection-start-column="68" selection-end-line="302" selection-end-column="68" />
+          <folding>
+            <marker date="1529646561091" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/own-space/own-space.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="105" column="46" lean-forward="false" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="246" column="26" lean-forward="false" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
+          <folding>
+            <element signature="e#3119#3150#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
