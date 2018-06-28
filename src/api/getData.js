@@ -165,6 +165,8 @@ export const simExpanseConfigList = data => fetch('/Sim_FreeExpenseConfig/List_S
 export const cusOrderList = data => fetch('/Cus_Order/List_Cus_Order', data, 'POST');
 export const getWxQRCode = data => fetch('/Cus_Order/Get_Wx_QRCode', data, 'POST');
 export const getAliQRCode = data => fetch('/Cus_Order/Get_Alipay_QRCode', data, 'POST');
+export const getCusRestCash = data => fetch('/Cus_Order/Get_Customer_RestCash', data, 'POST');
+export const payOrderbyRestCash = data => fetch('/Cus_Order/Pay_OrderBy_RestCash', data, 'POST');
 export const addCusOrder = data => fetch('/Cus_Order/Add_Cus_Order', data, 'POST');
 export const editCusOrder = data => fetch('/Cus_Order/Edit_Cus_Order', data, 'POST');
 export const cancelCusOrder = data => fetch('/Cus_Order/Cancel_Cus_Order', data, 'POST');

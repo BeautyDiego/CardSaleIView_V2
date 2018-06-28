@@ -200,7 +200,10 @@
           exp_orderFormData:{
           Id:'',
           OperType:'',
+          CardType:'',
           ExpName:'',
+          Res_ExpensesId:0,
+          SingleOrPool:'',
           Sim_Count: 20,
           FlowCount: 10,
           FlowCountUint:'MB',
@@ -285,6 +288,9 @@
         this.exp_orderFormData.OriginSinglePrice=row.OfficialPirce;
         this.exp_orderFormData.OperType = row.OperType;
         this.exp_orderFormData.ExpName = row.ExpName;
+        this.exp_orderFormData.SingleOrPool = row.CardType;
+        this.exp_orderFormData.Res_ExpensesId = row.Id;
+        this.exp_orderFormData.CardType = row.CardType;
         this.exp_orderTitle='套餐订购';
         this.exp_orderShow=true;
       },
