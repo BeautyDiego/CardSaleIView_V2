@@ -40,6 +40,8 @@
             GroupName: '',
             GroupDescribe: '',
             Remark:'',
+            IsBind:false,
+            PoolNum:'',
           }
         }
       },

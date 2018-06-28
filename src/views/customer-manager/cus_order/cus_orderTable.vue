@@ -281,6 +281,7 @@
           Sim_Type:1,
           ValidMonth:1,
           UseCase:'',
+          SimGroupId:'',
         },
         parentForm:{
           Id:'',
@@ -301,6 +302,7 @@
           Sim_Type:1,
           ValidMonth:1,
           UseCase:'',
+          SimGroupId:'',
         },
         delModal:false,
         delId:'', //删除的Id

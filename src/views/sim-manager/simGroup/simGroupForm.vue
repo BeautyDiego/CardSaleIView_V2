@@ -46,6 +46,8 @@
             GroupDescribe: '',
             OwerType:'',
             Remark:'',
+            IsBind:false,
+            PoolNum:'',
           }
         }
       },
