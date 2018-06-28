@@ -301,11 +301,15 @@ export const editResOperator = data => fetch('/Res_Operator/Edit_Res_Operator', 
  */
 export const Cus_AccountDetailList = data => fetch('/Cus_AccountDetail/List_Cus_AccountDetail', data, 'POST');
 /**
- * 获取充值列表
+ * 删除充值列表
  */
 export const delCus_AccountDetail = data => fetch('/Cus_AccountDetail/Delete_Cus_AccountDetail', data, 'POST');
 /**
- * 获取充值列表
+ * 获取充值
  */
 export const GetCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_AccountDetail', data, 'POST');
+/**
+ * 修改充值
+ */
+export const editCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_AccountDetail', data, 'POST');
 

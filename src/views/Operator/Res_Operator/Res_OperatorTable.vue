@@ -93,16 +93,41 @@
             title: '运营商类型',
             key: 'OperType',
           },
+            {
+                align:'center',
+                title: '用户姓名',
+                key: 'UserName'
+            },
           {
             align:'center',
-            title: '联系人名称',
-            key: 'ContactName',
+            title: '用户密码',
+            key: 'UserPwd',
           },
           {
             align:'center',
             title: '联系人电话',
             key: 'ComtactMobile'
           },
+            {
+                align:'center',
+                title: '运营商地址',
+                key: 'OperUrl'
+            },
+            {
+                align:'center',
+                title: 'AppKEY',
+                key: 'AppKey'
+            },
+            {
+                align:'center',
+                title: 'AppSecret',
+                key: 'AppSecret'
+            },
+            {
+                align:'center',
+                title: 'IP端口',
+                key: 'IPAndPort'
+            },
           {
             align:'center',
             title: '状态',
@@ -160,10 +185,13 @@
           OperType: '1',
           ContactName: '',
           ComtactMobile: '',
-          UserKey: '',
+            AppKey: '',
           UserName: '',
           UserPwd: '',
           Enabled:'1',
+            OperUrl:'',
+            AppSecret:'',
+            IPAndPort:'',
 
         },
         delModal:false,
