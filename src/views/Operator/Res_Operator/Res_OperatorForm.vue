@@ -41,7 +41,7 @@
       <Form-item label="用户密码" prop="UserPwd" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.UserPwd" ></Input>
       </Form-item>
-      <Form-item label="运营商地址" prop="OperUrl" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="运营商地址" prop="OperUrl" :rules="{required: true, message: '必填,1-30位字符',min:1,max:30,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.OperUrl" ></Input>
       </Form-item>
       <Form-item label="AppKEY" prop="AppKey" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
@@ -50,10 +50,12 @@
       <Form-item label="AppSecret" prop="AppSecret" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.AppSecret" ></Input>
       </Form-item>
-      <Form-item label="IP端口" prop="IPAndPort" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="IP端口" prop="IPAndPort" :rules="{required: true, message: '必填,1-20位字符',min:1,max:20,  trigger:'blur',type:'string'}" >
       <Input v-model="modalForm.IPAndPort" ></Input>
     </Form-item>
-
+      <Form-item label="集团编码" prop="GroupCode" :rules="{required: true, message: '必填,1-20位字符',min:1,max:20,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.GroupCode" ></Input>
+      </Form-item>
       <!--<Form-item label="性别"  >-->
         <!--<Select v-model="modalForm.Sex" placeholder="请选择">-->
           <!--<Option v-for="item in SexCombo" :value="item.key" :key="item.key">{{ item.value }}</Option>-->
@@ -95,6 +97,7 @@ export default {
               OperUrl:'',
               AppSecret:'',
               IPAndPort:'',
+              GroupCode:'',
 
           }
         }
