@@ -152,12 +152,13 @@ export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data,
 export const addSimGroup = data => fetch('/Sim_Group/Add_Sim_Group', data, 'POST');
 export const editSimGroup = data => fetch('/Sim_Group/Edit_Sim_Group', data, 'POST');
 export const delSimGroup = data => fetch('/Sim_Group/Delete_Sim_Group', data, 'POST');
-export const simcardTransferListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard_Transfer', data, 'POST');
+export const simcardTransferListPage = data => fetch('/Sim_Group/List_Sim_SimCard_Transfer', data, 'POST');
 export const simGroupSimCardList = data => fetch('/Sim_Group/List_Sim_Group_SimCard', data, 'POST');
-export const addSimToGroup = data => fetch('/Relation_Group_Card/Add_Relation_Group_Card', data, 'POST');
+export const addSimToGroup = data => fetch('/Sim_Group/Add_SimCard_To_Group', data, 'POST');
 export const getUnGroupPoolList = data => fetch('/Cus_FlowPool/Get_UnGroupFlowPoolList', data, 'POST');
 export const groupBindPool = data => fetch('/Sim_Group/SimGroup_Bind_Pool', data, 'POST');
-
+export const customerCombo = data => fetch('/Cus_Customer/Cus_Customer_Combo', data, 'POST');
+export const groupToCustomer = data => fetch('/Sim_Group/Group_To_Customer', data, 'POST');
 //   endregion
 
 

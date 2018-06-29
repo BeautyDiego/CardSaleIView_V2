@@ -190,7 +190,9 @@
           ManagerEmail: '',
           ManagerMobile:'',
           Remark:'',
-
+          Admin_GroupId:'',
+          Agent_GroupId:'',
+          Customer_GroupId:'',
         },
         searchForm:{
           SimStatus:'全部',
