@@ -128,6 +128,11 @@
                 title: 'IP端口',
                 key: 'IPAndPort'
             },
+            {
+                align:'center',
+                title:'集团编码',
+                key:'GroupCode',
+            },
           {
             align:'center',
             title: '状态',
@@ -192,6 +197,7 @@
             OperUrl:'',
             AppSecret:'',
             IPAndPort:'',
+            GroupCode:'',
 
         },
         delModal:false,
