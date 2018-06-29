@@ -29,31 +29,31 @@
           <Radio label="注销"></Radio>
         </RadioGroup>
       </Form-item>
-      <Form-item label="联系人名称" prop="ContactName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="联系人名称" prop="ContactName" :rules="{required: true, message: '必填',  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.ContactName" ></Input>
       </Form-item>
       <Form-item label="联系人电话" prop="ComtactMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
         <Input v-model="modalForm.ComtactMobile" ></Input>
       </Form-item>
-      <Form-item label="用户姓名" prop="UserName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="用户姓名" prop="UserName" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.UserName" ></Input>
       </Form-item>
-      <Form-item label="用户密码" prop="UserPwd" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="用户密码" prop="UserPwd" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.UserPwd" ></Input>
       </Form-item>
-      <Form-item label="运营商地址" prop="OperUrl" :rules="{required: true, message: '必填,1-30位字符',min:1,max:30,  trigger:'blur',type:'string'}" >
+      <Form-item label="运营商地址" prop="OperUrl" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.OperUrl" ></Input>
       </Form-item>
-      <Form-item label="AppKEY" prop="AppKey" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="AppKEY" prop="AppKey" :rules="{required: true, message: '必填',  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.AppKey" ></Input>
       </Form-item>
-      <Form-item label="AppSecret" prop="AppSecret" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10,  trigger:'blur',type:'string'}" >
+      <Form-item label="AppSecret" prop="AppSecret" :rules="{required: true, message: '必填',  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.AppSecret" ></Input>
       </Form-item>
-      <Form-item label="IP端口" prop="IPAndPort" :rules="{required: true, message: '必填,1-20位字符',min:1,max:20,  trigger:'blur',type:'string'}" >
+      <Form-item label="IP端口" prop="IPAndPort" :rules="{required: true, message: '必填',  trigger:'blur',type:'string'}" >
       <Input v-model="modalForm.IPAndPort" ></Input>
     </Form-item>
-      <Form-item label="集团编码" prop="GroupCode" :rules="{required: true, message: '必填,1-20位字符',min:1,max:20,  trigger:'blur',type:'string'}" >
+      <Form-item label="集团编码" prop="GroupCode" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.GroupCode" ></Input>
       </Form-item>
       <!--<Form-item label="性别"  >-->
