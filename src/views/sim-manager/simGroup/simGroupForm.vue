@@ -34,6 +34,7 @@
 
 <script>
   import {addSimGroup,editSimGroup} from './../../../api/getData'
+  import { mapState } from 'vuex'
   export default {
     props:{
       parentForm: {
@@ -43,7 +44,10 @@
             Id:'',
             GroupName: '',
             GroupDescribe: '',
+            OwerType:'',
             Remark:'',
+            IsBind:false,
+            PoolNum:'',
           }
         }
       },
@@ -63,6 +67,11 @@
         },
         modalForm_loading:false,
       }
+    },
+    computed: {
+      ...mapState({
+        adminInfo: state => state.user.adminInfo,
+      }),
     },
     watch:{
       modalShow(curVal,oldVal){
@@ -84,10 +93,11 @@
         this.$refs[name].validate( async (valid) => {
           if (valid) {
             this.modalForm_loading=true;
-            const params = this.modalForm;
+            let params = this.modalForm;
             try{
               let result;
               if (this.modalFormTitle ==='添加SIM卡组'){
+                params.OwerType = this.adminInfo.OwerType
                 result = await addSimGroup(params);
               }else{
                 result = await editSimGroup(params);

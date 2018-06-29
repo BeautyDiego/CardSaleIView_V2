@@ -13,8 +13,9 @@
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" id="" v-if="!IsAdmin">添加</Button>
+        
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
+          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" >添加</Button>
         </Col>
         <transition name="fade">
           <Card v-show="searchPaneShow" style="position:absolute;top:1px;z-index:100;"  :style="{right:IsAdmin?'85px':'185px'}" :padding=12>
@@ -41,7 +42,7 @@
     </div>
     <!--table-->
     <Row>
-      <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
+      <Table stripe size="small"   :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
     </Row>
     <Row>
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
@@ -62,6 +63,11 @@
                         :parentForm="parentForm"
                         @listenModalForm="hideDetailModel"
                         @refreshTableList="getTableList" ></simGroupDetail>
+    <!--&lt;!&ndash;组员信息查看，针对管理员&ndash;&gt;-->
+    <groupBindPool   :modalShow="bindPoolShow"
+                      :parentForm="parentForm"
+                      @listenModalForm="hideBindPoolModel"
+                      @refreshTableList="getTableList" ></groupBindPool>
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -81,9 +87,11 @@
 
 <script>
   import Cookies from 'js-cookie'
+  import { mapState } from 'vuex'
   import simGroupForm from './simGroupForm.vue'
   import simGroupTransfer from './simGroupTransfer.vue'
   import simGroupDetail from './simGroupDetail.vue'
+  import groupBindPool from './groupBindPool.vue'
   import {simGroupListPage,delSimGroup} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   export default {
@@ -91,7 +99,8 @@
     components:{
       simGroupForm,
       simGroupTransfer,
-      simGroupDetail
+      simGroupDetail,
+      groupBindPool
     },
     data() {
       return {
@@ -121,9 +130,56 @@
           {
             title: '操作',
             align: 'center',
+            fixed:'right',
             render: (h, params) => {
               let actions=[];
-              if (!this.IsAdmin){
+              actions.push( h('Button', {
+                props: {
+                  type: 'warning',
+                  size: 'small'
+                },
+                style: {
+                  marginRight: '5px'
+                },
+                on: {
+                  click: () => {
+                    this.editSIMGroup(params.row)
+                  }
+                }
+              }, '修改'));
+
+              actions.push(  h('Button', {
+                props: {
+                  type: 'error',
+                  size: 'small'
+                },
+                style: {
+                  marginRight: '5px'
+                },
+                on: {
+                  click: () => {
+                    this.delSIMGroup(params.row.Id)
+                  }
+                }
+              }, '删除'));
+              if (!params.row.IsBind){
+                if (!this.IsCustomer){
+                  actions.push( h('Button', {
+                    props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '5px'
+                    },
+                    on: {
+                      click: () => {
+                        this.Grouping(params.row)
+                      }
+                    }
+                  }, '添加组员'));
+                }
+               
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',
@@ -134,41 +190,12 @@
                   },
                   on: {
                     click: () => {
-                      this.editSIMGroup(params.row)
+                      this.bindPool(params.row)
                     }
                   }
-                }, '修改'));
-
-                actions.push(  h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.delSIMGroup(params.row.Id)
-                    }
-                  }
-                }, '删除'));
-
-                actions.push( h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.Grouping(params.row)
-                    }
-                  }
-                }, '添加组员'));
-              }else{
+                }, '绑定流量池'));
+              }
+              
                 actions.push( h('Button', {
                   props: {
                     type: 'primary',
@@ -180,10 +207,12 @@
                     }
                   }
                 }, '查看组员'));
-              }
+              
              
               
-              return h('div', actions);
+              return h('div', actions,{ style: {
+                width: '800px'
+              },});
             }
           }
         ],
@@ -198,6 +227,9 @@
           GroupName: '',
           GroupDescribe: '',
           Remark:'',
+          OwerType:'',
+          IsBind:false,
+          PoolNum:''
         },
         searchForm:{
           PoolNum: '',
@@ -209,12 +241,19 @@
         delModal:false,
         delId:'', //删除的Id
         detailFormShow:false,
+        bindPoolShow:false,
       }
     },
     computed: {
       IsAdmin: function () {
         return  Cookies.get('roleName')==='管理员';
       },
+      ...mapState({
+        adminInfo: state => state.user.adminInfo,
+      }),
+      IsCustomer:function () {
+        return this.adminInfo.OwerType==3;
+      }
     },
     created(){
 
@@ -266,6 +305,10 @@
         this.parentForm=JSON.parse(JSON.stringify(row))
         this.detailFormShow=true;
       },
+      bindPool(row){
+        this.parentForm=JSON.parse(JSON.stringify(row))
+        this.bindPoolShow=true;
+      },
       delSIMGroup(Id){
         this.delId=Id;
         this.delModal=true;
@@ -295,7 +338,10 @@
       },
       hideDetailModel(){
         this.detailFormShow=false;
-      }
+      },
+      hideBindPoolModel(){
+        this.bindPoolShow=false;
+      },
     }
   }
 

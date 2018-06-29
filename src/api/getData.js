@@ -155,7 +155,8 @@ export const delSimGroup = data => fetch('/Sim_Group/Delete_Sim_Group', data, 'P
 export const simcardTransferListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard_Transfer', data, 'POST');
 export const simGroupSimCardList = data => fetch('/Sim_Group/List_Sim_Group_SimCard', data, 'POST');
 export const addSimToGroup = data => fetch('/Relation_Group_Card/Add_Relation_Group_Card', data, 'POST');
-
+export const getUnGroupPoolList = data => fetch('/Cus_FlowPool/Get_UnGroupFlowPoolList', data, 'POST');
+export const groupBindPool = data => fetch('/Sim_Group/SimGroup_Bind_Pool', data, 'POST');
 
 //   endregion
 
@@ -175,6 +176,10 @@ export const examineCusOrder = data => fetch('/Cus_Order/Examine_Cus_Order', dat
 export const remitCusOrder = data => fetch('/Cus_Order/Remit_Cus_Order', data, 'POST');
 // 获取流量池
 export const getPoolList = data => fetch('/Cus_FlowPool/Get_FlowPoolList', data, 'POST');
+// 获取sim卡组用于审核
+export const getSimGoupCombo = data => fetch('/Sim_Group/List_Sim_Group_Combo', data, 'POST');
+// 获取一个sim卡组的sim卡数量
+export const groupSimCount = data => fetch('/Sim_Group/Group_SimCount', data, 'POST');
 //   endregion
 //  region SIM卡资费配置
 /**
@@ -296,11 +301,15 @@ export const editResOperator = data => fetch('/Res_Operator/Edit_Res_Operator', 
  */
 export const Cus_AccountDetailList = data => fetch('/Cus_AccountDetail/List_Cus_AccountDetail', data, 'POST');
 /**
- * 获取充值列表
+ * 删除充值列表
  */
 export const delCus_AccountDetail = data => fetch('/Cus_AccountDetail/Delete_Cus_AccountDetail', data, 'POST');
 /**
- * 获取充值列表
+ * 获取充值
  */
 export const GetCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_AccountDetail', data, 'POST');
+/**
+ * 修改充值
+ */
+export const editCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_AccountDetail', data, 'POST');
 

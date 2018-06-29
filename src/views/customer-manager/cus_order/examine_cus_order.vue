@@ -14,13 +14,19 @@
     width="700">
     <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 35px 80px 15px 60px">
       
-        <Form-item label="流量池：" prop="PoolNum" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
-          <Select v-model="modalForm.PoolNum"  >
-            <Option v-for="item in poolList" :value="item.PoolNum" :key="item.Id" :label="item.PoolNum">
-              <div>{{ item.PoolNum }}</div>
-              <div style="color:#ccc;padding-top:10px;">{{item.PoolFlowSize/1024/1024+'GB'}}&nbsp&nbsp{{item.EffDate}}~{{item.ExpDate}}</div>
-            </Option>
-          </Select>
+        <!--<Form-item label="流量池：" prop="PoolNum" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >-->
+          <!--<Select v-model="modalForm.PoolNum"  >-->
+            <!--<Option v-for="item in poolList" :value="item.PoolNum" :key="item.Id" :label="item.PoolNum">-->
+              <!--<div>{{ item.PoolNum }}</div>-->
+              <!--<div style="color:#ccc;padding-top:10px;">{{item.PoolFlowSize/1024/1024+'GB'}}&nbsp&nbsp{{item.EffDate}}~{{item.ExpDate}}</div>-->
+            <!--</Option>-->
+          <!--</Select>-->
+        <!--</Form-item>-->
+        <Form-item label="SIM卡组：" prop="SimGroupId" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}">
+            <Select v-model="modalForm.SimGroupId" @on-change="onSimGroupIdChange" style="width:310px;">
+                <Option v-for="item in simGroupList" :value="item.Id" :key="item.Id" :label="item.GroupName">
+                </Option>
+            </Select><span style="color:#e43e31">&nbsp&nbsp&nbsp包含{{simCardCount}}张SIM卡</span>
         </Form-item>
         <Form-item label="快递公司："  prop="DeliveryName" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}">
            <Input v-model="modalForm.DeliveryName" ></Input>
@@ -40,7 +46,7 @@
 </template>
 
 <script>
-import {getPoolList,examineCusOrder} from './../../../api/getData'
+import {getPoolList,examineCusOrder,getSimGoupCombo,groupSimCount} from './../../../api/getData'
 export default {
     components:{
 
@@ -64,6 +70,7 @@ export default {
             PoolNum:'',
             DeliveryName:'',
             DeliveryNum:'',
+            SimGroupId:'',
           }
         }
       },
@@ -90,20 +97,24 @@ export default {
             PoolNum:'',
             DeliveryName:'',
             DeliveryNum:'',
+            SimGroupId:'',
           },
           modalForm_loading:false,
           poolList:[],
+          simGroupList:[],
+          simCardCount:0,
         }
     },
     computed: {
-    
+
     },
     watch:{
       modalShow(curVal,oldVal){
         this.IsModalShow = curVal;
         if (curVal){
+          this.simCardCount = 0;
           this.modalForm=Object.assign(this.parentForm);
-          this.getPoolList();
+          this.getSimGroupList();
         }
       },
     },
@@ -116,10 +127,20 @@ export default {
     },
     methods: {
       async getPoolList(){
-          this.poolList= await getPoolList({SimCount:this.modalForm.Sim_Count,PoolFlowSize:this.modalForm.FlowCount});
+        this.poolList= await getPoolList({SimCount:this.modalForm.Sim_Count,PoolFlowSize:this.modalForm.FlowCount});
+      },
+      async getSimGroupList(){
+        this.simGroupList = await getSimGoupCombo();
       },
       cancel() {
           this.$emit('listenModalExamine');
+      },
+      async onSimGroupIdChange(){
+        if (this.modalForm.SimGroupId){
+          let res = await groupSimCount({SimGroupId:this.modalForm.SimGroupId})
+          this.simCardCount = res.simCount
+        }
+        
       },
       /*
       * @@审核订单
