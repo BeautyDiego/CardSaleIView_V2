@@ -40,73 +40,54 @@ const app = {
     updateMenulist (state) {
       let rbacList = JSON.parse(sessionStorage.getItem('menuList'));
       let menuList = []
-      appRouter.forEach((item, index) => {
-        if (item.access !== undefined) {
-          // if (Util.showThisRoute(item.access, accessCode)) {
-          //   if (item.children.length === 1) {
-          //     menuList.push(item)
-          //   } else {
-          //     let len = menuList.push(item)
-          //     let childrenArr = []
-          //     childrenArr = item.children.filter(child => {
-          //       if (child.access !== undefined) {
-          //         if (child.access === accessCode) {
-          //           return child
-          //         }
-          //       } else {
-          //         return child
-          //       }
-          //     })
-          //     menuList[len - 1].children = childrenArr
-          //   }
-          // }
-          if (rbacList.find((r)=>r.PageUrl===item.name)){
-            item.icon=rbacList.find((r)=>r.PageUrl===item.name).IconCss
-            // if (item.children.length === 1) {
-            //   menuList.push(item)
-            // } else {
-            let len = menuList.push(item)
-            let childrenArr = []
-            childrenArr = item.children.filter(child => {
-              if (child.access !== undefined) {
-                if (rbacList.find((r)=>r.PageUrl===child.name)) {
-                  child.icon=rbacList.find((r)=>r.PageUrl===child.name).IconCss
-                  return child
-                }
-              } else {
-                return child
+      if(rbacList){
+        appRouter.forEach((item, index) => {
+          if (item.access !== undefined) {
+              if (rbacList.find((r)=>r.PageUrl===item.name)){
+                  item.icon=rbacList.find((r)=>r.PageUrl===item.name).IconCss
+
+                  let len = menuList.push(item)
+                  let childrenArr = []
+                  childrenArr = item.children.filter(child => {
+                      if (child.access !== undefined) {
+                          if (rbacList.find((r)=>r.PageUrl===child.name)) {
+                              child.icon=rbacList.find((r)=>r.PageUrl===child.name).IconCss
+                              return child
+                          }
+                      } else {
+                          return child
+                      }
+                  })
+                  menuList[len - 1].children = childrenArr
+                  // }
               }
-            })
-            menuList[len - 1].children = childrenArr
-            // }
-          }
-        } else {
-          // if (item.children.length === 1) {
-          //   menuList.push(item)
-          // } else {
-          let len = menuList.push(item)
-          let childrenArr = []
-          childrenArr = item.children.filter(child => {
-            if (child.access !== undefined) {
-              if (rbacList.find((r)=>r.PageUrl===child.name)) {
-                child.icon=rbacList.find((r)=>r.PageUrl===child.name).IconCss
-                return child
-              }
-            } else {
-              return child
-            }
-          })
-          if (childrenArr === undefined || childrenArr.length === 0) {
-            menuList.splice(len - 1, 1)
           } else {
-            let handledItem = JSON.parse(JSON.stringify(menuList[len - 1]))
-            handledItem.children = childrenArr
-            menuList.splice(len - 1, 1, handledItem)
-          }
-          // }
-        }
-      })
+              let len = menuList.push(item)
+              let childrenArr = []
+              childrenArr = item.children.filter(child => {
+                  if (child.access !== undefined) {
+                      if (rbacList.find((r)=>r.PageUrl===child.name)) {
+                          child.icon=rbacList.find((r)=>r.PageUrl===child.name).IconCss
+                          return child
+                      }
+                  } else {
+                      return child
+                  }
+              })
+              if (childrenArr === undefined || childrenArr.length === 0) {
+                  menuList.splice(len - 1, 1)
+              } else {
+                  let handledItem = JSON.parse(JSON.stringify(menuList[len - 1]))
+                  handledItem.children = childrenArr
+                  menuList.splice(len - 1, 1, handledItem)
+              }
+              // }
+            }
+        })
+
+      }
       state.menuList = menuList
+
     },
     changeMenuTheme (state, theme) {
       state.menuTheme = theme

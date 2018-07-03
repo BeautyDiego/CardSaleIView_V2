@@ -101,11 +101,33 @@
             align:'center',
             title: 'SIM卡号',
             key: 'SimNum',
+              render: (h, params) => {
+                  let actions=[];
+
+                  actions.push( h('a', {
+
+                      style: {
+                          marginRight: '5px'
+                      },
+                      on: {
+                          click: () => {
+                              this.checkSIM(params.row)
+                          }
+                      }
+                  }, params.row.SimNum));
+
+                  return h('div', actions);
+              }
           },
           {
             align:'center',
             title: '卡状态',
             key: 'SimStatus',
+          },
+          {
+              align:'center',
+              title: '运营商',
+              key: 'OperName',
           },
           {
             align:'center',
@@ -137,23 +159,6 @@
             align: 'center',
             render: (h, params) => {
               let actions=[];
-              if (params.row.SimStatus==='在用'){
-                actions.push( h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.checkSIM(params.row)
-                    }
-                  }
-                }, '查看详情'));
-              }
-
               actions.push( h('Button', {
                 props: {
                   type: 'warning',
@@ -190,7 +195,9 @@
           ManagerEmail: '',
           ManagerMobile:'',
           Remark:'',
-
+          Admin_GroupId:'',
+          Agent_GroupId:'',
+          Customer_GroupId:'',
         },
         searchForm:{
           SimStatus:'全部',
