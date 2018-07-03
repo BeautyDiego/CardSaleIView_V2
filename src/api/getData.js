@@ -145,7 +145,8 @@ export const comfirmChargeOrder = data => fetch('/Cus_ReChargeOrder/Comfirm_Cus_
 //sim卡
 export const simcardListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard', data, 'POST');
 export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 'POST');
-export const getSimCardDetail = data => fetch('/Sim_SimCard/Get_Sim_SimCard_Detail', data, 'POST');
+//export const getSimCardDetail = data => fetch('/Sim_SimCard/Get_Sim_SimCard_Detail', data, 'POST');
+export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 
 // SIM卡分组
 export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data, 'POST');

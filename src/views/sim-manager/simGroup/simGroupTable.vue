@@ -137,6 +137,7 @@
           {
             title: '操作',
             align: 'center',
+            width:500,
             fixed:'right',
             render: (h, params) => {
               let actions=[];
@@ -170,7 +171,7 @@
                 }
               }, '删除'));
               if (!params.row.IsBind){
-                if (!this.IsCustomer){
+
                   actions.push( h('Button', {
                     props: {
                       type: 'primary',
@@ -185,7 +186,7 @@
                       }
                     }
                   }, '添加组员'));
-                }
+
 
                 if (this.IsAdmin){
                     actions.push( h('Button', {
@@ -319,6 +320,7 @@
       },
       addSIMGroup(){
         clearObj(this.parentForm);
+        this.parentForm.IsBind=false;
         this.formTitle='添加SIM卡组';
         this.formShow=true;
       },
