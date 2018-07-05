@@ -100,29 +100,29 @@
             <Form-item label="SIM卡类型：" >
               <Row>
                 <RadioGroup v-model="modalForm.Sim_Type"  type="button" size="large">
-                  <Radio v-for="item in SimTypeList" :label="item.value" :key="item.value" :disabled="IsPayStatus" >  <span>{{ item.label }}</span></Radio>
+                  <Radio v-for="item in SimTypeList" :label="item.value" :key="item.value" >  <span>{{ item.label }}</span></Radio>
                 </RadioGroup>
               </Row>
             </Form-item>
             <Form-item label="套餐有效时长：" >
               <Row>
-                <Select v-model="modalForm.ValidMonth" :disabled="IsPayStatus" style="width:200px;">
+                <Select v-model="modalForm.ValidMonth"  style="width:200px;">
                   <Option v-for="item in ValidMonthList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </Row>
             </Form-item>
             <Form-item label="使用场景：" >
               <Row>
-                <Input v-model="modalForm.UseCase" :readonly="IsPayStatus" style="width: 200px"></Input>
+                <Input v-model="modalForm.UseCase"  style="width: 200px"></Input>
               </Row>
             </Form-item>
             <Form-item label="SIM卡数量：" >
               <Row>
                 <Col span="18">
-                <vueSlider ref="simSlider" v-model="Sim_Count" :disabled="IsPayStatus" :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onSIMdrageend" :min="1" :max="5000"></vueSlider>
+                <vueSlider ref="simSlider" v-model="Sim_Count"  :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onSIMdrageend" :min="1" :max="5000"></vueSlider>
                 </Col>
                 <Col span="6">
-                <InputNumber v-model="Sim_Count" :precision=0   @on-blur="onSIMblur" @on-focus="onfocus" @on-change="onSIMChange" :readonly="IsPayStatus"></InputNumber>&nbsp个
+                <InputNumber v-model="Sim_Count" :precision=0   @on-blur="onSIMblur" @on-focus="onfocus" @on-change="onSIMChange" ></InputNumber>&nbsp个
                 </Col>
               </Row>
             </Form-item>
@@ -164,13 +164,13 @@
       </div>
       <div v-show="currentStep==1" style="padding-right:70px;">
         <Form-item label="收货人：" prop="ReceiveName" :rules="{required: true, message: '必填,1-10位字符',min:1,max:10, trigger:'blur',type:'string'}" >
-          <Input v-model="modalForm.ReceiveName"  :readonly="IsPayStatus"></Input>
+          <Input v-model="modalForm.ReceiveName"  ></Input>
         </Form-item>
         <Form-item label="收货电话：" prop="ReceiveMobile" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}" >
-          <Input v-model="modalForm.ReceiveMobile" :readonly="IsPayStatus" ></Input>
+          <Input v-model="modalForm.ReceiveMobile"  ></Input>
         </Form-item>
         <Form-item label="收货地址：" prop="ReceiveAddress" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
-          <Input v-model="modalForm.ReceiveAddress" :readonly="IsPayStatus" ></Input>
+          <Input v-model="modalForm.ReceiveAddress"  ></Input>
         </Form-item>
       </div>
     </Form>
@@ -185,7 +185,7 @@
           <Row>应付金额：￥{{OrderPrice.toFixed(2)}}</Row>
         </Col>
       </Row>
-      <Tabs v-model="tabValue"  @on-click="GetOrderAliQRCode">
+      <Tabs v-model="tabValue"  @on-click="GetOrderPayInfo">
         <TabPane label="余额支付" name="name0">
            <div>
              余额支付
@@ -238,30 +238,31 @@
         <TabPane label="线下汇款" name="name3">
           <div>
             <Form ref="remitForm" :model="modalForm" :label-width="100"  value=true  style="padding: 15px 30px">
-              <Form-item label="开户银行：">
+              
                 <Row>
                   <Col span="12">
-                     珠海华润银行股份有限公司敬业支行
+                  <Form-item label="开户银行：">
+                  珠海华润银行股份有限公司敬业支行
+                  </Form-item>               
                   </Col>
                 </Row>
-              </Form-item>
-              <Form-item label="收款单位：">
+          
                 <Row>
-                  <Col span="12">
+                <Col span="12">
+                <Form-item label="收款单位：">
                   珠海潮大科技有限公司
+                  </Form-item>
                   </Col>
-                </Row>
-              </Form-item>
-              <Form-item label="银行账号：">
-                <Row>
                   <Col span="12">
-                    213220701327300001
+                   <Form-item label="银行账号：">
+                      213220701327300001
+                     </Form-item>
                   </Col>
                 </Row>
-              </Form-item>
-              <Form-item label="汇款证明：" >
+                         
               <Row>
                 <Col span="12">
+                 <Form-item label="汇款证明：" >
                   <div class="upload-list" v-if="modalForm.RemittanceUrl">
                     <template >
                       <img :src="modalForm.RemittanceUrl">
@@ -288,19 +289,19 @@
                       <Icon type="camera" size="20"></Icon>
                     </div>
                   </Upload>
+                  </Form-item>
+                </Col>
+                <Col span="9">
+                  <Form-item label="联系人手机：" prop="RemittancePhone" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}">
+                    <Input v-model="modalForm.RemittancePhone" ></Input>                                
+                  </Form-item>
                 </Col>
               </Row>
-            </Form-item>
-              <Form-item label="联系人手机：" prop="RemittancePhone" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}">
-                <Row>
-                  <Col span="12">
-                  <Input v-model="modalForm.RemittancePhone" ></Input>
-                  </Col>
-                </Row>
-              </Form-item>
+            
+             
               <Form-item label="备注：" >
-                  <Col span="12">
-                    <Input v-model="modalForm.Remark" type="textarea" :rows="3"></Input>
+                  <Col span="21">
+                    <Input v-model="modalForm.Remark" type="textarea" :rows="2"></Input>
                   </Col>
                 </Row>
               </Form-item>
@@ -354,9 +355,9 @@
     </div>
     <div slot="footer">
       <Button type="ghost"   @click="cancel" >取消</Button>
-      <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep!=3">上一步</Button>
-      <Button type="ghost" :loading="modalForm_loading"  @click="nextStep" v-show="currentStep==0||(currentStep==1&&IsPayStatus)">下一步</Button>
-      <Button type="primary" v-show="currentStep==1&&!IsPayStatus" :loading="modalForm_loading" @click="saveForm('modalForm')">提交订单</Button>
+      <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep==1">上一步</Button>
+      <Button type="ghost" :loading="modalForm_loading"  @click="nextStep" v-show="currentStep==0">下一步</Button>
+      <Button type="primary" v-show="currentStep==1" :loading="modalForm_loading" @click="saveForm('modalForm')">提交订单</Button>
       <Button type="primary"  v-show="currentStep==2&&tabValue=='name3'" :loading="modalForm_loading" @click="saveRemit('remitForm')">提交</Button>
     </div>
   </Modal>
@@ -464,10 +465,6 @@ export default {
       ConfigListLength:function () {
         return this.simExpanseConfigList.length;
       },
-      //是否是待付款状态
-      IsPayStatus:function () {
-        return this.modalForm.OrderStatus===1;
-      },
       //汇款单上传地址
       UploadAddress:function () {
         return baseUrl+'/Cus_Order/UploadFile';
@@ -511,7 +508,7 @@ export default {
       }
     },
     created(){
-       this.getSimExpanseConfigList();
+     
  
     },
     mounted(){
@@ -519,36 +516,29 @@ export default {
     
     },
     methods: {
-   async getOrderWxQRCode(name){
+       async GetOrderPayInfo(name){
+         console.log(name)
         if (name === 'name1'){
         let res = await getWxQRCode(this.modalForm);
         if (res.success){
           this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
         }
-        }
-      },
-      async GetOrderAliQRCode(name){
-        if (name === 'name2'){
+        }else if (name === 'name2'){
           let res = await getAliQRCode(this.modalForm);
           if (res.success){
             this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
           }
+        }else if(name=='name0'){
+          this.GetOrderRestCash();
         }
+
+                  
       },
-       async GetOrderRestCash(){
+      async GetOrderRestCash(){
           let res = await getCusRestCash(this.modalForm);
           if (res.success){
             this.RestCash = res.result.toFixed(2);
-          }        
-      },
-      /*
-      @获取sim卡花费配置
-      * **/
-      async getSimExpanseConfigList(){
-          this.simExpanseConfigList= await simExpanseConfigList();
-          this.modalForm.SinglePrice=this.simExpanseConfigList[0].SinglePrice
-          this.modalForm.ChargePrice=this.simExpanseConfigList[0].ChargePrice
-         
+          } 
       },
       /*@@上一步*/
       prevStep(){
@@ -689,6 +679,13 @@ export default {
             this.$Message.error('表单验证失败!');
           }
         })
+      },
+      //余额支付订单
+      async restPayOrder(){
+           let res = await payOrderbyRestCash(this.modalForm);
+          if (res.success){
+            this.currentStep=3;
+          }
       },
       handleView (name) {
         this.imgName = name;

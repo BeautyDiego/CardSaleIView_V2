@@ -173,7 +173,20 @@
                   }
                 }
               }, '编辑备注'));
-              
+            actions.push( h('Button', {
+                props: {
+                  type: 'warning',
+                  size: 'small'
+                },
+                style: {
+                  marginRight: '5px'
+                },
+                on: {
+                  click: () => {
+                    this.addRemark(params.row)
+                  }
+                }
+              }, '加油包'));
               return h('div', actions);
             }
           }

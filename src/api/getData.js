@@ -125,6 +125,11 @@ export const customerBasicInfoList = data => fetch('/Cus_Customer/List_Cus_Custo
 export const addCustomer = data => fetch('/Cus_Customer/Add_Cus_Customer', data, 'POST');
 export const editCustomer = data => fetch('/Cus_Customer/Edit_Cus_Customer', data, 'POST');
 export const delCustomer = data => fetch('/Cus_Customer/Delete_Cus_Customer', data, 'POST');
+export const getDiscount = data => fetch('/Cus_Discount/List_Cus_Discount', data, 'POST');
+export const addCusDiscount = data => fetch('/Cus_Discount/Add_Cus_Discount', data, 'POST');
+export const getExpensesList = data => fetch('/Res_Expenses/ListAll_Res_Expenses', data, 'POST');
+
+
 //   endregion
 
 //  region SIM管理

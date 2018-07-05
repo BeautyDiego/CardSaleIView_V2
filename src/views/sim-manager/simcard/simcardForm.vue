@@ -47,7 +47,7 @@ padding-top:20px;
     :title="modalFormTitle"
     :mask-closable="false"
     @on-cancel="cancel"
-    width="600">
+    width="700">
     <div>
 
       <!--3 代表是中国电信-->
@@ -71,18 +71,7 @@ padding-top:20px;
           </Col>
         </Row>
         <Row>
-          <div v-for="item in simCT.funProdInfos ">
-            {{item.productName}}
-            <div v-if="item.attrInfos">
-              <div v-if="item.attrInfos.constructor===Array"  v-for="attrInfo in item.attrInfos " style="padding-left:50px;">
-                {{attrInfo.attrName}}:{{attrInfo.attrValue}}
-              </div>
-              <div v-else  style="padding-left:50px;">
-                {{item.attrInfos.attrName}}:{{item.attrInfos.attrValue}}
-              </div>
-            </div>
-
-          </div>
+               <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="simCT.prodOfferInfos"></Table>
         </Row>
       </div>
       <!--2 代表是中国移动-->
@@ -187,7 +176,25 @@ export default {
               rautauTimer: "-",
               status: "停机",
               statusTime: "20180526024535",
-          }
+          },
+          tableColums: [
+          {
+            align:'center',
+            title: '套餐名称',
+            key: 'prodOfferName',
+          },{
+            align:'center',
+            title: '套餐状态',
+            key: 'statusName',
+          },{
+            align:'center',
+            title: '生效时间',
+            key: 'startDt',
+          },{
+            align:'center',
+            title: '失效时间',
+            key: 'endDt',
+          }]
         }
     },
     computed:{

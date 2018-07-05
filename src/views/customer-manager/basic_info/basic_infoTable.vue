@@ -47,6 +47,10 @@
                  :parentForm="parentForm"
                  @listenModalForm="hideModel"
                  @refreshTableList="getTableList" ></basic_info-form>
+     <discount-form    :modalShow="discountShow"
+                 :parentForm="parentForm"
+                 @listenModalForm="hideDiscount" ></discount-form>
+                
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -83,10 +87,12 @@
   import {customerBasicInfoList,delCustomer,resetUserPwd} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import basic_infoForm from './basic_infoForm.vue'
+  import discountForm from './discountForm.vue'
   export default {
     name:'basic_Info',
     components:{
       basic_infoForm,
+      discountForm
     },
     data() {
       return {
@@ -102,11 +108,6 @@
             align:'center',
             title: '登录名',
             key: 'LoginName',
-          },
-          {
-            align:'center',
-            title: '折扣',
-            key: 'Discount',
           },
           {
             align:'center',
@@ -149,13 +150,21 @@
             render: (h, params) => {
               let actions=[];
               if (this.IsAdmin){
+                actions.push(  h('Button', {
+                  props: {
+                    type: 'success',
+                    size: 'small'
+                  },
+                  on: {
+                    click: () => {
+                      this.setDiscount(params.row)
+                    }
+                  }
+                }, '折扣率'));
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',
                     size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
                   },
                   on: {
                     click: () => {
@@ -168,9 +177,6 @@
                   props: {
                     type: 'error',
                     size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
                   },
                   on: {
                     click: () => {
@@ -188,6 +194,7 @@
         total:0,
         currentPage:1,
         formShow:false,
+        discountShow:false,
         formTitle:'添加用户',
         parentForm:{
           Id:'',
@@ -261,6 +268,11 @@
         this.formTitle='添加客户';
         this.formShow=true;
       },
+      setDiscount(row) {
+      this.parentForm=JSON.parse(JSON.stringify(row));
+       
+        this.discountShow=true;
+      },
       editUser(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
         this.formTitle='修改客户';
@@ -310,6 +322,9 @@
       hideModel(){
         this.formShow=false;
       },
+      hideDiscount(){
+        this.discountShow=false;
+      }
     }
   }
 
