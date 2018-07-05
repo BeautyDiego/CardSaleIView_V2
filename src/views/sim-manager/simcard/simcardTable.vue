@@ -12,10 +12,13 @@
   <div class="simcardTable">
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
-        <Col span="24">
+            <RadioGroup v-model="searchForm.CardTypeText" type="button" size="large"  @on-change='doChangeCardType' >
+              <Radio label="单卡"></Radio>
+              <Radio label="流量池成员"></Radio>
+            </RadioGroup>
           <!--<Button class="top-right-btn" size="large" icon="plus" @click="addUser">添加</Button>-->
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
-        </Col>
+       
         <transition name="fade">
           <Card v-show="searchPaneShow" style="position:absolute;top:1px;right:85px;z-index:100;" :padding=12>
             <p style="text-align:center;margin-bottom:10px;"><Icon type="search"></Icon>搜索</p>
@@ -62,11 +65,11 @@
                  @listenModalForm="hideModel"
                  @refreshTableList="getTableList" ></simcardForm>
     <!--&lt;!&ndash;新增编辑备注&ndash;&gt;-->
-    <simcardRemark    :modalShow="remarkformShow"
-                    modalFormTitle="编辑备注"
+    <simAddFlow    :modalShow="addFlowformShow"
+                    modalFormTitle="流量加油包"
                     :parentForm="parentForm"
                     @listenModalForm="hideRemarkModel"
-                    @refreshTableList="getTableList" ></simcardRemark>
+                    @refreshTableList="getTableList" ></simAddFlow>
   </div>
 
 </template>
@@ -76,11 +79,13 @@
   import {clearObj} from './../../../libs/util';
   import simcardForm from './simcardForm.vue'
   import simcardRemark from './simcardRemark.vue'
+  import simAddFlow from './simAddFlow.vue'
   export default {
     name:'simcardTable',
     components:{
       simcardForm,
-      simcardRemark
+      simcardRemark,
+      simAddFlow
     },
     data() {
       return {
@@ -159,20 +164,6 @@
             align: 'center',
             render: (h, params) => {
               let actions=[];
-              actions.push( h('Button', {
-                props: {
-                  type: 'warning',
-                  size: 'small'
-                },
-                style: {
-                  marginRight: '5px'
-                },
-                on: {
-                  click: () => {
-                    this.addRemark(params.row)
-                  }
-                }
-              }, '编辑备注'));
             actions.push( h('Button', {
                 props: {
                   type: 'warning',
@@ -183,7 +174,7 @@
                 },
                 on: {
                   click: () => {
-                    this.addRemark(params.row)
+                    this.addFlow(params.row)
                   }
                 }
               }, '加油包'));
@@ -216,10 +207,12 @@
           SimStatus:'全部',
           PoolNum: '',
           SimNum: '',
+          CardType:0,//1是单卡，2是流量池成员
           rows:10,
           page:1,
+          CardTypeText:'单卡',
         },
-        remarkformShow:false,//修改备注窗体
+        addFlowformShow:false,//修改备注窗体
       }
     },
     created(){
@@ -243,6 +236,10 @@
       },
       async getTableList(){
         this.tableLoading=true;
+        if(this.searchForm.CardTypeText=='单卡')
+          this.searchForm.CardType=1;
+        if(this.searchForm.CardTypeText=='流量池成员')
+          this.searchForm.CardType=2;
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
         const res = await simcardListPage(params);
@@ -259,15 +256,18 @@
         this.formTitle='查看详情';
         this.formShow=true;
       },
-      addRemark(row){
+      addFlow(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
-        this.remarkformShow=true;
+        this.addFlowformShow=true;
       },
       hideModel(){
         this.formShow=false;
       },
       hideRemarkModel(){
-        this.remarkformShow=false;
+        this.addFlowformShow=false;
+      },
+      doChangeCardType(){
+          this.getTableList();
       }
     }
   }

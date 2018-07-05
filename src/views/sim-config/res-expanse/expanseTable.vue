@@ -94,6 +94,16 @@
             title: '资费名称',
             key: 'ExpName',
           },
+           {
+            align:'center',
+            title: '资费编号',
+            key: 'ExpCode',
+          },
+          {
+            align:'center',
+            title: '资费类型',
+            key: 'FlowType',
+          },
           {
             align:'center',
             title: '包含流量',

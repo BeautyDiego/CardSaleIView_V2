@@ -29,13 +29,21 @@
               <Radio label='流量池'></Radio>
             </RadioGroup>
           </Form-item>
-
+        <Form-item label="资费类型" prop="FlowType" :rules="{required: true, message: '必填', trigger:'blur'}" >
+             <RadioGroup v-model="modalForm.FlowType" type="button">
+              <Radio label='月包'></Radio>
+              <Radio label='长周期包'></Radio>
+              <Radio label='加油包'></Radio>
+            </RadioGroup>
+          </Form-item>
       </Row>
       <Row>
           <Form-item label="资费名称" prop="ExpName" :rules="{required: true, message: '必填', trigger:'blur'}" >
             <Input v-model="modalForm.ExpName" style="width:300px"> </Input> 
           </Form-item>
-
+        <Form-item label="资费编号" prop="ExpCode" :rules="{required: true, message: '必填', trigger:'blur'}" >
+            <Input v-model="modalForm.ExpCode" style="width:300px"> </Input> 
+          </Form-item>
       </Row>
       <Row>
 

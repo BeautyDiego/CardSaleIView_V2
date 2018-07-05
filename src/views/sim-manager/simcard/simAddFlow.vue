@@ -6,8 +6,16 @@
 
 <div>
   
-  <Modal
-    v-model="IsModalShow":title="modalFormTitle" :mask-closable="false" @on-cancel="cancel" width="600">
+  <Modal v-model="IsModalShow":title="modalFormTitle" :mask-closable="false" @on-cancel="cancel" width="600">
+        <Row>
+        <div style="padding-left:105px;padding-bottom:20px;">
+          <Steps :current="Current_Step">
+            <Step title="充值" content="选择加油包"></Step>
+            <Step title="支付" content="选择支付方式"></Step>
+            <Step title="完成" content="查看支付结果"></Step>
+          </Steps>
+        </div>
+      </Row>
     <div>
       <Row style="height:30px;font-size:14px;font-weight: bold">
         <div>SIM卡号：{{modalForm.SimNum}}</div>
