@@ -319,4 +319,12 @@ export const GetCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_Acc
  * 修改充值
  */
 export const editCusAccountDetail = data => fetch('/Cus_AccountDetail/Get_Cus_AccountDetail', data, 'POST');
+/**
+ * 获取充值订单列表
+ */
+export const Cus_DepositOrderList = data => fetch('/Cus_DepositOrder/List_Cus_DepositOrder', data, 'POST');
+/**
+ * 添加充值订单
+ */
+export const addCusDepositOrder = data => fetch('/Cus_DepositOrder/List_Cus_DepositOrder', data, 'POST');
 
