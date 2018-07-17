@@ -63,13 +63,14 @@ export const appRouter = [
     icon: 'ios-infinite',
     name: 'sim-manager',
     access: 0,
-    title: 'SIM卡管理',
+    title: '资产管理',
     component: Main,
     children: [
        { path: 'poolList', title: '流量池管理',access: 0, name: 'poolList', icon: 'link', component:resolve => void(require(['@/views/sim-manager/flowpool/poolList.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-manager/flowpool/poolList.vue') },
-      { path: 'chargeHisTable', title: '流量加油包记录',access: 0, name: 'chargeHisTable', icon: 'link', component: resolve => void(require(['@/views/sim-manager/chargeHis/chargeHisTable.vue'],resolve)),}, // 懒加载() => import('@/views/sim-manager/chargeHis/chargeHisTable.vue') },
+      
       { path: 'simcard', title: 'SIM卡管理',access: 0, name: 'simcardTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simcard/simcardTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-manager/simcard/simcardTable.vue') },
       { path: 'simGroup', title: 'SIM卡分组',access: 0, name: 'simGroupTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simGroup/simGroupTable.vue'],resolve)),},
+      { path: 'chargeHisTable', title: '流量加油包记录',access: 0, name: 'chargeHisTable', icon: 'link', component: resolve => void(require(['@/views/sim-manager/chargeHis/chargeHisTable.vue'],resolve)),}, // 懒加载() => import('@/views/sim-manager/chargeHis/chargeHisTable.vue') },
 
     ]
   },
