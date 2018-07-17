@@ -125,6 +125,11 @@ export const customerBasicInfoList = data => fetch('/Cus_Customer/List_Cus_Custo
 export const addCustomer = data => fetch('/Cus_Customer/Add_Cus_Customer', data, 'POST');
 export const editCustomer = data => fetch('/Cus_Customer/Edit_Cus_Customer', data, 'POST');
 export const delCustomer = data => fetch('/Cus_Customer/Delete_Cus_Customer', data, 'POST');
+export const getDiscount = data => fetch('/Cus_Discount/List_Cus_Discount', data, 'POST');
+export const addCusDiscount = data => fetch('/Cus_Discount/Add_Cus_Discount', data, 'POST');
+export const getExpensesList = data => fetch('/Res_Expenses/ListAll_Res_Expenses', data, 'POST');
+
+
 //   endregion
 
 //  region SIM管理
@@ -145,19 +150,21 @@ export const comfirmChargeOrder = data => fetch('/Cus_ReChargeOrder/Comfirm_Cus_
 //sim卡
 export const simcardListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard', data, 'POST');
 export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 'POST');
-export const getSimCardDetail = data => fetch('/Sim_SimCard/Get_Sim_SimCard_Detail', data, 'POST');
+//export const getSimCardDetail = data => fetch('/Sim_SimCard/Get_Sim_SimCard_Detail', data, 'POST');
+export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 
 // SIM卡分组
 export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data, 'POST');
 export const addSimGroup = data => fetch('/Sim_Group/Add_Sim_Group', data, 'POST');
 export const editSimGroup = data => fetch('/Sim_Group/Edit_Sim_Group', data, 'POST');
 export const delSimGroup = data => fetch('/Sim_Group/Delete_Sim_Group', data, 'POST');
-export const simcardTransferListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard_Transfer', data, 'POST');
+export const simcardTransferListPage = data => fetch('/Sim_Group/List_Sim_SimCard_Transfer', data, 'POST');
 export const simGroupSimCardList = data => fetch('/Sim_Group/List_Sim_Group_SimCard', data, 'POST');
-export const addSimToGroup = data => fetch('/Relation_Group_Card/Add_Relation_Group_Card', data, 'POST');
+export const addSimToGroup = data => fetch('/Sim_Group/Add_SimCard_To_Group', data, 'POST');
 export const getUnGroupPoolList = data => fetch('/Cus_FlowPool/Get_UnGroupFlowPoolList', data, 'POST');
 export const groupBindPool = data => fetch('/Sim_Group/SimGroup_Bind_Pool', data, 'POST');
-
+export const customerCombo = data => fetch('/Cus_Customer/Cus_Customer_Combo', data, 'POST');
+export const groupToCustomer = data => fetch('/Sim_Group/Group_To_Customer', data, 'POST');
 //   endregion
 
 

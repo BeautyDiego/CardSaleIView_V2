@@ -18,22 +18,20 @@
                     :rules="inforValidate"
                 >
                     <FormItem label="用户姓名：" >
-                        <span>{{ userForm.name }}</span>
+                        <span>{{ userForm.Cus_Name }}</span>
                     </FormItem>
-                    <FormItem label="登录名：" >
-                        <span>{{ userForm.loginName }}</span>
+                    <FormItem label="登录名称：" >
+                        <span>{{ userForm.LoginName }}</span>
                     </FormItem>
                     <FormItem label="用户手机："  >
-                        <span>{{ userForm.cellphone }}</span>
+                        <span>{{ userForm.ManagerMobile }}</span>
                     </FormItem>
-                    <FormItem label="角色：">
-                        <span>{{ userForm.RoleName }}</span>
+            
+                    <FormItem v-if="IsAdmin" label="可用余额：">
+                        <span>￥{{ userForm.RestCash.toFixed(2) }}元</span>
                     </FormItem>
-                    <FormItem v-if="IsAdmin" label="余额：">
-                        <span>{{ userForm.RestCash }}</span>
-                    </FormItem>
-                    <FormItem label="登录密码：">
-                        <Button type="text" size="small" @click="showEditPassword">修改密码</Button>
+                    <FormItem label="">
+                        <Button type="warning" @click="showEditPassword">修改密码</Button>
                     </FormItem>
                 </Form>
             </div>
@@ -79,9 +77,9 @@ export default {
         };
         return {
             userForm: {
-                name: '',
-              loginName:'',
-                cellphone: '',
+                Cus_Name: '',
+              LoginName:'',
+                ManagerMobile: '',
                 RoleName: '',
               RestCash:''
             },
@@ -133,6 +131,8 @@ export default {
         async GetCustomer(userId){
          const params = {userId:userId}
          const res = await GetCustomer(params);
+         this.userForm=res;
+         console.log(res)
         },
     
         showEditPassword(){

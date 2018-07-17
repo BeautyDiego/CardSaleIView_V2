@@ -1,25 +1,29 @@
 
-
+<style>
+    .ivu-table .demo-table-info-row td{
+        color:  #ff6600;
+    }
+    </style>
 <template>
 
   <div class="expanse-config">
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
 
-          <RadioGroup v-model="searchForm.OperType" type="button" size="large" @on-change='doChangeOperType' >
+          <RadioGroup v-model="searchForm.OperType" type="button" size="large"  @on-change='doChangeOperType' >
               <Radio label="中国电信"></Radio>
               <Radio label="中国移动"></Radio>
               <Radio label="中国联通"></Radio>
             </RadioGroup>
 
-          <Button class="top-right-btn" size="large" icon="plus" @click="addAction">添加</Button>
+          <Button class="top-right-btn" size="large" icon="plus" @click="addAction" v-if="IsAdmin">添加</Button>
         
 
       </Row>
     </div>
     <!--table-->
     <Row>
-      <Table stripe size="small" :columns="tableColums" :data="tableData"></Table>
+      <Table :row-class-name="rowClassName" stripe size="small" :columns="tableColums" :data="tableData"></Table>
     </Row>
     <Row>
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
@@ -89,6 +93,16 @@
             align:'center',
             title: '资费名称',
             key: 'ExpName',
+          },
+           {
+            align:'center',
+            title: '资费编号',
+            key: 'ExpCode',
+          },
+          {
+            align:'center',
+            title: '资费类型',
+            key: 'FlowType',
           },
           {
             align:'center',
@@ -298,6 +312,12 @@
         this.delId=Id;
         this.delModal=true;
       },
+      rowClassName (row, index) {
+                if (row.OfficialPirce != row.AgentPrice) {
+                    return 'demo-table-info-row';
+                } 
+                return '';
+            },
       async comfirmDel(){
         this.btnLoading=true;
         try{

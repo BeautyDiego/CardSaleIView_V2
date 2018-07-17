@@ -82,6 +82,7 @@
         },
         modalForm_loading:false,
         searchForm:{
+          SimGroupId:'',
           SimStatus:'全部',
           SimNum: '',
           rows:10,
@@ -119,6 +120,7 @@
         this.modalForm=Object.assign(this.parentForm);
         this.IsModalShow = curVal;
         if (curVal){
+          this.searchForm.SimGroupId= this.modalForm.Id;
           this.searchForm.SimNum='';
           this.getTableList();
           this.getSimGroupSimCardTableList();
@@ -142,6 +144,7 @@
         const params = this.searchForm;
         const res = await simcardTransferListPage(params);
         this.total = res.total;
+        console.log(res.total)
         this.SIMTableData = res.rows;
         this.tableLoading = false;
       },
@@ -215,10 +218,10 @@
       async saveForm() {
             this.modalForm_loading=true;
             let paramsArr=this.GroupTableData.map((v, i, a) => {
-                return v.SimNum
+                return v.Id
             });
             try{
-              let result=await addSimToGroup({SimGroupId:this.modalForm.Id,SimCardNumList:paramsArr})
+              let result=await addSimToGroup({SimGroupId:this.modalForm.Id,SimCardIdList:paramsArr})
               if (result.success) {
                 this.$Message.success('提交成功!');
                 this.$emit('listenModalForm');

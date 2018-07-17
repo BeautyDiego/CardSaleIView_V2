@@ -60,14 +60,19 @@
                         @refreshTableList="getTableList" ></simGroupTransfer>
     <!--&lt;!&ndash;组员信息查看，针对管理员&ndash;&gt;-->
     <simGroupDetail   :modalShow="detailFormShow"
-                        :parentForm="parentForm"
-                        @listenModalForm="hideDetailModel"
-                        @refreshTableList="getTableList" ></simGroupDetail>
+                      :parentForm="parentForm"
+                      @listenModalForm="hideDetailModel"
+                      @refreshTableList="getTableList" ></simGroupDetail>
     <!--&lt;!&ndash;组员信息查看，针对管理员&ndash;&gt;-->
     <groupBindPool   :modalShow="bindPoolShow"
-                      :parentForm="parentForm"
-                      @listenModalForm="hideBindPoolModel"
-                      @refreshTableList="getTableList" ></groupBindPool>
+                     :parentForm="parentForm"
+                     @listenModalForm="hideBindPoolModel"
+                     @refreshTableList="getTableList" ></groupBindPool>
+    <!--&lt;!&ndash;组员信息查看，针对管理员&ndash;&gt;-->
+    <groupToCustomer   :modalShow="groupToCustomerShow"
+                     :parentForm="parentForm"
+                     @listenModalForm="hideGroupToCustomerModel"
+                     @refreshTableList="getTableList" ></groupToCustomer>
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -92,6 +97,7 @@
   import simGroupTransfer from './simGroupTransfer.vue'
   import simGroupDetail from './simGroupDetail.vue'
   import groupBindPool from './groupBindPool.vue'
+  import groupToCustomer from './groupToCustomer.vue'
   import {simGroupListPage,delSimGroup} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   export default {
@@ -100,7 +106,8 @@
       simGroupForm,
       simGroupTransfer,
       simGroupDetail,
-      groupBindPool
+      groupBindPool,
+      groupToCustomer
     },
     data() {
       return {
@@ -130,6 +137,7 @@
           {
             title: '操作',
             align: 'center',
+            width:500,
             fixed:'right',
             render: (h, params) => {
               let actions=[];
@@ -163,7 +171,7 @@
                 }
               }, '删除'));
               if (!params.row.IsBind){
-                if (!this.IsCustomer){
+
                   actions.push( h('Button', {
                     props: {
                       type: 'primary',
@@ -178,22 +186,43 @@
                       }
                     }
                   }, '添加组员'));
+
+
+                if (this.IsAdmin){
+                    actions.push( h('Button', {
+                        props: {
+                            type: 'warning',
+                            size: 'small'
+                        },
+                        style: {
+                            marginRight: '5px'
+                        },
+                        on: {
+                            click: () => {
+                                this.bindPool(params.row)
+                            }
+                        }
+                    }, '绑定流量池'));
+                }
+
+                if (this.IsAgent){
+                    actions.push( h('Button', {
+                        props: {
+                            type: 'warning',
+                            size: 'small'
+                        },
+                        style: {
+                            marginRight: '5px'
+                        },
+                        on: {
+                            click: () => {
+                                this.groupToCustomer(params.row)
+                            }
+                        }
+                    }, '发卡'));
                 }
                
-                actions.push( h('Button', {
-                  props: {
-                    type: 'warning',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.bindPool(params.row)
-                    }
-                  }
-                }, '绑定流量池'));
+
               }
               
                 actions.push( h('Button', {
@@ -210,9 +239,7 @@
               
              
               
-              return h('div', actions,{ style: {
-                width: '800px'
-              },});
+              return h('div', actions);
             }
           }
         ],
@@ -242,6 +269,7 @@
         delId:'', //删除的Id
         detailFormShow:false,
         bindPoolShow:false,
+        groupToCustomerShow:false,
       }
     },
     computed: {
@@ -253,6 +281,9 @@
       }),
       IsCustomer:function () {
         return this.adminInfo.OwerType==3;
+      },
+      IsAgent:function () {
+        return this.adminInfo.OwerType==2;
       }
     },
     created(){
@@ -289,6 +320,7 @@
       },
       addSIMGroup(){
         clearObj(this.parentForm);
+        this.parentForm.IsBind=false;
         this.formTitle='添加SIM卡组';
         this.formShow=true;
       },
@@ -308,6 +340,10 @@
       bindPool(row){
         this.parentForm=JSON.parse(JSON.stringify(row))
         this.bindPoolShow=true;
+      },
+      groupToCustomer(row){
+          this.parentForm=JSON.parse(JSON.stringify(row))
+          this.groupToCustomerShow=true;
       },
       delSIMGroup(Id){
         this.delId=Id;
@@ -341,6 +377,9 @@
       },
       hideBindPoolModel(){
         this.bindPoolShow=false;
+      },
+      hideGroupToCustomerModel(){
+        this.groupToCustomerShow = false;
       },
     }
   }

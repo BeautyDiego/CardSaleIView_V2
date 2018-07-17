@@ -27,6 +27,15 @@ padding-top:20px;
 .bold-text{
   font-weight:bold;
 }
+
+/**cmccTable **/
+#cmccTable{width:100%;color:#808080;}
+#cmccTable th,#cmccTable td{line-height:19px;padding:7px 8px;font-size:12px;}
+#cmccTable th{white-space:nowrap;}
+#cmccTable th,#cmccTable td{border-width:0 0 1px 1px;border-style:solid;border-color:#dcdcdc;text-align:center;}
+#cmccTable th{border-top:1px solid #dcdcdc;}
+#cmccTable tr th:last-child,#cmccTable tr td:last-child{border-right:1px solid #dcdcdc;}
+#cmccTable thead th{background-color:#f5f7fa;}
 </style>
 
 <template>
@@ -38,46 +47,74 @@ padding-top:20px;
     :title="modalFormTitle"
     :mask-closable="false"
     @on-cancel="cancel"
-    width="600">
+    width="700">
     <div>
-      <Row style="background-color: #f7f9fc;padding:20px;margin-bottom:20px;">
-        <Col span="12" >
+
+      <!--3 代表是中国电信-->
+      <div v-if="IsCT">
+        <Row style="background-color: #f7f9fc;padding:20px;margin-bottom:20px;">
+          <Col span="12" >
           <div class="sim-status-wrapper">
             <div class="sim-status-content">
-              <p style="font-weight:bold;font-size:14px;">{{modalForm.SimStatus}}</p>
+              <p style="font-weight:bold;font-size:14px;">{{simCT.prodStatusName}}</p>
               <p style="font-size:12px;color:#8a8a8a;">SIM卡状态</p>
             </div>
           </div>
-        </Col>
-        <Col span="12">
+          </Col>
+          <Col span="12">
           <div class="sim-info-wrapper">
-            <div>SIM卡号：{{modalForm.SimNum}}</div>
-            <div>流量池编号：{{modalForm.PoolNum}}</div>
+            <div>SIM卡号：{{simCT.phoneNum}}</div>
+            <div>地区：{{simCT.commonRegionName}}</div>
+            <div>所属客户：{{simCT.custName}}</div>
+            <div>产品名：{{simCT.productName}}</div>
           </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col span="8" class="center-text bold-text">
-          当月已用用量
-        </Col>
-        <Col span="8" class="center-text bold-text">
-          池剩余流量
-        </Col>
-        <Col span="8" class="center-text bold-text">
-          池总流量
-        </Col>
-      </Row>
-      <Row>
-        <Col span="8" class="center-text">
-          {{pool_already}}(MB)
-        </Col>
-        <Col span="8" class="center-text">
-          {{pool_left}}(MB)
-        </Col>
-        <Col span="8" class="center-text">
-          {{pool_total}}(MB)
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        <Row>
+               <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="simCT.prodOfferInfos"></Table>
+        </Row>
+      </div>
+      <!--2 代表是中国移动-->
+      <div v-if="IsCMCC">
+        <Row style="background-color: #f7f9fc;padding:20px;margin-bottom:20px;">
+          <Col span="12" >
+          <div class="sim-status-wrapper">
+            <div class="sim-status-content">
+              <p style="font-weight:bold;font-size:14px;">{{simCMCC.status}}</p>
+              <p style="font-size:12px;color:#8a8a8a;">SIM卡状态</p>
+            </div>
+          </div>
+          </Col>
+          <Col span="12">
+          <div class="sim-info-wrapper">
+            <div>SIM卡号：{{simCMCC.msisdn}}</div>
+            <div>开户时间：{{CMCCDateFormat(simCMCC.openTime)}}</div>
+          </div>
+          </Col>
+        </Row>
+        <Row>
+          <table id="cmccTable">
+            <thead>
+            <tr>
+              <th>套餐名称</th>
+              <th>套餐编码</th>
+              <th>套餐状态</th>
+              <th>套餐生效时间</th>
+              <th>套餐失效时间</th>
+            </tr>
+            </thead>
+            <tbody >
+                <tr v-for="item in simCMCC.packages.list ">
+                  <td>{{item.pkgName}}</td>
+                  <td>{{item.pkgCode}}</td>
+                  <td>{{item.pkgStatus}}</td>
+                  <td>{{CMCCDateFormat(item.pkgEfftTime) }}</td>
+                  <td>{{CMCCDateFormat(item.pkgExpireTime)}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </Row>
+      </div>
     </div>
     <div slot="footer">
       <Button type="ghost"  @click="cancel" >取消</Button>
@@ -117,22 +154,65 @@ export default {
           modalForm:{
           },
           modalForm_loading:false,
-          simCardDetail:{
-            PoolInfo:[],
-            SvcCont:[{pool_already:3,pool_left:100,pool_total:103}]
+          simCT:{
+              attrInfos: [],
+              commonRegionName: "珠海市",
+              custName: "广东潮图电子商务有限公司",
+              funProdInfos:[{productName:'',attrInfos:[]}],
+              phoneNum: "1064917011657",
+              prodOfferInfos:[],
+              prodStatusName: "未激活",
+              productName: "乐通（流量）",
+              stopFlag: "1",
           },
+          simCMCC:{
+              apnList: [],
+              lowPowerMode: "-",
+              mainProdCode: "AppendAttr.I00010300001",
+              msisdn: "1440047228318",
+              openTime: "20180424181242",
+              packages:{list:[]},
+              productCode: "50314000117",
+              rautauTimer: "-",
+              status: "停机",
+              statusTime: "20180526024535",
+          },
+          tableColums: [
+          {
+            align:'center',
+            title: '套餐名称',
+            key: 'prodOfferName',
+          },{
+            align:'center',
+            title: '套餐状态',
+            key: 'statusName',
+          },{
+            align:'center',
+            title: '生效时间',
+            key: 'startDt',
+          },{
+            align:'center',
+            title: '失效时间',
+            key: 'endDt',
+          }]
         }
     },
     computed:{
-      pool_already:function () {
-        return (parseInt(this.simCardDetail.SvcCont[0].pool_already)/1024).toFixed(2);
+//      pool_already:function () {
+//        return (parseInt(this.simCT.SvcCont[0].pool_already)/1024).toFixed(2);
+//      },
+//      pool_left:function () {
+//        return (parseInt(this.simCT.SvcCont[0].pool_left)/1024).toFixed(2);
+//      },
+//      pool_total:function () {
+//        return (parseInt(this.simCT.SvcCont[0].pool_total)/1024).toFixed(2);
+//      },
+      IsCT:function () {
+          return this.modalForm.OperType==1
       },
-      pool_left:function () {
-        return (parseInt(this.simCardDetail.SvcCont[0].pool_left)/1024).toFixed(2);
-      },
-      pool_total:function () {
-        return (parseInt(this.simCardDetail.SvcCont[0].pool_total)/1024).toFixed(2);
-      },
+      IsCMCC:function () {
+          return this.modalForm.OperType==2
+      }
     },
     watch:{
       modalShow(curVal,oldVal){
@@ -151,11 +231,22 @@ export default {
     },
     methods: {
       async getSimCardDetail(){
-        this.simCardDetail=await getSimCardDetail(this.modalForm);
-        console.log(this.simCardDetail)
+ 
+          let res =await getSimCardDetail({simNum:this.modalForm.SimNum});
+          console.log(res)
+          if (this.IsCMCC){
+              this.simCMCC=JSON.parse(res.data);
+          }
+          if (this.IsCT){
+              this.simCT=res.SvcCont.result.prodInfos;
+          }
+
       },
       cancel() {
           this.$emit('listenModalForm');
+      },
+      CMCCDateFormat(date){
+          return date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2)+' '+date.substr(8,2)+':'+date.substr(10,2)+':'+date.substr(12,2)
       },
     }
 }

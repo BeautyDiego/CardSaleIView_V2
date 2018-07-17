@@ -22,9 +22,6 @@
       <Form-item v-if="modalFormTitle==='添加客户'" label="密码" prop="Password"  :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
         <Input v-model="modalForm.Password" type="password"></Input>
       </Form-item>
-      <Form-item label="折扣" prop="Discount" :rules="{required: true, message: '必填一位小数',min:0,max:1,  trigger:'blur',pattern:/^0(.\d{1,2})?$/}" >
-        <Input v-model="modalForm.Discount" ></Input>
-      </Form-item>
       <Form-item label="地址"  >
         <Input v-model="modalForm.Cus_Address" ></Input>
       </Form-item>
