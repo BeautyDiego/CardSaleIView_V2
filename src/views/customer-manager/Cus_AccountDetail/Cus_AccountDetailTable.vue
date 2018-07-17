@@ -27,9 +27,9 @@
               </FormItem>
               </Col>
               <Col span="6">
-              <FormItem label="余额充值：">
-                <Button type="text" size="small" @click="addTopUp">充值</Button>
-              </FormItem>
+
+                <Button type="success" size="large" @click="addTopUp">余额充值</Button>
+
               </Col>
             </Form>
           </div>

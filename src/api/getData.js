@@ -307,6 +307,10 @@ export const editResOperator = data => fetch('/Res_Operator/Edit_Res_Operator', 
  * 获取充值列表
  */
 export const Cus_AccountDetailList = data => fetch('/Cus_AccountDetail/List_Cus_AccountDetail', data, 'POST');
+
+export const add_Cus_DepositOrder = data => fetch('/Cus_DepositOrder/Add_Cus_DepositOrder', data, 'POST');
+
+
 /**
  * 删除充值列表
  */
