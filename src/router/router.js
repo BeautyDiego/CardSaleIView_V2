@@ -84,6 +84,7 @@ export const appRouter = [
       { path: 'basic_infoTable', title: '客户资料',access: 0, name: 'basic_infoTable', icon: 'link', component: resolve => void(require(['@/views/customer-manager/basic_info/basic_infoTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/basic_info/basic_infoTable.vue') },
       { path: 'cus_orderTable', title: '订单管理',access: 0, name: 'cus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_order/cus_orderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/cus_order/cus_orderTable.vue') }
       { path: 'Cus_AccountDetailTable', title: '充值管理',access: 0, name: 'Cus_AccountDetailTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue') }
+        { path: 'Cus_DepositOrderTable', title: '充值订单',access: 0, name: 'Cus_DepositOrderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue') }
     ]
   },
     {

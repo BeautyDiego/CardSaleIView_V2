@@ -91,8 +91,8 @@
         <div v-show="currentStep==0">
           <Row>
             <Col span="17">
-            <Form-item label="充值金额" prop="BeforeCash" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-              <InputNumber v-model="modalForm.BeforeCash" ></InputNumber>
+                <Form-item label="充值金额：" prop="BeforeCash" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}" >
+                    <Input v-model="modalForm.BeforeCash" :readonly="IsPayStatus" ></Input>
             </Form-item>
               <Row>
                 <Col span="6">
@@ -116,7 +116,7 @@
             <Card :bordered="true" style="background-color: #fafafa">
               <p slot="title">当前配置</p>
               <div class="current-setting">
-                <Row class="setting-row"><Col span="12" class="setting-title">原单价：</Col><Col span="12">￥{{modalForm.BeforeCash}} &nbsp元</Col></Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">应付金额：</Col><Col span="12">￥{{modalForm.BeforeCash}} &nbsp元</Col></Row>
                 <Row style="font-size:28px;color:#ea6219;">￥{{modalForm.BeforeCash}}</Row>
               </div>
             </Card>
@@ -125,7 +125,7 @@
         
         </div>
       </Form>
-      <div class="pay-part" v-show="currentStep==2">
+      <div class="pay-part" v-show="currentStep==1">
         <h2>收银台</h2>
         <Row style="background-color: #f2f2f2;padding:20px;">
           <Col span="6" style="line-height: 36px;">
@@ -159,83 +159,10 @@
               </div>
             </div>
           </TabPane>
-          <TabPane label="线下汇款" name="name3">
-            <div>
-              <Form ref="remitForm" :model="modalForm" :label-width="100"  value=true  style="padding: 15px 30px">
-                <Form-item label="开户银行：">
-                  <Row>
-                    <Col span="12">
-                    珠海华润银行股份有限公司敬业支行
-                    </Col>
-                  </Row>
-                </Form-item>
-                <Form-item label="收款单位：">
-                  <Row>
-                    <Col span="12">
-                    珠海潮大科技有限公司
-                    </Col>
-                  </Row>
-                </Form-item>
-                <Form-item label="银行账号：">
-                  <Row>
-                    <Col span="12">
-                    213220701327300001
-                    </Col>
-                  </Row>
-                </Form-item>
-                <Form-item label="汇款证明：" >
-                  <Row>
-                    <Col span="12">
-                    <div class="upload-list" v-if="modalForm.RemittanceUrl">
-                      <template >
-                        <img :src="modalForm.RemittanceUrl">
-                        <div class="upload-list-cover">
-                          <Icon type="ios-eye-outline" @click.native="handleView()"></Icon>
-                          <Icon type="ios-trash-outline" @click.native="handleRemove()"></Icon>
-                        </div>
-                      </template>
-                    </div>
-                    <Upload v-else
-                            ref="upload"
-                            :headers="MyHeaders"
-                            :show-upload-list="false"
-                            :on-success="handleSuccess"
-                            :format="['jpg','jpeg','png']"
-                            :max-size="2048"
-                            :on-format-error="handleFormatError"
-                            :on-exceeded-size="handleMaxSize"
-                            multiple
-                            type="drag"
-                            :action="UploadAddress"
-                            style="display: inline-block;width:58px;">
-                      <div style="width: 58px;height:58px;line-height: 58px;">
-                        <Icon type="camera" size="20"></Icon>
-                      </div>
-                    </Upload>
-                    </Col>
-                  </Row>
-                </Form-item>
-                <Form-item label="联系人手机：" prop="RemittancePhone" :rules="{required: true, message: '输入11位手机号', trigger:'blur',type:'string',pattern: /^1\d{10}$/}">
-                  <Row>
-                    <Col span="12">
-                    <Input v-model="modalForm.RemittancePhone" ></Input>
-                    </Col>
-                  </Row>
-                </Form-item>
-                <Form-item label="备注：" >
-                  <Col span="12">
-                  <Input v-model="modalForm.Remark" type="textarea" :rows="3"></Input>
-                  </Col>
-                  </Row>
-                </Form-item>
-              </Form>
-            
-            </div>
-          </TabPane>
         </Tabs>
       </div>
       <!--充值成功-->
-      <div class="pay-success" v-if="currentStep==3">
+      <div class="pay-success" v-if="currentStep==2">
         <div>
           <Row>
             <Col span="3">
@@ -267,15 +194,8 @@
       </div>
       <div slot="footer">
         <Button type="ghost"   @click="cancel" >取消</Button>
-        <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep!=3">上一步</Button>
+        <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep==1">上一步</Button>
         <Button type="ghost" :loading="modalForm_loading"  @click="nextStep" v-show="currentStep==0||(currentStep==1&&IsPayStatus)">下一步</Button>
-        <!--<Button type="primary" v-show="currentStep==1&&!IsPayStatus" :loading="modalForm_loading" @click="saveForm('modalForm')">提交订单</Button>-->
-        <Button type="primary"  v-show="currentStep==2&&tabValue=='name3'" :loading="modalForm_loading" @click="saveRemit('remitForm')">提交</Button>
-      </div>
-    </Modal>
-    <Modal title="汇款单凭证" v-model="visible">
-      <img :src="modalForm.RemittanceUrl" v-if="visible" style="width: 100%">
-      <div slot="footer">
       </div>
     </Modal>
   </div>
@@ -350,7 +270,7 @@
         },
         modalForm_loading:false,
         Cus_AccountDetailList:[],
-        isDragging:false, //是否在拖动滑块
+//        isDragging:false, //是否在拖动滑块
         isInputNumber:false, //是否在输入
         WxQRCode:'',//微信支付二维码
         AliQRCode:'',//支付宝二维码
@@ -360,8 +280,8 @@
       }
     },
     computed: {
-      OrderPrice:function () {
-        return this.modalForm.SinglePrice*this.modalForm.ValidMonth*this.Sim_Count;
+        BeforeCash:function () {
+        return this.BeforeCash();
       },
       //节省下来的钱
 //      SaveMoney:function () {
@@ -370,14 +290,14 @@
 //      ConfigListLength:function () {
 //        return this.Cus_AccountDetailList.length;
 //      },
-//      //是否是待付款状态
-//      IsPayStatus:function () {
-//        return this.modalForm.OrderStatus===1;
-//      },
-      //汇款单上传地址
-      UploadAddress:function () {
-        return baseUrl+'/Cus_Order/UploadFile';
-      },
+     //是否是待付款状态
+     IsPayStatus:function () {
+       return this.modalForm.OrderStatus===1;
+     },
+      // //汇款单上传地址
+      // UploadAddress:function () {
+      //   return baseUrl+'/Cus_Order/UploadFile';
+      // },
       MyHeaders:function () {
         let myHeaders = {};
         let tokenValue = sessionStorage.getItem("token");
@@ -408,7 +328,6 @@
 
           this.Sim_Count=1;
 
-          this.$nextTick(() => this.$refs.simSlider.refresh())
           this.IsModalShow = curVal;
           this.currentStep=0;
           if (this.modalFormTitle==='充值'){
@@ -419,9 +338,7 @@
 
           //如果状态是支付
           if (this.IsPayStatus){
-            this.currentStep=2;
-            this.Sim_Count= this.modalForm.Sim_Count;
-            //this.FlowCount= this.modalForm.FlowCount;
+            this.currentStep=1;
             this.getOrderWxQRCode();
 
             var me =this;
@@ -436,7 +353,7 @@
             this.conn.received(function (data) {
               var obj = JSON.parse(data);
               if(obj.success){
-                me.currentStep=3;
+                me.currentStep=2;
                 me.$emit('refreshTableList');
               }
               // console.log("收到数据： " + data + "\r\n");
@@ -466,6 +383,7 @@
         let res = await getWxQRCode(this.modalForm);
         if (res.success){
           this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
+
         }
       },
       async GetOrderAliQRCode(name){
@@ -497,6 +415,7 @@
         this.modalForm_loading=true;
         this.currentStep++;
         this.modalForm_loading=false;
+
       },
       ondragstart(){
         this.isDragging=true;
@@ -524,19 +443,17 @@
           if (valid) {
             this.modalForm_loading=true;
             const params = this.modalForm;
-            params.Sim_Count=this.Sim_Count;
-            params.FlowCount=parseInt(this.modalForm.FlowCount)*1024*1024;
-            params.OrderPrice=this.OrderPrice;
+            params.BeforeCash=this.BeforeCash;
             try{
               let result;
               if (this.modalFormTitle ==='余额充值'){
-                result = await addCusOrder(params);
-              }else{
                 result = await editCusAccountDetail(params);
+              // }else{
+              //   result = await editCusAccountDetail(params);
               }
               if (result.success) {
                 this.$Message.success('提交成功!');
-                this.modalForm.OrderNum=result.OrderNum;
+                this.modalForm.BeforeCash=result.BeforeCash;
                 this.modalForm.OrderStatus=1;
                 this.WxQRCode='data:image/jpeg;base64,'+result.QRCode;
                 // this.$emit('listenModalForm');
@@ -555,7 +472,7 @@
                 this.conn.received(function (data) {
                   var obj = JSON.parse(data);
                   if(obj.success){
-                    me.currentStep=3;
+                    me.currentStep=2;
                     me.$emit('refreshTableList');
                   }
                   //   console.log("收到数据： " + data + "\r\n");
@@ -574,36 +491,6 @@
           }
         })
       },
-      //提交汇款信息
-      saveRemit(name){
-        this.$refs[name].validate( async (valid) => {
-          if (valid) {
-            if (!this.modalForm.RemittanceUrl){
-              this.$Message.error('请上传汇款证明');
-              return;
-            }
-            this.modalForm_loading=true;
-            const params = this.modalForm;
-            try{
-              let result;
-              result = await remitCusOrder(params);
-              if (result.success) {
-                this.currentStep=3;
-                this.$Message.success('提交成功!');
-                this.$emit('refreshTableList');
-              }else{
-                this.$Message.error(result.msg);
-              }
-            } catch(err) {
-              console.log(err);
-              this.$Message.error('服务器异常，稍后再试');
-            }
-            this.modalForm_loading=false;
-          } else {
-            this.$Message.error('表单验证失败!');
-          }
-        })
-      },
       handleView (name) {
         this.imgName = name;
         this.visible = true;
@@ -613,18 +500,6 @@
       },
       handleSuccess (res, file) {
         this.modalForm.RemittanceUrl=res.Url;
-      },
-      handleFormatError (file) {
-        this.$Notice.warning({
-          title: '文件格式不对',
-          desc: '上传文件格式不正确，请上传jpg或png格式的图片'
-        });
-      },
-      handleMaxSize (file) {
-        this.$Notice.warning({
-          title: '文件太大',
-          desc: '图片太大，请压缩至小于2M.'
-        });
       },
     }
   }
