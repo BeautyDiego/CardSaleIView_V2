@@ -18,12 +18,12 @@
             >
               <Col span="6">
               <FormItem label="用户姓名：" >
-                <span>{{ resetForm.CustomerName }}</span>
+                <span>{{ myAccountForm.Cus_Name }}</span>
               </FormItem>
               </Col>
               <Col span="6">
               <FormItem label="账户余额：" >
-                <span>{{ resetForm.BeforeCash }}</span>
+                <span>{{ myAccountForm.RestCash }}</span>
               </FormItem>
               </Col>
               <Col span="6">
@@ -63,7 +63,8 @@
 
 <script>
   import Cookies from 'js-cookie'
-  import {Cus_AccountDetailList,editCusAccountDetail} from './../../../api/getData'
+  import { mapState } from 'vuex'
+  import {Cus_AccountDetailList,editCusAccountDetail,GetCustomer} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import Cus_AccountDetailForm from './Cus_AccountDetailForm.vue'
   export default {
@@ -112,38 +113,41 @@
         currentPage:1,
         formShow:false,
         formTitle:'添加充值',
-//        Cus_AccountDetailShow:false,
-//        Cus_AccountDetailTitle:'套餐订购',
         resetForm:{
           Id:'',
           CustomerId: '',
           CustomerName:'',
-            ActionType:'0',
-            Channel:'0',
-            BeforeCash:'',
-            AccountCash:'',
-            AfterCash:'',
-            Remark:'',
+          ActionType:'0',
+          Channel:'0',
+          BeforeCash:'',
+          AccountCash:'',
+          AfterCash:'',
+          Remark:'',
+        },
+        myAccountForm:{
+          Id:'',
+          Cus_Name:'',
+          RestCash:0,
         },
         parentForm:{
           Id:'',
-            CustomerId: '',
-            CustomerName:'',
-            ActionType:'0',
-            Channel:'0',
-            AccountCash:'',
-            AfterCash:'',
-            Remark:'',
+          CustomerId: '',
+          CustomerName:'',
+          ActionType:'0',
+          Channel:'0',
+          AccountCash:'',
+          AfterCash:'',
+          Remark:'',
         },
         Cus_AccountDetailFormData:{
           Id:'',
-            CustomerId: '',
-            CustomerName:'',
-            ActionType:'0',
-            Channel:'0',
-            AccountCash:'',
-            AfterCash:'',
-            Remark:'',
+          CustomerId: '',
+          CustomerName:'',
+          ActionType:'0',
+          Channel:'0',
+          AccountCash:'',
+          AfterCash:'',
+          Remark:'',
         },
         delModal:false,
         delId:'', //删除的Id
@@ -162,11 +166,15 @@
       IsAgent: function () {
         return  Cookies.get('roleName')=='代理商';
       },
+      ...mapState({
+          adminInfo: state => state.user.adminInfo,
+      }),
     },
     created(){
 
     },
     mounted(){
+      this.getCustomerAccount();
       this.getTableList();
     },
     methods: {
@@ -179,13 +187,16 @@
        addTopUp() {
             this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
             this.formTitle='充值';
-            console.log(this.parentForm)
             this.formShow=true;
         },
       doChangeOperType(){
         this.currentPage=1;
         this.getTableList();
       },
+        async getCustomerAccount(){
+          this.myAccountForm = await GetCustomer({userId:this.adminInfo.Id})
+
+        },
       async getTableList(){
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;

@@ -31,6 +31,12 @@ const user = {
     //  Cookies.set('menuList', JSON.stringify(adminInfo.menuList))
       Cookies.set('access', 0)
       state.adminInfo = adminInfo
+        sessionStorage.setItem('adminInfo', JSON.stringify(adminInfo));
+    },
+    refresh(state){
+        if (sessionStorage.getItem('adminInfo')){
+            state.adminInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
+        }
     }
   }
 }

@@ -236,6 +236,7 @@ export default {
           console.log(res)
           if (this.IsCMCC){
               this.simCMCC=JSON.parse(res.data);
+              console.log( this.simCMCC)
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;

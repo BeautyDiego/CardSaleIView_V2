@@ -309,7 +309,7 @@ export const editResOperator = data => fetch('/Res_Operator/Edit_Res_Operator', 
 export const Cus_AccountDetailList = data => fetch('/Cus_AccountDetail/List_Cus_AccountDetail', data, 'POST');
 
 export const add_Cus_DepositOrder = data => fetch('/Cus_DepositOrder/Add_Cus_DepositOrder', data, 'POST');
-
+export const getDepositeAliQRCode = data => fetch('/Cus_DepositOrder/Get_Alipay_QRCode', data, 'POST');
 
 /**
  * 删除充值列表
@@ -331,4 +331,9 @@ export const Cus_DepositOrderList = data => fetch('/Cus_DepositOrder/List_Cus_De
  * 添加充值订单
  */
 export const addCusDepositOrder = data => fetch('/Cus_DepositOrder/List_Cus_DepositOrder', data, 'POST');
+
+// region 首页
+
+export const getSimCardGroupStatic = data => fetch('/Home/SimCardGroupStatic', data, 'POST');
+// endregion
 

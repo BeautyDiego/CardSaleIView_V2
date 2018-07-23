@@ -103,9 +103,9 @@ export const appRouter = [
     },
 
   {
-    path: '/Operator',
+    path: '/sim-config',
     icon: 'ios-infinite',
-    name: 'Operator',
+    name: 'sim-config',
     access: 0,
     title: '资费管理',
     component: Main,

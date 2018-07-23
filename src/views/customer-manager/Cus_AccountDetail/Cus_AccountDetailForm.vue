@@ -30,7 +30,7 @@
             :mask-closable="false"
             :title="modalFormTitle"
             @on-cancel="cancel"
-            width="850">
+            width="600">
       <Row>
         <div style="padding-left:65px;">
           <Steps :current="currentStep" >
@@ -133,7 +133,7 @@
 <script>
   import {baseUrl} from './../../../api/env'
 
-  import {add_Cus_DepositOrder,getWxQRCode,getAliQRCode,remitCusOrder} from './../../../api/getData'
+  import {add_Cus_DepositOrder,getWxQRCode,getDepositeAliQRCode,remitCusOrder} from './../../../api/getData'
   export default {
     components:{
 
@@ -203,7 +203,8 @@
       },
       async GetOrderAliQRCode(name){
         if (name === 'name2'){
-          let res = await getAliQRCode(this.modalForm);
+            debugger;
+          let res = await getDepositeAliQRCode({ DepositOrderNum:this.PayOrderNum});
           if (res.success){
             this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
           }
@@ -219,12 +220,17 @@
         this.modalForm_loading=false;
       },
       nextStep(){
-        this.modalForm_loading=true;
-        
-        if(this.currentStep==0){
-          this.submitOrder();
-        }
-        this.modalForm_loading=false;
+          if (this.modalForm.Cash>0){
+              this.modalForm_loading=true;
+
+              if(this.currentStep==0){
+                  this.submitOrder();
+              }
+              this.modalForm_loading=false;
+          }else{
+              this.$Message.error("充值金额需大于0");
+          }
+
 
       },
  
@@ -237,9 +243,9 @@
         const res = await add_Cus_DepositOrder(params);
         console.log(res);
         if(res.success){
-            this.WxQRCode = 'data:image/png;base64, '+re.result.wxQR;
-            this.PayOrderNum=re.result.orderNum;
-           
+            this.WxQRCode = 'data:image/png;base64, '+res.result.wxQR;
+            this.PayOrderNum=res.result.orderNum;
+            this.currentStep+=1;
             var me =this;
             this.conn = $.connection(baseUrl+"/Signalr/PayConnection");
             this.conn.start().done(function (data) {
@@ -249,7 +255,7 @@
             this.conn.received(function (data) {
               var obj = JSON.parse(data);
               if(obj.success){
-                me.Current_Step+=1;
+                me.currentStep+=1;
               }
             });
           }else{

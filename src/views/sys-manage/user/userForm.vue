@@ -19,8 +19,8 @@
       <Form-item label="登录名" prop="LoginName" :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
         <Input v-model="modalForm.LoginName" ></Input>
       </Form-item>
-      <Form-item v-if="modalFormTitle==='添加用户'" label="密码" prop="Pwd"  :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
-        <Input v-model="modalForm.Pwd" type="password"></Input>
+      <Form-item v-if="modalFormTitle==='添加用户'" label="密码" prop="Password"  :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
+        <Input v-model="modalForm.Password" type="password"></Input>
       </Form-item>
       <Form-item label="电话"  >
         <Input v-model="modalForm.Mobile" ></Input>
@@ -56,7 +56,7 @@ export default {
             Id:'',
             UserName: '',
             LoginName: '',
-            Pwd:'',
+            Password:'',
             PhoneNum:'',
             Mobile:'',
             Sys_RoleId:0,

@@ -4,6 +4,9 @@
 </style>
 <template>
     <div class="home-main">
+        <div >
+            <img width="100%" src="./../../images/homeBanner.jpg" alt="">
+        </div>
         <Row :gutter="10" class="margin-top-10">
             <Col :md="24" :lg="24" :style="{marginBottom: '10px'}">
                 <Card>
