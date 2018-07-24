@@ -195,7 +195,6 @@
       },
         async getCustomerAccount(){
           this.myAccountForm = await GetCustomer({userId:this.adminInfo.Id})
-
         },
       async getTableList(){
         this.searchForm.page = this.currentPage;

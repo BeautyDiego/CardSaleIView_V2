@@ -125,7 +125,7 @@ padding-top:20px;
 </template>
 
 <script>
-import {getSimCardDetail} from './../../../api/getData'
+import {getSimCardDetail,getSimCardFlowUsage} from './../../../api/getData'
 export default {
     props:{
       parentForm: {
@@ -218,6 +218,7 @@ export default {
         this.IsModalShow = curVal;
         if (curVal){
           this.getSimCardDetail();
+          this.getFlowUsage();
         }
       }
     },
@@ -229,18 +230,25 @@ export default {
     },
     methods: {
       async getSimCardDetail(){
- 
           let res =await getSimCardDetail({simNum:this.modalForm.SimNum});
-          console.log(res)
+         // console.log(res)
           if (this.IsCMCC){
               this.simCMCC=JSON.parse(res.data);
-              console.log( this.simCMCC)
+            //  console.log( this.simCMCC)
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;
+           //   console.log(this.simCT)
           }
 
       },
+      async getFlowUsage(){
+          let res =await getSimCardFlowUsage({simNum:this.modalForm.SimNum,month:''});
+          console.log(res)
+
+
+      },
+
       cancel() {
           this.$emit('listenModalForm');
       },

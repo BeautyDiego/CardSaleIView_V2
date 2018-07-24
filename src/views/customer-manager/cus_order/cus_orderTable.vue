@@ -13,7 +13,7 @@
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-          <Button class="top-right-btn" size="large" icon="plus" @click="addOrder" v-if="!IsAdmin">添加</Button>
+          <!--<Button class="top-right-btn" size="large" icon="plus" @click="addOrder" v-if="!IsAdmin">添加</Button>-->
           <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
         </Col>
         <transition name="fade">

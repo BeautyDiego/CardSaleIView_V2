@@ -104,23 +104,13 @@
       <Tabs v-model="tabValue"  @on-click="GetOrderPayMethod">
        <TabPane label="余额支付" name="name0">
            <div>
-             余额支付
-             <div style="width:100%; text-align: center;">
-               <div>
-               <Row>
-                <Col span="12">
-                   当前余额：{{this.RestCash}} 元
-                </Col>
-                 <Col span="12">
-                   <Button type="primary">充值</Button>
-                </Col>
-               </Row>
-                 <Row>
-                <Col span="18">
-                   <Button type="success" @click="restPayOrder()">立即支付</Button>
-                </Col>
-               </Row>
-               </div>
+
+             <div style="width:100%; text-align: center;line-height:300px;">
+
+                   当前余额：{{RestCash}} 元&nbsp
+
+                   <Button type="success" :loading="modalForm_loading" @click="restPayOrder()">立即支付</Button>
+
 
              </div>
            </div>
@@ -258,7 +248,7 @@
           {{modalForm.OrderNum}}
           </Col>
           <Col span="6" class="text-center">
-          <span style="color:#e4393c">￥{{OrderPrice.toFixed(2)}}</span>
+          <span style="color:#e4393c">￥{{modalForm.OrderPrice.toFixed(2)}}</span>
           </Col>
         </Row>
       </div>
@@ -389,7 +379,6 @@ export default {
           this.modalForm=Object.assign(this.parentForm);
           
           this.IsModalShow = curVal;
-        
           //如果状态是支付
           if (this.IsPayStatus){
             this.currentStep=0;
@@ -438,16 +427,22 @@ export default {
         if(name=='name0'){
           this.GetOrderRestCash();
         }else if (name === 'name1'){
-        let res = await getWxQRCode(this.modalForm);
-        console.log(res)
-        if (res.success){
-          this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
-        }
+
+            if (!this.WxQRCode){
+                let res = await getWxQRCode(this.modalForm);
+                if (res.success){
+                    this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
+                }
+            }
+
         }else if (name === 'name2'){
-          let res = await getAliQRCode(this.modalForm);
-          if (res.success){
-            this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
-          }
+            if (!this.AliQRCode){
+                let res = await getAliQRCode(this.modalForm);
+                if (res.success){
+                    this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
+                }
+            }
+
         }
       },
        async GetOrderRestCash(){
@@ -460,20 +455,32 @@ export default {
           this.$emit('listenModalForm');
       },
       async restPayOrder() {
-        let res = await payOrderbyRestCash(this.modalForm);
-          if (res.success){
-             this.$Notice.success({
-                    title: '支付成功',
-                    desc: '余额支付成功，请等待后台审核订单。 '
-                });
-             this.currentStep=1;
-          }else
-          {
-            this.$Notice.error({
-                    title: '支付失败',
-                    desc: '余额支付失败，请联系管理员或更换支付方式。 '
-                });
-          }
+          this.modalForm_loading=true;
+           if (parseFloat(this.RestCash)<parseFloat(this.modalForm.OrderPrice.toFixed(2))){
+               this.$Notice.error({
+                   title: '支付失败',
+                   desc: '余额不足，请到充值管理页面充值余额 '
+               });
+
+           }else{
+               let res = await payOrderbyRestCash(this.modalForm);
+               if (res.success){
+                   this.currentStep=1;
+                   this.$Notice.success({
+                       title: '支付成功',
+                       desc: '余额支付成功，请等待后台审核订单。 '
+                   });
+
+               }else
+               {
+                   this.$Notice.error({
+                       title: '支付失败',
+                       desc: '余额支付失败，请联系管理员或更换支付方式。 '
+                   });
+               }
+           }
+          this.modalForm_loading=false;
+
          
       },
       //提交汇款信息

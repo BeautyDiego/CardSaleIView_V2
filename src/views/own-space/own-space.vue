@@ -126,6 +126,10 @@ export default {
             this.userForm.RoleName = this.adminInfo.RoleName;
             if(this.adminInfo.RoleName != "管理员"){
               this.GetCustomer(this.adminInfo.Id);
+            }else{
+                this.userForm.Cus_Name=this.adminInfo.Name;
+                this.userForm.ManagerMobile = this.adminInfo.Phone;
+                this.userForm.LoginName = this.adminInfo.LoginName;
             }
         },
         async GetCustomer(userId){
