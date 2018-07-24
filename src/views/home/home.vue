@@ -8,7 +8,10 @@
             <img width="100%" src="./../../images/homeBanner.jpg" alt="">
         </div>
         <Row :gutter="10" class="margin-top-10">
-            <Col :md="24" :lg="24" :style="{marginBottom: '10px'}">
+            <Col :md="24" :lg="6" :style="{marginBottom: '10px'}">
+             <userInfo></userInfo>
+            </Col>
+            <Col :md="24" :lg="18" :style="{marginBottom: '10px'}">
                 <Card>
                     <p slot="title" class="card-title">
                         <Icon type="ios-pulse-strong"></Icon>
@@ -25,11 +28,13 @@
 
 <script>
 import dataSourcePie from './components/dataSourcePie.vue';
+import userInfo from './components/userInfo.vue';
 
 export default {
     name: 'home',
     components: {
         dataSourcePie,
+        userInfo,
     },
     data () {
         return {

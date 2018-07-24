@@ -65,7 +65,9 @@
 
        <Row>
         <Form-item label="有效时长" prop="ValidMonth" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-        <InputNumber v-model="modalForm.ValidMonth" :max="9999" :min="1" ></InputNumber>&nbsp月
+            <Select v-model="modalForm.ValidMonth"  style="width:200px;">
+                <Option v-for="item in ValidMonthList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
         </Form-item>
       </Row>
     </Form>
@@ -112,7 +114,7 @@ export default {
           modalForm:{
           },
           modalForm_loading:false,
-
+          ValidMonthList:[{value:1,label:'一个月'},{value:2,label:'二个月'},{value:3,label:'三个月'},{value:6,label:'半年'},{value:12,label:'一年'},{value:24,label:'二年'},{value:36,label:'三年'},],
         }
     },
     watch:{
