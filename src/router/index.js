@@ -1,11 +1,11 @@
-import Vue from 'vue'
+//import Vue from 'vue'
 import iView from 'iview'
 import Util from '../libs/util'
-import VueRouter from 'vue-router'
+//import VueRouter from 'vue-router'
 import Cookies from 'js-cookie'
 import { routers, otherRouter, appRouter } from './router'
 
-Vue.use(VueRouter)
+//Vue.use(VueRouter)
 
 // 路由配置
 const RouterConfig = {

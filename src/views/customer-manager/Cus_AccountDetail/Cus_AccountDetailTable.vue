@@ -6,7 +6,7 @@
     <template>
       <Row>
         <Col>
-        <Card style="height: 120px">
+        <Card style="height: 120px" v-if="IsAgent">
           <p slot="title">账户明细</p>
           <div>
             <Form
@@ -211,6 +211,7 @@
 
       hideModel(){
         this.formShow=false;
+        this.getCustomerAccount();//刷新一下账户
       },
     }
   }

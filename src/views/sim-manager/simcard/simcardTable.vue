@@ -17,12 +17,10 @@
               <Radio label="流量池成员"></Radio>
             </RadioGroup>
           <!--<Button class="top-right-btn" size="large" icon="plus" @click="addUser">添加</Button>-->
-          <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
-       
-        <transition name="fade">
-          <Card v-show="searchPaneShow" style="position:absolute;top:1px;right:85px;z-index:100;" :padding=12>
-            <p style="text-align:center;margin-bottom:10px;"><Icon type="search"></Icon>搜索</p>
-            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:400px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+        <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
+          <Button type="primary" class="top-btn" size="large"  icon="ios-search">搜  索</Button>
+          <div style="text-align:center" slot="content">
+            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:300px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
               <Row>
                 <Form-item label="SIM卡号"  >
                   <Input v-model="searchForm.SimNum" ></Input>
@@ -35,11 +33,7 @@
               </Row>
               <Row>
                 <Form-item label="卡状态"  >
-                  <Select v-model="searchForm.SimStatus" >
-                    <Option value="全部">全部</Option>
-                    <Option value="在用">在用</Option>
-                    <Option value="活卡待激活">活卡待激活</Option>
-                  </Select>
+                  <Input v-model="searchForm.SimStatus" ></Input>
                 </Form-item>
               </Row>
             </Form>
@@ -47,8 +41,10 @@
               <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
               <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
             </Row>
-          </Card>
-        </transition>
+          </div>
+        </Poptip>
+        <Button @click="importSimCard" type="warning"   class="top-btn" size="large" icon="ios-cloud-upload-outline" >导入SIM卡</Button>
+
       </Row>
     </div>
     <!--table-->
@@ -70,6 +66,10 @@
                     :parentForm="parentForm"
                     @listenModalForm="hideRemarkModel"
                     @refreshTableList="getTableList" ></simAddFlow>
+    <!--&lt;!&ndash;新增编辑备注&ndash;&gt;-->
+  <simcardImport    :modalShow="importFormShow"
+                   @listenModalForm="hideImportModel"
+                   @refreshTableList="getTableList" ></simcardImport>
   </div>
 
 </template>
@@ -80,16 +80,18 @@
   import simcardForm from './simcardForm.vue'
   import simcardRemark from './simcardRemark.vue'
   import simAddFlow from './simAddFlow.vue'
+  import simcardImport from './simcardImport.vue'
+  import {baseUrl} from './../../../api/env'
   export default {
     name:'simcardTable',
     components:{
       simcardForm,
       simcardRemark,
-      simAddFlow
+      simAddFlow,
+      simcardImport,
     },
     data() {
       return {
-        searchPaneShow:false,
         tableLoading:false,//table是否在加载中
         tableColums: [
           {
@@ -147,12 +149,12 @@
           {
             align:'center',
             title: '生效时间',
-            key: 'ValidDate',
+            key: 'EffDate',
           },
           {
             align:'center',
             title: '过期时间',
-            key: 'ExpValidDate',
+            key: 'ExpDate',
           },
           {
             align:'center',
@@ -204,7 +206,7 @@
           Customer_GroupId:'',
         },
         searchForm:{
-          SimStatus:'全部',
+          SimStatus:'',
           PoolNum: '',
           SimNum: '',
           CardType:0,//1是单卡，2是流量池成员
@@ -213,6 +215,7 @@
           CardTypeText:'单卡',
         },
         addFlowformShow:false,//修改备注窗体
+        importFormShow:false, //导入窗体
       }
     },
     created(){
@@ -222,13 +225,10 @@
       this.getTableList();
     },
     methods: {
-      searchEnter(){
-         this.searchPaneShow=!this.searchPaneShow;
-      },
       resetSearch(){
         this.searchForm.PoolNum='';
         this.searchForm.SimNum='';
-        this.searchForm.SimStatus='全部';
+        this.searchForm.SimStatus='';
       },
       doSearchTableList(){
         this.currentPage=1;
@@ -260,15 +260,22 @@
         this.parentForm=JSON.parse(JSON.stringify(row));
         this.addFlowformShow=true;
       },
+      importSimCard(){
+        this.importFormShow=true;
+      },
       hideModel(){
         this.formShow=false;
       },
       hideRemarkModel(){
         this.addFlowformShow=false;
       },
+      hideImportModel(){
+        this.importFormShow=false;
+      },
       doChangeCardType(){
           this.getTableList();
-      }
+      },
+
     }
   }
 

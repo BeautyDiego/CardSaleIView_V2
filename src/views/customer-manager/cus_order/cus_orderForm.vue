@@ -207,7 +207,7 @@
              
               <Form-item label="备注：" >
                   <Col span="21">
-                    <Input v-model="modalForm.Remark" type="textarea" :rows="2"></Input>
+                    <Input v-model="modalForm.Remark" type="textarea" :rows="2" :maxlength="100"></Input>
                   </Col>
                 </Row>
               </Form-item>

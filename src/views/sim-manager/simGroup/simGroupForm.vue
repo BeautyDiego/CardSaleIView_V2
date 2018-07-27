@@ -20,7 +20,7 @@
           <Input v-model="modalForm.GroupDescribe" ></Input>
         </Form-item>
         <Form-item label="备注" >
-          <Input type="textarea" v-model="modalForm.Remark" ></Input>
+          <Input type="textarea" v-model="modalForm.Remark" :maxlength="100"></Input>
         </Form-item>
       </Form>
       <div slot="footer">

@@ -114,6 +114,7 @@ export default {
         if (curVal){
           this.simCardCount = 0;
           this.modalForm=Object.assign(this.parentForm);
+          console.log(this.modalForm)
           this.getSimGroupList();
         }
       },
@@ -148,6 +149,10 @@ export default {
       saveForm(name) {
         this.$refs[name].validate( async (valid) => {
           if (valid) {
+          if (this.simCardCount!=this.modalForm.Sim_Count){
+              this.$Message.error('卡组与订单的sim卡数量不匹配!');
+              return;
+          }
             this.modalForm_loading=true;
             const params = this.modalForm;
             try{

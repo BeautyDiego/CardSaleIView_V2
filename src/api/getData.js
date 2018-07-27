@@ -153,6 +153,7 @@ export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 
 
 export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
+export const getOperatorCombo = data => fetch('/Res_Operator/Res_Operator_Combo', data, 'POST');
 
 // SIM卡分组
 export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data, 'POST');

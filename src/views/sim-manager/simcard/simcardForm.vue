@@ -234,19 +234,18 @@ export default {
          // console.log(res)
           if (this.IsCMCC){
               this.simCMCC=JSON.parse(res.data);
-            //  console.log( this.simCMCC)
+              console.log(this.simCMCC)
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;
-           //   console.log(this.simCT)
+              console.log(this.simCT)
           }
 
       },
       async getFlowUsage(){
           let res =await getSimCardFlowUsage({simNum:this.modalForm.SimNum,month:''});
-          console.log(res)
-
-
+//          console.log(res)
+//          console.log(JSON.parse(res.data))
       },
 
       cancel() {

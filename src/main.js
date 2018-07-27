@@ -1,5 +1,7 @@
-import Vue from 'vue';
-import iView from 'iview';
+ //import Vue from 'vue';
+ import iView from 'iview';
+ import { Button, Table } from 'iview';
+
 import {router} from './router/index';
 import {appRouter} from './router/router';
 import store from './store';
@@ -13,7 +15,10 @@ import 'signalr';
 Vue.use(VueI18n);
 Vue.use(iView);
 
-new Vue({
+
+
+
+ new Vue({
     el: '#app',
     router: router,
     store: store,

@@ -26,7 +26,7 @@
         </Form-item>
 
         <Form-item label="折扣率" prop="Discount" :rules="{required: true, message: '必填,最小0.01，最大1',min:0.01,max:1,  trigger:'blur',type:'number'}" >
-        <InputNumber v-model="modalForm.Discount" :precision='2' step='0.1'>
+        <InputNumber v-model="modalForm.Discount" :min='0' :max='1000000'>
         </InputNumber>
       </Form-item>
      <Button type="primary"  :loading="modalForm_loading" @click="saveForm('modalForm')">保存</Button>
