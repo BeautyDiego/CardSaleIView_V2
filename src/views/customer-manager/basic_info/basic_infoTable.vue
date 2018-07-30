@@ -290,8 +290,8 @@
             this.$Message.success('删除成功!');
             this.getTableList();
             this.delModal=false;
-          }else{
-            this.$Message.error(res.msg);
+          }else{  
+          this.$Message.error(res.msg);
           }
         }catch(err){
           console.log(err);
@@ -311,7 +311,7 @@
             this.$Message.success('重置成功!');
             this.resetModal=false;
           }else{
-            this.$Message.error(res.msg);
+            this.$Message.error(res.msg); 
           }
         }catch(err){
           console.log(err);

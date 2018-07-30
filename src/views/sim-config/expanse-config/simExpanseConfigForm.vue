@@ -49,7 +49,7 @@
           </Form-item>
         </Col>
         <Col span="12">
-          <Form-item label="续费单价" prop="ChargePrice" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
+          <Form-item label="续费单价" prop="ChargeP rice" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
             <InputNumber v-model="modalForm.ChargePrice" ></InputNumber>&nbsp￥/GB
           </Form-item>
         </Col>
