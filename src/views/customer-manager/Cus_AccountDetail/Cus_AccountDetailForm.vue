@@ -121,7 +121,6 @@
         </div>
       </div>
       <div slot="footer">
-        <Button type="ghost"   @click="cancel" >取消</Button>
         <Button type="ghost" :loading="modalForm_loading"  @click="prevStep" v-show="currentStep==1">上一步</Button>
         <Button type="ghost" :loading="modalForm_loading"  @click="nextStep" v-show="currentStep==0">下一步</Button>
       </div>

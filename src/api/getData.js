@@ -150,8 +150,10 @@ export const comfirmChargeOrder = data => fetch('/Cus_ReChargeOrder/Comfirm_Cus_
 //sim卡
 export const simcardListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard', data, 'POST');
 export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 'POST');
-//export const getSimCardDetail = data => fetch('/Sim_SimCard/Get_Sim_SimCard_Detail', data, 'POST');
+
 export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
+export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
+export const getOperatorCombo = data => fetch('/Res_Operator/Res_Operator_Combo', data, 'POST');
 
 // SIM卡分组
 export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data, 'POST');
@@ -187,6 +189,7 @@ export const getPoolList = data => fetch('/Cus_FlowPool/Get_FlowPoolList', data,
 export const getSimGoupCombo = data => fetch('/Sim_Group/List_Sim_Group_Combo', data, 'POST');
 // 获取一个sim卡组的sim卡数量
 export const groupSimCount = data => fetch('/Sim_Group/Group_SimCount', data, 'POST');
+//
 //   endregion
 //  region SIM卡资费配置
 /**

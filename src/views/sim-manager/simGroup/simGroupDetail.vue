@@ -63,6 +63,11 @@
             title: 'SIM卡号',
             key: 'SimNum',
           },
+            {
+                align:'center',
+                title: '运营商',
+                key: 'OperName',
+            },
           {
             align:'center',
             title: '卡状态',

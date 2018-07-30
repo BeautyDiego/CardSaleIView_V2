@@ -14,26 +14,26 @@
         <Col span="24">
     
            <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
-        <Button type="primary" icon="ios-search">搜  索</Button>
-        <div style="text-align:center" slot="content">
-            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
-              <Row>
-                <Form-item label="用户名称"  >
-                  <Input v-model="searchForm.cus_Name" ></Input>
-                </Form-item>
-              </Row>
-              <Row>
-                <Form-item label="流量池编号"  >
-                  <Input v-model="searchForm.pool_Num" ></Input>
-                </Form-item>
-              </Row>
-            </Form>
-            <Row >
-              <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
-              <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
-            </Row>
-        </div>
-    </Poptip>
+            <Button type="primary" size="large" icon="ios-search">搜  索</Button>
+            <div style="text-align:center" slot="content">
+                <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+                  <Row>
+                    <Form-item label="用户名称"  >
+                      <Input v-model="searchForm.cus_Name" ></Input>
+                    </Form-item>
+                  </Row>
+                  <Row>
+                    <Form-item label="流量池编号"  >
+                      <Input v-model="searchForm.pool_Num" ></Input>
+                    </Form-item>
+                  </Row>
+                </Form>
+                <Row >
+                  <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
+                  <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
+                </Row>
+            </div>
+         </Poptip>
         </Col>
       </Row>
     </div>

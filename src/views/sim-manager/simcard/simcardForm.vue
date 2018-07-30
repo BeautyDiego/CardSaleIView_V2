@@ -71,7 +71,7 @@ padding-top:20px;
           </Col>
         </Row>
         <Row>
-               <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="simCT.prodOfferInfos"></Table>
+               <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="CTTableData"></Table>
         </Row>
       </div>
       <!--2 代表是中国移动-->
@@ -125,7 +125,7 @@ padding-top:20px;
 </template>
 
 <script>
-import {getSimCardDetail} from './../../../api/getData'
+import {getSimCardDetail,getSimCardFlowUsage} from './../../../api/getData'
 export default {
     props:{
       parentForm: {
@@ -198,21 +198,19 @@ export default {
         }
     },
     computed:{
-//      pool_already:function () {
-//        return (parseInt(this.simCT.SvcCont[0].pool_already)/1024).toFixed(2);
-//      },
-//      pool_left:function () {
-//        return (parseInt(this.simCT.SvcCont[0].pool_left)/1024).toFixed(2);
-//      },
-//      pool_total:function () {
-//        return (parseInt(this.simCT.SvcCont[0].pool_total)/1024).toFixed(2);
-//      },
       IsCT:function () {
           return this.modalForm.OperType==1
       },
       IsCMCC:function () {
           return this.modalForm.OperType==2
-      }
+      },
+      CTTableData:function () {
+        if (Object.prototype.toString.call(this.simCT.prodOfferInfos)  === '[object Array]'){
+            return this.simCT.prodOfferInfos
+        }else{
+            return [this.simCT.prodOfferInfos]
+        }
+      },
     },
     watch:{
       modalShow(curVal,oldVal){
@@ -220,6 +218,7 @@ export default {
         this.IsModalShow = curVal;
         if (curVal){
           this.getSimCardDetail();
+          this.getFlowUsage();
         }
       }
     },
@@ -231,18 +230,24 @@ export default {
     },
     methods: {
       async getSimCardDetail(){
- 
           let res =await getSimCardDetail({simNum:this.modalForm.SimNum});
-          console.log(res)
+         // console.log(res)
           if (this.IsCMCC){
               this.simCMCC=JSON.parse(res.data);
-              console.log( this.simCMCC)
+              console.log(this.simCMCC)
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;
+              console.log(this.simCT)
           }
 
       },
+      async getFlowUsage(){
+          let res =await getSimCardFlowUsage({simNum:this.modalForm.SimNum,month:''});
+//          console.log(res)
+//          console.log(JSON.parse(res.data))
+      },
+
       cancel() {
           this.$emit('listenModalForm');
       },

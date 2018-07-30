@@ -41,7 +41,7 @@
         <Input v-model="modalForm.ManagerEmail" ></Input>
       </Form-item>
       <Form-item label="备注"  >
-        <Input v-model="modalForm.Remark" ></Input>
+        <Input type="textarea" v-model="modalForm.Remark" :rows="2" :maxlength="100"></Input>
       </Form-item>
       <!--<Form-item label="性别"  >-->
         <!--<Select v-model="modalForm.Sex" placeholder="请选择">-->

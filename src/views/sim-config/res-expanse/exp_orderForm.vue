@@ -187,27 +187,14 @@
       </Row>
       <Tabs v-model="tabValue"  @on-click="GetOrderPayInfo">
         <TabPane label="余额支付" name="name0">
-           <div>
-             余额支付
-             <div style="width:100%; text-align: center;">
-               <div>
-               <Row>
-                <Col span="12">
-                   当前余额：{{this.RestCash}} 元
-                </Col>
-                 <Col span="12">
-                   <Button type="primary">充值</Button>
-                </Col>
-               </Row>
-                 <Row>
-                <Col span="18">
-                   <Button type="success" @click="restPayOrder()">立即支付</Button>
-                </Col>
-               </Row>
-               </div>
+
+             <div style="width:100%; text-align: center;line-height:300px;">
+
+                   当前余额：{{RestCash}} 元&nbsp&nbsp&nbsp
+
+                   <Button type="success" :loading="modalForm_loading" @click="restPayOrder()">立即支付</Button>
 
              </div>
-           </div>
         </TabPane>
         <TabPane label="微信支付" name="name1">
            <div>
@@ -301,7 +288,7 @@
              
               <Form-item label="备注：" >
                   <Col span="21">
-                    <Input v-model="modalForm.Remark" type="textarea" :rows="2"></Input>
+                    <Input v-model="modalForm.Remark" type="textarea" :rows="2" :maxlength="100"></Input>
                   </Col>
                 </Row>
               </Form-item>
@@ -453,14 +440,14 @@ export default {
         if(this.modalForm.CardType=='单卡')
           return this.modalForm.SinglePrice*this.modalForm.ValidMonth*this.Sim_Count;
         else
-           return this.modalForm.SinglePrice*this.modalForm.ValidMonth;
+           return this.modalForm.SinglePrice; //流量池与时间和卡的张数无关
       },
       //节省下来的钱
       SaveMoney:function () {
         if(this.modalForm.CardType=='单卡')
           return (this.modalForm.OriginSinglePrice-this.modalForm.SinglePrice)*this.modalForm.ValidMonth*this.Sim_Count;
         else
-           return (this.modalForm.OriginSinglePrice-this.modalForm.SinglePrice)*this.modalForm.ValidMonth;
+           return (this.modalForm.OriginSinglePrice-this.modalForm.SinglePrice);
       },
       ConfigListLength:function () {
         return this.simExpanseConfigList.length;
@@ -503,7 +490,6 @@ export default {
           this.$nextTick(() => this.$refs.simSlider.refresh())
           this.IsModalShow = curVal;
           this.currentStep=0;
-          console.log(this.currentStep)
         } 
       }
     },
@@ -519,15 +505,21 @@ export default {
        async GetOrderPayInfo(name){
          console.log(name)
         if (name === 'name1'){
-        let res = await getWxQRCode(this.modalForm);
-        if (res.success){
-          this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
-        }
+             if (!this.WxQRCode){
+                 let res = await getWxQRCode(this.modalForm);
+                 if (res.success){
+                     this.WxQRCode='data:image/jpeg;base64,'+res.QRCode;
+                 }
+             }
+
         }else if (name === 'name2'){
-          let res = await getAliQRCode(this.modalForm);
-          if (res.success){
-            this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
-          }
+            if (!this.AliQRCode){
+                let res = await getAliQRCode(this.modalForm);
+                if (res.success){
+                    this.AliQRCode='data:image/jpeg;base64,'+res.QRCode;
+                }
+            }
+
         }else if(name=='name0'){
           this.GetOrderRestCash();
         }
@@ -571,7 +563,7 @@ export default {
       cancel() {
           if(this.currentStep==2){
             this.$Modal.confirm({
-                    title: 'Title',
+                    title: '提示',
                     content: '<p>订单尚未支付，您确定关闭吗？</p><p>您也可以到订单管理里去支付该订单。</p>',
                     onOk: () => {
                         this.IsModalShow=false;
@@ -682,9 +674,29 @@ export default {
       },
       //余额支付订单
       async restPayOrder(){
-           let res = await payOrderbyRestCash(this.modalForm);
-          if (res.success){
-            this.currentStep=3;
+          this.modalForm_loading=true;
+          if (parseFloat(this.RestCash)<parseFloat(this.OrderPrice.toFixed(2))){
+              this.$Notice.error({
+                  title: '支付失败',
+                  desc: '余额不足，请到充值管理页面充值余额 '
+              });
+
+          }else{
+              let res = await payOrderbyRestCash(this.modalForm);
+              if (res.success){
+                  this.$Notice.success({
+                      title: '支付成功',
+                      desc: '余额支付成功，请等待后台审核订单。 '
+                  });
+                  this.currentStep=3;
+              }else
+              {
+                  this.$Notice.error({
+                      title: '支付失败',
+                      desc: '余额支付失败，请联系管理员或更换支付方式。 '
+                  });
+              }
+              this.modalForm_loading=false;
           }
       },
       handleView (name) {

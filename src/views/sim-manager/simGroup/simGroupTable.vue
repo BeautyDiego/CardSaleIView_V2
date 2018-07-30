@@ -13,22 +13,13 @@
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-        
-          <Button @click="searchEnter"   class="top-btn" size="large" icon="search" >搜索</Button>
-          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" >添加</Button>
-        </Col>
-        <transition name="fade">
-          <Card v-show="searchPaneShow" style="position:absolute;top:1px;z-index:100;"  :style="{right:IsAdmin?'85px':'185px'}" :padding=12>
-            <p style="text-align:center;margin-bottom:10px;"><Icon type="search"></Icon>搜索</p>
-            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:400px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+        <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
+          <Button type="primary" class="top-btn" size="large"  icon="ios-search">搜  索</Button>
+          <div style="text-align:center" slot="content">
+            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:300px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
               <Row>
                 <Form-item label="SIM卡号"  >
-                  <Input v-model="searchForm.SimNum" ></Input>
-                </Form-item>
-              </Row>
-              <Row>
-                <Form-item label="流量池编号"  >
-                  <Input v-model="searchForm.PoolNum" ></Input>
+                  <Input v-model="searchForm.GroupName" ></Input>
                 </Form-item>
               </Row>
             </Form>
@@ -36,8 +27,10 @@
               <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
               <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
             </Row>
-          </Card>
-        </transition>
+          </div>
+        </Poptip>
+          <Button class="top-right-btn" size="large" icon="plus" @click="addSIMGroup" >添加</Button>
+        </Col>
       </Row>
     </div>
     <!--table-->
@@ -111,7 +104,6 @@
     },
     data() {
       return {
-        searchPaneShow:false,
         tableLoading:false,//table是否在加载中
         tableColums: [
           {
@@ -259,8 +251,7 @@
           PoolNum:''
         },
         searchForm:{
-          PoolNum: '',
-          SimNum: '',
+          GroupName: '',
           rows:10,
           page:1,
         },
@@ -293,13 +284,8 @@
       this.getTableList();
     },
     methods: {
-      searchEnter(){
-         this.searchPaneShow=!this.searchPaneShow;
-      },
       resetSearch(){
-        this.searchForm.PoolNum='';
-        this.searchForm.SimNum='';
-        this.searchForm.SimStatus='全部';
+        this.searchForm.GroupName='';
       },
       doSearchTableList(){
         this.currentPage=1;

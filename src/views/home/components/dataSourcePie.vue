@@ -1,5 +1,5 @@
 <template>
-    <div style="width:100%;height:400px;" id="data_source_con"></div>
+    <div style="width:100%;height:306px;" id="data_source_con"></div>
 </template>
 
 <script>

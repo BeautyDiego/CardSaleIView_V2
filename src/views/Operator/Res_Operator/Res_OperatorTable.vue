@@ -14,29 +14,28 @@
       <Row>
         <Col span="24">
           <Button class="top-right-btn" size="large" icon="plus"  @click="addResOperator">添加</Button>
-          <Button @click="searchEnter"   class="top-btn" size="large" icon="search"  >搜索</Button>
+          <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
+            <Button type="primary" size="large" icon="ios-search">搜  索</Button>
+            <div style="text-align:center" slot="content">
+              <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+                <Row>
+                  <Form-item label="运营商名称"  >
+                    <Input v-model="searchForm.OperName" ></Input>
+                  </Form-item>
+                </Row>
+                <Row>
+                  <Form-item label="联系人姓名"  >
+                    <Input v-model="searchForm.ContactName" ></Input>
+                  </Form-item>
+                </Row>
+              </Form>
+              <Row >
+                <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
+                <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
+              </Row>
+            </div>
+          </Poptip>
         </Col>
-        <transition name="fade">
-          <Card v-show="searchPaneShow" style="position:absolute;top:1px;right:185px;z-index:100;" :padding=12>
-            <p style="text-align:center;margin-bottom:10px;"><Icon type="search"></Icon>搜索</p>
-            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:400px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
-              <Row>
-                <Form-item label="运营商名称"  >
-                  <Input v-model="searchForm.OperName" ></Input>
-                </Form-item>
-              </Row>
-              <Row>
-                <Form-item label="联系人姓名"  >
-                  <Input v-model="searchForm.ContactName" ></Input>
-                </Form-item>
-              </Row>
-            </Form>
-            <Row >
-              <Button  style="margin-left:5px;margin-top:10px;float:right;background-color: #5bc0de;color:#fff" size="small"   @click="doSearchTableList">确定</Button>
-              <Button  style="float:right;margin-top:10px;" size="small" @click="resetSearch" >重置</Button>
-            </Row>
-          </Card>
-        </transition>
       </Row>
     </div>
     <!--table-->
@@ -80,7 +79,6 @@
     },
     data() {
       return {
-        searchPaneShow:false,
         tableLoading:false,
         tableColums: [
           {
@@ -103,6 +101,11 @@
             title: '用户密码',
             key: 'UserPwd',
           },
+            {
+                align:'center',
+                title: '联系人电话',
+                key: 'ContactName'
+            },
           {
             align:'center',
             title: '联系人电话',
@@ -221,9 +224,6 @@
       this.getTableList();
     },
     methods: {
-      searchEnter(){
-         this.searchPaneShow=!this.searchPaneShow;
-      },
       resetSearch(){
          this.searchForm.OperName='';
       },
