@@ -34,7 +34,6 @@ const user = {
         sessionStorage.setItem('adminInfo', JSON.stringify(adminInfo));
     },
     refresh(state){
-      debugger;
         if (sessionStorage.getItem('adminInfo')){
             state.adminInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
         }

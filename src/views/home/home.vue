@@ -20,12 +20,12 @@
                     <div class="data-source-row">
                         <Row>
                             <Col :md="24" :lg="12">
-                                <CTdataSourcePie :pieDataSource="CMPieDataSource"
-                                                ></CTdataSourcePie>
+                            <CTdataSourcePie :pieDataSource="CTPieDataSource"
+                                            ></CTdataSourcePie>
                             </Col>
                             <Col :md="24" :lg="12">
-                                <CMdataSourcePie :pieDataSource="CTPieDataSource"
-                                                ></CMdataSourcePie>
+                            <CMdataSourcePie :pieDataSource="CMPieDataSource">
+                                                         </CMdataSourcePie>
                             </Col>
                         </Row>
 
@@ -42,8 +42,8 @@
                    流量使用情况
                 </p>
                 <div class="data-source-row">
-                    <CMflowUsagePie :pieDataSource="CMFlowPieSource"
-                                  ></CMflowUsagePie>
+                    <flowUsagePie :pieDataSource="CMFlowPieSource"
+                                  :FlowId="CMFlowId"  ></flowUsagePie>
                 </div>
             </Card>
             </Col>
@@ -54,7 +54,7 @@
 <script>
 import CTdataSourcePie from './components/CTdataSourcePie.vue';
 import CMdataSourcePie from './components/CMdataSourcePie.vue';
-import CMflowUsagePie from './components/CMflowUsagePie.vue';
+import flowUsagePie from './components/flowUsagePie.vue';
 import userInfo from './components/userInfo.vue';
 import {getSimCardGroupStatic} from './../../api/getData'
 import {getFlowUsagePie} from './../../api/getData'
@@ -63,15 +63,18 @@ export default {
     name: 'home',
     components: {
         CTdataSourcePie,
-        CMdataSourcePie,
+        flowUsagePie,
         userInfo,
-        CMflowUsagePie,
+        CMdataSourcePie
     },
     data () {
         return {
             CMPieDataSource:[],
+            CMPieId:'CMPieId',
             CTPieDataSource:[],
+            CTPieId:'CTPieId',
             CMFlowPieSource:{},
+            CMFlowId:'CMFlowId',
         };
     },
     computed: {
@@ -96,7 +99,7 @@ export default {
             this.CMFlowPieSource =  this.CTPieDataSource=res.filter(function (x) {
                 return x.Res_OperatorId==4;
             })[0];
-            console.log(this.CMFlowPieSource)
+
         },
     }
 };

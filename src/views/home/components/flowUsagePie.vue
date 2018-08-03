@@ -1,5 +1,5 @@
 <template>
-    <div style="width:100%;height:306px;" id="CMFlow"></div>
+    <div style="width:100%;height:306px;" :id="FlowId"></div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ import echarts from 'echarts';
 import {getFlowUsagePie} from './../../../api/getData'
 
 export default {
-    name: 'CMflowUsagePie',
+    name: 'flowUsagePie',
     props:{
         pieDataSource: {
             type: Object,
@@ -15,8 +15,13 @@ export default {
                 return {}
             }
         },
+        FlowId: {
+            type: String,
+            default: 'FlowId'
+        },
     },
     data () {
+        return {}
     },
     watch:{
         pieDataSource(curVal,oldVal){
@@ -28,7 +33,7 @@ export default {
     },
     methods:{
         initEchats(){
-                var CMflowUsagePie = echarts.init(document.getElementById('CMFlow'));
+                var flowUsagePie = echarts.init(document.getElementById(this.FlowId));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [
                     {name:'已使用',
@@ -77,9 +82,9 @@ export default {
                         }
                     ]
                 };
-            CMflowUsagePie.setOption(option);
+                flowUsagePie.setOption(option);
                 window.addEventListener('resize', function () {
-                    CMflowUsagePie.resize();
+                    flowUsagePie.resize();
                 });
         },
         async getGroupStatic(){

@@ -1,6 +1,6 @@
 <template>
 
-              <div style="width:100%;height:306px;" id="CMPie"></div>
+    <div style="width:100%;height:306px;" id="CMPieId"></div>
 
 </template>
 
@@ -19,6 +19,7 @@ export default {
         },
     },
     data () {
+        return {}
     },
     watch:{
         pieDataSource(curVal,oldVal){
@@ -30,7 +31,7 @@ export default {
     },
     methods:{
         initEchats(){
-                var CMdataSourcePie = echarts.init(document.getElementById('CMPie'));
+                var CMdataSourcePie = echarts.init(document.getElementById('CMPieId'));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [];
                 let legendData=[];
@@ -96,7 +97,7 @@ export default {
                         }
                     ]
                 };
-            CMdataSourcePie.setOption(optionCM);
+                 CMdataSourcePie.setOption(optionCM);
                 window.addEventListener('resize', function () {
                     CMdataSourcePie.resize();
                 });

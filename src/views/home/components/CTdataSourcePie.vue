@@ -1,6 +1,6 @@
 <template>
 
-              <div style="width:100%;height:306px;" id="CTPie"></div>
+              <div style="width:100%;height:306px;" id="CTPieId"></div>
 
 </template>
 
@@ -9,7 +9,7 @@ import echarts from 'echarts';
 import {getSimCardGroupStatic} from './../../../api/getData'
 
 export default {
-    name: 'CTdataSourcePie',
+    name: 'dataSourcePie',
     props:{
         pieDataSource: {
             type: Array,
@@ -19,6 +19,7 @@ export default {
         },
     },
     data () {
+        return {}
     },
     watch:{
         pieDataSource(curVal,oldVal){
@@ -30,7 +31,7 @@ export default {
     },
     methods:{
         initEchats(){
-                var CTdataSourcePie = echarts.init(document.getElementById('CTPie'));
+                var CTdataSourcePie = echarts.init(document.getElementById('CTPieId'));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [];
                 let legendData=[];
@@ -46,7 +47,7 @@ export default {
                     }
 
                 }
-                let optionCT = {
+                let option = {
                     title : {
                         show:true,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
                         text: '中国电信',//主标题文本，'\n'指定换行
@@ -96,7 +97,7 @@ export default {
                         }
                     ]
                 };
-                 CTdataSourcePie.setOption(optionCT);
+                 CTdataSourcePie.setOption(option);
                 window.addEventListener('resize', function () {
                     CTdataSourcePie.resize();
                 });
