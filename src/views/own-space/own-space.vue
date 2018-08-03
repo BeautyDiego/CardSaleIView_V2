@@ -23,14 +23,14 @@
                     <FormItem label="登录名称：" >
                         <span>{{ userForm.LoginName }}</span>
                     </FormItem>
-                    <FormItem label="用户手机："  >
+                    <FormItem label="用户手机：" >
                         <span>{{ userForm.ManagerMobile }}</span>
                     </FormItem>
             
                     <FormItem v-if="IsAdmin" label="可用余额：">
                         <span>￥{{ userForm.RestCash.toFixed(2) }}元</span>
                     </FormItem>
-                    <FormItem label="">
+                    <FormItem label="修改密码：">
                         <Button type="warning" @click="showEditPassword">修改密码</Button>
                     </FormItem>
                 </Form>
@@ -173,6 +173,6 @@ export default {
     },
     mounted () {
         this.init();
-    }
+    }   
 };
 </script>
