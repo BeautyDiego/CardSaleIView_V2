@@ -6,12 +6,11 @@
 
 <script>
 import echarts from 'echarts';
-import {getSimCardGroupStatic} from './../../../api/getData'
 
 export default {
     name: 'dataSourcePie',
     props:{
-        pieDataSource: {
+        CTPieDataSource: {
             type: Array,
             default: function () {
                 return []
@@ -22,7 +21,7 @@ export default {
         return {}
     },
     watch:{
-        pieDataSource(curVal,oldVal){
+        CTPieDataSource(curVal,oldVal){
             this.initEchats();
         }
     },
@@ -31,13 +30,14 @@ export default {
     },
     methods:{
         initEchats(){
+
                 var CTdataSourcePie = echarts.init(document.getElementById('CTPieId'));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [];
                 let legendData=[];
-                let len=this.pieDataSource.length;
+                let len=this.CTPieDataSource.length;
                 for (let i = 0; i < len; i++) {
-                    let item=this.pieDataSource[i];
+                    let item=this.CTPieDataSource[i];
                     if (item.SimStatus){
                         seriesData.push({
                             name:item.SimStatus,
@@ -47,15 +47,12 @@ export default {
                     }
 
                 }
-                let option = {
+                let optionCT = {
                     title : {
                         show:true,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
                         text: '中国电信',//主标题文本，'\n'指定换行
-                        link:'',//主标题文本超链接,默认值true
-                        target: null,//指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
                         x:'center',//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
                         y: 'top',//垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
-                        textAlign: null,//水平对齐方式，默认根据x设置自动调整，可选为： left' | 'right' | 'center
                         backgroundColor: 'rgba(0,0,0,0)',//标题背景颜色，默认'rgba(0,0,0,0)'透明
                         borderColor: '#ccc',//标题边框颜色,默认'#ccc'
                         borderWidth: 0,//标题边框线宽，单位px，默认为0（无边框）
@@ -85,7 +82,7 @@ export default {
                             name: 'SIM卡数量',
                             type: 'pie',
                             radius: '66%',
-                            center: ['50%', '60%'],
+                            center: ['50%', '50%'],
                             data: seriesData,
                             itemStyle: {
                                 emphasis: {
@@ -97,14 +94,13 @@ export default {
                         }
                     ]
                 };
-                 CTdataSourcePie.setOption(option);
+                 CTdataSourcePie.setOption(optionCT);
                 window.addEventListener('resize', function () {
                     CTdataSourcePie.resize();
                 });
         },
         async getGroupStatic(){
-            this.pieDataSource = await getSimCardGroupStatic();
-            this.initEchats()
+
         },
     }
 };

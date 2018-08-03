@@ -1,0 +1,141 @@
+<template>
+    <div style="height:300px;">
+        <Row>
+            <Col :md="12" :lg="12">
+              <div style="width:100%;height:200px;" id="CMFlowId"></div>
+            </Col>
+            <Col :md="12" :lg="12" >
+            <div style="padding:50px 0 30px;text-align: center">
+                <Row>
+                    <p style="color:#82879d;font-size: 18px;">中国移动</p>
+                    <p style="color:#82879d;font-size: 40px;">{{pkgFlow}}</p>
+                    <p style="color:#0db9c0;">套餐包含总流量(GB)</p>
+                </Row>
+            </div>
+            </Col>
+        </Row>
+        <Row style="height:100px;">
+            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;height:90px;padding:20px 0;">
+                <p style="color:#82879d;font-size: 30px;">{{usedFlow}}</p>
+                <p style="color:#82879d;">流量使用情况(GB)</p>
+            </Col>
+            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;border-left:1px solid #eee;height:90px;padding:20px 0;">
+                <p style="color:#f14676;font-size: 30px;">{{usedRatio}}</p>
+                <p style="color:#82879d;">流量使用占比</p>
+            </Col>
+        </Row>
+
+
+    </div>
+
+</template>
+
+<script>
+import echarts from 'echarts';
+
+export default {
+    name: 'CMflowUsagePie',
+    props:{
+        pieDataSource: {
+            type: Object,
+            default: function () {
+                return {}
+            }
+        },
+    },
+    data () {
+        return {}
+    },
+    computed:{
+        pkgFlow:function () {
+            if (this.pieDataSource.monthFlow){
+                return (this.pieDataSource.monthFlow/(1024*1024)).toFixed(2)
+            }else{
+                return 0
+            }
+        },
+        usedFlow:function () {
+            if (this.pieDataSource.usedFlow){
+                return (this.pieDataSource.usedFlow/(1024*1024)).toFixed(2)
+            }else{
+                return 0
+            }
+        },
+        usedRatio:function () {
+            if (this.pieDataSource.monthFlow){
+                return (this.pieDataSource.usedFlow/this.pieDataSource.monthFlow).toFixed(2)+'%'
+            }else{
+                return 0+'%'
+            }
+        }
+    },
+    watch:{
+        pieDataSource(curVal,oldVal){
+            this.initEchats();
+        }
+    },
+    mounted () {
+
+    },
+    methods:{
+        initEchats(){
+                var CMflowUsagePie = echarts.init(document.getElementById('CMFlowId'));
+                let colorArr = ['#9bd598','#fdd961','#0386b1'];
+                let seriesData = [
+                    {name:'已使用',
+                    value:this.pieDataSource.usedFlow,
+                    itemStyle: {
+                                normal: {
+                                    color: '#fdd961'
+                                },
+                            }
+                     },
+                    {name:'剩余量',
+                        value:this.pieDataSource.monthFlow-this.pieDataSource.usedFlow,
+                        itemStyle: {
+                            normal: {
+                                color: '#0db9c0'
+                            },
+                        }
+                    }
+                    ];
+                let legendData=['已使用','剩余量'];
+
+                let option = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+//                    legend: {
+//                        orient: 'vertical',
+//                        left: 'right',
+//                        data: legendData
+//                    },
+                    series: [
+                        {
+                            name: '流量数',
+                            type: 'pie',
+                            radius: '80%',
+                            center: ['50%', '50%'],
+                            data: seriesData,
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+            CMflowUsagePie.setOption(option);
+                window.addEventListener('resize', function () {
+                    CMflowUsagePie.resize();
+                });
+        },
+        async getGroupStatic(){
+
+        },
+    }
+};
+</script>
