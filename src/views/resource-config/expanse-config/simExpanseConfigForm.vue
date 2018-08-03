@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import {addSimExpanseConfig,editSimExpanseConfig} from './../../../api/getData'
+import {addSimExpanseConfig,editSimExpanseConfig} from '../../../api/getData'
 export default {
     props:{
       parentForm: {

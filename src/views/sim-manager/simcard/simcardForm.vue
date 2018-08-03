@@ -64,14 +64,14 @@ padding-top:20px;
           <Col span="12">
           <div class="sim-info-wrapper">
             <div>SIM卡号：{{simCT.phoneNum}}</div>
-            <div>地区：{{simCT.commonRegionName}}</div>
-            <div>所属客户：{{simCT.custName}}</div>
-            <div>产品名：{{simCT.productName}}</div>
+            <!--<div>地区：{{simCT.commonRegionName}}</div>-->
+            <!--<div>所属客户：{{simCT.custName}}</div>-->
+            <!--<div>产品名：{{simCT.productName}}</div>-->
           </div>
           </Col>
         </Row>
         <Row>
-               <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="CTTableData"></Table>
+             <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="CTTableData"></Table>
         </Row>
       </div>
       <!--2 代表是中国移动-->
@@ -238,14 +238,14 @@ export default {
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;
-              console.log(this.simCT)
+             console.log(this.simCT)
           }
 
       },
       async getFlowUsage(){
           let res =await getSimCardFlowUsage({simNum:this.modalForm.SimNum,month:''});
-//          console.log(res)
-//          console.log(JSON.parse(res.data))
+         // console.log(res)
+        //  console.log(JSON.parse(res.data))
       },
 
       cancel() {

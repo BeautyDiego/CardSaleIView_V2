@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import {addResOperator,editResOperator} from './../../../api/getData'
+import {addResOperator,editResOperator} from '../../../api/getData'
 export default {
     props:{
       parentForm: {

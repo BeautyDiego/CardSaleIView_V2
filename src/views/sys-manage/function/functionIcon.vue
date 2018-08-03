@@ -74,11 +74,9 @@ export default {
   },
     methods: {
       cancel() {
-          this.$Message.success('这是一条成功的提示');
           this.$emit('listenModalIcon');
       },
       saveForm() {
-          this.$Message.warning('这是一条警告的提示');
       },
       saveIcon(icon){
         this.$emit('listenChildIcon',icon);

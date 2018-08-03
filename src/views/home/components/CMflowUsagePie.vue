@@ -1,44 +1,55 @@
 <template>
-    <div style="width:100%;height:306px;" id="data_source_con"></div>
+    <div style="width:100%;height:306px;" id="CMFlow"></div>
 </template>
 
 <script>
 import echarts from 'echarts';
-import {getSimCardGroupStatic} from './../../../api/getData'
+import {getFlowUsagePie} from './../../../api/getData'
 
 export default {
-    name: 'dataSourcePie',
+    name: 'CMflowUsagePie',
+    props:{
+        pieDataSource: {
+            type: Object,
+            default: function () {
+                return {}
+            }
+        },
+    },
     data () {
-        return {
-            pieDataSource:[],
-        };
+    },
+    watch:{
+        pieDataSource(curVal,oldVal){
+            this.initEchats();
+        }
     },
     mounted () {
-        this.getGroupStatic();
+
     },
     methods:{
         initEchats(){
-                var dataSourcePie = echarts.init(document.getElementById('data_source_con'));
+                var CMflowUsagePie = echarts.init(document.getElementById('CMFlow'));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
-                let seriesData = [];
-                let legendData=[];
-                let len=this.pieDataSource.length;
-                for (let i = 0; i < len; i++) {
-                    let item=this.pieDataSource[i];
-                    if (item.SimStatus){
-                        seriesData.push({
-                            name:item.SimStatus,
-                            value:item.CountNum,
-                            itemStyle: {
+                let seriesData = [
+                    {name:'已使用',
+                    value:this.pieDataSource.usedFlow,
+                    itemStyle: {
                                 normal: {
-                                    color: colorArr[len-i]
+                                    color: '#fdd961'
                                 },
                             }
-                        });
-                        legendData.push(item.SimStatus);
+                     },
+                    {name:'剩余量',
+                        value:this.pieDataSource.monthFlow-this.pieDataSource.usedFlow,
+                        itemStyle: {
+                            normal: {
+                                color: '#0db9c0'
+                            },
+                        }
                     }
+                    ];
+                let legendData=['已使用','剩余量'];
 
-                }
                 let option = {
                     tooltip: {
                         trigger: 'item',
@@ -51,7 +62,7 @@ export default {
                     },
                     series: [
                         {
-                            name: 'SIM卡数量',
+                            name: '流量数',
                             type: 'pie',
                             radius: '66%',
                             center: ['50%', '60%'],
@@ -66,13 +77,15 @@ export default {
                         }
                     ]
                 };
-                dataSourcePie.setOption(option);
+            CMflowUsagePie.setOption(option);
                 window.addEventListener('resize', function () {
-                    dataSourcePie.resize();
+                    CMflowUsagePie.resize();
                 });
         },
         async getGroupStatic(){
-            this.pieDataSource = await getSimCardGroupStatic();
+            let res = await getFlowUsagePie({Res_OperatorId:4});
+            this.pieDataSource = res[0];
+            console.log( this.pieDataSource)
             this.initEchats()
         },
     }

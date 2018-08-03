@@ -69,8 +69,8 @@
 </template>
 
 <script>
-  import {ResOperatorList,delResOperator,addResOperator,editResOperator} from './../../../api/getData'
-  import {clearObj} from './../../../libs/util';
+  import {ResOperatorList,delResOperator,addResOperator,editResOperator} from '../../../api/getData'
+  import {clearObj} from '../../../libs/util';
   import Res_OperatorForm from './Res_OperatorForm.vue'
   export default {
     name:'Res_Operator',

@@ -112,11 +112,11 @@
             title: '生效时间',
             key: 'ValidDate',
           },
-          {
-            align:'center',
-            title: '过期时间',
-            key: 'ExpValidDate',
-          },
+//          {
+//            align:'center',
+//            title: '过期时间',
+//            key: 'ExpValidDate',
+//          },
           {
             align:'center',
             title: '备注',

@@ -70,10 +70,23 @@ export const appRouter = [
      
       { path: 'simcard', title: 'SIM卡管理',access: 0, name: 'simcardTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simcard/simcardTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-manager/simcard/simcardTable.vue') },
       { path: 'simGroup', title: 'SIM卡分组',access: 0, name: 'simGroupTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simGroup/simGroupTable.vue'],resolve)),},
-      { path: 'chargeHisTable', title: '流量加油包记录',access: 0, name: 'chargeHisTable', icon: 'link', component: resolve => void(require(['@/views/sim-manager/chargeHis/chargeHisTable.vue'],resolve)),}, // 懒加载() => import('@/views/sim-manager/chargeHis/chargeHisTable.vue') },
+
 
     ]
   },
+    {
+        path: '/trade-manage',
+        icon: 'ios-infinite',
+        name: 'trade-manage',
+        access: 0,
+        title: '交易管理',
+        component: Main,
+        children: [
+            { path: 'chargeHisTable', title: '流量加油包记录',access: 0, name: 'chargeHisTable', icon: 'link', component: resolve => void(require(['@/views/sim-manager/chargeHis/chargeHisTable.vue'],resolve)),}, // 懒加载() => import('@/views/sim-manager/chargeHis/chargeHisTable.vue') },
+            { path: 'cus_orderTable', title: '订单管理',access: 0, name: 'cus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_order/cus_orderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/cus_order/cus_orderTable.vue') }
+            { path: 'Cus_DepositOrderTable', title: '充值订单',access: 0, name: 'Cus_DepositOrderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue') }
+        ]
+    },
   {
     path: '/customer-manage',
     icon: 'ios-infinite',
@@ -83,9 +96,9 @@ export const appRouter = [
     component: Main,
     children: [
       { path: 'basic_infoTable', title: '客户资料',access: 0, name: 'basic_infoTable', icon: 'link', component: resolve => void(require(['@/views/customer-manager/basic_info/basic_infoTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/basic_info/basic_infoTable.vue') },
-      { path: 'cus_orderTable', title: '订单管理',access: 0, name: 'cus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_order/cus_orderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/cus_order/cus_orderTable.vue') }
+
       { path: 'Cus_AccountDetailTable', title: '充值管理',access: 0, name: 'Cus_AccountDetailTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue') }
-        { path: 'Cus_DepositOrderTable', title: '充值订单',access: 0, name: 'Cus_DepositOrderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue') }
+
     ]
   },
     {
@@ -99,6 +112,7 @@ export const appRouter = [
             { path: 'functionTable', title: '功能管理',access: 0, name: 'functionTable', icon: 'link', component:resolve => void(require(['@/views/sys-manage/function/functionTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sys-manage/function/functionTable.vue') },
             { path: 'userTable', title: '用户管理', access: 0, name: 'userTable', icon: 'link', component: resolve => void(require(['@/views/sys-manage/user/userTable.vue'],resolve)),}, // 懒加载() => import('@/views/sys-manage/user/userTable.vue') },
             { path: 'roleTable', title: '角色管理', access: 0, name: 'roleTable', icon: 'link', component:  resolve => void(require(['@/views/sys-manage/role/roleTable.vue'],resolve)),}, // 懒加载() => import('@/views/sys-manage/role/roleTable.vue') }
+            { path: 'logTable', title: '操作日志', access: 0, name: 'logTable', icon: 'link', component:  resolve => void(require(['@/views/sys-manage/log/logTable.vue'],resolve)),},
         ]
     },
 
@@ -110,10 +124,20 @@ export const appRouter = [
     title: '资费管理',
     component: Main,
     children: [
-      { path: 'Res_OperatorTable', title: '运营商管理',access: 0, name: 'Res_OperatorTable', icon: 'link', component: resolve => void(require(['@/views/Operator/Res_Operator/Res_OperatorTable.vue'],resolve)),}, // 懒加载 () => import('@/views/Operator/Res_Operator/Res_OperatorTable.vue') },
-      { path: 'expanseTable', title: '新资费配置',access: 0, name: 'res-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/res-expanse/expanseTable.vue'],resolve)),}, 
+      { path: 'expanseTable', title: '资费列表',access: 0, name: 'res-expanseconfig', icon: 'link', component: resolve => void(require(['@/views/sim-config/res-expanse/expanseTable.vue'],resolve)),},
     ]
   },
+    {
+        path: '/resource-config',
+        icon: 'ios-infinite',
+        name: 'resource-config',
+        access: 0,
+        title: '资源管理',
+        component: Main,
+        children: [
+            { path: 'Res_OperatorTable', title: '运营商管理',access: 0, name: 'Res_OperatorTable', icon: 'link', component: resolve => void(require(['@/views/Operator/Res_Operator/Res_OperatorTable.vue'],resolve)),},
+        ]
+    },
 ];
 
 // 所有上面定义的路由都要写在下面的routers里

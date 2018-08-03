@@ -22,6 +22,9 @@
       <Form-item v-if="modalFormTitle==='添加客户'" label="密码" prop="Password"  :rules="{required: true, message: '必填,6-16位数字或字母或-_', trigger:'blur',type:'string',pattern: /^[a-zA-Z0-9_-]{6,16}$/}" >
         <Input v-model="modalForm.Password" type="password"></Input>
       </Form-item>
+      <Form-item label="所属企业" prop="Company" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.Company" ></Input>
+      </Form-item>
       <Form-item label="地址"  >
         <Input v-model="modalForm.Cus_Address" ></Input>
       </Form-item>
@@ -74,6 +77,7 @@ export default {
             Id:'',
             Cus_Name: '',
             LoginName: '',
+            Company:'',
             Cus_Address: '',
             Industry: '',
             Region: '',

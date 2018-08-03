@@ -118,6 +118,11 @@ export const delUser = data => fetch('/Sys_Users/Delete_Sys_Users', data, 'POST'
  */
 export const resetUserPwd = data => fetch('/Sys_Users/ResetPwd_Web_User', data, 'POST');
 
+/**
+ * 日志
+ */
+export const logPagedList = data => fetch('/Sys_Log/List_Sys_Logs', data, 'POST');
+
 
 //  region 客户管理
 
@@ -150,6 +155,7 @@ export const comfirmChargeOrder = data => fetch('/Cus_ReChargeOrder/Comfirm_Cus_
 //sim卡
 export const simcardListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard', data, 'POST');
 export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 'POST');
+export const getSimListExcel = data => fetch('/Sim_SimCard/ToExcel', data, 'POST');
 
 export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
@@ -338,5 +344,6 @@ export const addCusDepositOrder = data => fetch('/Cus_DepositOrder/List_Cus_Depo
 // region 首页
 
 export const getSimCardGroupStatic = data => fetch('/Home/SimCardGroupStatic', data, 'POST');
+export const getFlowUsagePie = data => fetch('/Home/FlowUsagePieStatic', data, 'POST');
 // endregion
 

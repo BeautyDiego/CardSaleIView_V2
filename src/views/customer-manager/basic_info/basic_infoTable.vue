@@ -87,16 +87,29 @@
   import {clearObj} from './../../../libs/util';
   import basic_infoForm from './basic_infoForm.vue'
   import discountForm from './discountForm.vue'
+  import expandRow from './basicExpendRow.vue';
   export default {
     name:'basic_Info',
     components:{
       basic_infoForm,
-      discountForm
+      discountForm,
+      expandRow
     },
     data() {
       return {
         tableLoading:false,
         tableColums: [
+          {
+              type: 'expand',
+              width: 50,
+              render: (h, params) => {
+                  return h(expandRow, {
+                      props: {
+                          row: params.row
+                      }
+                  })
+              }
+          },
           {
             align:'center',
             title: '客户名称',
@@ -108,9 +121,9 @@
             key: 'LoginName',
           },
           {
-            align:'center',
-            title: '客户地址',
-            key: 'Cus_Address',
+              align:'center',
+              title: '所属企业',
+              key: 'Company'
           },
           {
             align:'center',
@@ -123,24 +136,14 @@
             key: 'Region',
           },
           {
-            align:'center',
-            title: '负责人姓名',
-            key: 'ManagerName',
+              align:'center',
+              title: '创建人',
+              key: 'JoinBy',
           },
           {
-            align:'center',
-            title: '负责人电话',
-            key: 'ManagerMobile',
-          },
-          {
-            align:'center',
-            title: '负责人邮箱',
-            key: 'ManagerEmail',
-          },
-          {
-            align:'center',
-            title: '备注',
-            key: 'Remark',
+              align:'center',
+              title: '创建时间',
+              key: 'JoinDate',
           },
           {
             title: '操作',
@@ -199,6 +202,7 @@
           Cus_Name: '',
           LoginName: '',
           Cus_Address: '',
+          Company:'',
           Industry: '',
           Region: '',
           ManagerName: '',

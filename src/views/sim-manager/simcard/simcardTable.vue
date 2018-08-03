@@ -44,6 +44,7 @@
           </div>
         </Poptip>
         <Button @click="importSimCard" type="warning"   class="top-btn" size="large" icon="ios-cloud-upload-outline" >导入SIM卡</Button>
+        <Button @click="toExcel" type="error"   class="top-btn" size="large" icon="archive" >导出</Button>
 
       </Row>
     </div>
@@ -75,7 +76,7 @@
 </template>
 
 <script>
-  import {simcardListPage} from './../../../api/getData'
+  import {simcardListPage,getSimListExcel} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import simcardForm from './simcardForm.vue'
   import simcardRemark from './simcardRemark.vue'
@@ -99,11 +100,11 @@
             title: '组名',
             key: 'GroupName',
           },
-          {
-            align:'center',
-            title: '流量池编号',
-            key: 'PoolNum',
-          },
+//          {
+//            align:'center',
+//            title: '流量池编号',
+//            key: 'PoolNum',
+//          },
           {
             align:'center',
             title: 'SIM卡号',
@@ -137,6 +138,11 @@
               key: 'OperName',
           },
           {
+              align:'center',
+              title: '所属企业',
+              key: 'Company',
+          },
+          {
             align:'center',
             title: 'IMSI',
             key: 'IMSI'
@@ -147,15 +153,20 @@
             key: 'ICCUID',
           },
           {
+              align:'center',
+              title: '套餐名',
+              key: 'PkgName',
+          },
+          {
             align:'center',
             title: '生效时间',
             key: 'EffDate',
           },
-          {
-            align:'center',
-            title: '过期时间',
-            key: 'ExpDate',
-          },
+//          {
+//            align:'center',
+//            title: '过期时间',
+//            key: 'ExpDate',
+//          },
           {
             align:'center',
             title: '备注',
@@ -274,6 +285,16 @@
       },
       doChangeCardType(){
           this.getTableList();
+      },
+      async toExcel () {
+          const params = this.searchForm;
+          const res = await getSimListExcel(params);
+          if(res.success){
+              const url= baseUrl+"/excel/"+res.filename;
+              window.open(url);
+          }else{
+
+          }
       },
 
     }
