@@ -156,6 +156,7 @@ export const comfirmChargeOrder = data => fetch('/Cus_ReChargeOrder/Comfirm_Cus_
 export const simcardListPage = data => fetch('/Sim_SimCard/List_Sim_SimCard', data, 'POST');
 export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 'POST');
 export const getSimListExcel = data => fetch('/Sim_SimCard/ToExcel', data, 'POST');
+export const changeSimStatus = data => fetch('/Sim_SimCard/ChangeSimStatus', data, 'POST');
 
 export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
