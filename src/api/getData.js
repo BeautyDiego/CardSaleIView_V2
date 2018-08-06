@@ -346,5 +346,6 @@ export const addCusDepositOrder = data => fetch('/Cus_DepositOrder/List_Cus_Depo
 
 export const getSimCardGroupStatic = data => fetch('/Home/SimCardGroupStatic', data, 'POST');
 export const getFlowUsagePie = data => fetch('/Home/FlowUsagePieStatic', data, 'POST');
+export const getPoolUsageLine = data => fetch('/Home/PoolUsageLineStatic', data, 'POST');
 // endregion
 
