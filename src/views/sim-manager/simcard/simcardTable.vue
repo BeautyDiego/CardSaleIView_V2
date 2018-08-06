@@ -20,7 +20,7 @@
         <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
           <Button type="primary" class="top-btn" size="large"  icon="ios-search">搜  索</Button>
           <div style="text-align:center" slot="content">
-            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:300px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+            <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:300px;padding-top:20px;">
               <Row>
                 <Form-item label="SIM卡号"  >
                   <Input v-model="searchForm.SimNum" ></Input>
@@ -45,15 +45,17 @@
         </Poptip>
         <Button @click="importSimCard" type="warning"   class="top-btn" size="large" icon="ios-cloud-upload-outline" >导入SIM卡</Button>
         <Button @click="toExcel" type="error"   class="top-btn" size="large" icon="archive" >导出</Button>
+        <Button @click="changeStatus" type="error"   class="top-btn" size="large" icon="stats-bars" v-show="this.searchForm.CardTypeText=='单卡'" >状态变更</Button>
+        <Button @click="toExcel" type="error"   class="top-btn" size="large" icon="ios-more"   v-show="this.searchForm.CardTypeText=='单卡'" >续费</Button>
 
       </Row>
     </div>
     <!--table-->
     <Row>
-      <Table stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData"></Table>
+      <Table ref="SimTable" stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"></Table>
     </Row>
     <Row>
-      <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
+      <Page :total="total" :current="currentPage" page-size="20" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px" ></Page>
     </Row>
     <!--&lt;!&ndash;新增编辑&ndash;&gt;-->
     <simcardForm    :modalShow="formShow"
@@ -68,15 +70,29 @@
                     @listenModalForm="hideRemarkModel"
                     @refreshTableList="getTableList" ></simAddFlow>
     <!--&lt;!&ndash;新增编辑备注&ndash;&gt;-->
-  <simcardImport    :modalShow="importFormShow"
+    <simcardImport    :modalShow="importFormShow"
                    @listenModalForm="hideImportModel"
                    @refreshTableList="getTableList" ></simcardImport>
+ <div>
+   <Modal
+        v-model="statusModal"
+        title="状态变更"
+        @on-ok="ok"
+        @on-cancel="cancel">
+         <Select v-model="newstatus" style="width:200px">
+        <Option v-for="item in statusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
+    </Modal>
+</div>
   </div>
+
 
 </template>
 
+
+
 <script>
-  import {simcardListPage,getSimListExcel} from './../../../api/getData'
+  import {simcardListPage,getSimListExcel,changeSimStatus} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import simcardForm from './simcardForm.vue'
   import simcardRemark from './simcardRemark.vue'
@@ -96,15 +112,21 @@
         tableLoading:false,//table是否在加载中
         tableColums: [
           {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+          },
+          {
+                        type: 'index',
+                        width: 60,
+                        align: 'center'
+          },
+          {
             align:'center',
             title: '组名',
             key: 'GroupName',
           },
-//          {
-//            align:'center',
-//            title: '流量池编号',
-//            key: 'PoolNum',
-//          },
+
           {
             align:'center',
             title: 'SIM卡号',
@@ -155,23 +177,17 @@
           {
               align:'center',
               title: '套餐名',
+              width: 200,
               key: 'PkgName',
           },
           {
             align:'center',
             title: '生效时间',
+            width: 170,
             key: 'EffDate',
           },
-//          {
-//            align:'center',
-//            title: '过期时间',
-//            key: 'ExpDate',
-//          },
-          {
-            align:'center',
-            title: '备注',
-            key: 'Remark',
-          },
+
+
           {
             title: '操作',
             align: 'center',
@@ -221,12 +237,37 @@
           PoolNum: '',
           SimNum: '',
           CardType:0,//1是单卡，2是流量池成员
-          rows:10,
+          rows:20,
           page:1,
           CardTypeText:'单卡',
         },
         addFlowformShow:false,//修改备注窗体
         importFormShow:false, //导入窗体
+        selectedRows:[],
+        statusModal:false,
+         statusList: [
+                    {
+                        value: '1',
+                        label: '激活'
+                    },
+                    {
+                        value: '2',
+                        label: '停机'
+                    },
+                    {
+                        value: '3',
+                        label: '复机'
+                    },
+                    {
+                        value: '4',
+                        label: '数据关闭'
+                    },
+                    {
+                        value: '5',
+                        label: '数据开启'
+                    }
+                ],
+                newstatus: ''
       }
     },
     created(){
@@ -296,6 +337,23 @@
 
           }
       },
+      changeStatus(){
+        if(this.selectedRows.length==0){
+          this.$Message.error('请选择至少一张SIM卡。');
+        }else{
+          this.statusModal=true;
+        }
+      },
+      async ok () {
+         const res = await changeSimStatus({simcards:this.selectedRows,'newStat':this.newstatus});
+         console.log(res);
+      },
+      cancel () {
+         //this.$Message.info('Clicked cancel');
+      },
+      tableDataChange(selection){
+        this.selectedRows=selection;
+      }
 
     }
   }
