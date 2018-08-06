@@ -14,7 +14,7 @@
             <Col :md="24" :lg="18" :style="{marginBottom: '10px'}">
                 <Card>
                     <p slot="title" class="card-title">
-                        <Icon type="ios-pulse-strong"></Icon>
+                        <Icon type="pie-graph"></Icon>
                         SIM卡总数及SIM卡状态统计
                     </p>
                     <div class="data-source-row">
@@ -38,7 +38,7 @@
             <Col :md="24" :lg="16" :style="{marginBottom: '10px'}">
             <Card>
                 <p slot="title" class="card-title">
-                    <Icon type="ios-pulse-strong"></Icon>
+                    <Icon type="arrow-graph-up-right"></Icon>
                    流量使用情况
                 </p>
                 <div>
@@ -59,7 +59,7 @@
             <Col :md="24" :lg="8">
             <Card>
                 <p slot="title" class="card-title">
-                    <Icon type="ios-pulse-strong"></Icon>
+                    <Icon type="stats-bars"></Icon>
                     流量池使用情况
                 </p>
                 <div>
