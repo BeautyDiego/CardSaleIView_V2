@@ -102,6 +102,17 @@ export const appRouter = [
     ]
   },
     {
+        path: '/alarm',
+        icon: 'ios-infinite',
+        name: 'alarm',
+        access: 0,
+        title: '预警管理',
+        component: Main,
+        children: [
+            { path: 'taskTable', title: '任务列表',access: 0, name: 'taskTable', icon: 'link', component: resolve => void(require(['@/views/alarm/task/taskTable.vue'],resolve)),},
+        ]
+    },
+    {
         path: '/sys-manage',
         icon: 'ios-infinite',
         name: 'sys-manage',

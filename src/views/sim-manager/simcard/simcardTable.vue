@@ -44,18 +44,25 @@
           </div>
         </Poptip>
         <Button @click="importSimCard" type="warning"   class="top-btn" size="large" icon="ios-cloud-upload-outline" >导入SIM卡</Button>
-        <Button @click="toExcel" type="error"   class="top-btn" size="large" icon="archive" >导出</Button>
+        <Button @click="toExcel" type="ghost" style="background-color:#fff"  class="top-btn" size="large" icon="archive" >导出</Button>
         <Button @click="changeStatus" type="error"   class="top-btn" size="large" icon="stats-bars" v-show="this.searchForm.CardTypeText=='单卡'" >状态变更</Button>
-        <Button @click="toExcel" type="error"   class="top-btn" size="large" icon="ios-more"   v-show="this.searchForm.CardTypeText=='单卡'" >续费</Button>
+        <Button @click="toExcel" type="success"     class="top-btn" size="large" icon="heart"   v-show="this.searchForm.CardTypeText=='单卡'" >续费</Button>
 
       </Row>
     </div>
     <!--table-->
     <Row>
-      <Table ref="SimTable" stripe size="small" :loading="tableLoading" :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"></Table>
+      <Table ref="SimTable" stripe size="small" :height="tableHeight" :loading="tableLoading" :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"></Table>
     </Row>
     <Row>
-      <Page :total="total" :current="currentPage" page-size="20" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px" ></Page>
+      <Page :total="total"
+            :current="currentPage"
+            show-sizer
+            :page-size-opts="[20,50,100,200]"
+            :page-size="currentPageSize"
+            placement="top"
+            @on-page-size-change="changePageSize"
+            @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px" ></Page>
     </Row>
     <!--&lt;!&ndash;新增编辑&ndash;&gt;-->
     <simcardForm    :modalShow="formShow"
@@ -153,11 +160,33 @@
             align:'center',
             title: '卡状态',
             key: 'SimStatus',
+            render: (h, params) => {
+                const row = params.row;
+                const color = this.simStatusFormatter(row.SimStatus);
+                const text=row.SimStatus;
+                return h('Tag', {
+                    props: {
+                        type: 'border',
+                        color: color
+                    }
+                }, text);
+            }
           },
           {
               align:'center',
               title: '运营商',
               key: 'OperName',
+              render: (h, params) => {
+                  const row = params.row;
+                  const color = this.operNameFormatter(row.OperName);
+                  const text = row.OperName;
+                  return h('Tag', {
+                      props: {
+                          type: 'dot',
+                          color: color
+                      }
+                  }, text);
+              }
           },
           {
               align:'center',
@@ -213,8 +242,10 @@
         ],
         tableData: [
         ],
+        tableHeight:600,
         total:0,
         currentPage:1,
+        currentPageSize:20,
         formShow:false,
         formTitle:'添加用户',
         parentForm:{
@@ -241,6 +272,7 @@
           page:1,
           CardTypeText:'单卡',
         },
+
         addFlowformShow:false,//修改备注窗体
         importFormShow:false, //导入窗体
         selectedRows:[],
@@ -271,7 +303,11 @@
       }
     },
     created(){
-
+        this.tableHeight=window.innerHeight*0.6;
+        let vm=this;
+        window.addEventListener('resize', function () {
+            vm.tableHeight=window.innerHeight*0.6
+        });
     },
     mounted(){
       this.getTableList();
@@ -293,6 +329,7 @@
         if(this.searchForm.CardTypeText=='流量池成员')
           this.searchForm.CardType=2;
         this.searchForm.page = this.currentPage;
+        this.searchForm.rows = this.currentPageSize;
         const params = this.searchForm;
         const res = await simcardListPage(params);
         this.total = res.total;
@@ -301,6 +338,10 @@
       },
       changeCurrentPage(num){
         this.currentPage=num;
+        this.getTableList();
+      },
+      changePageSize(pageSize){
+        this.currentPageSize=pageSize;
         this.getTableList();
       },
       checkSIM(row){
@@ -353,7 +394,39 @@
       },
       tableDataChange(selection){
         this.selectedRows=selection;
-      }
+      },
+      simStatusFormatter(val){
+          let color='#909399';
+          if (val ==='正使用'){
+              color='#67c23a';
+          }
+          if (val ==='在用'){
+              color='#67c23a';
+          }
+          if(val ==='测试期'){
+              color = '##409eff';
+          }
+          if (val ==='停机'){
+              color = '#f56c6c';
+          }
+          return color
+      },
+      operNameFormatter(val){
+          let color='#909399';
+          if (val.search('电信')!==-1){
+              color='#19be6b';
+              return color;
+          }
+          if (val.search('移动')!==-1){
+              color='#0085d0';
+              return color;
+          }
+          if(val.search('联通')!==-1){
+              color = '#e60000';
+              return color;
+          }
+          return color
+      },
 
     }
   }

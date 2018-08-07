@@ -349,3 +349,9 @@ export const getFlowUsagePie = data => fetch('/Home/FlowUsagePieStatic', data, '
 export const getPoolUsageLine = data => fetch('/Home/PoolUsageLineStatic', data, 'POST');
 // endregion
 
+// region 首页
+
+export const getTaskList = data => fetch('/Task/List_Task', data, 'POST');
+export const addTask = data => fetch('/Task/Add_Task', data, 'POST');
+// endregion
+
