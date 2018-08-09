@@ -161,6 +161,11 @@ export const changeSimStatus = data => fetch('/Sim_SimCard/ChangeSimStatus', dat
 export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
 export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
 export const getOperatorCombo = data => fetch('/Res_Operator/Res_Operator_Combo', data, 'POST');
+export const addSimPkgOrder = data => fetch('/Sim_PkgOrder/Add_Sim_PkgOrder', data, 'POST');
+export const listSimPkgOrder = data => fetch('/Sim_PkgOrder/List_Sim_PkgOrder', data, 'POST');
+
+
+
 
 // SIM卡分组
 export const simGroupListPage = data => fetch('/Sim_Group/List_Sim_Group', data, 'POST');
@@ -225,78 +230,9 @@ export const editSimExpanseConfig = data => fetch('/Sim_FreeExpenseConfig/Edit_S
 export const delSimExpanseConfig = data => fetch('/Sim_FreeExpenseConfig/Delete_Sim_FreeExpenseConfig', data, 'POST');
 //   endregion
 
-/**
- * 获取商品发布list
- */
-export const goodsPagedList = data => fetch('/BackCashGoods/List_BackCashGoods', data, 'POST');
-/**
- * 添加商品
- */
-export const addGoods = data => fetch('/BackCashGoods/Add_BackCashGoods', data, 'POST');
-/**
- * 修改商品
- */
-export const editGoods = data => fetch('/BackCashGoods/Edit_BackCashGoods', data, 'POST');
-/**
- * 删除商品
- */
-export const delGoods = data => fetch('/BackCashGoods/Delete_BackCashGoods', data, 'POST');
-/**
- * 发布商品
- */
-export const releaseGoods = data => fetch('/BackCashGoods/Release_BackCashGoods', data, 'POST');
-/**
- * 获取活动list
- */
-export const newsPagedList = data => fetch('/News/List_News', data, 'POST');
-/**
- * 添加活动
- */
-export const addNews = data => fetch('/News/Add_News', data, 'POST');
-/**
- * 修改活动
- */
-export const editNews = data => fetch('/News/Edit_News', data, 'POST');
-/**
- * 删除活动
- */
-export const delNews = data => fetch('/News/Delete_News', data, 'POST');
-/**
- * 发布活动
- */
-export const releaseNews = data => fetch('/News/Release_News', data, 'POST');
-/**
- * 获取app首页轮播图list
- */
-export const appHomeImgList = data => fetch('/App_HomeImage/List_App_HomeImage', data, 'POST');
-/**
- * 添加轮播图
- */
-export const addAppHomeImg = data => fetch('/App_HomeImage/Add_App_HomeImage', data, 'POST');
-/**
- * 修改轮播图
- */
-export const editAppHomeImg = data => fetch('/App_HomeImage/Edit_App_HomeImage', data, 'POST');
-/**
- * 删除轮播图
- */
-export const delAppHomeImg = data => fetch('/App_HomeImage/Delete_App_HomeImage', data, 'POST');
-/**
- * 获取app用户分页list
- */
-export const appUserPagedList = data => fetch('/App_User/List_App_User', data, 'POST');
-/**
- * 获取app用户分页list
- */
-export const appUserAccountPagedList = data => fetch('/App_User/List_App_User_AccountDetail', data, 'POST');
-/**
- * 获取订单分页list
- */
-export const orderPagedList = data => fetch('/BackCashOrder/List_BackCashOrder', data, 'POST');
-/**
- * 报名
- */
-export const enrollDrivingSchool = data => fetch('/BackCashOrder/EnrollDrivingSchool', data, 'POST');
+
+
+
 /**
  * 获取运营商列表
  */

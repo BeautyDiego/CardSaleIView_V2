@@ -12,10 +12,23 @@
   <div class="simcardTable">
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
-            <RadioGroup v-model="searchForm.CardTypeText" type="button" size="large"  @on-change='doChangeCardType' >
+           <!-- <RadioGroup v-model="searchForm.CardTypeText" type="button" size="large"  @on-change='doChangeCardType' >
               <Radio label="单卡"></Radio>
               <Radio label="流量池成员"></Radio>
-            </RadioGroup>
+            </RadioGroup>-->
+            卡类型：
+            <Select v-model="searchForm.CardType" style="width:100px" @on-change='doChangeCardType'>
+              <Option v-for="item in CardTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+            运营商：
+            <Select v-model="searchForm.OperType" style="width:150px" @on-change='doChangeOperType'>
+              <Option v-for="item in OperTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+            <!-- <RadioGroup v-model="searchForm.OperType" type="button" size="large"  @on-change='doChangeOperType' >
+              <Radio label="中国电信"></Radio>
+              <Radio label="中国移动"></Radio>
+              <Radio label="中国联通"></Radio>
+            </RadioGroup>-->
           <!--<Button class="top-right-btn" size="large" icon="plus" @click="addUser">添加</Button>-->
         <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
           <Button type="primary" class="top-btn" size="large"  icon="ios-search">搜  索</Button>
@@ -45,14 +58,14 @@
         </Poptip>
         <Button @click="importSimCard" type="warning"   class="top-btn" size="large" icon="ios-cloud-upload-outline" >导入SIM卡</Button>
         <Button @click="toExcel" type="ghost" style="background-color:#fff"  class="top-btn" size="large" icon="archive" >导出</Button>
-        <Button @click="changeStatus" type="error"   class="top-btn" size="large" icon="stats-bars" v-show="this.searchForm.CardTypeText=='单卡'" >状态变更</Button>
-        <Button @click="toExcel" type="success"     class="top-btn" size="large" icon="heart"   v-show="this.searchForm.CardTypeText=='单卡'" >续费</Button>
+        <Button @click="changeStatus" type="error"   class="top-btn" size="large" icon="stats-bars" v-show="this.searchForm.CardType=='1'" >状态变更</Button>
+        <Button @click="cpay" type="success"     class="top-btn" size="large" icon="heart"   v-show="this.searchForm.CardType=='1'" >套餐办理</Button>
 
       </Row>
     </div>
     <!--table-->
     <Row>
-      <Table ref="SimTable" stripe size="small" :height="tableHeight" :loading="tableLoading" :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"></Table>
+      <Table ref="SimTable" stripe size="small" :height="tableHeight" :loading="tableLoading" :columns="tableColums" :data="tableData"  @on-selection-change="tableDataChange"></Table>
     </Row>
     <Row>
       <Page :total="total"
@@ -77,9 +90,8 @@
                     @listenModalForm="hideRemarkModel"
                     @refreshTableList="getTableList" ></simAddFlow>
     <!--&lt;!&ndash;新增编辑备注&ndash;&gt;-->
-    <simcardImport    :modalShow="importFormShow"
-                   @listenModalForm="hideImportModel"
-                   @refreshTableList="getTableList" ></simcardImport>
+    <simcardImport :modalShow="importFormShow" @listenModalForm="hideImportModel" @refreshTableList="getTableList" ></simcardImport>
+    <simBuyPkg :modalShow="BuyPkgModalShow" :parentForm="pkgParentData" @listenModalForm="hidePkgModel" @refreshTableList="getTableList"> </simBuyPkg>
  <div>
    <Modal
         v-model="statusModal"
@@ -89,22 +101,21 @@
          <Select v-model="newstatus" style="width:200px">
         <Option v-for="item in statusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
-    </Modal>
+</Modal>
 </div>
   </div>
 
 
 </template>
 
-
-
 <script>
-  import {simcardListPage,getSimListExcel,changeSimStatus} from './../../../api/getData'
+  import {simcardListPage,getSimListExcel,changeSimStatus,Res_ExpensesPagedList} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import simcardForm from './simcardForm.vue'
   import simcardRemark from './simcardRemark.vue'
   import simAddFlow from './simAddFlow.vue'
   import simcardImport from './simcardImport.vue'
+  import simBuyPkg from './simBuyPkg.vue'
   import {baseUrl} from './../../../api/env'
   export default {
     name:'simcardTable',
@@ -113,6 +124,7 @@
       simcardRemark,
       simAddFlow,
       simcardImport,
+      simBuyPkg
     },
     data() {
       return {
@@ -263,21 +275,26 @@
           Agent_GroupId:'',
           Customer_GroupId:'',
         },
+        pkgParentData:{
+          operType:'1',
+          selectSims:[]
+        },
         searchForm:{
           SimStatus:'',
           PoolNum: '',
           SimNum: '',
-          CardType:0,//1是单卡，2是流量池成员
+          CardType:'1',//1是单卡，2是流量池成员
           rows:20,
           page:1,
-          CardTypeText:'单卡',
+          OperType:'1'
         },
 
         addFlowformShow:false,//修改备注窗体
         importFormShow:false, //导入窗体
+        BuyPkgModalShow:false,//续费窗体
         selectedRows:[],
         statusModal:false,
-         statusList: [
+        statusList: [
                     {
                         value: '1',
                         label: '激活'
@@ -299,7 +316,31 @@
                         label: '数据开启'
                     }
                 ],
-                newstatus: ''
+                newstatus: '',
+        CardTypeList: [
+                    {
+                        value: '1',
+                        label: '单卡'
+                    },
+                    {
+                        value: '2',
+                        label: '流量池'
+                    }
+                ],
+         OperTypeList: [
+                    {
+                        value: '1',
+                        label: '中国电信'
+                    },
+                    {
+                        value: '2',
+                        label: '中国移动'
+                    },
+                    {
+                        value: '3',
+                        label: '中国联通'
+                    },
+                ],
       }
     },
     created(){
@@ -324,10 +365,6 @@
       },
       async getTableList(){
         this.tableLoading=true;
-        if(this.searchForm.CardTypeText=='单卡')
-          this.searchForm.CardType=1;
-        if(this.searchForm.CardTypeText=='流量池成员')
-          this.searchForm.CardType=2;
         this.searchForm.page = this.currentPage;
         this.searchForm.rows = this.currentPageSize;
         const params = this.searchForm;
@@ -335,6 +372,14 @@
         this.total = res.total;
         this.tableData = res.rows;
         this.tableLoading=false;
+      },
+      async getPkgList(){
+
+        const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.searchForm.OperType});
+        //this.total = res.total;
+        this.pkgData = res.rows;
+        console.log('pkgData:'+this.pkgData);
+        //this.tableLoading=false;
       },
       changeCurrentPage(num){
         this.currentPage=num;
@@ -365,8 +410,16 @@
       hideImportModel(){
         this.importFormShow=false;
       },
+      hidePkgModel(){
+        this.BuyPkgModalShow=false;
+      },
       doChangeCardType(){
+          this.currentPage=1;
           this.getTableList();
+      },
+      doChangeOperType(){
+        this.currentPage=1;
+        this.getTableList();
       },
       async toExcel () {
           const params = this.searchForm;
@@ -385,6 +438,14 @@
           this.statusModal=true;
         }
       },
+       cpay(){
+        if(this.selectedRows.length==0){
+          this.$Message.error('请选择至少一张SIM卡。');
+        }else{
+          this.pkgParentData.operType=this.searchForm.OperType;
+          this.BuyPkgModalShow=true;
+        }
+      },
       async ok () {
          const res = await changeSimStatus({simcards:this.selectedRows,'newStat':this.newstatus});
          console.log(res);
@@ -394,7 +455,9 @@
       },
       tableDataChange(selection){
         this.selectedRows=selection;
+        this.pkgParentData.selectSims=selection;
       },
+
       simStatusFormatter(val){
           let color='#909399';
           if (val ==='正使用'){
