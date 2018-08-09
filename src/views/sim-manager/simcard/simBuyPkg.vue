@@ -25,6 +25,12 @@
       </Row>
     </div>
     <div v-show="this.Current_Step==1">
+       <Row style="font-size:14px;font-weight: bold">
+                  套餐名称：{{this.modalForm.NewPkgName}}
+      </Row>
+      <Row style="font-size:14px;font-weight: bold">
+                  SIM卡数量：{{this.modalForm.SimCount}}
+      </Row>
      <Row style="font-size:14px;font-weight: bold">
                   单价：{{this.modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp
       </Row>
@@ -37,7 +43,7 @@
     </div>
     <div slot="footer">
       <Button type="ghost"  @click="cancel" >取消</Button>
-      <Button type="error"  @click="nextClick" >下一步</Button>
+      <Button type="error" v-show="this,Current_Step==0"  @click="nextClick" >下一步</Button>
       <Button type="primary"  :loading="modalForm_loading" v-show="this,Current_Step==1" @click="SubmitPkgOrder">提交审核</Button>
     </div>
   </Modal>
@@ -46,7 +52,7 @@
 </template>
 
 <script>
-import {editSimcard,Res_ExpensesPagedList,getCusRestCash} from './../../../api/getData'
+import {addSimPkgOrder,Res_ExpensesPagedList,getCusRestCash} from './../../../api/getData'
 export default {
     props:{
       parentForm: {
@@ -66,7 +72,7 @@ export default {
       },
       modalFormTitle:{
         type: String,
-        default: '查看详情',
+        default: '套餐办理',
       },
     },
     data() {
@@ -132,6 +138,7 @@ export default {
           page:1,
           OperType:'1'
         },
+        isSelected:false,
         }
     },
 
@@ -140,7 +147,8 @@ export default {
         this.IsModalShow = curVal;
         if(curVal){
            this.modalForm = Object.assign(this.parentForm);       
-           console.log( this.modalForm)
+           this.currentStep=0;
+           this.isSelected=false;
            this.getPkgList();
            this.GetOrderRestCash();
         }
@@ -153,35 +161,20 @@ export default {
         this.getPkgList();
     },
     methods: {
-      async editSimCardRemark(){
-        this.modalForm_loading=true;
-        try{
-          let result= await editSimcard(this.modalForm);
-          if (result.success) {
-            this.$Message.success('提交成功!');
-            this.$emit('listenModalForm');
-            this.$emit('refreshTableList');
-          }else{
-            this.$Message.error(result.msg);
-          }
-        }catch(err){
-          console.log(err);
-          this.$Message.error('服务器异常，稍后再试');
-        }
-        this.modalForm_loading=false;
-      },
       cancel() {
           this.$emit('listenModalForm');
       },
       pkgDataChange(currentRow,oldCurrentRow){
-        this.modalForm.PkgCode=currentRow.ExpCode;
-        this.modalForm.PkgName=currentRow.ExpName;
+        this.isSelected=true;
+        this.modalForm.NewPkgCode=currentRow.ExpCode;
+        this.modalForm.NewPkgName=currentRow.ExpName;
         this.modalForm.SinglePrice=currentRow.AgentPrice;
         this.modalForm.TotalPrice = currentRow.AgentPrice*this.parentForm.selectSims.length;
-        console.log(this.modalForm)
+        this.modalForm.SimCount = this.parentForm.selectSims.length;
+
       },
       async getPkgList(){
-        const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType});
+        const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType,'cardtype':1});
         this.pkgData = res.rows;
       },
       async GetOrderRestCash(){
@@ -192,15 +185,21 @@ export default {
       },
       
       async SubmitPkgOrder(){
-          this.modalForm_loading=true;
-          if (parseFloat(this.RestCash)<parseFloat(this.OrderPrice.toFixed(2))){
+        if(!this.isSelected){
+          this.$Message.error('请选择一种资费。');
+          return;
+        }
+         
+
+          console.log(this.modalForm)
+          if (parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2))){
               this.$Notice.error({
                   title: '支付失败',
                   desc: '余额不足，请到充值管理页面充值余额 '
               });
-
           }else{
-              let res = await payOrderbyRestCash(this.modalForm);
+             this.modalForm_loading=true;
+              let res = await addSimPkgOrder(this.modalForm);
               if (res.success){
                   this.$Notice.success({
                       title: '支付成功',
@@ -211,16 +210,16 @@ export default {
               {
                   this.$Notice.error({
                       title: '支付失败',
-                      desc: '余额支付失败，请联系管理员或更换支付方式。 '
+                      desc: '余额支付失败，请联系管理员。'
                   });
               }
+              this.IsModalShow=false;
               this.modalForm_loading=false;
           }
       },
       nextClick(){
         this.Current_Step +=1;
       },
-
     }
 }
 
