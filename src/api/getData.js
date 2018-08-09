@@ -293,7 +293,8 @@ export const simcardTransferPaged = data => fetch('/Task/List_Sim_SimCard_Transf
 // endregion
 
 // region sim卡套餐订购订单
-
 export const getPkgOrderList = data => fetch('/Sim_PkgOrder/List_Sim_PkgOrder', data, 'POST');
+export const cancelPkgOrder = data => fetch('/Sim_PkgOrder/Cancel_Sim_PkgOrder', data, 'POST');
+export const examinePkgOrder = data => fetch('/Sim_PkgOrder/Examine_Sim_PkgOrder', data, 'POST');
 // endregion
 

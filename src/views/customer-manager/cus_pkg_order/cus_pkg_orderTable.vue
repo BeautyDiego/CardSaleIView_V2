@@ -48,18 +48,18 @@
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
     </Row>
     <!--是否删除框-->
-    <Modal v-model="delModal" width="360">
-      <p slot="header" style="color:#f60;text-align:center">
-        <Icon type="information-circled"></Icon>
-        <span>删除确认</span>
-      </p>
-      <div style="text-align:center">
-        <p>是否继续删除？</p>
-      </div>
-      <div slot="footer">
-        <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmDel">删除</Button>
-      </div>
-    </Modal>
+    <!--<Modal v-model="delModal" width="360">-->
+      <!--<p slot="header" style="color:#f60;text-align:center">-->
+        <!--<Icon type="information-circled"></Icon>-->
+        <!--<span>删除确认</span>-->
+      <!--</p>-->
+      <!--<div style="text-align:center">-->
+        <!--<p>是否继续删除？</p>-->
+      <!--</div>-->
+      <!--<div slot="footer">-->
+        <!--<Button type="error" size="large" long :loading="btnLoading"  @click="comfirmDel">删除</Button>-->
+      <!--</div>-->
+    <!--</Modal>-->
     <!--是否取消订单-->
     <Modal v-model="cancelModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -73,13 +73,26 @@
         <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmCancel">确认取消订单</Button>
       </div>
     </Modal>
+    <!--是否删除框-->
+    <Modal v-model="examineModal" width="360">
+      <p slot="header" style="color:#f60;text-align:center">
+        <Icon type="information-circled"></Icon>
+        <span>审核确认</span>
+      </p>
+      <div style="text-align:center">
+        <p>是否继续审核通过订单？</p>
+      </div>
+      <div slot="footer">
+        <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmExamine">审核通过</Button>
+      </div>
+    </Modal>
   </div>
 
 </template>
 
 <script>
   import Cookies from 'js-cookie'
-  import {cusOrderList,delCusOrder,cancelCusOrder} from './../../../api/getData'
+  import {getPkgOrderList,cancelPkgOrder,examinePkgOrder} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   export default {
     name:'cus_pkg_order',
@@ -109,42 +122,43 @@
           {
             align:'center',
             title: '订单号',
-            key: 'OrderNum',
+            key: 'PkgOrderNum',
           },
            {
             align:'center',
             title: '运营商',
-            key: 'OperTypeText',
+            key: 'OperType',
+            render: (h, params) => {
+                let operName='';
+                if (params.row.OperType==1){
+                    operName='中国电信'
+                }else if(params.row.OperType==2){
+                    operName='中国移动'
+                }else if(params.row.OperType==3){
+                    operName='中国联通'
+                }
+                return operName;
+            },
           },
           {
             align:'center',
-            title: '资费类型',
-            key: 'Res_ExpensesName',
+            title: 'sim卡数量',
+            key: 'SimCount',
           },
            {
             align:'center',
-            title: '购买种类',
-            key: 'SingleOrPoolText',
+            title: '原套餐名',
+            key: 'OldPkgName',
           },
           {
             align:'center',
-            title: 'SIM卡类型',
-            key: 'Sim_TypeText',
+            title: '新套餐名',
+            key: 'NewPkgName',
           },
           {
             align:'center',
             title: 'SIM卡数量(个)',
             key: 'Sim_Count',
-          },
-          {
-            align:'center',
-            title: '流量',
-            key: 'FlowCount',render: (h, params) => {
-               if(params.row.FlowCount/1024<1024)
-                 return params.row.FlowCount/1024+'MB';
-               else
-                return params.row.FlowCount/(1024*1024)+'GB';
-               },
           },
           {
             align:'center',
@@ -154,17 +168,39 @@
           {
             align:'center',
             title: '下单时间',
-            key: 'OrderTime',
+            key: 'JoinDate',
           },
           {
             align:'center',
             title: '订单金额(元)',
-            key: 'OrderPrice',render: (h, params) => { return params.row.OrderPrice.toFixed(2);},
+            key: 'TotalPrice',render: (h, params) => { return '￥'+ params.row.TotalPrice.toFixed(2);},
           },
           {
             align:'center',
             title: '订单状态',
-            key: 'OrderStatusTxt',
+            key: 'OrderStatus',
+              render: (h, params) => {
+                  let statusTxt='';
+                  if (params.row.OrderStatus==0){
+                      statusTxt='已取消'
+                  }else if(params.row.OrderStatus==1){
+                      statusTxt='待付款'
+                  }else if(params.row.OrderStatus==2){
+                      statusTxt='已付款'
+                  }else if(params.row.OrderStatus==3){
+                      statusTxt='已审核'
+                  }else if(params.row.OrderStatus==4){
+                      statusTxt='已发货'
+                  }else if(params.row.OrderStatus==5){
+                      statusTxt='已完成'
+                  }
+                  return statusTxt;
+              },
+          },
+          {
+              align:'center',
+              title: '运营商单号',
+              key: 'ResultOrderNum',
           },
           {
             title: '操作',
@@ -172,20 +208,6 @@
             render: (h, params) => {
               let actions=[];
               if (params.row.OrderStatus===1&&!this.IsAdmin){ //待付款状态
-                actions.push( h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.payOrder(params.row)
-                    }
-                  }
-                }, '支付'));
 
                 actions.push( h('Button', {
                   props: {
@@ -214,28 +236,12 @@
                   },
                   on: {
                     click: () => {
-                      this.examineOrder(params.row)
+                      this.examineOrder(params.row.Id)
                     }
                   }
                 }, '审核'));
               }
 
-              if (params.row.OrderStatus===0&&!this.IsAdmin){ //已取消状态
-                actions.push(  h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.delOrder(params.row.Id)
-                    }
-                  }
-                }, '删除'));
-              }
               return h('div', actions);
             }
           }
@@ -244,53 +250,13 @@
         ],
         total:0,
         currentPage:1,
-        formShow:false,
-        formTitle:'添加订单',
-        resetForm:{
-          Id:'',
-          Sim_Count: 20,
-          FlowCount: 10,
-          SinglePrice: 0,
-          ChargePrice: 0,
-          OrderPrice:0,
-          ReceiveName:'',
-          ReceiveMobile:'',
-          ReceiveAddress:'',
-          OrderStatus:'',
-          OrderNum:'',
-          RemittanceUrl:'',
-          RemittancePhone:'',
-          Sim_Type:1,
-          ValidMonth:1,
-          UseCase:'',
-          SimGroupId:'',
-        },
         parentForm:{
-          Id:'',
-          Sim_Count: 20,
-          SingleOrPoolText:'',
-          Res_ExpensesName:'',
-          FlowCount: 10,
-          SinglePrice: 0,
-          ChargePrice: 0,
-          OrderPrice:0,
-          ReceiveName:'',
-          ReceiveMobile:'',
-          ReceiveAddress:'',
-          OrderStatus:'',
-          OrderNum:'',
-          RemittanceUrl:'',
-          RemittancePhone:'',
-          Sim_Type:1,
-          ValidMonth:1,
-          UseCase:'',
-          SimGroupId:'',
+
         },
-        delModal:false,
-        delId:'', //删除的Id
         cancelModal:false,
         cancelId:'',//取消Id
-        examineShow:false,//审核窗口
+        examineModal:false,
+        examineId:'', //审核Id
         btnLoading:false,
         searchForm:{
           status:'-1',
@@ -349,7 +315,7 @@
         this.tableLoading=true;
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
-        const res = await cusOrderList(params);
+        const res = await getPkgOrderList(params);
         this.total = res.total;
         this.tableData = res.rows;
         this.tableLoading=false;
@@ -359,54 +325,39 @@
         this.currentPage=num;
         this.getTableList();
       },
-      addOrder() {
-        this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
-        this.formTitle='添加订单';
-        this.formShow=true;
-      },
-      payOrder(row){
-        this.parentForm=JSON.parse(JSON.stringify(row));
-        this.parentForm.FlowCount=this.parentForm.FlowCount/(1024*1024)
-        this.formTitle='支付订单';
-        this.formShow=true;
-      },
       cancelOrder(Id){
         this.cancelId=Id;
         this.cancelModal=true;
       },
-      async examineOrder(row){
-        this.parentForm=JSON.parse(JSON.stringify(row));
-        this.examineShow=true;
-      },
-      delOrder(Id){
-        this.delId=Id;
-        this.delModal=true;
+      examineOrder(Id){
+        this.examineId=Id;
+        this.examineModal=true;
       },
       async comfirmCancel(){
-        this.btnLoading=true;
-        try{
-          const res= await cancelCusOrder({Id:this.cancelId});
-          if (res.success) {
-            this.$Message.success('取消订单成功!');
-            this.getTableList();
-            this.cancelModal=false;
-          }else{
-            this.$Message.error(res.msg);
+          this.btnLoading=true;
+          try{
+              const res= await cancelPkgOrder({Id:this.cancelId});
+              if (res.success) {
+                  this.$Message.success('取消订单成功!');
+                  this.getTableList();
+                  this.cancelModal=false;
+              }else{
+                  this.$Message.error(res.msg);
+              }
+          }catch(err){
+              console.log(err);
+              this.$Message.error('服务器异常，稍后再试');
           }
-        }catch(err){
-          console.log(err);
-          this.$Message.error('服务器异常，稍后再试');
-        }
-        this.btnLoading=false;
+          this.btnLoading=false;
       },
-      async comfirmDel(){
+      async comfirmExamine(){
         this.btnLoading=true;
         try{
-          const res= await delCusOrder({Id:this.delId});
+          const res= await examinePkgOrder({Id:this.examineId});
           if (res.success) {
-            this.$Message.success('删除成功!');
+            this.$Message.success('审核通过!');
             this.getTableList();
-            this.delModal=false;
+            this.examineModal=false;
           }else{
             this.$Message.error(res.msg);
           }
