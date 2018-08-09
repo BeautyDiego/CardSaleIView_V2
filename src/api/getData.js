@@ -349,9 +349,15 @@ export const getFlowUsagePie = data => fetch('/Home/FlowUsagePieStatic', data, '
 export const getPoolUsageLine = data => fetch('/Home/PoolUsageLineStatic', data, 'POST');
 // endregion
 
-// region 首页
+// region 任务列表
 
 export const getTaskList = data => fetch('/Task/List_Task', data, 'POST');
 export const addTask = data => fetch('/Task/Add_Task', data, 'POST');
+export const simcardTransferPaged = data => fetch('/Task/List_Sim_SimCard_Transfer', data, 'POST');
+// endregion
+
+// region sim卡套餐订购订单
+
+export const getPkgOrderList = data => fetch('/Sim_PkgOrder/List_Sim_PkgOrder', data, 'POST');
 // endregion
 

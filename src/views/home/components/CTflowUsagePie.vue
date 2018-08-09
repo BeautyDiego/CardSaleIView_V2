@@ -132,9 +132,9 @@ export default {
                         }
                     ]
                 };
-                CMflowUsagePie.setOption(option);
+                 CTflowUsagePie.setOption(option);
                 window.addEventListener('resize', function () {
-                    CMflowUsagePie.resize();
+                    CTflowUsagePie.resize();
                 });
         },
         async getGroupStatic(){

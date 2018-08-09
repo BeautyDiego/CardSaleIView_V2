@@ -85,6 +85,7 @@ export const appRouter = [
             { path: 'chargeHisTable', title: '流量加油包记录',access: 0, name: 'chargeHisTable', icon: 'link', component: resolve => void(require(['@/views/sim-manager/chargeHis/chargeHisTable.vue'],resolve)),}, // 懒加载() => import('@/views/sim-manager/chargeHis/chargeHisTable.vue') },
             { path: 'cus_orderTable', title: '订单管理',access: 0, name: 'cus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_order/cus_orderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/cus_order/cus_orderTable.vue') }
             { path: 'Cus_DepositOrderTable', title: '充值订单',access: 0, name: 'Cus_DepositOrderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue') }
+            { path: 'cus_pkg_orderTable', title: 'sim卡套餐订单',access: 0, name: 'cus_pkg_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue'],resolve)),},
         ]
     },
   {
