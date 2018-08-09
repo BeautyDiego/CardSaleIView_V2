@@ -13,38 +13,50 @@
   <Modal v-model="IsModalShow":title="modalFormTitle" :mask-closable="false" @on-cancel="cancel" width="1000">
         <Row>
         <div style="padding-left:105px;padding-bottom:20px;">
-          <Steps :current="this.Current_Step">
+          <Steps :current="Current_Step">
             <Step title="选购" content="选择套餐"></Step>
             <Step title="提交" content="提交后台审核"></Step>
           </Steps>
         </div>
       </Row>
-    <div v-show="this.Current_Step==0">
+    <div v-show="Current_Step==0">
       <Row style="font-size:14px;font-weight: bold">
        <Table highlight-row  ref="PkgTable" stripe size="small"   :columns="pkgColums" :data="pkgData" @on-current-change="pkgDataChange"></Table>
       </Row>
+
+      <Row style="color:red;font-size:14px;font-weight: bold" v-show="modalForm.operType=='1'">
+                  电信卡只能办理流量加油包
+      </Row>
+
+     <Row style="font-size:14px;font-weight: bold">
+         <RadioGroup v-model="effectNow" @on-change="effectChange">
+        <Radio label="立即生效" ></Radio>
+        <Radio label="下月生效" ></Radio>
+    </RadioGroup>
+      </Row>
     </div>
-    <div v-show="this.Current_Step==1">
+    <div v-show="Current_Step==1">
        <Row style="font-size:14px;font-weight: bold">
-                  套餐名称：{{this.modalForm.NewPkgName}}
+                  套餐名称：{{modalForm.NewPkgName}}
       </Row>
       <Row style="font-size:14px;font-weight: bold">
-                  SIM卡数量：{{this.modalForm.SimCount}}
+                  SIM卡数量：{{modalForm.SimCount}}
       </Row>
      <Row style="font-size:14px;font-weight: bold">
-                  单价：{{this.modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp
+                  单价：{{modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp
       </Row>
       <Row style="font-size:14px;font-weight: bold">
-                  总金额：{{this.modalForm.TotalPrice}} 元&nbsp&nbsp&nbsp
+                  总金额：{{modalForm.TotalPrice}} 元&nbsp&nbsp&nbsp
       </Row>
       <Row style="font-size:14px;font-weight: bold">
                   当前余额：{{RestCash}} 元&nbsp&nbsp&nbsp
       </Row>
+      
     </div>
     <div slot="footer">
       <Button type="ghost"  @click="cancel" >取消</Button>
-      <Button type="error" v-show="this,Current_Step==0"  @click="nextClick" >下一步</Button>
-      <Button type="primary"  :loading="modalForm_loading" v-show="this,Current_Step==1" @click="SubmitPkgOrder">提交审核</Button>
+      <Button type="error" v-show="Current_Step==0"  @click="nextClick" >下一步</Button>
+      <Button type="primary"  :loading="modalForm_loading" v-show="Current_Step==1" @click="SubmitPkgOrder">提交审核</Button>
     </div>
   </Modal>
 </div>
@@ -61,7 +73,6 @@ export default {
           return {
              operType:'1',
              selectSims:[],
-
              
           }
         }
@@ -139,7 +150,9 @@ export default {
           OperType:'1'
         },
         isSelected:false,
+        effectNow:"立即生效",
         }
+
     },
 
     watch:{
@@ -147,7 +160,8 @@ export default {
         this.IsModalShow = curVal;
         if(curVal){
            this.modalForm = Object.assign(this.parentForm);       
-           this.currentStep=0;
+          
+           this.Current_Step=0;
            this.isSelected=false;
            this.getPkgList();
            this.GetOrderRestCash();
@@ -173,6 +187,9 @@ export default {
         this.modalForm.SimCount = this.parentForm.selectSims.length;
 
       },
+      effectChange(){
+        console.log( this.effectNow)
+      },
       async getPkgList(){
         const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType,'cardtype':1});
         this.pkgData = res.rows;
@@ -185,13 +202,15 @@ export default {
       },
       
       async SubmitPkgOrder(){
-        if(!this.isSelected){
-          this.$Message.error('请选择一种资费。');
-          return;
-        }
-         
 
-          console.log(this.modalForm)
+        if(this.effectNow=="立即生效")
+          this.modalForm.effectNow = 1;
+        else
+          this.modalForm.effectNow = 0;
+        let TotalSimNum=this.parentForm.selectSims.map((v, i, a) => {
+            return v.SimNum
+        });
+        this.modalForm.TotalSimNum=TotalSimNum.join(',');
           if (parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2))){
               this.$Notice.error({
                   title: '支付失败',
@@ -205,7 +224,7 @@ export default {
                       title: '支付成功',
                       desc: '余额支付成功，请等待后台审核订单。 '
                   });
-                  this.currentStep=3;
+                    this.$emit('listenModalForm');
               }else
               {
                   this.$Notice.error({
@@ -218,7 +237,10 @@ export default {
           }
       },
       nextClick(){
-        this.Current_Step +=1;
+        if(this.isSelected)
+          this.Current_Step +=1;
+        else
+          this.$Message.error('请选择一种资费。');
       },
     }
 }
