@@ -37,11 +37,12 @@
 
      <Row style="font-size:14px;font-weight: bold">
          <RadioGroup v-model="effectNow" @on-change="effectChange">
-        <Radio label="立即生效" ></Radio>
+        <Radio label="立即生效" disabled></Radio>
+        <Radio label="下月生效" disabled></Radio>
     </RadioGroup>
       </Row>
-       <Row style="font-size:14px;font-weight: bold"  v-show="FlowTypeModel=='月包'">
-         SIM卡有效期<InputNumber :max="120" :min="1" v-model="selectedMonth" ></InputNumber>个月
+       <Row style="font-size:14px;font-weight: bold" >
+         SIM卡有效期<InputNumber :max="120" :min="1" v-model="selectedMonth" :disabled="FlowTypeModel=='长周期包'||FlowTypeModel=='加油包'"></InputNumber>个月
        </Row>
     </div>
     <div v-show="Current_Step==1">
@@ -162,7 +163,7 @@ export default {
           OperType:'1'
         },
         isSelected:false,
-        effectNow:"立即生效",
+        effectNow:"下月生效",
         FlowTypeModel:'月包',
         selectedMonth:1,
         }
@@ -207,13 +208,21 @@ export default {
         this.modalForm.SinglePrice=currentRow.AgentPrice;
         this.modalForm.TotalPrice = currentRow.AgentPrice*this.parentForm.selectSims.length;
         this.modalForm.SimCount = this.parentForm.selectSims.length;
+        this.selectedMonth = currentRow.ValidMonth;
 
       },
       effectChange(){
         console.log( this.effectNow)
       },
       doChangeFlowType(){
+        if(this.FlowTypeModel=='月包'){
+          this.effectNow='下月生效';
+        }else{
+          this.effectNow='立即生效';
+        }
+        this.selectedMonth=1;
         this.getPkgList();
+    
       },
       async getPkgList(){
         const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType,'cardtype':1,'FlowType':this.FlowTypeModel});
@@ -235,6 +244,7 @@ export default {
         let TotalSimNum=this.parentForm.selectSims.map((v, i, a) => {
             return v.SimNum
         });
+        this.modalForm.ValidMonth=this.selectedMonth;
         this.modalForm.TotalSimNum=TotalSimNum.join(',');
           if (parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2))){
               this.$Notice.error({
