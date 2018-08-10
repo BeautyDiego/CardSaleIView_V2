@@ -28,8 +28,6 @@
                                                          </CMdataSourcePie>
                             </Col>
                         </Row>
-
-
                     </div>
                 </Card>
             </Col>

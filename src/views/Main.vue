@@ -11,8 +11,8 @@
                 :before-push="beforePush"
                 :open-names="openedSubmenuArr"
                 :menu-list="menuList">
-                <div slot="top" class="logo-con">
-                    <img v-show="!shrink" class="logo-max"  src="../images/chaoda.png" key="max-logo" />
+                <div slot="top" class="logo-con" style="padding:0;">
+                    <img v-show="!shrink" class="logo-max"  src="../images/chaoda.jpg" key="max-logo" />
                     <img v-show="shrink" class="logo-min" src="../images/chaoda-min.png" key="min-logo" />
                 </div>
             </shrinkable-menu>
@@ -25,8 +25,11 @@
                     </Button>
                 </div>
                 <div class="header-middle-con">
-                    <div class="main-breadcrumb">
-                        <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
+                    <!--<div class="main-breadcrumb">-->
+                        <!--<breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>-->
+                    <!--</div>-->
+                    <div style="line-height: 40px;font-size: 14px;">
+                        欢迎您-{{customerInfo.Company}}
                     </div>
                 </div>
                 <div class="header-avator-con">
@@ -66,6 +69,8 @@
     </div>
 </template>
 <script>
+    import {GetCustomer} from './../api/getData'
+    import { mapState } from 'vuex'
     import shrinkableMenu from './main-components/shrinkable-menu/shrinkable-menu.vue';
     import tagsPageOpened from './main-components/tags-page-opened.vue';
     import breadcrumbNav from './main-components/breadcrumb-nav.vue';
@@ -89,7 +94,8 @@
                 shrink: false,
                 userName: '',
                 isFullScreen: false,
-                openedSubmenuArr: this.$store.state.app.openedSubmenuArr
+                openedSubmenuArr: this.$store.state.app.openedSubmenuArr,
+                customerInfo:{Company:'珠海潮大科技有限公司'},
             };
         },
         computed: {
@@ -114,6 +120,9 @@
             menuTheme () {
                 return this.$store.state.app.menuTheme;
             },
+            ...mapState({
+                adminInfo: state => state.user.adminInfo,
+            }),
         },
         methods: {
             init () {
@@ -169,7 +178,15 @@
             },
             fullscreenChange (isFullScreen) {
                 // console.log(isFullScreen);
-            }
+            },
+            async getCustomerInfo(){
+                if (this.adminInfo.RoleName!=='管理员'){
+                    this.customerInfo = await GetCustomer({userId:this.adminInfo.Id});
+                }else{
+                    this.customerInfo={Company:'珠海潮大科技有限公司'};
+                }
+            },
+
         },
         watch: {
             '$route' (to) {
@@ -187,6 +204,7 @@
         },
         mounted () {
           this.init();
+          this.getCustomerInfo();
         },
         created () {
             // 显示打开的页面的列表
