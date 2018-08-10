@@ -80,6 +80,12 @@
         searchPaneShow:false,
         tableColums: [
           {
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
+          },          
+          {
             align:'center',
             title: '运营商',
             key: 'OperType',

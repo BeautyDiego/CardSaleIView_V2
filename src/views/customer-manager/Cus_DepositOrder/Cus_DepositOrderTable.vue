@@ -57,6 +57,12 @@
                 tableLoading:false,
                 tableColums: [
                     {
+                        type: 'index',
+                        width: 60,
+                        title: '序号',
+                        align: 'center'
+                     },
+                    {
                         align:'center',
                         title: '订单编号',
                         key: 'DepositOrderNum',

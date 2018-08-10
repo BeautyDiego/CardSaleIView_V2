@@ -136,9 +136,10 @@
                         align: 'center'
           },
           {
-                        type: 'index',
-                        width: 60,
-                        align: 'center'
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
           },
           {
             align:'center',

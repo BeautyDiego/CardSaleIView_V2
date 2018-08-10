@@ -66,6 +66,12 @@ export default {
     data() {
             return {
               tableColums: [
+          {
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
+          },                
                 {
                   align:'center',
                   title: '角色名称',

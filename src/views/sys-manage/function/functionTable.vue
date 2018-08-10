@@ -61,6 +61,7 @@ export default {
             return {
               rbac_ActionList:[],
               tableColums: [
+                
                 {
                   align:'left',
                   title: '功能名称',

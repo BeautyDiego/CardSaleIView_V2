@@ -107,6 +107,12 @@
         tableLoading:false,//table是否在加载中
         tableColums: [
           {
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
+          },
+          {
             align:'center',
             title: 'SIM卡组名',
             key: 'GroupName',
