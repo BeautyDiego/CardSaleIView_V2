@@ -13,14 +13,21 @@
     <div style="background-color:#B0E0E6;padding:10px 0 0;border-radius:4px;position:relative;">
       <Row>
         <Col span="24">
-          <Button class="top-right-btn" size="large" icon="plus" @click="addTask">添加</Button>
+          <Button class="top-right-btn" size="large" icon="plus" @click="addMessage">添加</Button>
           <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
             <Button type="primary" size="large" icon="ios-search">搜  索</Button>
             <div style="text-align:center" slot="content">
               <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
                 <Row>
-                  <Form-item label="任务名称" >
-                    <Input v-model="searchForm.taskName" ></Input>
+                  <Form-item label="卡号"  >
+                    <Input v-model="searchForm.simNum" ></Input>
+                  </Form-item>
+                </Row>
+                <Row>
+                  <Form-item label="发送状态"  >
+                    <Select v-model="searchForm.sendStatus" :transfer="true" >
+                      <Option v-for="item in sendStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
                   </Form-item>
                 </Row>
               </Form>
@@ -41,11 +48,11 @@
       <Page :total="total" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
     </Row>
     <!--新增编辑-->
-    <taskForm    :modalShow="formShow"
-                 :modalFormTitle="formTitle"
-                 :parentForm="parentForm"
-                 @listenModalForm="hideModel"
-                 @refreshTableList="getTableList" ></taskForm>
+    <simMessageForm  :modalShow="formShow"
+                     :modalFormTitle="formTitle"
+                     :parentForm="parentForm"
+                     @listenModalForm="hideModel"
+                     @refreshTableList="getTableList" ></simMessageForm>
     <!--是否删除框-->
     <Modal v-model="delModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -65,53 +72,59 @@
 
 <script>
   import Cookies from 'js-cookie'
-  import {getTaskList,delUser,resetUserPwd} from './../../../api/getData'
+  import {getSimMessageList,delUser,resetUserPwd} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
-  import taskForm from './taskForm.vue'
+  import simMessageForm from './simMessageForm.vue'
   export default {
-    name:'userManagement',
+    name:'simMessage',
     components:{
-      taskForm,
+        simMessageForm,
     },
     data() {
       return {
         tableColums: [
-           {
+          {
               type: 'index',
               width: 60,
               title: '序号',
               align: 'center'
+          },          
+          {
+            align:'center',
+            title: '号码',
+            key: 'SendNum',
           },
           {
             align:'center',
-            title: '任务名称',
-            key: 'TaskName',
+            title: '短信内容',
+            key: 'MsgContent',
           },
           {
             align:'center',
-            title: '所属企业',
-            key: 'Company',
+            title: '发送时间',
+            key: 'SendTime',
           },
           {
             align:'center',
-            title: '创建人',
-            key: 'JoinBy',
+            title: '发送状态',
+            key: 'SendStatus',
+              render: (h, params) => {
+                  let statusTxt='';
+                   if(params.row.SendStatus==1){
+                      statusTxt='待发送'
+                  }else if(params.row.SendStatus==2){
+                      statusTxt='正在发送'
+                  }else if(params.row.OrderStatus==3){
+                      statusTxt='已发送'
+                  }
+                  return statusTxt;
+              },
           },
-          {
-            align:'center',
-            title: '备注',
-            key: 'Remark',
-          },
-          {
-            align:'center',
-            title: '创建时间',
-            key: 'JoinDate',
-          },
-          {
-              align:'center',
-              title: '状态',
-              key: 'Status',
-          },
+//          {
+//              align:'center',
+//              title: '终端接收状态',
+//              key: 'ReceiveStatus',
+//          },
 //          {
 //            title: '操作',
 //            align: 'center',
@@ -127,7 +140,7 @@
 //                  },
 //                  on: {
 //                    click: () => {
-//                      this.editTask(params.row)
+//                      this.editMessage(params.row)
 //                    }
 //                  }
 //                }, '修改'));
@@ -142,7 +155,7 @@
 //                  },
 //                  on: {
 //                    click: () => {
-//                      this.delTask(params.row.Id)
+//                      this.delMessage(params.row.Id)
 //                    }
 //                  }
 //                }, '删除'));
@@ -157,34 +170,17 @@
         total:0,
         currentPage:1,
         formShow:false,
-        formTitle:'新建任务',
-        resetForm:{
-          Id:'',
-          TaskName: '',
-          TaskType: '',
-          Cus_CustomerId:'',
-          Email:'',
-          isEmail:false,
-          SMS:'',
-          isSMS:false,
-          lowerLimit:'',
-          simNums:'',
-          Status:1,
-          Remark:'',
-        },
+        formTitle:'新建短信',
         parentForm:{
-            Id:'',
-            TaskName: '',
-            TaskType: '',
-            Cus_CustomerId:'',
-            Email:'',
-            isEmail:false,
-            SMS:'',
-            isSMS:false,
-            lowerLimit:'',
-            simNums:'',
-            Status:1,
-            Remark:'',
+          Id:'',
+          Cus_CustomerId: '',
+          SendType: '',
+          SendNum:'',
+          ReceiveNum:'',
+          MsgContent:'',
+          SendTime:'',
+          SendStatus:'',
+          ReceiveStatus:'',
         },
         delModal:false,
         delId:'', //删除的Id
@@ -192,16 +188,31 @@
         resetId:'',//密码重置Id
         btnLoading:false,
         searchForm:{
-          taskName: '',
+          sendStatus:-1,
+          simNum: '',
           rows:10,
           page:1,
         },
+        sendStatusList:[
+            {
+              value: -1,
+              label: '全部'
+            },
+            {
+                value: 1,
+                label: '待发送'
+            },
+            {
+                value: 2,
+                label: '正在发送'
+            },{
+                value: 3,
+                label: '已发送'
+            }],
       }
     },
     computed: {
-      UserId: function () {
-        return  Cookies.get('userId');
-      },
+
     },
     created(){
 
@@ -211,7 +222,8 @@
     },
     methods: {
       resetSearch(){
-         this.searchForm.uName='';
+         this.searchForm.simNum='';
+         this.searchForm.sendStatus=-1;
       },
       doSearchTableList(){
         this.currentPage=1;
@@ -220,7 +232,7 @@
       async getTableList(){
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
-        const res = await getTaskList(params);
+        const res = await getSimMessageList(params);
         this.total = res.total;
         this.tableData = res.rows;
       },
@@ -228,18 +240,17 @@
         this.currentPage=num;
         this.getTableList();
       },
-      addTask() {
+      addMessage() {
         clearObj(this.parentForm);
-       // this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
-        this.formTitle='新建任务';
+        this.formTitle='新建短信';
         this.formShow=true;
       },
-      editTask(row){
+      editMessage(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
         this.formTitle='修改用户';
         this.formShow=true;
       },
-      delTask(Id){
+      delMessage(Id){
         this.delId=Id;
         this.delModal=true;
       },

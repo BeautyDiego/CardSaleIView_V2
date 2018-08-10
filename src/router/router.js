@@ -114,6 +114,17 @@ export const appRouter = [
         ]
     },
     {
+        path: '/sim-message',
+        icon: 'ios-infinite',
+        name: 'sim-message',
+        access: 0,
+        title: '短信管理',
+        component: Main,
+        children: [
+            { path: 'simMessageTable', title: '短信接发',access: 0, name: 'simMessageTable', icon: 'link', component: resolve => void(require(['@/views/sim-message/receive-and-send/simMessageTable.vue'],resolve)),},
+        ]
+    },
+    {
         path: '/sys-manage',
         icon: 'ios-infinite',
         name: 'sys-manage',
