@@ -20,6 +20,13 @@
         </div>
       </Row>
     <div v-show="Current_Step==0">
+       <Row style="font-size:14px;font-weight: bold">
+            <RadioGroup v-model="FlowTypeModel" type="button" size="large"  @on-change='doChangeFlowType' >
+              <Radio label="月包"></Radio>
+              <Radio label="长周期包"></Radio>
+              <Radio label="加油包"></Radio>
+            </RadioGroup>               
+      </Row>
       <Row style="font-size:14px;font-weight: bold">
        <Table highlight-row  ref="PkgTable" stripe size="small"   :columns="pkgColums" :data="pkgData" @on-current-change="pkgDataChange"></Table>
       </Row>
@@ -31,9 +38,11 @@
      <Row style="font-size:14px;font-weight: bold">
          <RadioGroup v-model="effectNow" @on-change="effectChange">
         <Radio label="立即生效" ></Radio>
-        <Radio label="下月生效" ></Radio>
     </RadioGroup>
       </Row>
+       <Row style="font-size:14px;font-weight: bold"  v-show="FlowTypeModel=='月包'">
+         SIM卡有效期<InputNumber :max="120" :min="1" v-model="selectedMonth" ></InputNumber>个月
+       </Row>
     </div>
     <div v-show="Current_Step==1">
        <Row style="font-size:14px;font-weight: bold">
@@ -41,6 +50,9 @@
       </Row>
       <Row style="font-size:14px;font-weight: bold">
                   SIM卡数量：{{modalForm.SimCount}}
+      </Row>
+      <Row style="font-size:14px;font-weight: bold">
+                  SIM卡有效期：{{selectedMonth}} 个月&nbsp&nbsp&nbsp
       </Row>
      <Row style="font-size:14px;font-weight: bold">
                   单价：{{modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp
@@ -51,7 +63,7 @@
       <Row style="font-size:14px;font-weight: bold">
                   当前余额：{{RestCash}} 元&nbsp&nbsp&nbsp
       </Row>
-      
+
     </div>
     <div slot="footer">
       <Button type="ghost"  @click="cancel" >取消</Button>
@@ -73,7 +85,7 @@ export default {
           return {
              operType:'1',
              selectSims:[],
-             
+             maxFlow:0,
           }
         }
       },
@@ -151,6 +163,8 @@ export default {
         },
         isSelected:false,
         effectNow:"立即生效",
+        FlowTypeModel:'月包',
+        selectedMonth:1,
         }
 
     },
@@ -160,7 +174,7 @@ export default {
         this.IsModalShow = curVal;
         if(curVal){
            this.modalForm = Object.assign(this.parentForm);       
-          
+
            this.Current_Step=0;
            this.isSelected=false;
            this.getPkgList();
@@ -179,6 +193,14 @@ export default {
           this.$emit('listenModalForm');
       },
       pkgDataChange(currentRow,oldCurrentRow){
+        if(currentRow.FlowType!='加油包'){
+/*           if(this.parentForm.maxFlow>currentRow.FlowCount){//已有套餐大于所选套餐时
+                  console.log(this.parentForm.maxFlow)
+                  console.log(currentRow.FlowCount)
+          } */
+
+        }
+
         this.isSelected=true;
         this.modalForm.NewPkgCode=currentRow.ExpCode;
         this.modalForm.NewPkgName=currentRow.ExpName;
@@ -190,8 +212,11 @@ export default {
       effectChange(){
         console.log( this.effectNow)
       },
+      doChangeFlowType(){
+        this.getPkgList();
+      },
       async getPkgList(){
-        const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType,'cardtype':1});
+        const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.parentForm.operType,'cardtype':1,'FlowType':this.FlowTypeModel});
         this.pkgData = res.rows;
       },
       async GetOrderRestCash(){
@@ -237,10 +262,18 @@ export default {
           }
       },
       nextClick(){
-        if(this.isSelected)
+        if(this.isSelected){
+        
+        if(this.FlowTypeModel=='月包'){
+          this.modalForm.TotalPrice =this.modalForm.TotalPrice * this.selectedMonth;
+        }
           this.Current_Step +=1;
+        }
+     
         else
           this.$Message.error('请选择一种资费。');
+
+
       },
     }
 }

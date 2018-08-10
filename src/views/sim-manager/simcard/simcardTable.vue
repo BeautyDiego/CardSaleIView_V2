@@ -208,8 +208,13 @@
           },
           {
             align:'center',
-            title: 'IMSI',
-            key: 'IMSI'
+            title: '包含流量',
+            key: 'MonthFlow',render: (h, params) => { return (params.row.MonthFlow/1024)+'MB';}
+          },
+           {
+            align:'center',
+            title: '已用流量',
+            key: 'NowFlow',render: (h, params) => { return (params.row.NowFlow/1024).toFixed(2)+'MB';}
           },
           {
             align:'center',
@@ -228,30 +233,6 @@
             width: 170,
             key: 'EffDate',
           },
-
-
-          {
-            title: '操作',
-            align: 'center',
-            render: (h, params) => {
-              let actions=[];
-            actions.push( h('Button', {
-                props: {
-                  type: 'warning',
-                  size: 'small'
-                },
-                style: {
-                  marginRight: '5px'
-                },
-                on: {
-                  click: () => {
-                    this.addFlow(params.row)
-                  }
-                }
-              }, '加油包'));
-              return h('div', actions);
-            }
-          }
         ],
         tableData: [
         ],
@@ -278,7 +259,8 @@
         },
         pkgParentData:{
           operType:'1',
-          selectSims:[]
+          selectSims:[],
+          maxFlow:0,
         },
         searchForm:{
           SimStatus:'',
@@ -443,6 +425,11 @@
         if(this.selectedRows.length==0){
           this.$Message.error('请选择至少一张SIM卡。');
         }else{
+        let totalSimFlow=this.selectedRows.map((v, i, a) => {
+            return v.MonthFlow
+        });
+          var max = Math.max.apply(null,totalSimFlow);
+          this.pkgParentData.maxFlow=max;
           this.pkgParentData.operType=this.searchForm.OperType;
           this.BuyPkgModalShow=true;
         }
