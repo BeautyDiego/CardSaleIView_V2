@@ -90,6 +90,12 @@
       return {
         tableColums: [
           {
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
+          },          
+          {
             align:'center',
             title: '用户名称',
             key: 'UserName',
