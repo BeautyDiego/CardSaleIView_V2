@@ -43,6 +43,9 @@
       <Form-item label="负责人邮箱" prop="ManagerEmail" :rules="{required: true, message: '输入正确邮箱', trigger:'blur',type:'string',pattern:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/}"  >
         <Input v-model="modalForm.ManagerEmail" ></Input>
       </Form-item>
+      <Form-item label="邮箱KEY"  >
+        <Input v-model="modalForm.ManagerEmailKey" ></Input>
+      </Form-item>
       <Form-item label="备注"  >
         <Input type="textarea" v-model="modalForm.Remark" :rows="2" :maxlength="100"></Input>
       </Form-item>
@@ -84,6 +87,7 @@ export default {
             ManagerName: '',
             ManagerEmail: '',
             ManagerMobile:'',
+            ManagerEmailKey:'',
             Remark:'',
             Discount:''
           }

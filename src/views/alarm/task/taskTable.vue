@@ -17,7 +17,7 @@
           <Poptip  width="400" title='搜索' placement="bottom-end" class="top-btn">
             <Button type="primary" size="large" icon="ios-search">搜  索</Button>
             <div style="text-align:center" slot="content">
-              <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
+              <Form ref="searchForm" :model="searchForm" :label-width="80"  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
                 <Row>
                   <Form-item label="任务名称" >
                     <Input v-model="searchForm.taskName" ></Input>
@@ -232,6 +232,7 @@
         clearObj(this.parentForm);
        // this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
         this.formTitle='新建任务';
+        this.parentForm.TaskType='流量监控';
         this.formShow=true;
       },
       editTask(row){

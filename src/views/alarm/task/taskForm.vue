@@ -18,16 +18,25 @@
           <Input v-model="modalForm.TaskName" ></Input>
         </Form-item>
         <Form-item label="用量监控" >
-          <Radio disabled="true">流量监控</Radio>
+
+            <Radio :value="true" >流量监控</Radio>
+
         </Form-item>
       </Row>
       <Row style="padding-left:30px;border-top:1px solid #e4e4e4">
         <div style="margin-left:-30px;padding:10px 0 25px;">定义触发条件和动作</div>
         <Form-item label="流量剩余下限比例"  >
           <Select v-model="modalForm.lowerLimit" placeholder="请选择">
-            <Option  >40</Option>
-            <Option  >80</Option>
-            <Option  >100</Option>
+            <Option value="10" >10</Option>
+            <Option value="20" >20</Option>
+            <Option value="30" >30</Option>
+            <Option value="40" >40</Option>
+            <Option value="50" >50</Option>
+            <Option value="60" >60</Option>
+            <Option value="70" >70</Option>
+            <Option value="80" >80</Option>
+            <Option value="90" >90</Option>
+            <Option value="100" >100</Option>
           </Select>
           <Row style="padding:10px 0">
             <Checkbox v-model="modalForm.isEmail">发送邮箱至</Checkbox>
@@ -85,7 +94,7 @@ export default {
           return {
               Id:'',
               TaskName: '',
-              TaskType: '',
+              TaskType: '流量监控',
               Cus_CustomerId:'',
               Email:'',
               isEmail:false,
@@ -149,6 +158,7 @@ export default {
           if (valid) {
             this.modalForm_loading=true;
             const params = this.modalForm;
+            console.log(params)
             try{
               let result = await addTask(params);
              // if (this.modalFormTitle ==='创建任务'){
