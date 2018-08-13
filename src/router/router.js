@@ -111,6 +111,7 @@ export const appRouter = [
         component: Main,
         children: [
             { path: 'taskTable', title: '任务列表',access: 0, name: 'taskTable', icon: 'link', component: resolve => void(require(['@/views/alarm/task/taskTable.vue'],resolve)),},
+            { path: 'AlarmDetailTable', title: '告警日志',access: 0, name: 'AlarmDetailTable', icon: 'link', component: resolve => void(require(['@/views/alarm/alarmInfo/AlarmDetailTable.vue'],resolve)),},
         ]
     },
     {

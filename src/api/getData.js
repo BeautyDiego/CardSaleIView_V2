@@ -290,6 +290,8 @@ export const getPoolUsageLine = data => fetch('/Home/PoolUsageLineStatic', data,
 export const getTaskList = data => fetch('/Task/List_Task', data, 'POST');
 export const addTask = data => fetch('/Task/Add_Task', data, 'POST');
 export const simcardTransferPaged = data => fetch('/Task/List_Sim_SimCard_Transfer', data, 'POST');
+
+export const getAlarmList = data => fetch('/Alarm_Detail/List_Alarm_Detail', data, 'POST');
 // endregion
 
 // region sim卡套餐订购订单
