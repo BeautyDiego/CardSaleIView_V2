@@ -208,7 +208,6 @@ export const groupSimCount = data => fetch('/Sim_Group/Group_SimCount', data, 'P
 /**
  * 获取SIM卡资费配置
  */
-export const simExpanseConfigPagedList = data => fetch('/Sim_FreeExpenseConfig/List_Sim_FreeExpenseConfig', data, 'POST');
 //新版资费
 export const Res_ExpensesPagedList = data => fetch('/Res_Expenses/List_Res_Expenses', data, 'POST');
 export const addRes_Expenses = data => fetch('/Res_Expenses/Add_Res_Expenses', data, 'POST');
