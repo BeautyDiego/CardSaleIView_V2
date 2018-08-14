@@ -103,155 +103,155 @@
       return {
         tableLoading:false,
         tableColums: [
-          {
-            type: 'expand',
-            width: 50,
-            render: (h, params) => {
-              return h(order_expandTable, {
-                props: {
-                  row: params.row
-                }
-              })
-            }
-          },
-          {
-              type: 'index',
-              width: 60,
-              title: '序号',
-              align: 'center'
-          },
-          {
-            align:'center',
-            title: '客户名称',
-            key: 'Cus_Name',
-          },
-          {
-            align:'center',
-            title: '订单号',
-            key: 'PkgOrderNum',
-          },
-           {
-            align:'center',
-            title: '运营商',
-            key: 'OperType',
-            render: (h, params) => {
-                let operName='';
-                if (params.row.OperType==1){
-                    operName='中国电信'
-                }else if(params.row.OperType==2){
-                    operName='中国移动'
-                }else if(params.row.OperType==3){
-                    operName='中国联通'
-                }
-                return operName;
-            },
-          },
-          {
-            align:'center',
-            title: 'sim卡数量',
-            key: 'SimCount',
-          },
-           {
-            align:'center',
-            title: '原套餐名',
-            key: 'OldPkgName',
-          },
-          {
-            align:'center',
-            title: '新套餐名',
-            key: 'NewPkgName',
-          },
-          {
-            align:'center',
-            title: 'SIM卡数量(个)',
-            key: 'Sim_Count',
-          },
-          {
-            align:'center',
-            title: '购买单价（元）',
-            key: 'SinglePrice',render: (h, params) => {  return '￥'+ params.row.SinglePrice.toFixed(2);},
-          },
-          {
-            align:'center',
-            title: '下单时间',
-            key: 'JoinDate',
-          },
-          {
-            align:'center',
-            title: '订单金额(元)',
-            key: 'TotalPrice',render: (h, params) => { return '￥'+ params.row.TotalPrice.toFixed(2);},
-          },
-          {
-            align:'center',
-            title: '订单状态',
-            key: 'OrderStatus',
-              render: (h, params) => {
-                  let statusTxt='';
-                  if (params.row.OrderStatus==0){
-                      statusTxt='已取消'
-                  }else if(params.row.OrderStatus==1){
-                      statusTxt='待付款'
-                  }else if(params.row.OrderStatus==2){
-                      statusTxt='已付款'
-                  }else if(params.row.OrderStatus==3){
-                      statusTxt='已审核'
-                  }else if(params.row.OrderStatus==4){
-                      statusTxt='已发货'
-                  }else if(params.row.OrderStatus==5){
-                      statusTxt='已完成'
+              {
+                  type: 'expand',
+                  width: 50,
+                  render: (h, params) => {
+                      return h(order_expandTable, {
+                          props: {
+                              row: params.row
+                          }
+                      })
                   }
-                  return statusTxt;
               },
-          },
-          {
-              align:'center',
-              title: '运营商单号',
-              key: 'ResultOrderNum',
-          },
-          {
-            title: '操作',
-            align: 'center',
-            render: (h, params) => {
-              let actions=[];
-              if (params.row.OrderStatus===1&&!this.IsAdmin){ //待付款状态
+              {
+                  type: 'index',
+                  width: 60,
+                  title: '序号',
+                  align: 'center'
+              },
+              {
+                  align:'center',
+                  title: '客户名称',
+                  key: 'Cus_Name',
+              },
+              {
+                  align:'center',
+                  title: '订单号',
+                  key: 'PkgOrderNum',
+              },
+              {
+                  align:'center',
+                  title: '运营商',
+                  key: 'OperType',
+                  render: (h, params) => {
+                      let operName='';
+                      if (params.row.OperType==1){
+                          operName='中国电信'
+                      }else if(params.row.OperType==2){
+                          operName='中国移动'
+                      }else if(params.row.OperType==3){
+                          operName='中国联通'
+                      }
+                      return operName;
+                  },
+              },
+              {
+                  align:'center',
+                  title: 'sim卡数量',
+                  key: 'SimCount',
+              },
+              {
+                  align:'center',
+                  title: '原套餐名',
+                  key: 'OldPkgName',
+              },
+              {
+                  align:'center',
+                  title: '新套餐名',
+                  key: 'NewPkgName',
+              },
+              {
+                  align:'center',
+                  title: 'SIM卡数量(个)',
+                  key: 'Sim_Count',
+              },
+              {
+                  align:'center',
+                  title: '购买单价（元）',
+                  key: 'SinglePrice',render: (h, params) => {  return '￥'+ params.row.SinglePrice.toFixed(2);},
+              },
+              {
+                  align:'center',
+                  title: '下单时间',
+                  key: 'JoinDate',
+              },
+              {
+                  align:'center',
+                  title: '订单金额(元)',
+                  key: 'TotalPrice',render: (h, params) => { return '￥'+ params.row.TotalPrice.toFixed(2);},
+              },
+              {
+                  align:'center',
+                  title: '订单状态',
+                  key: 'OrderStatus',
+                  render: (h, params) => {
+                      let statusTxt='';
+                      if (params.row.OrderStatus==0){
+                          statusTxt='已取消'
+                      }else if(params.row.OrderStatus==1){
+                          statusTxt='待付款'
+                      }else if(params.row.OrderStatus==2){
+                          statusTxt='已付款'
+                      }else if(params.row.OrderStatus==3){
+                          statusTxt='已审核'
+                      }else if(params.row.OrderStatus==4){
+                          statusTxt='已发货'
+                      }else if(params.row.OrderStatus==5){
+                          statusTxt='已完成'
+                      }
+                      return statusTxt;
+                  },
+              },
+              {
+                  align:'center',
+                  title: '运营商单号',
+                  key: 'ResultOrderNum',
+              },
+              {
+                  title: '操作',
+                  align: 'center',
+                  render: (h, params) => {
+                      let actions=[];
+                      if (params.row.OrderStatus===1&&!this.IsAdmin){ //待付款状态
 
-                actions.push( h('Button', {
-                  props: {
-                    type: 'warning',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.cancelOrder(params.row.Id)
-                    }
-                  }
-                }, '取消'));
-              }
-              
-              if (this.IsAdmin&&params.row.OrderStatus===2){ //已付款状态
-                actions.push( h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.examineOrder(params.row.Id)
-                    }
-                  }
-                }, '审核'));
-              }
+                          actions.push( h('Button', {
+                              props: {
+                                  type: 'warning',
+                                  size: 'small'
+                              },
+                              style: {
+                                  marginRight: '5px'
+                              },
+                              on: {
+                                  click: () => {
+                                      this.cancelOrder(params.row.Id)
+                                  }
+                              }
+                          }, '取消'));
+                      }
 
-              return h('div', actions);
-            }
-          }
-        ],
+                      if (this.IsAdmin&&params.row.OrderStatus===2){ //已付款状态
+                          actions.push( h('Button', {
+                              props: {
+                                  type: 'primary',
+                                  size: 'small'
+                              },
+                              style: {
+                                  marginRight: '5px'
+                              },
+                              on: {
+                                  click: () => {
+                                      this.examineOrder(params.row.Id)
+                                  }
+                              }
+                          }, '审核'));
+                      }
+
+                      return h('div', actions);
+                  }
+              }
+          ],
         tableData: [
         ],
         total:0,

@@ -298,6 +298,12 @@ export const cancelPkgOrder = data => fetch('/Sim_PkgOrder/Cancel_Sim_PkgOrder',
 export const examinePkgOrder = data => fetch('/Sim_PkgOrder/Examine_Sim_PkgOrder', data, 'POST');
 // endregion
 
+// region sim卡状态变更订单
+export const getSimStatusOrderList = data => fetch('/Sim_StatusOrder/List_Sim_StatusOrder', data, 'POST');
+export const getTransationDetail = data => fetch('/APICore/ChinaMobileBusinessOrdernoQuery', data, 'POST');
+
+// endregion
+
 // region 短信接发
 export const getSimMessageList = data => fetch('/Sim_Message/List_Sim_Message', data, 'POST');
 export const addSimMessage = data => fetch('/Sim_Message/Add_Sim_Message', data, 'POST');

@@ -70,8 +70,6 @@ export const appRouter = [
      
       { path: 'simcard', title: 'SIM卡管理',access: 0, name: 'simcardTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simcard/simcardTable.vue'],resolve)),}, // 懒加载 () => import('@/views/sim-manager/simcard/simcardTable.vue') },
       { path: 'simGroup', title: 'SIM卡分组',access: 0, name: 'simGroupTable', icon: 'link', component:resolve => void(require(['@/views/sim-manager/simGroup/simGroupTable.vue'],resolve)),},
-
-
     ]
   },
     {
@@ -86,6 +84,7 @@ export const appRouter = [
             { path: 'cus_orderTable', title: '订单管理',access: 0, name: 'cus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_order/cus_orderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/cus_order/cus_orderTable.vue') }
             { path: 'Cus_DepositOrderTable', title: '充值订单',access: 0, name: 'Cus_DepositOrderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue'],resolve)),}, // 懒加载 () => import('@/views/customer-manager/Cus_DepositOrder/Cus_DepositOrderTable.vue') }
             { path: 'cus_pkg_orderTable', title: 'sim卡套餐订单',access: 0, name: 'cus_pkg_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue'],resolve)),},
+            { path: 'cus_simstatus_orderTable', title: 'sim卡状态变更订单',access: 0, name: 'cus_simstatus_orderTable', icon: 'link', component:resolve => void(require(['@/views/customer-manager/cus_simstatus_order/cus_simstatus_orderTable.vue'],resolve)),},
         ]
     },
   {

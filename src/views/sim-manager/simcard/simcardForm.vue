@@ -103,7 +103,7 @@ padding-top:20px;
               <th>套餐失效时间</th>
             </tr>
             </thead>
-            <tbody >
+            <tbody>
                 <tr v-for="item in simCMCC.packages.list ">
                   <td>{{item.pkgName}}</td>
                   <td>{{item.pkgCode}}</td>
