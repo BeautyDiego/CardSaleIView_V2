@@ -361,7 +361,7 @@
         const res = await Res_ExpensesPagedList({'page':1,'rows':'1000','OperType':this.searchForm.OperType});
         //this.total = res.total;
         this.pkgData = res.rows;
-        console.log('pkgData:'+this.pkgData);
+        //console.log('pkgData:'+this.pkgData);
         //this.tableLoading=false;
       },
       changeCurrentPage(num){
@@ -436,7 +436,19 @@
       },
       async ok () {
          const res = await changeSimStatus({simcards:this.selectedRows,'newStat':this.newstatus});
-         console.log(res);
+                  if (res.success){
+                  this.$Notice.success({
+                      title: '提交申请成功',
+                      desc: res.msg
+                  });
+                    this.$emit('listenModalForm');
+              }else
+              {
+                  this.$Notice.error({
+                      title: '失败',
+                      desc: res.msg
+                  });
+              }
       },
       cancel () {
          //this.$Message.info('Clicked cancel');
