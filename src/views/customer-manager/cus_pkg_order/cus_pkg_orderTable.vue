@@ -80,7 +80,7 @@
         <span>审核确认</span>
       </p>
       <div style="text-align:center">
-        <p>是否继续审核通过订单？</p>
+        <p>是否审核通过订单？审核通过会立即调用就接口并扣费！</p>
       </div>
       <div slot="footer">
         <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmExamine">审核通过</Button>
