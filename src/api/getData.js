@@ -158,8 +158,8 @@ export const editSimcard = data => fetch('/Sim_SimCard/Edit_Sim_SimCard', data, 
 export const getSimListExcel = data => fetch('/Sim_SimCard/ToExcel', data, 'POST');
 export const changeSimStatus = data => fetch('/Sim_StatusOrder/ChangeSimStatus', data, 'POST');
 
-export const getSimCardDetail = data => fetch('/APICore/SimSingleQuery', data, 'POST');
-export const getSimCardFlowUsage = data => fetch('/APICore/SimMonthFlowQuery', data, 'POST');
+export const getSimCardDetail = data => fetch('/Sim_SimCard/SimSingleQuery', data, 'POST');
+export const getSimCardFlowUsage = data => fetch('/Sim_SimCard/SimMonthFlowQuery', data, 'POST');
 export const getOperatorCombo = data => fetch('/Res_Operator/Res_Operator_Combo', data, 'POST');
 export const addSimPkgOrder = data => fetch('/Sim_PkgOrder/Add_Sim_PkgOrder', data, 'POST');
 export const listSimPkgOrder = data => fetch('/Sim_PkgOrder/List_Sim_PkgOrder', data, 'POST');
@@ -300,7 +300,7 @@ export const examinePkgOrder = data => fetch('/Sim_PkgOrder/Examine_Sim_PkgOrder
 
 // region sim卡状态变更订单
 export const getSimStatusOrderList = data => fetch('/Sim_StatusOrder/List_Sim_StatusOrder', data, 'POST');
-export const getTransationDetail = data => fetch('/APICore/ChinaMobileBusinessOrdernoQuery', data, 'POST');
+export const getTransationDetail = data => fetch('/Sim_StatusOrder/ChinaMobileBusinessOrdernoQuery', data, 'POST');
 
 // endregion
 

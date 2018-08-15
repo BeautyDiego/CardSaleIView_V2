@@ -60,6 +60,9 @@
         <!--<Button type="error" size="large" long :loading="btnLoading"  @click="comfirmDel">删除</Button>-->
       <!--</div>-->
     <!--</Modal>-->
+    <PkgTransationForm  :modalShow="formTransationShow"
+                     :transationId="transationId"
+                     @listenModalForm="hideTransationModel"></PkgTransationForm>
     <!--是否取消订单-->
     <Modal v-model="cancelModal" width="360">
       <p slot="header" style="color:#f60;text-align:center">
@@ -94,26 +97,16 @@
   import Cookies from 'js-cookie'
   import {getPkgOrderList,cancelPkgOrder,examinePkgOrder} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
+  import PkgTransationForm from './PkgTransationForm.vue'
   export default {
     name:'cus_pkg_order',
     components:{
-
+        PkgTransationForm
     },
     data() {
       return {
         tableLoading:false,
         tableColums: [
-              {
-                  type: 'expand',
-                  width: 50,
-                  render: (h, params) => {
-                      return h(order_expandTable, {
-                          props: {
-                              row: params.row
-                          }
-                      })
-                  }
-              },
               {
                   type: 'index',
                   width: 60,
@@ -163,11 +156,6 @@
               },
               {
                   align:'center',
-                  title: 'SIM卡数量(个)',
-                  key: 'Sim_Count',
-              },
-              {
-                  align:'center',
                   title: '购买单价（元）',
                   key: 'SinglePrice',render: (h, params) => {  return '￥'+ params.row.SinglePrice.toFixed(2);},
               },
@@ -207,6 +195,23 @@
                   align:'center',
                   title: '运营商单号',
                   key: 'ResultOrderNum',
+                  render: (h, params) => {
+                      let actions=[];
+
+                      actions.push( h('a', {
+
+                          style: {
+                              marginRight: '5px'
+                          },
+                          on: {
+                              click: () => {
+                                  this.checkTransation(params.row.ResultOrderNum)
+                              }
+                          }
+                      }, params.row.ResultOrderNum));
+
+                      return h('div', actions);
+                  }
               },
               {
                   title: '操作',
@@ -263,6 +268,8 @@
         cancelId:'',//取消Id
         examineModal:false,
         examineId:'', //审核Id
+        formTransationShow:false,
+        transationId:'',
         btnLoading:false,
         searchForm:{
           status:'-1',
@@ -372,6 +379,14 @@
           this.$Message.error('服务器异常，稍后再试');
         }
         this.btnLoading=false;
+      },
+      checkTransation(transationId){
+          debugger;
+          this.transationId=transationId;
+          this.formTransationShow=true;
+      },
+      hideTransationModel(){
+          this.formTransationShow=false;
       },
       hideModel(){
         this.formShow=false;
