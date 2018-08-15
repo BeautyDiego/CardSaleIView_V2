@@ -439,6 +439,7 @@
                   if (res.success){
                   this.$Notice.success({
                       title: '提交申请成功',
+                      duration: 8,
                       desc: res.msg
                   });
                     this.$emit('listenModalForm');
@@ -446,6 +447,7 @@
               {
                   this.$Notice.error({
                       title: '失败',
+                      duration: 8,
                       desc: res.msg
                   });
               }
