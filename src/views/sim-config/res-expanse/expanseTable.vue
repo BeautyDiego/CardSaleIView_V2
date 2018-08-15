@@ -281,7 +281,6 @@
         this.searchForm.page = this.currentPage;
         const params = this.searchForm;
         const res = await Res_ExpensesPagedList(params);
-        console.log(res)
         this.total = res.total;
         this.tableData = res.rows;
       },
@@ -292,7 +291,6 @@
       addAction() {
         this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
         this.formTitle='添加资费配置';
-                console.log(this.parentForm)
         this.formShow=true;
       },
       editAction(row){
@@ -319,7 +317,7 @@
         this.delModal=true;
       },
       rowClassName (row, index) {
-                if (row.OfficialPirce != row.AgentPrice) {
+                if (row.OfficialPirce != row.AgentPrice&&this.IsAgent) {
                     return 'demo-table-info-row';
                 } 
                 return '';

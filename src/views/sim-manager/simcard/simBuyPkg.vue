@@ -271,6 +271,7 @@ export default {
           if (parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2))){
               this.$Notice.error({
                   title: '支付失败',
+                  duration: 8,
                   desc: '余额不足，请到充值管理页面充值余额 '
               });
           }else{
@@ -279,6 +280,7 @@ export default {
               if (res.success){
                   this.$Notice.success({
                       title: '支付成功',
+                      duration: 8,
                       desc: '余额支付成功，请等待后台审核订单。 '
                   });
                     this.$emit('listenModalForm');
@@ -286,6 +288,7 @@ export default {
               {
                   this.$Notice.error({
                       title: '支付失败',
+                      duration: 8,
                       desc: '余额支付失败，请联系管理员。'
                   });
               }
