@@ -5,14 +5,26 @@
 .ivu-table-row-hover td{
     background-color: #CD7054;
 }
+.current-setting{
+    font-size: 14px;
+    width:40%;
+    margin:0 auto;
+}
+
+.current-setting .setting-row{
+    line-height: 26px;
+}
+.current-setting .setting-title{
+    color:#bbbbbb;
+}
 </style>
 
 <template>
 
 <div>
-  <Modal v-model="IsModalShow":title="modalFormTitle" :mask-closable="false" @on-cancel="cancel" width="1000">
+  <Modal v-model="IsModalShow" :title="modalFormTitle" :mask-closable="false" @on-cancel="cancel" width="1000">
         <Row>
-        <div style="padding-left:105px;padding-bottom:20px;">
+        <div style="padding-left:200px;padding-bottom:20px;">
           <Steps :current="Current_Step">
             <Step title="选购" content="选择套餐"></Step>
             <Step title="提交" content="提交后台审核"></Step>
@@ -20,14 +32,14 @@
         </div>
       </Row>
     <div v-show="Current_Step==0">
-       <Row style="font-size:14px;font-weight: bold">
+       <Row style="font-size:14px;font-weight: bold;">
             <RadioGroup v-model="FlowTypeModel" type="button" size="large"  @on-change='doChangeFlowType' >
-              <Radio label="月包"></Radio>
+              <!--<Radio label="月包"></Radio>-->
               <Radio label="长周期包"></Radio>
               <Radio label="加油包"></Radio>
             </RadioGroup>               
       </Row>
-      <Row style="font-size:14px;font-weight: bold">
+      <Row style="font-size:14px;font-weight: bold;">
        <Table highlight-row  ref="PkgTable" stripe size="small"   :columns="pkgColums" :data="pkgData" @on-current-change="pkgDataChange"></Table>
       </Row>
 
@@ -35,36 +47,46 @@
                   电信卡只能办理流量加油包
       </Row>
 
-     <Row style="font-size:14px;font-weight: bold">
+     <Row style="font-size:14px;font-weight: bold;line-height:50px;">
          <RadioGroup v-model="effectNow" @on-change="effectChange">
         <Radio label="立即生效" disabled></Radio>
         <Radio label="下月生效" disabled></Radio>
     </RadioGroup>
       </Row>
        <Row style="font-size:14px;font-weight: bold" >
-         SIM卡有效期<InputNumber :max="120" :min="1" v-model="selectedMonth" :disabled="FlowTypeModel=='长周期包'||FlowTypeModel=='加油包'"></InputNumber>个月
+         SIM卡有效期&nbsp&nbsp<InputNumber :max="120" :min="1" v-model="selectedMonth" :disabled="FlowTypeModel=='长周期包'||FlowTypeModel=='加油包'"></InputNumber>个月
        </Row>
     </div>
     <div v-show="Current_Step==1">
-       <Row style="font-size:14px;font-weight: bold">
-                  套餐名称：{{modalForm.NewPkgName}}
-      </Row>
-      <Row style="font-size:14px;font-weight: bold">
-                  SIM卡数量：{{modalForm.SimCount}}
-      </Row>
-      <Row style="font-size:14px;font-weight: bold">
-                  SIM卡有效期：{{selectedMonth}} 个月&nbsp&nbsp&nbsp
-      </Row>
-     <Row style="font-size:14px;font-weight: bold">
-                  单价：{{modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp
-      </Row>
-      <Row style="font-size:14px;font-weight: bold">
-                  总金额：{{modalForm.TotalPrice}} 元&nbsp&nbsp&nbsp
-      </Row>
-      <Row style="font-size:14px;font-weight: bold">
-                  当前余额：{{RestCash}} 元&nbsp&nbsp&nbsp
-      </Row>
+        <Card :bordered="true" style="background-color: #fafafa">
+            <div class="current-setting">
+                <Row class="setting-row"><Col span="12" class="setting-title">套餐名称：</Col><Col span="12"> {{modalForm.NewPkgName}}</Col> </Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">SIM卡数量：</Col><Col span="12"> {{modalForm.SimCount}}</Col> </Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">SIM卡有效期：</Col><Col span="12"> {{selectedMonth}} 个月</Col></Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">单价：</Col><Col span="12"> {{modalForm.SinglePrice}} 元</Col></Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">总金额：</Col><Col span="12">  {{modalForm.TotalPrice}} 元</Col></Row>
+                <Row class="setting-row"><Col span="12" class="setting-title">当前余额：</Col><Col span="12"> {{RestCash}} 元</Col></Row>
+            </div>
 
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--套餐名称：{{modalForm.NewPkgName}}-->
+            <!--</Row>-->
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--SIM卡数量：{{modalForm.SimCount}}-->
+            <!--</Row>-->
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--SIM卡有效期：{{selectedMonth}} 个月&nbsp&nbsp&nbsp-->
+            <!--</Row>-->
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--单价：{{modalForm.SinglePrice}} 元&nbsp&nbsp&nbsp-->
+            <!--</Row>-->
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--总金额：{{modalForm.TotalPrice}} 元&nbsp&nbsp&nbsp-->
+            <!--</Row>-->
+            <!--<Row style="font-size:14px;font-weight: bold">-->
+                <!--当前余额：{{RestCash}} 元&nbsp&nbsp&nbsp-->
+            <!--</Row>-->
+        </Card>
     </div>
     <div slot="footer">
       <Button type="ghost"  @click="cancel" >取消</Button>
@@ -164,7 +186,7 @@ export default {
         },
         isSelected:false,
         effectNow:"下月生效",
-        FlowTypeModel:'月包',
+        FlowTypeModel:'长周期包',
         selectedMonth:1,
         }
 
