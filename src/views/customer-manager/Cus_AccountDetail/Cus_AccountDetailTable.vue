@@ -76,6 +76,12 @@
       return {
         searchPaneShow:false,
         tableColums: [
+         {
+              type: 'index',
+              width: 60,
+              title: '序号',
+              align: 'center'
+          },
           {
             align:'center',
             title: '动作类型',
