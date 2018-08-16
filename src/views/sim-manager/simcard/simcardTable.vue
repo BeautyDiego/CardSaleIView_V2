@@ -98,7 +98,7 @@
         title="状态变更"
         @on-ok="ok"
         @on-cancel="cancel">
-         <Select v-model="newstatus" style="width:200px">
+         <Select v-model="newstatus" style="width:300px">
             <Option v-for="item in statusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
   </Modal>
