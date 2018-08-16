@@ -134,6 +134,7 @@ export default {
           {
             type: 'index',
             width: 60,
+            title: '序号',
             align: 'center'
           },
           {
@@ -149,11 +150,13 @@ export default {
           {
             align:'center',
             title: '资费名称',
+            width:200,
             key: 'ExpName',
           },
            {
             align:'center',
             title: '资费编号',
+            width:120,
             key: 'ExpCode',
           },
           {
