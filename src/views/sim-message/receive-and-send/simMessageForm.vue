@@ -14,13 +14,14 @@
     width="700">
     <Form ref="modalForm" :model="modalForm" :label-width="80"  value=true  style="padding: 3px 60px">
       <Form-item label="短信内容" prop="MsgContent" :rules="{required: true, message: '必填,1-60位字符',min:1,max:60, trigger:'blur',type:'string'}" >
-        <Input v-model="modalForm.MsgContent" type="textarea" :rows="4" placeholder="请输入短信内容"></Input>
+        <Input v-model="modalForm.MsgContent" type="textarea" max="50" :rows="4" placeholder="请输入短信内容"></Input>
+        还可输入<span style="color:red">{{50-modalForm.MsgContent.length}}</span>字
       </Form-item>
       <Form-item label="选择卡"  >
         <Button type="primary" size="large" icon="ios-cloud-upload-outline" @click="chooseSimCard">选择SIM卡</Button>
       </Form-item>
-      <Form-item label="卡号"  >
-        <Input v-model="modalForm.SendNum" :readonly="true" type="textarea" :rows="4" placeholder="请输入sim卡号"></Input>
+      <Form-item label="卡号"  prop="SendNum" :rules="{required: true, message: '请选择SIM卡',min:1,max:60, trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.SendNum" :readonly="true" type="textarea" :rows="4" placeholder="请选择sim卡号"></Input>
       </Form-item>
     </Form>
     <div slot="footer">
@@ -83,7 +84,6 @@ export default {
       }
     },
     created(){
-      this.getRoleComboList();
     },
     mounted(){
     

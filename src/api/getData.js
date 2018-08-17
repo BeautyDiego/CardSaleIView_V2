@@ -287,6 +287,8 @@ export const getPoolUsageLine = data => fetch('/Home/PoolUsageLineStatic', data,
 // region 任务列表
 export const getTaskList = data => fetch('/Alarm_Task/List_Task', data, 'POST');
 export const addTask = data => fetch('/Alarm_Task/Add_Task', data, 'POST');
+export const editTask = data => fetch('/Alarm_Task/Edit_Task', data, 'POST');
+export const delTask = data => fetch('/Alarm_Task/Delete_Task', data, 'POST');
 export const simcardTransferPaged = data => fetch('/Alarm_Task/List_Sim_SimCard_Transfer', data, 'POST');
 
 export const getAlarmList = data => fetch('/Alarm_Detail/List_Alarm_Detail', data, 'POST');

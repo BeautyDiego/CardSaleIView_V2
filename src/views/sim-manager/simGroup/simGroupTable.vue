@@ -18,7 +18,7 @@
           <div style="text-align:center" slot="content">
             <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:300px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
               <Row>
-                <Form-item label="SIM卡号"  >
+                <Form-item label="SIM卡组名"  >
                   <Input v-model="searchForm.GroupName" ></Input>
                 </Form-item>
               </Row>

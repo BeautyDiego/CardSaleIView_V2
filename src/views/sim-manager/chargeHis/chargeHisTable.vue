@@ -25,7 +25,7 @@
               <Row>
                 <Form-item label="订单状态"  >
 
-                  <Select v-model="searchForm.status" >
+                  <Select v-model="searchForm.status" :transfer="true">
                     <Option v-for="item in statusList" :value="item.value" :key="item.value" >{{ item.label }}</Option>
                   </Select>
                 </Form-item>

@@ -144,11 +144,8 @@
             this.getTableList();
         },
         methods: {
-            searchEnter(){
-                this.searchPaneShow=!this.searchPaneShow;
-            },
             resetSearch(){
-                this.searchForm.OperName='';
+                this.searchForm.DepositOrderNum='';
             },
             doSearchTableList(){
                 this.currentPage=1;

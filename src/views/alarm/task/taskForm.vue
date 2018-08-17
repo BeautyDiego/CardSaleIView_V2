@@ -22,29 +22,35 @@
             <Radio :value="true" >流量监控</Radio>
 
         </Form-item>
+        <Form-item label="是否生效" >
+          <RadioGroup v-model="modalForm.Status">
+            <Radio :label="1">生效</Radio>
+            <Radio :label="0">未生效</Radio>
+          </RadioGroup>
+        </Form-item>
       </Row>
       <Row style="padding-left:30px;border-top:1px solid #e4e4e4">
         <div style="margin-left:-30px;padding:10px 0 25px;">定义触发条件和动作</div>
-        <Form-item label="流量剩余下限比例"  >
+        <Form-item label="流量剩余下限比例" prop="lowerLimit" >
           <Select v-model="modalForm.lowerLimit" placeholder="请选择">
-            <Option value="10" >10</Option>
-            <Option value="20" >20</Option>
-            <Option value="30" >30</Option>
-            <Option value="40" >40</Option>
-            <Option value="50" >50</Option>
-            <Option value="60" >60</Option>
-            <Option value="70" >70</Option>
-            <Option value="80" >80</Option>
-            <Option value="90" >90</Option>
-            <Option value="100" >100</Option>
+            <Option :value="10" >10</Option>
+            <Option :value="20" >20</Option>
+            <Option :value="30" >30</Option>
+            <Option :value="40" >40</Option>
+            <Option :value="50" >50</Option>
+            <Option :value="60" >60</Option>
+            <Option :value="70" >70</Option>
+            <Option :value="80" >80</Option>
+            <Option :value="90" >90</Option>
+            <Option :value="100" >100</Option>
           </Select>
           <Row style="padding:10px 0">
             <Checkbox v-model="modalForm.isEmail">发送邮箱至</Checkbox>
-            <Input :disabled="!modalForm.isEmail" v-model="modalForm.Email" style="width:300px;" placeholder="多个邮箱请以逗号隔开"></Input>
+            <Input :disabled="!modalForm.isEmail" v-model="modalForm.Email" :maxlength="100" style="width:300px;" placeholder="多个邮箱请以逗号隔开"></Input>
           </Row>
           <Row style="padding:10px 0">
             <Checkbox v-model="modalForm.isSMS">发送短信至</Checkbox>
-            <Input :disabled="!modalForm.isSMS" v-model="modalForm.SMS" style="width:300px;" placeholder="多个号码请以逗号隔开"></Input>
+            <Input :disabled="!modalForm.isSMS" v-model="modalForm.SMS" :maxlength="100" style="width:300px;" placeholder="多个号码请以逗号隔开"></Input>
           </Row>
 
         </Form-item>
@@ -54,8 +60,8 @@
         <Form-item label="选择卡"  >
             <Button type="primary" size="large" icon="ios-cloud-upload-outline" @click="chooseSimCard">选择SIM卡</Button>
         </Form-item>
-        <Form-item label="卡号"  >
-           <Input v-model="modalForm.simNums" :readonly="true" type="textarea" :rows="4" placeholder="请输入sim卡号"></Input>
+        <Form-item label="卡号" prop="simNums" :rules="{required: true, message: '请选择', trigger:'blur',type:'string'}" >
+           <Input v-model="modalForm.simNums" :readonly="true" type="textarea" :rows="4" placeholder="请选择sim卡号"></Input>
         </Form-item>
 
       </Row>
@@ -81,7 +87,7 @@
 </template>
 
 <script>
-import {addTask} from './../../../api/getData'
+import {addTask,editTask} from './../../../api/getData'
 import simTransfer from './simTransfer.vue'
 export default {
     components:{
@@ -155,15 +161,22 @@ export default {
       },
       saveForm(name) {
         this.$refs[name].validate( async (valid) => {
+            console.log(this.modalForm.lowerLimit)
+          if (!this.modalForm.lowerLimit){
+              this.$Message.error('请选择流量剩余下限比例');
+              return;
+          }
           if (valid) {
             this.modalForm_loading=true;
             const params = this.modalForm;
             console.log(params)
             try{
-              let result = await addTask(params);
-             // if (this.modalFormTitle ==='创建任务'){
-              //   result = await addTask(params);
-             // }
+              let result;
+              if (this.modalFormTitle ==='创建任务'){
+                 result = await addTask(params);
+              }else{
+                  result = await editTask(params);
+              }
               if (result.success) {
                 this.$Message.success('提交成功!');
                 this.$emit('listenModalForm');
