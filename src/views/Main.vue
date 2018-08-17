@@ -11,10 +11,10 @@
                 :before-push="beforePush"
                 :open-names="openedSubmenuArr"
                 :menu-list="menuList">
-                <div slot="top" class="logo-con" style="padding:0;">
-                    <img v-show="!shrink" class="logo-max"  src="../images/chaoda.jpg" key="max-logo" />
-                    <img v-show="shrink" class="logo-min" src="../images/chaoda-min.png" key="min-logo" />
-                </div>
+                <!--<div slot="top" class="logo-con" style="padding:0;">-->
+                    <!--<img v-show="!shrink" class="logo-max"  src="../images/chaoda.jpg" key="max-logo" />-->
+                    <!--<img v-show="shrink" class="logo-min" src="../images/chaoda-min.png" key="min-logo" />-->
+                <!--</div>-->
             </shrinkable-menu>
         </div>
         <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'200px'}">

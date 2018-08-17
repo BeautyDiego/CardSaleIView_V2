@@ -72,6 +72,15 @@ export default {
         return {
           IsModalShow:false,
           modalForm:{
+              Id:'',
+              Cus_CustomerId: '',
+              SendType: '',
+              SendNum:'',
+              ReceiveNum:'',
+              MsgContent:'',
+              SendTime:'',
+              SendStatus:'',
+              ReceiveStatus:'',
           },
           modalForm_loading:false,
           IsTransferShow:false,

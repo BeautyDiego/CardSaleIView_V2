@@ -1,6 +1,6 @@
 {
   "name": "NetWork",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "description": "a management bases on iview",
   "main": "index.js",
   "scripts": {
