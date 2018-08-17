@@ -41,6 +41,10 @@ export default {
                         type: 'shadow'
                     }
                 },
+                grid:{
+                  left:'70px',
+                  right:0,
+                },
                 legend: {
                     data: ['总流量', '剩余', '已使用']
                 },
@@ -58,7 +62,8 @@ export default {
                 ],
                 yAxis: [
                     {
-                        type: 'value'
+                        type: 'value',
+                        name: '单位/G',
                     }
                 ],
                 series: [

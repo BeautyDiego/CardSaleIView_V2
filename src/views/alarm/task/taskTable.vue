@@ -65,11 +65,11 @@
 
 <script>
   import Cookies from 'js-cookie'
-  import {getTaskList,delUser,resetUserPwd} from './../../../api/getData'
+  import {getTaskList,delTask} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import taskForm from './taskForm.vue'
   export default {
-    name:'userManagement',
+    name:'taskTable',
     components:{
       taskForm,
     },
@@ -111,53 +111,60 @@
               align:'center',
               title: '状态',
               key: 'Status',
+              render: (h, params) => {
+                  let statusTxt = '未生效';
+                  if (params.row.Status == 1) {
+                      statusTxt = '生效'
+                  }
+                  return statusTxt;
+              },
           },
-//          {
-//            title: '操作',
-//            align: 'center',
-//            render: (h, params) => {
-//              let actions=[];
-//                actions.push( h('Button', {
-//                  props: {
-//                    type: 'warning',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.editTask(params.row)
-//                    }
-//                  }
-//                }, '修改'));
-//
-//                actions.push(  h('Button', {
-//                  props: {
-//                    type: 'error',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.delTask(params.row.Id)
-//                    }
-//                  }
-//                }, '删除'));
-//
-//
-//              return h('div', actions);
-//            }
-//          }
+          {
+            title: '操作',
+            align: 'center',
+            render: (h, params) => {
+              let actions=[];
+                actions.push( h('Button', {
+                  props: {
+                    type: 'warning',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.editTask(params.row)
+                    }
+                  }
+                }, '修改'));
+
+                actions.push(  h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.delTask(params.row.Id)
+                    }
+                  }
+                }, '删除'));
+
+
+              return h('div', actions);
+            }
+          }
         ],
         tableData: [
         ],
         total:0,
         currentPage:1,
         formShow:false,
-        formTitle:'新建任务',
+        formTitle:'创建任务',
         resetForm:{
           Id:'',
           TaskName: '',
@@ -211,7 +218,7 @@
     },
     methods: {
       resetSearch(){
-         this.searchForm.uName='';
+         this.searchForm.taskName='';
       },
       doSearchTableList(){
         this.currentPage=1;
@@ -229,15 +236,14 @@
         this.getTableList();
       },
       addTask() {
-        clearObj(this.parentForm);
-       // this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
-        this.formTitle='新建任务';
+        this.parentForm=JSON.parse(JSON.stringify(this.resetForm));
+        this.formTitle='创建任务';
         this.parentForm.TaskType='流量监控';
         this.formShow=true;
       },
       editTask(row){
         this.parentForm=JSON.parse(JSON.stringify(row));
-        this.formTitle='修改用户';
+        this.formTitle='修改任务';
         this.formShow=true;
       },
       delTask(Id){
@@ -247,7 +253,7 @@
       async comfirmDel(){
         this.btnLoading=true;
         try{
-          const res= await delUser({Id:this.delId});
+          const res= await delTask({Id:this.delId});
           if (res.success) {
             this.$Message.success('删除成功!');
             this.getTableList();

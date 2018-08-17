@@ -62,7 +62,7 @@
       modalShow:{
         type: Boolean,
         default: true,
-      },
+      }
     },
     data() {
       return {
@@ -113,6 +113,7 @@
         this.IsModalShow = curVal;
         if (curVal){
           this.searchForm.SimNum='';
+          this.ChoosedSimTableData=[];
           this.getTableList();
         }
       }

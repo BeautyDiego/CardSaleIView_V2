@@ -115,7 +115,7 @@ export default {
                         {
                             name: '流量数',
                             type: 'pie',
-                            radius: '80%',
+                            radius: '70%',
                             center: ['50%', '50%'],
                             data: seriesData,
                             itemStyle: {
