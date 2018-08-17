@@ -92,7 +92,7 @@
     <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 35px 30px 5px">
       <div v-show="currentStep==0">
         <Row>
-          <Col span="17">
+          <Col span="15">
 
              <Form-item label="购买种类："  >
                {{modalForm.CardType}}
@@ -140,7 +140,7 @@
               </Row>
             </Form-item>
           </Col>
-          <Col span="7">
+          <Col span="9">
             <Card :bordered="true" style="background-color: #fafafa">
               <p slot="title">当前配置</p>
               <div class="current-setting">
