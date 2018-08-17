@@ -224,7 +224,7 @@
       </div>
     </div>
     <div slot="footer">
-      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="ghost"  @click="cancel" >关闭</Button>
       <Button type="primary"  v-show="Current_Step==0&&tabValue=='name3'" :loading="modalForm_loading" @click="saveRemit('remitForm')">提交</Button>
     </div>
   </Modal>

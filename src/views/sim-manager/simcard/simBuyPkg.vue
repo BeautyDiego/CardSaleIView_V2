@@ -1,4 +1,4 @@
-<style >
+<style scoped>
 .ivu-table-row-highlight td, .ivu-table-stripe .ivu-table-body tr.ivu-table-row-highlight:nth-child(2n) td, .ivu-table-stripe .ivu-table-fixed-body tr.ivu-table-row-highlight:nth-child(2n) td, tr.ivu-table-row-highlight.ivu-table-row-hover td{
     background-color:#CD7054;
 }
@@ -58,7 +58,7 @@
        </Row>
     </div>
     <div v-show="Current_Step==1">
-        <Card :bordered="true" style="background-color: #fafafa">
+        <Card :bordered="true" style="background-color: #fafafa" >
             <div class="current-setting">
                 <Row class="setting-row"><Col span="12" class="setting-title">套餐名称：</Col><Col span="12"> {{modalForm.NewPkgName}}</Col> </Row>
                 <Row class="setting-row"><Col span="12" class="setting-title">SIM卡数量：</Col><Col span="12"> {{modalForm.SimCount}}</Col> </Row>
@@ -89,7 +89,7 @@
         </Card>
     </div>
     <div slot="footer">
-      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="ghost"  @click="cancel" >关闭</Button>
       <Button type="error" v-show="Current_Step==0"  @click="nextClick" >下一步</Button>
       <Button type="primary"  :loading="modalForm_loading" v-show="Current_Step==1" @click="SubmitPkgOrder">提交审核</Button>
     </div>

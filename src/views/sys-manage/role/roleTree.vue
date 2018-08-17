@@ -13,7 +13,7 @@
     width="400">
     <Tree ref="roleTree" :data="baseData" show-checkbox></Tree>
     <div slot="footer">
-      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="ghost"  @click="cancel" >关闭</Button>
       <Button type="primary"  :loading="modalForm_loading" @click="saveTree">保存</Button>
     </div>
   </Modal>

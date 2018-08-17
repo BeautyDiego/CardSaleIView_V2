@@ -53,7 +53,7 @@
                 </FormItem>
             </Form>
             <div slot="footer">
-                <Button type="ghost"  @click="cancel" >取消</Button>
+                <Button type="ghost"  @click="cancel" >关闭</Button>
                 <Button type="primary"  :loading="btnLoading" @click="comfirmEditPass">提交</Button>
             </div>
         </Modal>

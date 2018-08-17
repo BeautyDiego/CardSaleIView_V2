@@ -45,7 +45,7 @@
       </Row>
     </div>
     <div slot="footer">
-      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="ghost"  @click="cancel" >关闭</Button>
     </div>
   </Modal>
 </div>

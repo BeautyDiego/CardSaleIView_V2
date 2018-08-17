@@ -37,7 +37,7 @@
       </Form-item>
     </Form>
     <div slot="footer">
-      <Button type="ghost"  @click="cancel" >取消</Button>
+      <Button type="ghost"  @click="cancel" >关闭</Button>
       <Button type="primary"  :loading="modalForm_loading" @click="saveForm('modalForm')">保存</Button>
     </div>
   </Modal>
