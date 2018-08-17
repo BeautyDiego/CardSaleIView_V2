@@ -241,6 +241,7 @@
           Sim_Type:1,
           ValidMonth:1,
           UseCase:'',
+          FlowType:'',
         },
         delModal:false,
         delId:'', //删除的Id
@@ -310,6 +311,7 @@
         this.exp_orderFormData.Res_ExpensesId = row.Id;
         this.exp_orderFormData.CardType = row.CardType;
         this.exp_orderTitle='套餐订购';
+        this.exp_orderFormData.FlowType=row.FlowType;
         this.exp_orderShow=true;
       },
       delAction(Id){

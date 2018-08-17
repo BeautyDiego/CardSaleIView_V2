@@ -106,7 +106,7 @@
             </Form-item>
             <Form-item label="套餐有效时长：" >
               <Row>
-                <Select v-model="modalForm.ValidMonth"  style="width:200px;">
+                <Select v-model="modalForm.ValidMonth" :disabled="modalForm.ValidMonth!=1"  style="width:200px;">
                   <Option v-for="item in ValidMonthList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </Row>
@@ -386,6 +386,7 @@ export default {
             Sim_Type:1,
             ValidMonth:'',
             UseCase:'',
+            FlowType:'',
           }
         }
       },
@@ -438,8 +439,15 @@ export default {
     computed: {
       OrderPrice:function () {
         if(this.modalForm.CardType=='单卡')
-          return this.modalForm.SinglePrice*this.modalForm.ValidMonth*this.Sim_Count;
-        else
+        {
+          if(this.parentForm.FlowType=='月包')
+          {
+            return this.modalForm.SinglePrice*this.modalForm.ValidMonth*this.Sim_Count;            
+          }else
+          {
+            return this.modalForm.SinglePrice*this.Sim_Count;
+          }
+        }else
            return this.modalForm.SinglePrice; //流量池与时间和卡的张数无关
       },
       //节省下来的钱
@@ -484,7 +492,7 @@ export default {
           this.tabValue='name0' //默认进入余额支付tab
           this.GetOrderRestCash();
           this.modalForm=Object.assign(this.parentForm);
-
+          console.log(this.parentForm)
           this.Sim_Count=1;
 
           this.$nextTick(() => this.$refs.simSlider.refresh())
