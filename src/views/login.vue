@@ -6,8 +6,9 @@
     <div class="login" @keydown.enter="handleSubmit">
         <div class="login-con">
             <Card :bordered="false" style="background-color: rgba(255,255,255,0.6);">
-                <div style="text-align: center;">
-                    <img src="./../images/loginChaoda.png" alt="" style="width:245px;">
+                <div style="text-align: center;font-size:24px;padding:20px 10px;">
+                    <!--<img src="./../images/loginChaoda.png" alt="" style="width:245px;">-->
+                    物联网卡管理平台
                 </div>
                 <div class="form-con">
                     <Form ref="loginForm" :model="form" :rules="rules" >

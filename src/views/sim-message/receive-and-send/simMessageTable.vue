@@ -109,6 +109,16 @@
                     },
                     {
                         align: 'center',
+                        title: '发送类型',
+                        key: 'SendType',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const text = row.SendType==1?"平台发送":"终端回复";
+                            return text;
+                        }
+                    },
+                    {
+                        align: 'center',
                         title: '接收号码',
                         key: 'ReceiveNum',
                         render: (h, params) => {
@@ -149,6 +159,8 @@
                         title: '发送状态',
                         key: 'SendStatus',
                         render: (h, params) => {
+                            const row = params.row;
+                            const color = this.SendStatusFormatter(row.SendStatus);
                             let statusTxt = '';
                             if (params.row.SendStatus == 1) {
                                 statusTxt = '待发送'
@@ -157,8 +169,13 @@
                             } else if (params.row.SendStatus == 3) {
                                 statusTxt = '已发送'
                             }
-                            return statusTxt;
-                        },
+                            return h('Tag', {
+                                props: {
+                                    type: 'border',
+                                    color: color
+                                }
+                            }, statusTxt);
+                        }
                     },
 //          {
 //              align:'center',
@@ -282,6 +299,22 @@
             delMessage(Id) {
                 this.delId = Id;
                 this.delModal = true;
+            },
+            SendStatusFormatter(val){
+                let color = '#909399';
+                if (val == 1) { //待发送
+                    color = '#67c23a';
+                }
+                if (val == 3) { //已发送
+                    color = '#67c23a';
+                }
+                if (val == 2) { //正在发送
+                    color = '##409eff';
+                }
+//                if (val === '停机') {
+//                    color = '#f56c6c';
+//                }
+                return color;
             },
             async comfirmDel() {
                 this.btnLoading = true;

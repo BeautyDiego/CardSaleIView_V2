@@ -11,7 +11,7 @@
                 title="短信发送详情"
                 :mask-closable="false"
                 @on-cancel="cancel"
-                width="780">
+                width="900">
             <Row>
                 <Table stripe size="small" :columns="tableColums" :data="tableData"></Table>
             </Row>
@@ -56,6 +56,17 @@
                         align: 'center',
                         title: '发送状态',
                         key: 'SendStatus',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = row.SendStatus=="成功"?"green":"red";
+                            const text = row.SendStatus;
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
                     },
                     {
                         align: 'center',
