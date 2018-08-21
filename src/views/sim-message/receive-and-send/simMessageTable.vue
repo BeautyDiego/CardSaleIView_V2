@@ -117,8 +117,13 @@
                         render: (h, params) => {
                             let actions = [];
                             let simCount = params.row.SendNum.split(',').length;
+                            let str='';
+                            if(simCount>1){
+                                str=simCount + "张sim卡"
+                            }else{
+                                str=params.row.SendNum;
+                            }
                             actions.push(h('a', {
-
                                 style: {
                                     marginRight: '5px'
                                 },
@@ -127,7 +132,7 @@
                                         this.checkSendNum(params.row.SendNum)
                                     }
                                 }
-                            }, simCount + "张sim卡"));
+                            }, str));
 
                             return h('div', actions);
                         }
@@ -152,7 +157,7 @@
                                 statusTxt = '待发送'
                             } else if (params.row.SendStatus == 2) {
                                 statusTxt = '正在发送'
-                            } else if (params.row.OrderStatus == 3) {
+                            } else if (params.row.SendStatus == 3) {
                                 statusTxt = '已发送'
                             }
                             return statusTxt;
