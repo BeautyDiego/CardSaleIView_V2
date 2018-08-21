@@ -105,23 +105,20 @@
                     {
                        align: 'center',
                         title: '发送号码',
-                        key: 'PlatNum',
-                        render: (h, params) => {
-                            return '1064899192711';
-                        },
+                        key: 'SendNum',
                     },
                     {
                         align: 'center',
                         title: '接收号码',
-                        key: 'SendNum',
+                        key: 'ReceiveNum',
                         render: (h, params) => {
                             let actions = [];
-                            let simCount = params.row.SendNum.split(',').length;
+                            let simCount = params.row.ReceiveNum.split(',').length;
                             let str='';
                             if(simCount>1){
                                 str=simCount + "张sim卡"
                             }else{
-                                str=params.row.SendNum;
+                                str=params.row.ReceiveNum;
                             }
                             actions.push(h('a', {
                                 style: {
@@ -129,7 +126,7 @@
                                 },
                                 on: {
                                     click: () => {
-                                        this.checkSendNum(params.row.SendNum)
+                                        this.checkSendNum(params.row.ReceiveNum)
                                     }
                                 }
                             }, str));

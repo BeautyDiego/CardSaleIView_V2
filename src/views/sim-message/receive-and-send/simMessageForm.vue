@@ -20,8 +20,8 @@
       <Form-item label="选择卡"  >
         <Button type="primary" size="large" icon="ios-cloud-upload-outline" @click="chooseSimCard">选择SIM卡</Button>
       </Form-item>
-      <Form-item label="卡号"  prop="SendNum" :rules="{required: true, message: '请选择SIM卡',min:1,max:60, trigger:'blur',type:'string'}" >
-        <Input v-model="modalForm.SendNum" :readonly="true" type="textarea" :rows="4" placeholder="请选择sim卡号"></Input>
+      <Form-item label="卡号"  prop="ReceiveNum" :rules="{required: true, message: '请选择SIM卡',min:1,max:60, trigger:'blur',type:'string'}" >
+        <Input v-model="modalForm.ReceiveNum" :readonly="true" type="textarea" :rows="4" placeholder="请选择sim卡号"></Input>
       </Form-item>
     </Form>
     <div slot="footer">
@@ -135,7 +135,7 @@ export default {
           this.IsTransferShow = false;
       },
       getTransferSimNums(simArr){
-          this.modalForm.SendNum = simArr.join(',')
+          this.modalForm.ReceiveNum = simArr.join(',')
       },
     }
 }
