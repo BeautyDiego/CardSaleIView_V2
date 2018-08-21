@@ -75,6 +75,7 @@
           SimNum: '',
           rows:10,
           page:1,
+          OperType:'中国电信',
         },
         total:0,
         currentPage:1,

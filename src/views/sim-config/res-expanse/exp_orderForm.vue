@@ -92,7 +92,7 @@
     <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 35px 30px 5px">
       <div v-show="currentStep==0">
         <Row>
-          <Col span="15">
+          <Col span="16">
 
              <Form-item label="购买种类："  >
                {{modalForm.CardType}}
@@ -122,7 +122,7 @@
                 <vueSlider ref="simSlider" v-model="Sim_Count"  :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onSIMdrageend" :min="1" :max="5000"></vueSlider>
                 </Col>
                 <Col span="6">
-                <InputNumber v-model="Sim_Count" :precision=0   @on-blur="onSIMblur" @on-focus="onfocus" @on-change="onSIMChange" ></InputNumber>&nbsp个
+                <InputNumber v-model="Sim_Count" :precision=0 @on-blur="onSIMblur" @on-focus="onfocus" @on-change="onSIMChange" ></InputNumber>&nbsp张
                 </Col>
               </Row>
             </Form-item>
@@ -130,32 +130,32 @@
                {{modalForm.FlowCount.toFixed(2)}} &nbsp {{modalForm.FlowCountUint}}
             </Form-item>
             <Form-item label="购买单价："  >
-              ￥{{modalForm.SinglePrice.toFixed(2)}} 
+              ￥{{modalForm.SinglePrice.toFixed(2)}} &nbsp元
             </Form-item>
             <Form-item label="订单金额："  >
               <Row>
                 <Col span="18">
-                ￥{{OrderPrice.toFixed(2)}}
+                ￥{{OrderPrice.toFixed(2)}} &nbsp元
                 </Col>
               </Row>
             </Form-item>
           </Col>
-          <Col span="9">
+          <Col span="8">
             <Card :bordered="true" style="background-color: #fafafa">
               <p slot="title">当前配置</p>
               <div class="current-setting">
-                  <Row class="setting-row"><Col span="12" class="setting-title">运营商：</Col><Col span="12">{{modalForm.OperType}}</Col> </Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">购买种类：</Col><Col span="12">{{modalForm.CardType}}</Col> </Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">SIM卡类型：</Col><Col span="12">{{SIMTypeTxt}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">套餐有效时长：</Col><Col span="12">{{ValidMonthTxt}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">使用场景：</Col><Col span="12">{{modalForm.UseCase}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">购买数量：</Col><Col span="12">{{Sim_Count}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">流量数量：</Col><Col span="12">{{modalForm.FlowCount}}&nbsp{{modalForm.FlowCountUint}}</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">原单价：</Col><Col span="12">￥{{modalForm.OriginSinglePrice}} &nbsp元</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">活动单价：</Col><Col span="12">￥{{modalForm.SinglePrice.toFixed(2)}} &nbsp元</Col></Row>
-                  <Row class="setting-row"><Col span="12" class="setting-title">订单金额：</Col><Col span="12"></Col></Row>
-                  <Row style="font-size:28px;color:#ea6219;">￥{{OrderPrice.toFixed(2)}}</Row>
-                  <Row style="font-size:18px;color:#47b348;">省￥{{SaveMoney.toFixed(2)}}</Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">运营商：</Col><Col span="9">{{modalForm.OperType}}</Col> </Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">购买种类：</Col><Col span="9">{{modalForm.CardType}}</Col> </Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">SIM卡类型：</Col><Col span="9">{{SIMTypeTxt}}</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">套餐有效时长：</Col><Col span="9">{{ValidMonthTxt}}</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">使用场景：</Col><Col span="9">{{modalForm.UseCase}}</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">购买数量：</Col><Col span="9">{{Sim_Count}} &nbsp张</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">流量数量：</Col><Col span="9">{{modalForm.FlowCount}}&nbsp{{modalForm.FlowCountUint}}</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">原单价：</Col><Col span="9">￥{{modalForm.OriginSinglePrice.toFixed(2)}} &nbsp元</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">活动单价：</Col><Col span="9">￥{{modalForm.SinglePrice.toFixed(2)}} &nbsp元</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">订单金额：</Col><Col span="9"></Col></Row>
+                  <Row style="font-size:28px;color:#ea6219;">￥{{OrderPrice.toFixed(2)}} &nbsp元</Row>
+                  <Row style="font-size:18px;color:#47b348;">省￥{{SaveMoney.toFixed(2)}} &nbsp元</Row>
               </div>
             </Card>
           </Col>
