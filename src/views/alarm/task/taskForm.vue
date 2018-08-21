@@ -166,6 +166,12 @@ export default {
               this.$Message.error('请选择流量剩余下限比例');
               return;
           }
+            if (this.modalForm.Status==1){
+              if (!this.modalForm.isEmail||!this.modalForm.Email){
+                  this.$Message.error('请填写发送邮箱');
+                  return;
+              }
+            }
           if (valid) {
             this.modalForm_loading=true;
             const params = this.modalForm;

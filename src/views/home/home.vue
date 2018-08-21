@@ -20,12 +20,16 @@
                     <div class="data-source-row">
                         <Row>
                             <Col :md="24" :lg="12">
-                            <CTdataSourcePie :CTPieDataSource="CTPieDataSource"
-                                            ></CTdataSourcePie>
+                            <CTdataSourcePie
+                                    v-show="CTPieDataSource.length>0"
+                                    :CTPieDataSource="CTPieDataSource"></CTdataSourcePie>
+                            <div v-show="CTPieDataSource.length==0" class="no-card">暂无中国电信卡</div>
                             </Col>
                             <Col :md="24" :lg="12">
-                            <CMdataSourcePie :CMPieDataSource="CMPieDataSource">
+                            <CMdataSourcePie v-show="CMPieDataSource.length>0"
+                                    :CMPieDataSource="CMPieDataSource">
                                                          </CMdataSourcePie>
+                            <div v-show="CMPieDataSource.length==0" class="no-card">暂无中国移动卡</div>
                             </Col>
                         </Row>
                     </div>
@@ -42,12 +46,14 @@
                 <div>
                     <Row>
                         <Col :md="24" :lg="12">
-                        <CTflowUsagePie :pieDataSource="CTFlowPieSource"
+                        <CTflowUsagePie v-show="CTFlowPieSource" :pieDataSource="CTFlowPieSource"
                         ></CTflowUsagePie>
+                        <div v-show="!CTFlowPieSource" class="no-card">暂无中国电信卡</div>
                         </Col>
                         <Col :md="24" :lg="12">
-                        <CMflowUsagePie :pieDataSource="CMFlowPieSource"
+                        <CMflowUsagePie v-show="CMFlowPieSource" :pieDataSource="CMFlowPieSource"
                         ></CMflowUsagePie>
+                        <div v-show="!CMFlowPieSource" class="no-card">暂无中国移动卡</div>
                         </Col>
                     </Row>
 
