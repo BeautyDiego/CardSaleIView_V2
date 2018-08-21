@@ -309,6 +309,7 @@ export const getTransationDetail = data => fetch('/Sim_StatusOrder/ChinaMobileBu
 // region 短信接发
 export const getSimMessageList = data => fetch('/Sim_Message/List_Sim_Message', data, 'POST');
 export const addSimMessage = data => fetch('/Sim_Message/Add_Sim_Message', data, 'POST');
+export const delSimMessage = data => fetch('/Sim_Message/Delete_Sim_Message', data, 'POST');
 export const getSimSendingStatus = data => fetch('/Sim_Message/List_MsgSendStatus', data, 'POST');
 // endregion
 

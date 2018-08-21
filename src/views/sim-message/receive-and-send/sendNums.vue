@@ -8,7 +8,7 @@
 
         <Modal
                 v-model="IsModalShow"
-                title="sim卡号"
+                title="短信发送详情"
                 :mask-closable="false"
                 @on-cancel="cancel"
                 width="780">

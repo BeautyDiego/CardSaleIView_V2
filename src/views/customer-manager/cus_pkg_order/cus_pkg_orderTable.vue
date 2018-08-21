@@ -381,7 +381,6 @@
         this.btnLoading=false;
       },
       checkTransation(transationId){
-          debugger;
           this.transationId=transationId;
           this.formTransationShow=true;
       },

@@ -82,7 +82,7 @@
 
 <script>
     import Cookies from 'js-cookie'
-    import {getSimMessageList, delUser, resetUserPwd} from './../../../api/getData'
+    import {getSimMessageList, delSimMessage} from './../../../api/getData'
     import {clearObj} from './../../../libs/util';
     import simMessageForm from './simMessageForm.vue'
     import sendNums from './sendNums.vue'
@@ -165,45 +165,31 @@
 //              title: '终端接收状态',
 //              key: 'ReceiveStatus',
 //          },
-//          {
-//            title: '操作',
-//            align: 'center',
-//            render: (h, params) => {
-//              let actions=[];
-//                actions.push( h('Button', {
-//                  props: {
-//                    type: 'warning',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.editMessage(params.row)
-//                    }
-//                  }
-//                }, '修改'));
-//
-//                actions.push(  h('Button', {
-//                  props: {
-//                    type: 'error',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.delMessage(params.row.Id)
-//                    }
-//                  }
-//                }, '删除'));
-//
-//
-//              return h('div', actions);
-//            }
-//          }
+          {
+            title: '操作',
+            align: 'center',
+            render: (h, params) => {
+              let actions=[];
+
+                actions.push(  h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.delMessage(params.row.Id)
+                    }
+                  }
+                }, '删除'));
+
+
+              return h('div', actions);
+            }
+          }
                 ],
                 tableData: [],
                 total: 0,
@@ -300,7 +286,7 @@
             async comfirmDel() {
                 this.btnLoading = true;
                 try {
-                    const res = await delUser({Id: this.delId});
+                    const res = await delSimMessage({Id: this.delId});
                     if (res.success) {
                         this.$Message.success('删除成功!');
                         this.getTableList();
