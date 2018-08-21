@@ -61,7 +61,7 @@
                         @refreshTableList="getTableList"></simMessageForm>
         <!--查看号码-->
         <send-nums :modalShow="sendNumModalShow"
-                   :SendNums="SendNums"
+                   :checkNumId="checkNumId"
                    @listenModalForm="hideSendNumModal"></send-nums>
         <!--是否删除框-->
         <Modal v-model="delModal" width="360">
@@ -129,7 +129,7 @@
                                 },
                                 on: {
                                     click: () => {
-                                        this.checkSendNum(params.row.SendNum)
+                                        this.checkSendNum(params.row.Id)
                                     }
                                 }
                             }, str));
@@ -214,7 +214,7 @@
                 formShow: false,
                 formTitle: '新建短信',
                 sendNumModalShow: false,
-                SendNums: [], //所选择的号码
+                checkNumId: '', //所选择id
                 parentForm: {
                     Id: '',
                     Cus_CustomerId: '',
@@ -292,8 +292,8 @@
                 this.formTitle = '修改用户';
                 this.formShow = true;
             },
-            checkSendNum(SendNum) {
-                this.SendNums = SendNum.split(',');
+            checkSendNum(Id) {
+                this.checkNumId = Id;
                 this.sendNumModalShow = true;
             },
             delMessage(Id) {
