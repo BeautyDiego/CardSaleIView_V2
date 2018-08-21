@@ -103,8 +103,16 @@
                         align: 'center'
                     },
                     {
+                       align: 'center',
+                        title: '发送号码',
+                        key: 'PlatNum',
+                        render: (h, params) => {
+                            return '1064899192711';
+                        },
+                    },
+                    {
                         align: 'center',
-                        title: '号码',
+                        title: '接收号码',
                         key: 'SendNum',
                         render: (h, params) => {
                             let actions = [];
@@ -131,7 +139,7 @@
                     },
                     {
                         align: 'center',
-                        title: '发送时间',
+                        title: '任务时间',
                         key: 'SendTime',
                     },
                     {
