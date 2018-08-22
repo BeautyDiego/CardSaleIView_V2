@@ -17,6 +17,13 @@
           <Row style="margin-bottom:5px;">
             <Input v-model="searchForm.SimNum" placeholder="请输入sim卡号" clearable  @on-change="searchSIMTableList"></Input>
           </Row>
+          <Row style="margin-bottom:5px;">
+            <RadioGroup v-model="searchForm.OperType" type="button" size="large"  @on-change='doChangeOperType' >
+              <Radio label="中国电信"></Radio>
+              <Radio label="中国移动"></Radio>
+              <Radio label="中国联通"></Radio>
+            </RadioGroup>
+          </Row>
           <Row>
             <Table  stripe
                     size="small"
@@ -139,6 +146,9 @@
         this.SIMTableData = res.rows;
         this.tableLoading = false;
       },
+        doChangeOperType(){
+            this.searchSIMTableList();
+        },
       changeCurrentPage(num){
         this.currentPage=num;
         this.getTableList();
