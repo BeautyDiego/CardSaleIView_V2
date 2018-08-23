@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbff26f9-689b-4ec5-bea7-bb1b3634f4e3" name="Default" comment="">
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+    <list default="true" id="0aa07b77-a39e-41ef-bf52-f280d34eaa1b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/iview-admin-branch.iml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/getData.js" afterPath="$PROJECT_DIR$/src/api/getData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" />
-=======
-<<<<<<< HEAD
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/api/getData.js" afterPath="$PROJECT_DIR$/src/api/getData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" afterPath="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,73 +23,63 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="CardSaleIView_V2" />
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="exp_orderForm.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="149" column="84" lean-forward="false" selection-start-line="149" selection-start-column="84" selection-end-line="149" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groupBindPool.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupBindPool.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simGroupTable.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTable.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groupToCustomer.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupToCustomer.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getData.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/api/getData.js">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="6946">
-              <caret line="302" column="32" lean-forward="false" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="23">
-              <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-              <folding />
-=======
-            <state relative-caret-position="572">
-              <caret line="302" column="68" lean-forward="false" selection-start-line="302" selection-start-column="68" selection-end-line="302" selection-end-column="68" />
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-              <folding>
-                <marker date="1529917455168" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
-              </folding>
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/router/router.js">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="2093">
-              <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+            <state relative-caret-position="136">
+              <caret line="175" column="83" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="own-space.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/own-space/own-space.vue">
+      <file leaf-file-name="simGroupTransfer.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3496">
-              <caret line="153" column="40" lean-forward="false" selection-start-line="153" selection-start-column="23" selection-end-line="153" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cus_AccountDetailForm.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2162">
-              <caret line="94" column="56" lean-forward="false" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#TabPane#0;n#Tabs#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#9534#9576#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="expanseForm.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseForm.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="137" column="15" lean-forward="false" selection-start-line="137" selection-start-column="15" selection-end-line="137" selection-end-column="15" />
+            <state relative-caret-position="460">
+              <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -107,82 +88,8 @@
       <file leaf-file-name="expanseTable.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6072">
-              <caret line="268" column="15" lean-forward="false" selection-start-line="268" selection-start-column="6" selection-end-line="268" selection-end-column="15" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="7613">
-              <caret line="332" column="9" lean-forward="false" selection-start-line="332" selection-start-column="9" selection-end-line="332" selection-end-column="9" />
-=======
-            <state relative-caret-position="263">
-              <caret line="85" column="295" lean-forward="false" selection-start-line="85" selection-start-column="295" selection-end-line="85" selection-end-column="295" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cus_AccountDetailTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="369">
-              <caret line="159" column="6" lean-forward="false" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="3151">
-              <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="46" />
-              <folding />
-=======
-            <state relative-caret-position="346">
-              <caret line="246" column="26" lean-forward="false" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-              <folding>
-                <element signature="n#style#0;n#Card#0;n#Row#0;n#template#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#Page#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#1736#1767#0" expanded="true" />
-              </folding>
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Res_OperatorTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="1883">
-              <caret line="189" column="22" lean-forward="true" selection-start-line="189" selection-start-column="22" selection-end-line="189" selection-end-column="22" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="1104">
-              <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-=======
-            <state relative-caret-position="345">
-              <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="25" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Res_OperatorForm.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="353">
-              <caret line="80" column="12" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="2875">
-              <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
-=======
-            <state relative-caret-position="2415">
-              <caret line="105" column="46" lean-forward="false" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+            <state relative-caret-position="644">
+              <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -190,49 +97,11 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exp_orderTitle</find>
-      <find>exp_orderFormData</find>
-      <find>addCusOrder</find>
-      <find>ex</find>
-      <find>修改</find>
-      <find>del</find>
-      <find>toF</find>
-      <find>add</find>
-      <find>refreshTableList</find>
-      <find>edit</find>
-      <find>formShow</find>
-      <find>List</find>
-      <find>getTableList</find>
-      <find>支付订单</find>
-      <find>GetOrderAliQRCode</find>
-      <find>ConfigListLength</find>
-      <find>SinglePrice</find>
-      <find>refresh</find>
-      <find>IsAgent</find>
-      <find>CustomerName</find>
-      <find>inforValidate</find>
-      <find>showEditPassword</find>
-      <find>hideExpModel</find>
-      <find>exp_orderShow</find>
-      <find>IsPayStatus</find>
-      <find>editPasswordModal</find>
-      <find>addAction</find>
-      <find>buyAction</find>
-      <find>editAction</find>
-      <find>modalForm</find>
+      <find>groupToCustomerShow</find>
+      <find>groupToCustomer</find>
     </findStrings>
-    <replaceStrings>
-      <replace>&quot;</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -240,57 +109,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/views/advanced-router/mutative-router.vue" />
-        <option value="$PROJECT_DIR$/src/views/advanced-router/actionTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/advanced-router/functionTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/advanced-router/component/treeGrid.vue" />
-        <option value="$PROJECT_DIR$/src/views/advanced-router/functionForm.vue" />
-        <option value="$PROJECT_DIR$/.eslintrc.json" />
-        <option value="$PROJECT_DIR$/src/router/index.js" />
-        <option value="$PROJECT_DIR$/src/api/env.js" />
-        <option value="$PROJECT_DIR$/src/libs/util.js" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/function/functionForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/component/treeGrid.vue" />
-        <option value="$PROJECT_DIR$/src/views/login.vue" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/role/roleTree.vue" />
-        <option value="$PROJECT_DIR$/src/store/modules/app.js" />
-        <option value="$PROJECT_DIR$/src/store/modules/user.js" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/role/roleTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/function/functionTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/main.less" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/user/userForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/role/roleForm.vue" />
-        <option value="$PROJECT_DIR$/src/api/fetch.js" />
-        <option value="$PROJECT_DIR$/src/views/sys-manage/user/userTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/basic_info/userTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/chargeHis/userTable.vue" />
-        <option value="$PROJECT_DIR$/src/libs/jquery.signalR-2.2.2.js" />
-        <option value="$PROJECT_DIR$/build/webpack.base.config.js" />
-        <option value="$PROJECT_DIR$/src/main.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-config/expanse-config/simExpanseConfigForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/flowpool/poolExpendRow.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/flowpool/poolList.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/chargeHis/chargeHisTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/chargeHis/chargeHisForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-manager/flowpool/reCharge.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-config/expanse-config/simExpanseConfigTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_Operator.html" />
-        <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.html" />
-        <option value="$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue" />
-        <option value="$PROJECT_DIR$/src/router/router.js" />
-        <option value="$PROJECT_DIR$/src/api/getData.js" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/own-space/own-space.vue" />
-        <option value="$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue" />
-        <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue" />
-        <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" />
       </list>
     </option>
   </component>
@@ -302,27 +121,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="407" />
+    <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>AngularJS</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -340,14 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="Scope" />
-=======
-<<<<<<< HEAD
-      <pane id="Scope" />
-=======
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,58 +162,13 @@
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="basic_info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="Cus_AccountDetail" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Operator" type="462c0819:PsiDirectoryNode" />
-              <item name="Res_Operator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="own-space" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -423,14 +176,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="sim-config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-config" type="462c0819:PsiDirectoryNode" />
-              <item name="expanse-config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -440,46 +185,44 @@
               <item name="sim-config" type="462c0819:PsiDirectoryNode" />
               <item name="res-expanse" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="simGroup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="sim-message" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
       <pane id="Scope" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="C:\FrontWebWorkSpace\iview-admin-branch\node_modules\eslint" />
-    <property name="standardjs.codestyle.accepted" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GitHub\CardSaleIView_V2\src\views\customer-manager\Cus_AccountDetail" />
-      <recent name="D:\GitHub\CardSaleIView_V2\src\views\Operator\Res_Operator" />
-      <recent name="D:\GitHub\CardSaleIView_V2\src\views\Res_Operator" />
-      <recent name="E:\cloud_tfs\CardSale\CardSaleIView_V1\src\views\sim-manager\simcard" />
-      <recent name="E:\cloud_tfs\CardSale\CardSaleIView_V1\src\libs" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\GitHub\CardSaleIView_V2\src\views\customer-manager" />
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\function" />
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage" />
-      <recent name="C:\FrontWebWorkSpace\iview-admin-branch\src\views\sys-manage\component" />
-    </key>
+    <property name="node.js.selected.package.eslint" value="C:\FrontWebWorkSpace\CardSaleIView_V2\node_modules\eslint" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -498,128 +241,38 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cbff26f9-689b-4ec5-bea7-bb1b3634f4e3" name="Default" comment="" />
-      <created>1516153506834</created>
+      <changelist id="0aa07b77-a39e-41ef-bf52-f280d34eaa1b" name="Default" comment="" />
+      <created>1534989287334</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1516153506834</updated>
-      <workItem from="1516153508954" duration="154000" />
-      <workItem from="1516154617581" duration="2029000" />
-      <workItem from="1516156702815" duration="42000" />
-      <workItem from="1516156817464" duration="9898000" />
-      <workItem from="1516241072100" duration="5411000" />
-      <workItem from="1516599497307" duration="597000" />
-      <workItem from="1516606277694" duration="2615000" />
-      <workItem from="1516669529725" duration="13764000" />
-      <workItem from="1516753946030" duration="10621000" />
-      <workItem from="1516774483600" duration="10116000" />
-      <workItem from="1516840847968" duration="4131000" />
-      <workItem from="1516846411127" duration="15010000" />
-      <workItem from="1516927334765" duration="9155000" />
-      <workItem from="1516945124070" duration="11140000" />
-      <workItem from="1517185750150" duration="21898000" />
-      <workItem from="1517272303805" duration="11990000" />
-      <workItem from="1517360388250" duration="14458000" />
-      <workItem from="1517445563670" duration="12627000" />
-      <workItem from="1517532586556" duration="13545000" />
-      <workItem from="1519711931693" duration="595000" />
-      <workItem from="1519781962027" duration="652000" />
-      <workItem from="1519865232588" duration="599000" />
-      <workItem from="1519957717125" duration="462000" />
-      <workItem from="1519958205941" duration="1282000" />
-      <workItem from="1520241155825" duration="19000" />
-      <workItem from="1520298876579" duration="96000" />
-      <workItem from="1524215678474" duration="618000" />
-      <workItem from="1524645680929" duration="650000" />
-<<<<<<< HEAD
-      <workItem from="1529390968845" duration="1074000" />
-      <workItem from="1530061136279" duration="594000" />
-=======
-      <workItem from="1529043589993" duration="818000" />
-      <workItem from="1529048502018" duration="411000" />
-      <workItem from="1529050118769" duration="19000" />
-      <workItem from="1529050317442" duration="1472000" />
-      <workItem from="1529378922898" duration="6127000" />
-      <workItem from="1529396511252" duration="4290000" />
-      <workItem from="1529455732307" duration="2431000" />
-      <workItem from="1529458249703" duration="5522000" />
-      <workItem from="1529467248791" duration="8395000" />
-      <workItem from="1529542579361" duration="587000" />
-      <workItem from="1529543186113" duration="16193000" />
-      <workItem from="1529569512680" duration="180000" />
-      <workItem from="1529629914660" duration="79000" />
-      <workItem from="1529630019363" duration="1838000" />
-      <workItem from="1529636381898" duration="7448000" />
-<<<<<<< HEAD
-      <workItem from="1529887932418" duration="26000" />
-      <workItem from="1529888231252" duration="795000" />
-      <workItem from="1529889731517" duration="16918000" />
-      <workItem from="1529915410535" duration="2602000" />
-      <workItem from="1529974829697" duration="3883000" />
-      <workItem from="1529978973581" duration="4977000" />
-      <workItem from="1529984998119" duration="13188000" />
-      <workItem from="1530060371501" duration="245000" />
-      <workItem from="1530060644494" duration="11328000" />
-      <workItem from="1530078411152" duration="7580000" />
-      <workItem from="1530147331681" duration="2678000" />
-      <workItem from="1530152955752" duration="3884000" />
-=======
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+      <updated>1534989287334</updated>
+      <workItem from="1534989298554" duration="1771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="298088000" />
-=======
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="175842000" />
+    <option name="totallyTimeSpent" value="1771000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12486828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-    <option name="totallyTimeSpent" value="229984000" />
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-<<<<<<< HEAD
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21300212" sideWeight="0.49483013" order="0" side_tool="false" content_ui="combo" />
-=======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19503172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25652173" sideWeight="0.50421494" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33029613" sideWeight="0.49578503" order="9" side_tool="false" content_ui="tabs" />
-=======
-<<<<<<< HEAD
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24021739" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-=======
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33143508" sideWeight="0.49578503" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30636606" sideWeight="0.50516987" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32801822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -630,426 +283,62 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="8" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorForm.vue" />
-    <entry file="file://$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorRemark.vue" />
-    <entry file="file://$PROJECT_DIR$/src/views/Res_Operator/Res_OperatorTable.vue" />
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="84" column="18" lean-forward="true" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_order/order_expandTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-920">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/build/env.js" />
-    <entry file="file://$PROJECT_DIR$/build/config.js">
-=======
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_order/examine_cus_order.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2891">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue">
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="36" column="165" lean-forward="true" selection-start-line="36" selection-start-column="165" selection-end-line="36" selection-end-column="165" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5635">
-          <caret line="245" column="1" lean-forward="false" selection-start-line="245" selection-start-column="1" selection-end-line="245" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/component/treeGrid.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11355">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/role/roleForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/role/roleTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2300">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/role/roleTree.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1380">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/user/userForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-230">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sys-manage/user/userTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1587">
-          <caret line="21" column="189" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="21" selection-end-column="189" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/inforCard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/countUp.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/dataSourcePie.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/userFlow.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1150">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/visiteVolume.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-177">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/mapDataTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/tags-page-opened.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-241">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/fullscreen.vue">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="464">
-          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="12" />
-=======
-        <state relative-caret-position="-1069">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/breadcrumb-nav.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/theme-switch/theme-switch.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/theme-switch/theme/g.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/theme-switch/theme/r.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/shrinkable-menu/components/sidebarMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-821">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Main.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="44" column="64" lean-forward="false" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/modules/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/modules/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="32" column="33" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/main-components/shrinkable-menu/components/sidebarMenuShrink.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-660">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1771">
-          <caret line="80" column="6" lean-forward="false" selection-start-line="80" selection-start-column="6" selection-end-line="80" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="86" column="23" lean-forward="true" selection-start-line="86" selection-start-column="23" selection-end-line="89" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/expanse-config/simExpanseConfigTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3937">
-          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/expanse-config/simExpanseConfigForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/basic_info/basic_infoTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1104">
-          <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-          <folding />
-=======
-        <state relative-caret-position="23">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6946">
-          <caret line="302" column="32" lean-forward="false" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
-          <folding>
-            <marker date="1529917455168" expanded="true" signature="6762:7180" ph="/** 添加SIM卡资费配置 ...*/" />
-          </folding>
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="2093">
-          <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="3151">
-          <caret line="137" column="16" lean-forward="false" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="46" />
-=======
-        <state relative-caret-position="69">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="35" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+        <state relative-caret-position="644">
+          <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="332" column="16" lean-forward="true" selection-start-line="330" selection-start-column="8" selection-end-line="335" selection-end-column="16" />
-          <folding>
-            <element signature="e#13667#13709#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="2162">
-          <caret line="94" column="56" lean-forward="false" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="56" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="2875">
-          <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
-          <folding />
-=======
-        <state relative-caret-position="572">
-          <caret line="302" column="68" lean-forward="false" selection-start-line="302" selection-start-column="68" selection-end-line="302" selection-end-column="68" />
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#TabPane#0;n#Tabs#0;n#div#0;n#Modal#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#9534#9576#0" expanded="true" />
-          </folding>
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/own-space/own-space.vue">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="3496">
-          <caret line="153" column="40" lean-forward="false" selection-start-line="153" selection-start-column="23" selection-end-line="153" selection-end-column="40" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="7613">
-          <caret line="332" column="9" lean-forward="false" selection-start-line="332" selection-start-column="9" selection-end-line="332" selection-end-column="9" />
-=======
-        <state relative-caret-position="345">
-          <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="25" />
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
+        <state relative-caret-position="437">
+          <caret line="149" column="84" lean-forward="false" selection-start-line="149" selection-start-column="84" selection-end-line="149" selection-end-column="84" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupBindPool.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6072">
-          <caret line="268" column="15" lean-forward="false" selection-start-line="268" selection-start-column="6" selection-end-line="268" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/Cus_AccountDetail/Cus_AccountDetailTable.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="369">
-          <caret line="159" column="6" lean-forward="false" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="23">
-          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
-=======
-        <state relative-caret-position="346">
-          <caret line="246" column="26" lean-forward="false" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
->>>>>>> 878519cc5f0192d28c262dc470909c2be98b84b1
-          <folding>
-            <element signature="n#style#0;n#Card#0;n#Row#0;n#template#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#Page#0;n#Row#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#1736#1767#0" expanded="true" />
-          </folding>
->>>>>>> c49513117f049b8f902be1bf5aa3b2e101d165aa
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1883">
-          <caret line="189" column="22" lean-forward="true" selection-start-line="189" selection-start-column="22" selection-end-line="189" selection-end-column="22" />
+        <state relative-caret-position="269">
+          <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorForm.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupToCustomer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="80" column="12" lean-forward="false" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
+        <state relative-caret-position="460">
+          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseForm.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="137" column="15" lean-forward="false" selection-start-line="137" selection-start-column="15" selection-end-line="137" selection-end-column="15" />
+        <state relative-caret-position="460">
+          <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="175" column="83" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="83" />
           <folding />
         </state>
       </provider>

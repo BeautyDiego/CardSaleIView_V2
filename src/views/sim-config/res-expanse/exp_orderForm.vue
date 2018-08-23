@@ -106,7 +106,7 @@
             </Form-item>
             <Form-item label="套餐有效时长：" >
               <Row>
-                <Select v-model="modalForm.ValidMonth" :disabled="modalForm.ValidMonth!=1"  style="width:200px;">
+                <Select v-model="modalForm.ValidMonth" :disabled="modalForm.CardType==='流量池'||modalForm.FlowType==='长周期包'"  style="width:200px;">
                   <Option v-for="item in ValidMonthList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </Row>
@@ -118,7 +118,7 @@
             </Form-item>
             <Form-item label="SIM卡数量：" >
               <Row>
-                <Col span="18">
+                <Col span="16">
                 <vueSlider ref="simSlider" v-model="Sim_Count"  :clickable="false" tooltip="hover" @drag-start="ondragstart" @drag-end="onSIMdrageend" :min="1" :max="5000"></vueSlider>
                 </Col>
                 <Col span="6">
@@ -147,6 +147,7 @@
                   <Row class="setting-row"><Col span="15" class="setting-title">运营商：</Col><Col span="9">{{modalForm.OperType}}</Col> </Row>
                   <Row class="setting-row"><Col span="15" class="setting-title">购买种类：</Col><Col span="9">{{modalForm.CardType}}</Col> </Row>
                   <Row class="setting-row"><Col span="15" class="setting-title">SIM卡类型：</Col><Col span="9">{{SIMTypeTxt}}</Col></Row>
+                  <Row class="setting-row"><Col span="15" class="setting-title">资费类型：</Col><Col span="9">{{modalForm.FlowType}}</Col></Row>
                   <Row class="setting-row"><Col span="15" class="setting-title">套餐有效时长：</Col><Col span="9">{{ValidMonthTxt}}</Col></Row>
                   <Row class="setting-row"><Col span="15" class="setting-title">使用场景：</Col><Col span="9">{{modalForm.UseCase}}</Col></Row>
                   <Row class="setting-row"><Col span="15" class="setting-title">购买数量：</Col><Col span="9">{{Sim_Count}} &nbsp张</Col></Row>
