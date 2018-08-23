@@ -124,21 +124,29 @@
                   key: 'PkgOrderNum',
               },
               {
-                  align:'center',
-                  title: '运营商',
-                  key: 'OperType',
-                  render: (h, params) => {
-                      let operName='';
-                      if (params.row.OperType==1){
-                          operName='中国电信'
-                      }else if(params.row.OperType==2){
-                          operName='中国移动'
-                      }else if(params.row.OperType==3){
-                          operName='中国联通'
-                      }
-                      return operName;
-                  },
-              },
+                        align: 'center',
+                        title: '运营商',
+                        key: 'OperType',
+                        width: 140,
+                        render: (h, params) => {
+                            const row = params.row;
+                             let operName='';
+                              if (row.OperType==1){
+                                  operName='中国电信'
+                              }else if(row.OperType==2){
+                                  operName='中国移动'
+                              }else if(row.OperType==3){
+                                  operName='中国联通'
+                              }
+                            const color = this.operNameFormatter(operName);
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, operName);
+                        }
+                    },
               {
                   align:'center',
                   title: 'sim卡数量',
@@ -394,6 +402,22 @@
       hideExamine(){
         this.examineShow=false;
       },
+            operNameFormatter(val) {
+                let color = '#909399';
+                if (val.search('电信') !== -1) {
+                    color = '#19be6b';
+                    return color;
+                }
+                if (val.search('移动') !== -1) {
+                    color = '#0085d0';
+                    return color;
+                }
+                if (val.search('联通') !== -1) {
+                    color = '#e60000';
+                    return color;
+                }
+                return color
+            },      
     }
   }
 

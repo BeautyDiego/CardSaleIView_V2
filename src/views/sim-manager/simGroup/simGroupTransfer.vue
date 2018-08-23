@@ -11,7 +11,7 @@
             title="SIM卡分组"
             :mask-closable="false"
             @on-cancel="cancel"
-            width="900">
+            width="1000">
       <Row >
         <Col span="11" style="height:500px;">
           <Row style="margin-bottom:5px;">
@@ -110,13 +110,27 @@
           {
             align:'center',
             title: 'SIM卡号',
+            width:120,
             key: 'SimNum',
           },
-          {
-              align:'center',
-              title: '运营商',
-              key: 'OperName',
-          },
+                      {
+                        align: 'center',
+                        title: '运营商',
+                        width: 140,
+                        key: 'OperName',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = this.operNameFormatter(row.OperName);
+                            const text = row.OperName;
+                            console.log(text)
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
+                      }, 
           {
             align:'center',
             title: '卡状态',
@@ -253,6 +267,22 @@
             }
             this.modalForm_loading=false;
       },
+      operNameFormatter(val) {
+                let color = '#909399';
+                if (val.search('电信') !== -1) {
+                    color = '#19be6b';
+                    return color;
+                }
+                if (val.search('移动') !== -1) {
+                    color = '#0085d0';
+                    return color;
+                }
+                if (val.search('联通') !== -1) {
+                    color = '#e60000';
+                    return color;
+                }
+                return color
+            }, 
     }
   }
 
