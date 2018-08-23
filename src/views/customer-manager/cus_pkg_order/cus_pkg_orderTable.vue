@@ -152,11 +152,11 @@
                   title: 'sim卡数量',
                   key: 'SimCount',
               },
-              {
-                  align:'center',
-                  title: '原套餐名',
-                  key: 'OldPkgName',
-              },
+//              {
+//                  align:'center',
+//                  title: '原套餐名',
+//                  key: 'OldPkgName',
+//              },
               {
                   align:'center',
                   title: '新套餐名',
@@ -389,7 +389,6 @@
         this.btnLoading=false;
       },
       checkTransation(transationId){
-          debugger;
           this.transationId=transationId;
           this.formTransationShow=true;
       },

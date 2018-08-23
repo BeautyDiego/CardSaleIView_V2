@@ -113,6 +113,8 @@ export default {
         CMCCStatusFormat(resultCode,resultDesc){
             if (resultCode==0&&resultDesc=="SUCCESS"){
                 return '成功';
+            }else if (resultCode==1){
+                return '办理失败';
             }else{
                 return '受理中';
             }

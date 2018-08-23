@@ -113,7 +113,7 @@
             title: '资费名称',
             key: 'ExpName',
           },
-           {
+          {
             align:'center',
             title: '资费编号',
             key: 'ExpCode',
@@ -180,7 +180,7 @@
                 }, '删除'));
               }
 
-               if(this.IsAgent){
+               if(this.IsAgent&&params.row.FlowType!=='加油包'){
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',

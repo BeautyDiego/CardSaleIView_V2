@@ -6,12 +6,15 @@
 
 <div>
   
-  <Modal v-model="IsModalShow" title="SIM卡导入" :mask-closable="false" @on-cancel="cancel" width="600">
+  <Modal v-model="IsModalShow" title="SIM卡导入" :mask-closable="false" @on-cancel="cancel" width="620">
     <Row style="margin-bottom:20px;">
       请选择导入卡所属运营商
       <Select v-model="Res_OperatorId" style="width:200px">
         <Option v-for="item in OperatorCombo" :value="item.Id" :key="item.Id">{{ item.OperName }}</Option>
       </Select>
+      <Button @click="downloadExcelTemplate" type="ghost" style="background-color:#fff"  size="large"
+              icon="archive">导入模版
+      </Button>
       <Upload v-show="Res_OperatorId"
               ref="upload"
                :data="{'Res_OperatorId':Res_OperatorId}"
@@ -136,6 +139,10 @@ export default {
               title: '文件格式不对',
               desc: '上传文件格式不正确，请上传xls或xlsx格式的excel'
           });
+      },
+      downloadExcelTemplate(){
+          const url = baseUrl + "/ExcelTemplate/sim卡导入模版.xlsx";
+          window.open(url);
       },
     }
 }

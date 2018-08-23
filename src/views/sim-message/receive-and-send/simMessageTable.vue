@@ -61,7 +61,7 @@
                         @refreshTableList="getTableList"></simMessageForm>
         <!--查看号码-->
         <send-nums :modalShow="sendNumModalShow"
-                   :SendNums="SendNums"
+                   :checkNumId="checkNumId"
                    @listenModalForm="hideSendNumModal"></send-nums>
         <!--是否删除框-->
         <Modal v-model="delModal" width="360">
@@ -82,7 +82,7 @@
 
 <script>
     import Cookies from 'js-cookie'
-    import {getSimMessageList, delUser, resetUserPwd} from './../../../api/getData'
+    import {getSimMessageList, delSimMessage} from './../../../api/getData'
     import {clearObj} from './../../../libs/util';
     import simMessageForm from './simMessageForm.vue'
     import sendNums from './sendNums.vue'
@@ -109,6 +109,16 @@
                     },
                     {
                         align: 'center',
+                        title: '发送类型',
+                        key: 'SendType',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const text = row.SendType==1?"平台发送":"终端回复";
+                            return text;
+                        }
+                    },
+                    {
+                        align: 'center',
                         title: '接收号码',
                         key: 'ReceiveNum',
                         render: (h, params) => {
@@ -126,7 +136,7 @@
                                 },
                                 on: {
                                     click: () => {
-                                        this.checkSendNum(params.row.ReceiveNum)
+                                        this.checkSendNum(params.row.Id)
                                     }
                                 }
                             }, str));
@@ -149,6 +159,8 @@
                         title: '发送状态',
                         key: 'SendStatus',
                         render: (h, params) => {
+                            const row = params.row;
+                            const color = this.SendStatusFormatter(row.SendStatus);
                             let statusTxt = '';
                             if (params.row.SendStatus == 1) {
                                 statusTxt = '待发送'
@@ -157,53 +169,44 @@
                             } else if (params.row.SendStatus == 3) {
                                 statusTxt = '已发送'
                             }
-                            return statusTxt;
-                        },
+                            return h('Tag', {
+                                props: {
+                                    type: 'border',
+                                    color: color
+                                }
+                            }, statusTxt);
+                        }
                     },
 //          {
 //              align:'center',
 //              title: '终端接收状态',
 //              key: 'ReceiveStatus',
 //          },
-//          {
-//            title: '操作',
-//            align: 'center',
-//            render: (h, params) => {
-//              let actions=[];
-//                actions.push( h('Button', {
-//                  props: {
-//                    type: 'warning',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.editMessage(params.row)
-//                    }
-//                  }
-//                }, '修改'));
-//
-//                actions.push(  h('Button', {
-//                  props: {
-//                    type: 'error',
-//                    size: 'small'
-//                  },
-//                  style: {
-//                    marginRight: '5px'
-//                  },
-//                  on: {
-//                    click: () => {
-//                      this.delMessage(params.row.Id)
-//                    }
-//                  }
-//                }, '删除'));
-//
-//
-//              return h('div', actions);
-//            }
-//          }
+          {
+            title: '操作',
+            align: 'center',
+            render: (h, params) => {
+              let actions=[];
+
+                actions.push(  h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.delMessage(params.row.Id)
+                    }
+                  }
+                }, '删除'));
+
+
+              return h('div', actions);
+            }
+          }
                 ],
                 tableData: [],
                 total: 0,
@@ -211,7 +214,7 @@
                 formShow: false,
                 formTitle: '新建短信',
                 sendNumModalShow: false,
-                SendNums: [], //所选择的号码
+                checkNumId: '', //所选择id
                 parentForm: {
                     Id: '',
                     Cus_CustomerId: '',
@@ -289,18 +292,34 @@
                 this.formTitle = '修改用户';
                 this.formShow = true;
             },
-            checkSendNum(SendNum) {
-                this.SendNums = SendNum.split(',');
+            checkSendNum(Id) {
+                this.checkNumId = Id;
                 this.sendNumModalShow = true;
             },
             delMessage(Id) {
                 this.delId = Id;
                 this.delModal = true;
             },
+            SendStatusFormatter(val){
+                let color = '#909399';
+                if (val == 1) { //待发送
+                    color = '#67c23a';
+                }
+                if (val == 3) { //已发送
+                    color = '#67c23a';
+                }
+                if (val == 2) { //正在发送
+                    color = '##409eff';
+                }
+//                if (val === '停机') {
+//                    color = '#f56c6c';
+//                }
+                return color;
+            },
             async comfirmDel() {
                 this.btnLoading = true;
                 try {
-                    const res = await delUser({Id: this.delId});
+                    const res = await delSimMessage({Id: this.delId});
                     if (res.success) {
                         this.$Message.success('删除成功!');
                         this.getTableList();

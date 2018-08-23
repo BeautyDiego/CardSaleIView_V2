@@ -1,9 +1,5 @@
 <style scoped>
-.sim-num-item{
-    text-align: center;
-    border-bottom: 1px solid #e9eaec;
-    line-height:40px;
-}
+
 </style>
 
 <template>
@@ -12,16 +8,12 @@
 
         <Modal
                 v-model="IsModalShow"
-                title="sim卡号"
+                title="短信发送详情"
                 :mask-closable="false"
                 @on-cancel="cancel"
-                width="400">
+                width="900">
             <Row>
-                <div style="max-height: 500px;overflow-y: scroll">
-                    <div v-for="(item,index) in SendNums" class="sim-num-item" :style="{'background-color':index%2 ==0?'#ebebf1':'#fff'}">
-                        {{item}}
-                    </div>
-                </div>
+                <Table stripe size="small" :columns="tableColums" :data="tableData"></Table>
             </Row>
             <div slot="footer">
                 <Button type="ghost"  @click="cancel">关闭</Button>
@@ -32,11 +24,12 @@
 </template>
 
 <script>
+    import {getSimSendingStatus} from './../../../api/getData'
     export default {
         props: {
-            SendNums: {
-                type: Array,
-                default: []
+            checkNumId: {
+                type: Number,
+                default: 0
             },
             modalShow: {
                 type: Boolean,
@@ -47,12 +40,59 @@
             return {
                 IsModalShow: false,
                 modalForm_loading: false,
-                IsTransferShow: false,
+                tableColums: [
+                    {
+                        type: 'index',
+                        width: 60,
+                        title: '序号',
+                        align: 'center'
+                    },
+                    {
+                        align: 'center',
+                        title: '号码',
+                        key: 'SimNum',
+                    },
+                    {
+                        align: 'center',
+                        title: '发送状态',
+                        key: 'SendStatus',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = row.SendStatus=="成功"?"green":"red";
+                            const text = row.SendStatus;
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
+                    },
+                    {
+                        align: 'center',
+                        title: '发送描述',
+                        key: 'SendDesc',
+                    },
+                    {
+                        align: 'center',
+                        title: '发送时间',
+                        key: 'SendTime',
+                    },
+                    {
+                        align: 'center',
+                        title: '接收时间',
+                        key: 'ReceiveTime',
+                    }
+                ],
+                tableData:[],
             }
         },
         watch: {
             modalShow(curVal, oldVal) {
                 this.IsModalShow = curVal;
+                if (curVal){
+                    this.getSimSendingStatus();
+                }
             }
         },
         created () {
@@ -64,6 +104,14 @@
             cancel () {
                 this.$emit('listenModalForm');
             },
+            async getSimSendingStatus(){
+                let res = await getSimSendingStatus({Id:this.checkNumId})
+                if(res.success){
+                    this.tableData=res.result
+                }else{
+                    this.tableData=[];
+                }
+            }
         }
     }
 
