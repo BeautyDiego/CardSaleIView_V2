@@ -114,7 +114,12 @@
                         render: (h, params) => {
                             const row = params.row;
                             const text = row.SendType==1?"平台发送":"终端回复";
-                            return text;
+                            const col=row.SendType==1?"green":"blue";
+                            return h('Tag', {
+                                props: {
+                                    color: col
+                                }
+                            }, text);
                         }
                     },
                     {
@@ -191,7 +196,8 @@
                 actions.push(  h('Button', {
                   props: {
                     type: 'error',
-                    size: 'small'
+                    size: 'small',
+                   // icon:'trash-a'
                   },
                   style: {
                     marginRight: '5px'
