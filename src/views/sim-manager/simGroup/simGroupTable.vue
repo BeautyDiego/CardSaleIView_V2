@@ -123,6 +123,11 @@
             key: 'GroupDescribe',
           },
           {
+              align:'center',
+              title: '绑定流量池',
+              key: 'PoolNum',
+          },
+          {
             align:'center',
             title: '备注',
             key: 'Remark',
@@ -169,21 +174,25 @@
                 }
               }, '删除'));
               if (!params.row.IsBind){
-
+                
+                
+                if(!params.row.PoolNum){
                   actions.push( h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.Grouping(params.row)
+                      props: {
+                          type: 'primary',
+                          size: 'small'
+                      },
+                      style: {
+                          marginRight: '5px'
+                      },
+                      on: {
+                          click: () => {
+                              this.Grouping(params.row)
+                          }
                       }
-                    }
                   }, '添加组员'));
+                }
+                
 
 
                 if (this.IsAdmin){
