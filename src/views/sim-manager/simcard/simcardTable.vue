@@ -201,20 +201,27 @@
                             }, text);
                         }
                     },
-                    {
+              {
                         align: 'center',
                         title: '运营商',
-                        key: 'OperName',
+                        key: 'OperType',
                         render: (h, params) => {
                             const row = params.row;
-                            const color = this.operNameFormatter(row.OperName);
-                            const text = row.OperName;
+                             let operName='';
+                              if (row.OperType==1){
+                                  operName='中国电信'
+                              }else if(row.OperType==2){
+                                  operName='中国移动'
+                              }else if(row.OperType==3){
+                                  operName='中国联通'
+                              }
+                            const color = this.operNameFormatter(operName);
                             return h('Tag', {
                                 props: {
                                     type: 'dot',
                                     color: color
                                 }
-                            }, text);
+                            }, operName);
                         }
                     },
                     {

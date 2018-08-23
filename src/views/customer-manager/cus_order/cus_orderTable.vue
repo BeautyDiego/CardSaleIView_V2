@@ -133,11 +133,24 @@
             title: '订单号',
             key: 'OrderNum',
           },
-           {
-            align:'center',
-            title: '运营商',
-            key: 'OperTypeText',
-          },
+
+                     {
+                        align: 'center',
+                        title: '运营商',
+                        width: 140,
+                        key: 'OperTypeText',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = this.operNameFormatter(row.OperTypeText);
+                            const text = row.OperTypeText;
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
+                    },         
           {
             align:'center',
             title: '资费类型',
@@ -147,11 +160,6 @@
             align:'center',
             title: '购买种类',
             key: 'SingleOrPoolText',
-          },
-          {
-            align:'center',
-            title: 'SIM卡类型',
-            key: 'Sim_TypeText',
           },
           {
             align:'center',
@@ -176,6 +184,7 @@
           {
             align:'center',
             title: '下单时间',
+             width: 155,
             key: 'OrderTime',
           },
           {
@@ -444,6 +453,22 @@
       hideExamine(){
         this.examineShow=false;
       },
+      operNameFormatter(val) {
+                let color = '#909399';
+                if (val.search('电信') !== -1) {
+                    color = '#19be6b';
+                    return color;
+                }
+                if (val.search('移动') !== -1) {
+                    color = '#0085d0';
+                    return color;
+                }
+                if (val.search('联通') !== -1) {
+                    color = '#e60000';
+                    return color;
+                }
+                return color
+            },      
     }
   }
 

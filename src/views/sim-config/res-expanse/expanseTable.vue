@@ -85,11 +85,24 @@
               title: '序号',
               align: 'center'
           },          
-          {
-            align:'center',
-            title: '运营商',
-            key: 'OperType',
-          },
+                    {
+                        align: 'center',
+                        title: '运营商',
+                        width: 140,
+                        key: 'OperType',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = this.operNameFormatter(row.OperType);
+                            const text = row.OperType;
+                            console.log(text)
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
+                    }, 
           {
             align:'center',
             title: 'SIM类型',
@@ -347,6 +360,22 @@
       hideExpModel(){
         this.exp_orderShow=false;
       },
+      operNameFormatter(val) {
+                let color = '#909399';
+                if (val.search('电信') !== -1) {
+                    color = '#19be6b';
+                    return color;
+                }
+                if (val.search('移动') !== -1) {
+                    color = '#0085d0';
+                    return color;
+                }
+                if (val.search('联通') !== -1) {
+                    color = '#e60000';
+                    return color;
+                }
+                return color
+            },          
     }
   }
 
