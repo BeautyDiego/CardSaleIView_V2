@@ -95,6 +95,7 @@
   import cus_orderForm from './cus_orderForm.vue'
   import examine_cus_order from './examine_cus_order.vue'
   import order_expandTable from './order_expandTable.vue';
+  import formatter from './../../../libs/formatter'
   export default {
     name:'basic_Info',
     components:{
@@ -141,7 +142,7 @@
                         key: 'OperTypeText',
                         render: (h, params) => {
                             const row = params.row;
-                            const color = this.operNameFormatter(row.OperTypeText);
+                            const color = formatter.operNameColor(row.OperTypeText);
                             const text = row.OperTypeText;
                             return h('Tag', {
                                 props: {
@@ -452,23 +453,7 @@
       },
       hideExamine(){
         this.examineShow=false;
-      },
-      operNameFormatter(val) {
-                let color = '#909399';
-                if (val.search('电信') !== -1) {
-                    color = '#19be6b';
-                    return color;
-                }
-                if (val.search('移动') !== -1) {
-                    color = '#0085d0';
-                    return color;
-                }
-                if (val.search('联通') !== -1) {
-                    color = '#e60000';
-                    return color;
-                }
-                return color
-            },      
+      }
     }
   }
 

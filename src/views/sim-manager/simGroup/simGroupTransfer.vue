@@ -66,6 +66,7 @@
 
 <script>
   import {simcardTransferListPage,simGroupSimCardList,addSimToGroup} from './../../../api/getData'
+  import formatter from './../../../libs/formatter'
   export default {
     props:{
       parentForm: {
@@ -113,28 +114,38 @@
             width:120,
             key: 'SimNum',
           },
-                      {
-                        align: 'center',
-                        title: '运营商',
-                        width: 140,
-                        key: 'OperName',
-                        render: (h, params) => {
-                            const row = params.row;
-                            const color = this.operNameFormatter(row.OperName);
-                            const text = row.OperName;
-                            console.log(text)
-                            return h('Tag', {
-                                props: {
-                                    type: 'dot',
-                                    color: color
-                                }
-                            }, text);
-                        }
-                      }, 
+          {
+            align: 'center',
+            title: '运营商',
+            width: 140,
+            key: 'OperName',
+            render: (h, params) => {
+                const row = params.row;
+                const color = formatter.operNameColor(row.OperName);
+                const text = row.OperName;
+                return h('Tag', {
+                    props: {
+                        type: 'dot',
+                        color: color
+                    }
+                }, text);
+            }
+          },
           {
             align:'center',
             title: '卡状态',
             key: 'SimStatus',
+              render: (h, params) => {
+                  const row = params.row;
+                  const color = formatter.simStatusColor(row.SimStatus);
+                  const text = row.SimStatus;
+                  return h('Tag', {
+                      props: {
+                          type: 'border',
+                          color: color
+                      }
+                  }, text);
+              }
           },
         ],
         SIMTableData: [
@@ -267,22 +278,6 @@
             }
             this.modalForm_loading=false;
       },
-      operNameFormatter(val) {
-                let color = '#909399';
-                if (val.search('电信') !== -1) {
-                    color = '#19be6b';
-                    return color;
-                }
-                if (val.search('移动') !== -1) {
-                    color = '#0085d0';
-                    return color;
-                }
-                if (val.search('联通') !== -1) {
-                    color = '#e60000';
-                    return color;
-                }
-                return color
-            }, 
     }
   }
 

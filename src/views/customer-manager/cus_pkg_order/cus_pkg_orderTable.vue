@@ -98,6 +98,7 @@
   import {getPkgOrderList,cancelPkgOrder,examinePkgOrder} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import PkgTransationForm from './PkgTransationForm.vue'
+  import formatter from './../../../libs/formatter'
   export default {
     name:'cus_pkg_order',
     components:{
@@ -130,15 +131,8 @@
                         width: 140,
                         render: (h, params) => {
                             const row = params.row;
-                             let operName='';
-                              if (row.OperType==1){
-                                  operName='中国电信'
-                              }else if(row.OperType==2){
-                                  operName='中国移动'
-                              }else if(row.OperType==3){
-                                  operName='中国联通'
-                              }
-                            const color = this.operNameFormatter(operName);
+                             let operName= formatter.operName(row.OperType);
+                            const color = formatter.operNameColor(operName);
                             return h('Tag', {
                                 props: {
                                     type: 'dot',
@@ -400,23 +394,7 @@
       },
       hideExamine(){
         this.examineShow=false;
-      },
-            operNameFormatter(val) {
-                let color = '#909399';
-                if (val.search('电信') !== -1) {
-                    color = '#19be6b';
-                    return color;
-                }
-                if (val.search('移动') !== -1) {
-                    color = '#0085d0';
-                    return color;
-                }
-                if (val.search('联通') !== -1) {
-                    color = '#e60000';
-                    return color;
-                }
-                return color
-            },      
+      }
     }
   }
 

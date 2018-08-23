@@ -30,6 +30,7 @@
 
 <script>
   import {simGroupSimCardList} from './../../../api/getData'
+  import formatter from './../../../libs/formatter'
   export default {
     props:{
       parentForm: {
@@ -67,11 +68,33 @@
                 align:'center',
                 title: '运营商',
                 key: 'OperName',
+                render: (h, params) => {
+                    const row = params.row;
+                    const color = formatter.operNameColor(row.OperName);
+                    const text = row.OperName;
+                    return h('Tag', {
+                        props: {
+                            type: 'dot',
+                            color: color
+                        }
+                    }, text);
+                }
             },
           {
             align:'center',
             title: '卡状态',
             key: 'SimStatus',
+              render: (h, params) => {
+                  const row = params.row;
+                  const color = formatter.simStatusColor(row.SimStatus);
+                  const text = row.SimStatus;
+                  return h('Tag', {
+                      props: {
+                          type: 'border',
+                          color: color
+                      }
+                  }, text);
+              }
           },
         ],
         GroupTableData:[],

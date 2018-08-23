@@ -68,7 +68,8 @@
   import {Res_ExpensesPagedList,delRes_Expenses} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   import simExpanseConfigForm from './expanseForm.vue'
-    import exp_orderForm from './exp_orderForm.vue'
+  import exp_orderForm from './exp_orderForm.vue'
+  import formatter from './../../../libs/formatter'
   export default {
     name:'userManagement',
     components:{
@@ -92,7 +93,7 @@
                         key: 'OperType',
                         render: (h, params) => {
                             const row = params.row;
-                            const color = this.operNameFormatter(row.OperType);
+                            const color = formatter.operNameColor(row.OperType);
                             const text = row.OperType;
                             console.log(text)
                             return h('Tag', {
@@ -359,23 +360,7 @@
       },
       hideExpModel(){
         this.exp_orderShow=false;
-      },
-      operNameFormatter(val) {
-                let color = '#909399';
-                if (val.search('电信') !== -1) {
-                    color = '#19be6b';
-                    return color;
-                }
-                if (val.search('移动') !== -1) {
-                    color = '#0085d0';
-                    return color;
-                }
-                if (val.search('联通') !== -1) {
-                    color = '#e60000';
-                    return color;
-                }
-                return color
-            },          
+      }
     }
   }
 

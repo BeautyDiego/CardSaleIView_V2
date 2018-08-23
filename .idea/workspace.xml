@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aa07b77-a39e-41ef-bf52-f280d34eaa1b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/iview-admin-branch.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/formatter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" afterPath="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" afterPath="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" afterPath="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/customer-manager/cus_simstatus_order/cus_simstatus_orderTable.vue" afterPath="$PROJECT_DIR$/src/views/customer-manager/cus_simstatus_order/cus_simstatus_orderTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue" afterPath="$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupDetail.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupDetail.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" afterPath="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,72 +27,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="exp_orderForm.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue">
+      <file leaf-file-name="formatter.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/libs/formatter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="149" column="84" lean-forward="false" selection-start-line="149" selection-start-column="84" selection-end-line="149" selection-end-column="84" />
+            <state relative-caret-position="69">
+              <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groupBindPool.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupBindPool.vue">
+      <file leaf-file-name="simTransfer.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="414">
+              <caret line="107" column="13" lean-forward="false" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="70" />
+              <folding>
+                <element signature="e#2254#2313#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simGroupTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTable.vue">
+      <file leaf-file-name="Res_OperatorTable.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="54" />
-              <folding />
+            <state relative-caret-position="51">
+              <caret line="300" column="7" lean-forward="false" selection-start-line="300" selection-start-column="7" selection-end-line="300" selection-end-column="7" />
+              <folding>
+                <element signature="e#2620#2718#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groupToCustomer.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupToCustomer.vue">
+      <file leaf-file-name="simGroupDetail.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupDetail.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getData.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/api/getData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="175" column="83" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simGroupTransfer.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="expanseTable.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="759">
+              <caret line="96" column="15" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="96" selection-end-column="15" />
+              <folding>
+                <element signature="e#568#626#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +77,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>groupToCustomerShow</find>
       <find>groupToCustomer</find>
+      <find>simGroupSimCardList</find>
+      <find>groupToCustomerShow</find>
+      <find>operNameFormatter</find>
+      <find>simStatusFormatter</find>
+      <find>tableColums</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,6 +92,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue" />
+        <option value="$PROJECT_DIR$/src/libs/formatter.js" />
+        <option value="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" />
+        <option value="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupDetail.vue" />
+        <option value="$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/customer-manager/cus_simstatus_order/cus_simstatus_orderTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" />
+        <option value="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" />
+        <option value="$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue" />
+        <option value="$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue" />
       </list>
     </option>
   </component>
@@ -168,6 +161,12 @@
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -175,30 +174,45 @@
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-config" type="462c0819:PsiDirectoryNode" />
+              <item name="alarm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-config" type="462c0819:PsiDirectoryNode" />
-              <item name="res-expanse" type="462c0819:PsiDirectoryNode" />
+              <item name="alarm" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
               <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="simGroup" type="462c0819:PsiDirectoryNode" />
+              <item name="customer-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="cus_simstatus_order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Operator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="Operator" type="462c0819:PsiDirectoryNode" />
+              <item name="Res_Operator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
@@ -206,6 +220,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="sim-message" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="sim-message" type="462c0819:PsiDirectoryNode" />
+              <item name="receive-and-send" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -223,6 +245,11 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="C:\FrontWebWorkSpace\CardSaleIView_V2\node_modules\eslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\FrontWebWorkSpace\CardSaleIView_V2\src\libs" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -246,12 +273,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1534989287334</updated>
-      <workItem from="1534989298554" duration="1771000" />
+      <workItem from="1534989298554" duration="5117000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1771000" />
+    <option name="totallyTimeSpent" value="5117000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -287,34 +314,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
+    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="110" column="26" lean-forward="false" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="149" column="84" lean-forward="false" selection-start-line="149" selection-start-column="84" selection-end-line="149" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupBindPool.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="54" />
+        <state relative-caret-position="136">
+          <caret line="175" column="83" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -327,19 +330,159 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="53" />
+        <state relative-caret-position="269">
+          <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/getData.js">
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/groupBindPool.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="175" column="83" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="83" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/exp_orderForm.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="149" column="84" lean-forward="false" selection-start-line="149" selection-start-column="84" selection-end-line="149" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5589">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/formatter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="211" column="76" lean-forward="true" selection-start-line="211" selection-start-column="27" selection-end-line="211" selection-end-column="76" />
+          <folding>
+            <element signature="e#6086#6197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="131" column="13" lean-forward="true" selection-start-line="121" selection-start-column="11" selection-end-line="131" selection-end-column="13" />
+          <folding>
+            <element signature="e#2249#2345#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/alarm/task/taskTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1656">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/alarm/task/taskForm.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_simstatus_order/cus_simstatus_orderTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="231" column="8" lean-forward="false" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
+          <folding>
+            <element signature="e#2303#2334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_pkg_order/cus_pkg_orderTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="134" column="76" lean-forward="true" selection-start-line="133" selection-start-column="27" selection-end-line="134" selection-end-column="76" />
+          <folding>
+            <element signature="e#3642#3673#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/customer-manager/cus_order/cus_orderTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="144" column="84" lean-forward="true" selection-start-line="144" selection-start-column="27" selection-end-line="144" selection-end-column="84" />
+          <folding>
+            <element signature="e#3439#3470#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="e#1925#1984#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="96" column="15" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="96" selection-end-column="15" />
+          <folding>
+            <element signature="e#568#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/sim-config/res-expanse/expanseTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6056">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="107" column="13" lean-forward="false" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="70" />
+          <folding>
+            <element signature="e#2254#2313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Operator/Res_Operator/Res_OperatorTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="300" column="7" lean-forward="false" selection-start-line="300" selection-start-column="7" selection-end-line="300" selection-end-column="7" />
+          <folding>
+            <element signature="e#2620#2718#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

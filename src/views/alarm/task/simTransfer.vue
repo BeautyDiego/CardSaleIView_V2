@@ -11,7 +11,7 @@
             title="选择sim卡"
             :mask-closable="false"
             @on-cancel="cancel"
-            width="900">
+            width="1100">
       <Row >
         <Col span="11" style="height:500px;">
           <Row style="margin-bottom:5px;">
@@ -64,6 +64,7 @@
 
 <script>
   import {simcardTransferPaged} from './../../../api/getData'
+  import formatter from './../../../libs/formatter'
   export default {
     props:{
       modalShow:{
@@ -102,11 +103,33 @@
               align:'center',
               title: '运营商',
               key: 'OperName',
+              render: (h, params) => {
+                  const row = params.row;
+                  const color = formatter.operNameColor(row.OperName);
+                  const text = row.OperName;
+                  return h('Tag', {
+                      props: {
+                          type: 'dot',
+                          color: color
+                      }
+                  }, text);
+              }
           },
           {
             align:'center',
             title: '卡状态',
             key: 'SimStatus',
+            render: (h, params) => {
+                const row = params.row;
+                const color = formatter.simStatusColor(row.SimStatus);
+                const text = row.SimStatus;
+                return h('Tag', {
+                    props: {
+                        type: 'border',
+                        color: color
+                    }
+                }, text);
+            }
           },
         ],
         SIMTableData: [

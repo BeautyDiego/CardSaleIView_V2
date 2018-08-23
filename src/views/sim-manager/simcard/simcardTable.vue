@@ -132,6 +132,7 @@
     import simcardImport from './simcardImport.vue'
     import simBuyPkg from './simBuyPkg.vue'
     import {baseUrl} from './../../../api/env'
+    import formatter from './../../../libs/formatter'
 
     export default {
         name: 'simcardTable',
@@ -191,7 +192,7 @@
                         key: 'SimStatus',
                         render: (h, params) => {
                             const row = params.row;
-                            const color = this.simStatusFormatter(row.SimStatus);
+                            const color = formatter.simStatusColor(row.SimStatus);
                             const text = row.SimStatus;
                             return h('Tag', {
                                 props: {
@@ -207,15 +208,8 @@
                         key: 'OperType',
                         render: (h, params) => {
                             const row = params.row;
-                             let operName='';
-                              if (row.OperType==1){
-                                  operName='中国电信'
-                              }else if(row.OperType==2){
-                                  operName='中国移动'
-                              }else if(row.OperType==3){
-                                  operName='中国联通'
-                              }
-                            const color = this.operNameFormatter(operName);
+                             let operName = formatter.operName(row.OperType);
+                            const color = formatter.operNameColor(operName);
                             return h('Tag', {
                                 props: {
                                     type: 'dot',
@@ -494,40 +488,6 @@
                 this.selectedRows = selection;
                 this.pkgParentData.selectSims = selection;
             },
-
-            simStatusFormatter(val) {
-                let color = '#909399';
-                if (val === '正使用') {
-                    color = '#67c23a';
-                }
-                if (val === '在用') {
-                    color = '#67c23a';
-                }
-                if (val === '测试期') {
-                    color = '##409eff';
-                }
-                if (val === '停机') {
-                    color = '#f56c6c';
-                }
-                return color
-            },
-            operNameFormatter(val) {
-                let color = '#909399';
-                if (val.search('电信') !== -1) {
-                    color = '#19be6b';
-                    return color;
-                }
-                if (val.search('移动') !== -1) {
-                    color = '#0085d0';
-                    return color;
-                }
-                if (val.search('联通') !== -1) {
-                    color = '#e60000';
-                    return color;
-                }
-                return color
-            },
-
         }
     }
 
