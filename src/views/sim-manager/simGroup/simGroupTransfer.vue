@@ -53,6 +53,9 @@
                  :data="GroupTableData"
                  @on-selection-change="onGroupTableSelectChange"></Table>
         </Row>
+         <Row style="text-align:center">
+          共{{GroupTableData.length}}条
+         </Row>
         </Col>
       </Row>
       <div slot="footer">
@@ -111,7 +114,7 @@
           {
             align:'center',
             title: 'SIM卡号',
-            width:120,
+            width:130,
             key: 'SimNum',
           },
           {

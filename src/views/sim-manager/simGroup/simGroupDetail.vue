@@ -20,6 +20,9 @@
                  :data="GroupTableData"
                  ></Table>
         </Row>
+        <Row style="text-align:center">
+        共{{GroupTableData.length}}条
+        </Row>
       <div slot="footer">
         <Button type="ghost"  @click="cancel" >关闭</Button>
       </div>
