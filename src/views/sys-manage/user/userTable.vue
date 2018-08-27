@@ -19,8 +19,16 @@
             <div style="text-align:center" slot="content">
               <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
                 <Row>
-                  <Form-item label="用户名称"  >
+                  <Form-item label="用户名称">
                     <Input v-model="searchForm.uName" ></Input>
+                  </Form-item>
+                </Row>
+                <Row>
+                  <Form-item label="用户角色">
+                    <Select v-model="searchForm.uType" :transfer="true">
+                      <Option value="1">管理员</Option>
+                      <Option value="2">代理商</Option>
+                    </Select>
                   </Form-item>
                 </Row>
               </Form>
@@ -213,6 +221,7 @@
           uName: '',
           rows:10,
           page:1,
+          uType:'',
         },
       }
     },
@@ -230,6 +239,7 @@
     methods: {
       resetSearch(){
          this.searchForm.uName='';
+         this.searchForm.uType='';
       },
       doSearchTableList(){
         this.currentPage=1;

@@ -141,6 +141,11 @@
             title: '区域',
             key: 'Region',
           },
+           {
+            align:'center',
+            title: '余额',
+            key: 'RestCash',render: (h, params) => { return '￥'+ params.row.RestCash.toFixed(2)+'元';},
+          },
           {
               align:'center',
               title: '创建人',
