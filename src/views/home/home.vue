@@ -5,7 +5,7 @@
 <template>
     <div class="home-main">
         <div >
-            <img width="100%" src="./../../images/homeBanner.jpg" alt="">
+            <img width="100%" src="./../../images/homeBanner.png" alt="">
         </div>
         <Row :gutter="10" class="margin-top-10">
             <Col :md="24" :lg="6" :style="{marginBottom: '10px'}">

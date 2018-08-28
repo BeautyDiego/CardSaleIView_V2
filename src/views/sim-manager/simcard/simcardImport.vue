@@ -6,7 +6,7 @@
 
 <div>
   
-  <Modal v-model="IsModalShow" title="SIM卡导入" :mask-closable="false" @on-cancel="cancel" width="620">
+  <Modal v-model="IsModalShow" title="SIM卡导入" :mask-closable="false" @on-cancel="cancel" width="680">
     <Row style="margin-bottom:20px;">
       请选择导入卡所属运营商
       <Select v-model="Res_OperatorId" style="width:200px">
@@ -123,6 +123,9 @@ export default {
           let result=res;
           if(res.success){
               this.$Message.success('上传成功！');
+              if (res.lstResult){
+                  this.tableData=res.lstResult;
+              }
               this.$emit('refreshTableList');
           }else{
               if (res.lstResult){

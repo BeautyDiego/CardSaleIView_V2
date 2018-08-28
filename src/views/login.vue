@@ -1,37 +1,51 @@
 <style lang="less">
     @import './login.less';
+    .login .ivu-input-wrapper .ivu-input{
+        border-radius: 18px!important ;
+    }
 </style>
 
 <template>
     <div class="login" @keydown.enter="handleSubmit">
         <div class="login-con">
-            <Card :bordered="false" style="background-color: rgba(255,255,255,0.6);">
-                <div style="text-align: center;font-size:24px;padding:20px 10px;">
+            <div>
+                <div style="text-align: center;font-size:24px;font-weight:700;letter-spacing:2px;padding:20px 10px;color:#fff;">
                     <!--<img src="./../images/loginChaoda.png" alt="" style="width:245px;">-->
-                    物联网卡管理平台
+                    物联网连接管理平台
                 </div>
                 <div class="form-con">
                     <Form ref="loginForm" :model="form" :rules="rules" >
-                        <FormItem prop="userName">
-                            <Input v-model="form.userName" placeholder="请输入用户名" size="large" >
-                            <span slot="prepend">
-                                    <Icon :size="20" type="person"></Icon>
-                                </span>
-                            </Input>
-                        </FormItem>
-                        <FormItem prop="password">
-                            <Input type="password" v-model="form.password" placeholder="请输入密码" size="large">
-                            <span slot="prepend">
-                                    <Icon :size="20" type="locked"></Icon>
-                                </span>
-                            </Input>
-                        </FormItem>
+                        <Row>
+                            <Col span="6" style="font-size:18px;color:#fff;line-height:32px;">
+                             用户名：
+                            </Col>
+                            <Col span="18">
+                                <FormItem prop="userName" >
+            
+                                    <Input v-model="form.userName" placeholder="请输入用户名" size="medium" >
+                                    </Input>
+                                </FormItem>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span="6" style="font-size:18px;color:#fff;line-height:32px;">
+                            密码：
+                            </Col>
+                            <Col span="18">
+                            <FormItem prop="password" >
+                                <Input type="password" v-model="form.password" placeholder="请输入密码" size="medium">
+                                </Input>
+                            </FormItem>
+                            </Col>
+                        </Row>
+                      
+
                         <FormItem>
-                            <Button @click="handleSubmit" type="primary" long :loading="isLoading" shape="circle" size="large" :disabled="isLoading">登录</Button>
+                            <Button @click="handleSubmit" type="primary" long :loading="isLoading" shape="circle" size="large" :disabled="isLoading">登&nbsp&nbsp录</Button>
                         </FormItem>
                     </Form>
                 </div>
-            </Card>
+            </div>
         </div>
     </div>
 </template>
@@ -97,6 +111,3 @@
   }
 </script>
 
-<style>
-
-</style>

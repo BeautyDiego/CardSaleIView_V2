@@ -1,7 +1,5 @@
- //import Vue from 'vue';
+ import Vue from 'vue';
  import iView from 'iview';
- import { Button, Table } from 'iview';
-
 import {router} from './router/index';
 import {appRouter} from './router/router';
 import store from './store';

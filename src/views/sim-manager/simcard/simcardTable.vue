@@ -47,7 +47,9 @@
                             </Row>
                             <Row>
                                 <Form-item label="卡状态">
-                                    <Input v-model="searchForm.SimStatus"></Input>
+                                    <Select v-model="searchForm.SimStatus" :transfer="true">
+                                        <Option v-for="(item,index) in SimStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                    </Select>
                                 </Form-item>
                             </Row>
                         </Form>
@@ -283,7 +285,7 @@
                     maxFlow: 0,
                 },
                 searchForm: {
-                    SimStatus: '',
+                    SimStatus: '全部',
                     PoolNum: '',
                     SimNum: '',
                     CardType: '1',//1是单卡，2是流量池成员
@@ -291,6 +293,7 @@
                     page: 1,
                     OperType: '1'
                 },
+                SimStatusList:[{value:'全部',label:'全部'},{value:'活卡待激活',label:'活卡待激活'},{value:'在用',label:'在用'},{value:'停机',label:'停机'}],
 
                 addFlowformShow: false,//修改备注窗体
                 importFormShow: false, //导入窗体
@@ -366,7 +369,7 @@
             resetSearch() {
                 this.searchForm.PoolNum = '';
                 this.searchForm.SimNum = '';
-                this.searchForm.SimStatus = '';
+                this.searchForm.SimStatus = '全部';
             },
             doSearchTableList() {
                 this.currentPage = 1;
@@ -432,7 +435,17 @@
             },
             doChangeOperType() {
                 this.currentPage = 1;
+                this.searchForm.SimStatus = '全部';
+                if (this.searchForm.OperType==1){ //电信
+                    this.SimStatusList = [{value:'全部',label:'全部'},{value:'活卡待激活',label:'活卡待激活'},{value:'在用',label:'在用'},{value:'停机',label:'停机'}];
+
+                }else if (this.searchForm.OperType==2){//移动
+                    this.SimStatusList =  [{value:'全部',label:'全部'},{value:'测试期',label:'测试期'},{value:'沉默期',label:'沉默期'},{value:'库存期',label:'库存期'},{value:'正使用',label:'正使用'},{value:'停机',label:'停机'},{value:'预约销户',label:'预约销户'},{value:'销户',label:'销户'},];
+                } else{
+                    this.SimStatusList=[];
+                }
                 this.getTableList();
+               
             },
             async toExcel() {
                 const params = this.searchForm;

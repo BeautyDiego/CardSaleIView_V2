@@ -29,9 +29,10 @@
                     size="small"
                     height="440"
                     :loading="tableLoading"
-                    :columns="tableColums"
+                    :columns="simTableColums"
                     :data="SIMTableData"
-                    @on-selection-change="onSIMTableSelectChange"></Table>
+                    @on-selection-change="onSIMTableSelectChange"
+                    @on-sort-change="onSIMTableSortChange"></Table>
           </Row>
           <Row>
             <Page :total="total" size="small" :current="currentPage" @on-change="changeCurrentPage" show-total style="float:right;margin-top:10px"></Page>
@@ -47,10 +48,11 @@
         <Row>
           <Table stripe size="small"
                  height="478"
-                 :columns="tableColums"
+                 :columns="groupTableColums"
                  :data="ChoosedSimTableData"
                  @on-selection-change="onGroupTableSelectChange"></Table>
         </Row>
+        <Row style="text-align:center;">共{{ChoosedSimTableData.length}}张</Row>
         </Col>
       </Row>
       <div slot="footer">
@@ -84,54 +86,105 @@
           rows:10,
           page:1,
           OperType:'中国电信',
+          orderby:'asc'
         },
         total:0,
         currentPage:1,
         tableLoading:false,
-        tableColums: [
-          {
-            type: 'selection',
-            width: 60,
-            align: 'center'
-          },
-          {
-            align:'center',
-            title: 'SIM卡号',
-            key: 'SimNum',
-          },
-          {
-              align:'center',
-              title: '运营商',
-              key: 'OperName',
-              render: (h, params) => {
-                  const row = params.row;
-                  const color = formatter.operNameColor(row.OperName);
-                  const text = row.OperName;
-                  return h('Tag', {
-                      props: {
-                          type: 'dot',
-                          color: color
-                      }
-                  }, text);
-              }
-          },
-          {
-            align:'center',
-            title: '卡状态',
-            key: 'SimStatus',
-            render: (h, params) => {
-                const row = params.row;
-                const color = formatter.simStatusColor(row.SimStatus);
-                const text = row.SimStatus;
-                return h('Tag', {
-                    props: {
-                        type: 'border',
-                        color: color
-                    }
-                }, text);
-            }
-          },
-        ],
+          simTableColums: [
+              {
+                  type: 'selection',
+                  width: 60,
+                  align: 'center'
+              },
+              {
+                  align:'center',
+                  title: 'SIM卡号',
+                  width:130,
+                  key: 'SimNum',
+                  sortable: 'custom',
+              },
+              {
+                  align: 'center',
+                  title: '运营商',
+                  width: 140,
+                  key: 'OperName',
+                  render: (h, params) => {
+                      const row = params.row;
+                      const color = formatter.operNameColor(row.OperName);
+                      const text = row.OperName;
+                      return h('Tag', {
+                          props: {
+                              type: 'dot',
+                              color: color
+                          }
+                      }, text);
+                  },
+              },
+              {
+                  align:'center',
+                  title: '卡状态',
+                  key: 'SimStatus',
+                  render: (h, params) => {
+                      const row = params.row;
+                      const color = formatter.simStatusColor(row.SimStatus);
+                      const text = row.SimStatus;
+                      return h('Tag', {
+                          props: {
+                              type: 'border',
+                              color: color
+                          }
+                      }, text);
+                  }
+              },
+          ],
+          groupTableColums: [
+              {
+                  type: 'selection',
+                  width: 60,
+                  align: 'center'
+              },
+              {
+                  align:'center',
+                  title: 'SIM卡号',
+                  width:130,
+                  key: 'SimNum',
+                  sortable: true,
+              },
+              {
+                  align: 'center',
+                  title: '运营商',
+                  width: 140,
+                  key: 'OperName',
+                  render: (h, params) => {
+                      const row = params.row;
+                      const color = formatter.operNameColor(row.OperName);
+                      const text = row.OperName;
+                      return h('Tag', {
+                          props: {
+                              type: 'dot',
+                              color: color
+                          }
+                      }, text);
+                  },
+              },
+              {
+                  align:'center',
+                  title: '卡状态',
+                  key: 'SimStatus',
+                  render: (h, params) => {
+                      const row = params.row;
+                      const color = formatter.simStatusColor(row.SimStatus);
+                      const text = row.SimStatus;
+                      return h('Tag', {
+                          props: {
+                              type: 'border',
+                              color: color
+                          }
+                      }, text);
+                  }
+              },
+          ],
         SIMTableData: [
         ],
         ChoosedSimTableData:[],
@@ -178,6 +231,10 @@
       },
       onSIMTableSelectChange(selection){
         this.simCardSelection=selection;
+      },
+      onSIMTableSortChange(sort){
+          this.searchForm.orderby=sort.order;
+          this.getTableList();
       },
       onGroupTableSelectChange(selection){
         this.groupSelection=selection;
