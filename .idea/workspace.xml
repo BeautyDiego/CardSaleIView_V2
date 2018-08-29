@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aa07b77-a39e-41ef-bf52-f280d34eaa1b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/images/homeBanner.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" afterPath="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/home/home.vue" afterPath="$PROJECT_DIR$/src/views/home/home.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/login.less" afterPath="$PROJECT_DIR$/src/views/login.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/login.vue" afterPath="$PROJECT_DIR$/src/views/login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardImport.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardImport.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" afterPath="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" afterPath="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,7 +20,7 @@
       <file leaf-file-name="simGroupTransfer.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
+            <state relative-caret-position="3772">
               <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="259" selection-end-column="8" />
               <folding>
                 <element signature="e#2411#2507#0" expanded="true" />
@@ -43,7 +34,7 @@
       <file leaf-file-name="simTransfer.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
+            <state relative-caret-position="3335">
               <caret line="237" column="8" lean-forward="false" selection-start-line="234" selection-start-column="6" selection-end-line="237" selection-end-column="8" />
               <folding>
                 <element signature="e#2400#2459#0" expanded="true" />
@@ -57,7 +48,7 @@
       <file leaf-file-name="getData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/getData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="4347">
               <caret line="291" column="33" lean-forward="false" selection-start-line="291" selection-start-column="13" selection-end-line="291" selection-end-column="33" />
               <folding>
                 <element signature="e#3780#3796#0" expanded="true" />
@@ -66,16 +57,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simTransfer.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="simTransfer.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="221" column="40" lean-forward="false" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+            <state relative-caret-position="-805">
+              <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
               <folding>
                 <element signature="e#2071#2130#0" expanded="true" />
                 <element signature="e#2675#4237#0" expanded="false" />
                 <element signature="e#4267#5825#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/login.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,11 +122,11 @@
         <option value="$PROJECT_DIR$/src/views/home/home.vue" />
         <option value="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardTable.vue" />
         <option value="$PROJECT_DIR$/src/views/login.less" />
-        <option value="$PROJECT_DIR$/src/views/login.vue" />
         <option value="$PROJECT_DIR$/src/views/sim-manager/simcard/simcardImport.vue" />
         <option value="$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue" />
         <option value="$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue" />
         <option value="$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue" />
+        <option value="$PROJECT_DIR$/src/views/login.vue" />
       </list>
     </option>
   </component>
@@ -140,7 +141,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="428" />
     <option name="y" value="73" />
     <option name="width" value="1400" />
@@ -162,6 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,20 +229,11 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="sim-message" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CardSaleIView_V2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CardSaleIView_V2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sim-message" type="462c0819:PsiDirectoryNode" />
-              <item name="receive-and-send" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -285,26 +278,27 @@
       <workItem from="1535333449496" duration="681000" />
       <workItem from="1535354740806" duration="7154000" />
       <workItem from="1535420817489" duration="3190000" />
-      <workItem from="1535425033637" duration="2738000" />
+      <workItem from="1535425033637" duration="3056000" />
+      <workItem from="1535504446428" duration="1168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23434000" />
+    <option name="totallyTimeSpent" value="24920000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12802951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30869564" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3076087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -329,7 +323,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -337,7 +330,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1104">
           <caret line="48" column="54" lean-forward="false" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -365,7 +357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -401,7 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1104">
           <caret line="48" column="54" lean-forward="false" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,7 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -654,25 +641,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="30" column="92" lean-forward="false" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simcard/simcardImport.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" column="98" lean-forward="false" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/getData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="4347">
           <caret line="291" column="33" lean-forward="false" selection-start-line="291" selection-start-column="13" selection-end-line="291" selection-end-column="33" />
           <folding>
             <element signature="e#3780#3796#0" expanded="true" />
@@ -682,7 +660,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/sim-manager/simGroup/simGroupTransfer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
+        <state relative-caret-position="3772">
           <caret line="256" column="0" lean-forward="false" selection-start-line="256" selection-start-column="0" selection-end-line="259" selection-end-column="8" />
           <folding>
             <element signature="e#2411#2507#0" expanded="true" />
@@ -694,7 +672,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/alarm/task/simTransfer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
+        <state relative-caret-position="3335">
           <caret line="237" column="8" lean-forward="false" selection-start-line="234" selection-start-column="6" selection-end-line="237" selection-end-column="8" />
           <folding>
             <element signature="e#2400#2459#0" expanded="true" />
@@ -706,13 +684,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/sim-message/receive-and-send/simTransfer.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="221" column="40" lean-forward="false" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+        <state relative-caret-position="-805">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
           <folding>
             <element signature="e#2071#2130#0" expanded="true" />
             <element signature="e#2675#4237#0" expanded="false" />
             <element signature="e#4267#5825#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

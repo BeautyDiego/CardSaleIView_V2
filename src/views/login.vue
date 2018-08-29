@@ -38,11 +38,18 @@
                             </FormItem>
                             </Col>
                         </Row>
-                      
-
-                        <FormItem>
-                            <Button @click="handleSubmit" type="primary" long :loading="isLoading" shape="circle" size="large" :disabled="isLoading">登&nbsp&nbsp录</Button>
-                        </FormItem>
+    
+                        <Row>
+                            <Col span="6" >
+                              &nbsp
+                            </Col>
+                            <Col span="18">
+                            <FormItem>
+                                <Button @click="handleSubmit" type="primary" long :loading="isLoading" shape="circle" size="large" :disabled="isLoading">登&nbsp&nbsp录</Button>
+                            </FormItem>
+                            </Col>
+                        </Row>
+                       
                     </Form>
                 </div>
             </div>
