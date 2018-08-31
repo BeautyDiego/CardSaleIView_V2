@@ -46,6 +46,17 @@
                                 </Form-item>
                             </Row>
                             <Row>
+                                <Form-item label="所属企业">
+                                    <Input v-model="searchForm.Company"></Input>
+                                </Form-item>
+                            </Row> 
+                             <Row>
+                                <Form-item label="套餐">
+                                    <Input v-model="searchForm.PkgName"></Input>
+                                </Form-item>
+                            </Row>                                  
+                            
+                            <Row>
                                 <Form-item label="卡状态">
                                     <Select v-model="searchForm.SimStatus" :transfer="true">
                                         <Option v-for="(item,index) in SimStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
@@ -288,6 +299,8 @@
                     SimStatus: '全部',
                     PoolNum: '',
                     SimNum: '',
+                    Company:'',
+                    PkgName:'',
                     CardType: '1',//1是单卡，2是流量池成员
                     rows: 20,
                     page: 1,

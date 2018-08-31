@@ -10,8 +10,8 @@
     v-model="IsModalShow"
     :title="modalFormTitle"
     :mask-closable="false"
-    @on-cancel="cancel"
-    width="600">
+    @on-cancel="cancel" 
+    width="800">
     <Form ref="modalForm" :model="modalForm" :label-width="100"  value=true  style="padding: 3px 60px">
       <Form-item label="客户名称" prop="Cus_Name" :rules="{required: true, message: '必填,1-50位字符',min:1,max:50,  trigger:'blur',type:'string'}" >
         <Input v-model="modalForm.Cus_Name" disabled='true'></Input>
@@ -39,13 +39,26 @@
       <Button type="ghost"  @click="cancel" >关闭</Button>
  
     </div>
+     <Modal v-model="delDiscountModal" width="360" style="z-index:999">
+      <p slot="header" style="color:#f60;text-align:center">
+        <Icon type="information-circled"></Icon>
+        <span>删除确认</span>
+      </p>
+      <div style="text-align:center">
+        <p>是否继续删除？</p>
+      </div>
+      <div slot="footer">
+        <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmDel">删除</Button>
+      </div>
+    </Modal>
   </Modal>
+
 </div>
 
 </template>
 
 <script>
-import {getDiscount,getExpensesList,addCusDiscount} from './../../../api/getData'
+import {getDiscount,getExpensesList,addCusDiscount,delCusDiscount} from './../../../api/getData'
 export default {
     props:{
       parentForm: {
@@ -85,9 +98,35 @@ export default {
             {align:'center',title: '资费名称',key: 'ExpName'},
             {align:'center',title: '运营商',key: 'OperType'},
             {align:'center', title: '标准价格', key: 'OfficialPirce' },
-            {align:'center', title: '折扣率', key: 'Discount' }
-            ],
-          tableData: [
+            {align:'center', title: '折扣率', key: 'Discount' },
+            {
+            title: '操作',
+            align: 'center',
+            render: (h, params) => {
+              let actions=[];
+
+
+                actions.push(  h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.comfirmDel(params.row.Id)
+                    }
+                  }
+                }, '删除'));
+                          
+              
+              return h('div', actions);
+            }
+          }
+        ],
+        tableData: [
         ],
         total:0,
         searchForm:{
@@ -135,6 +174,30 @@ export default {
           let res =await getDiscount(this.searchForm);
           this.total = res.total;
         this.tableData = res.rows;
+        console.log(res.rows)
+      },
+       delDiscount(Id){
+        this.delId=Id;
+        this.delDiscountModal=true;
+      },
+      async comfirmDel(Id){
+        console.log(Id)
+        this.delId=Id;
+        this.btnLoading=true;
+        try{
+          const res= await delCusDiscount({Id:Id});
+          if (res.success) {
+            this.$Message.success('删除成功!');
+            this.getDiscountList();
+            this.delDiscountModal=false;
+          }else{
+            this.$Message.error(res.msg);
+          }
+        }catch(err){
+          console.log(err);
+          this.$Message.error('服务器异常，稍后再试');
+        }
+        this.btnLoading=false;
       },
       async saveForm(name) {
       this.$refs[name].validate( async (valid) => {

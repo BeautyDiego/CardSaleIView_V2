@@ -161,18 +161,21 @@
             align: 'center',
             render: (h, params) => {
               let actions=[];
-              if (this.IsAdmin){
-                actions.push(  h('Button', {
-                  props: {
-                    type: 'success',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.setDiscount(params.row)
-                    }
-                  }
-                }, '折扣率'));
+              if (!this.IsCustomer){
+                if(params.row.Sys_RoleId==2&&this.IsAdmin){ //2代表是代理商
+                  actions.push(  h('Button', {
+                                    props: {
+                                      type: 'success',
+                                      size: 'small'
+                                    },
+                                    on: {
+                                      click: () => {
+                                        this.setDiscount(params.row)
+                                      }
+                                    }
+                                  }, '折扣率'));
+                }
+               
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',
