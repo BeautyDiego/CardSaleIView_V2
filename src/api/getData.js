@@ -132,6 +132,7 @@ export const editCustomer = data => fetch('/Cus_Customer/Edit_Cus_Customer', dat
 export const delCustomer = data => fetch('/Cus_Customer/Delete_Cus_Customer', data, 'POST');
 export const getDiscount = data => fetch('/Cus_Discount/List_Cus_Discount', data, 'POST');
 export const addCusDiscount = data => fetch('/Cus_Discount/Add_Cus_Discount', data, 'POST');
+export const delCusDiscount = data => fetch('/Cus_Discount/Delete_Cus_Discount', data, 'POST');
 export const getExpensesList = data => fetch('/Res_Expenses/ListAll_Res_Expenses', data, 'POST');
 
 
