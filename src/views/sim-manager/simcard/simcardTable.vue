@@ -174,20 +174,12 @@
                         title: '序号',
                         align: 'center'
                     },
-                    {
-                        align: 'center',
-                        title: '组名',
-                        key: 'GroupName',
-                    },
+
                     {
                         align: 'center',
                         title: 'ICCUID',
+                         width: 175,
                         key: 'ICCUID',
-                    },
-                    {
-                        align: 'center',
-                        title: 'SIM卡号',
-                        key: 'SimNum',
                         render: (h, params) => {
                             let actions = [];
 
@@ -201,10 +193,21 @@
                                         this.checkSIM(params.row)
                                     }
                                 }
-                            }, params.row.SimNum));
+                            }, params.row.ICCUID));
 
                             return h('div', actions);
                         }
+                    
+                    },
+                    {
+                        align: 'center',
+                        title: 'SIM卡号',
+                        key: 'SimNum',
+                    },
+                     {
+                        align: 'center',
+                        title: '组名',
+                        key: 'GroupName',
                     },
                     {
                         align: 'center',
