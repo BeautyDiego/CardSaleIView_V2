@@ -233,12 +233,18 @@ export default {
           let res =await getSimCardDetail({simNum:this.modalForm.SimNum});
          // console.log(res)
           if (this.IsCMCC){
-              this.simCMCC=JSON.parse(res.data);
-              console.log(this.simCMCC)
+              debugger;
+              let result = JSON.parse(res.data);
+              if (result.packages.list){
+                  this.simCMCC = result;
+              }else{
+                  this.$Message.error('此卡不存在，请联系管理员校验');
+              }
+              
           }
           if (this.IsCT){
               this.simCT=res.SvcCont.result.prodInfos;
-             console.log(this.simCT)
+              console.log(this.simCT)
           }
 
       },
@@ -252,7 +258,12 @@ export default {
           this.$emit('listenModalForm');
       },
       CMCCDateFormat(date){
-          return date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2)+' '+date.substr(8,2)+':'+date.substr(10,2)+':'+date.substr(12,2)
+          if(date.length>12){
+              return date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2)+' '+date.substr(8,2)+':'+date.substr(10,2)+':'+date.substr(12,2);
+          }else{
+              return '';
+          }
+         
       },
     }
 }
