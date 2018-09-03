@@ -31,7 +31,7 @@
         <Form-item label="快递公司："  prop="DeliveryName" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}">
            <Input v-model="modalForm.DeliveryName" ></Input>
         </Form-item>
-        <Form-item label="快递编号：" prop="DeliveryNum" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}">
+        <Form-item label="快递单号：" prop="DeliveryNum" :rules="{required: true, message: '必填', trigger:'blur',type:'string'}">
           <Input v-model="modalForm.DeliveryNum" ></Input>
         </Form-item>
       

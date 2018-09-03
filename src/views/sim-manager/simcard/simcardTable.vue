@@ -36,6 +36,9 @@
                         <Form ref="searchForm" :model="searchForm" :label-width="80" value=true
                               style="min-width:300px;padding-top:20px;">
                             <Row>
+                                <Form-item label="ICCUID">
+                                    <Input v-model="searchForm.ICCUID"></Input>
+                                </Form-item>
                                 <Form-item label="SIM卡号">
                                     <Input v-model="searchForm.SimNum"></Input>
                                 </Form-item>
@@ -176,7 +179,11 @@
                         title: '组名',
                         key: 'GroupName',
                     },
-
+                    {
+                        align: 'center',
+                        title: 'ICCUID',
+                        key: 'ICCUID',
+                    },
                     {
                         align: 'center',
                         title: 'SIM卡号',
@@ -250,11 +257,7 @@
                         return (params.row.NowFlow / 1024).toFixed(2) + 'MB';
                     }
                     },
-                    {
-                        align: 'center',
-                        title: 'ICCUID',
-                        key: 'ICCUID',
-                    },
+
                     {
                         align: 'center',
                         title: '套餐名',
@@ -304,7 +307,8 @@
                     CardType: '1',//1是单卡，2是流量池成员
                     rows: 20,
                     page: 1,
-                    OperType: '1'
+                    OperType: '2',
+                    ICCUID:'',
                 },
                 SimStatusList:[{value:'全部',label:'全部'},{value:'活卡待激活',label:'活卡待激活'},{value:'在用',label:'在用'},{value:'停机',label:'停机'}],
 
