@@ -359,9 +359,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import {baseUrl} from './../../../api/env'
 import vueSlider from 'vue-slider-component'
-import {simExpanseConfigList,addCusOrder,editCusOrder,getWxQRCode,getAliQRCode,remitCusOrder,getCusRestCash,payOrderbyRestCash} from './../../../api/getData'
+import {simExpanseConfigList,addCusOrder,editCusOrder,getWxQRCode,getAliQRCode,remitCusOrder,getCusRestCash,payOrderbyRestCash,GetCustomer} from './../../../api/getData'
 export default {
     components:{
       vueSlider,
@@ -438,6 +439,9 @@ export default {
         }
     },
     computed: {
+      ...mapState({
+          adminInfo: state => state.user.adminInfo,
+      }),
       OrderPrice:function () {
         if(this.modalForm.CardType=='单卡')
         {
@@ -553,6 +557,18 @@ export default {
         this.modalForm_loading=true;
         this.currentStep++;
         this.modalForm_loading=false;
+        if ( this.currentStep===1){
+            this.getCustomerInfo();
+        }
+      },
+        //获取代理商的信息
+      async getCustomerInfo(){
+        let res = await GetCustomer({userId:this.adminInfo.Id})
+          console.log(res)
+          this.modalForm.ReceiveName=res.Cus_Name;
+          this.modalForm.ReceiveMobile=res.ManagerMobile;
+          this.modalForm.ReceiveAddress=res.Cus_Address;
+        
       },
       ondragstart(){
          this.isDragging=true;

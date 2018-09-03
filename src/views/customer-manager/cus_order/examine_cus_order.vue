@@ -22,6 +22,15 @@
             <!--</Option>-->
           <!--</Select>-->
         <!--</Form-item>-->
+        <Form-item label="订单号：" >
+            {{modalForm.OrderNum}}
+        </Form-item>
+        <Form-item label="客户名称：" >
+            {{modalForm.Cus_Name}}
+        </Form-item>
+        <Form-item label="支付方式：" >
+            {{modalForm.PayModeTxt}}
+        </Form-item>
         <Form-item label="SIM卡组：" prop="SimGroupId" :rules="{required: true, message: '必填', trigger:'blur',type:'number'}">
             <Select v-model="modalForm.SimGroupId" @on-change="onSimGroupIdChange" style="width:310px;">
                 <Option v-for="item in simGroupList" :value="item.Id" :key="item.Id" :label="item.GroupName">
