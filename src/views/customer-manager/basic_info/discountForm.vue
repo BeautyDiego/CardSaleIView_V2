@@ -17,7 +17,7 @@
         <Input v-model="modalForm.Cus_Name" disabled='true'></Input>
       </Form-item>
     <Form-item label="资费名称：" prop='expId' :rules="{required: true, message: '必填', trigger:'blur',type:'number'}" >
-          <Select v-model="modalForm.expId"  >
+          <Select v-model="modalForm.expId" filterable >
             <Option v-for="item in expList" :value="item.Id" :key="item.Id" :label="item.ExpName">
               <span>{{ item.ExpName }}</span>
                <span style="float:right;color:#ccc">{{item.OperType}}&nbsp&nbsp{{item.FlowSize}}&nbsp&nbsp￥{{item.OfficialPirce.toFixed(2)}}元</span>
