@@ -93,7 +93,8 @@
         <!--table-->
         <Row>
             <Table ref="SimTable" stripe size="small" :height="tableHeight" :loading="tableLoading"
-                   :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"></Table>
+                   :columns="tableColums" :data="tableData" @on-selection-change="tableDataChange"
+                   @on-sort-change="onSIMTableSortChange"></Table>
         </Row>
         <Row>
             <Page :total="total"
@@ -196,13 +197,15 @@
                             }, params.row.ICCUID));
 
                             return h('div', actions);
-                        }
+                        },
+                        sortable: 'custom',
                     
                     },
                     {
                         align: 'center',
                         title: 'SIM卡号',
                         key: 'SimNum',
+                        sortable: 'custom',
                     },
                      {
                         align: 'center',
@@ -312,6 +315,8 @@
                     page: 1,
                     OperType: '2',
                     ICCUID:'',
+                    orderby:'',
+                    orderkey:''
                 },
                 SimStatusList:[{value:'全部',label:'全部'},{value:'活卡待激活',label:'活卡待激活'},{value:'在用',label:'在用'},{value:'停机',label:'停机'}],
 
@@ -404,6 +409,13 @@
                 this.total = res.total;
                 this.tableData = res.rows;
                 this.tableLoading = false;
+            },
+            //排序
+            onSIMTableSortChange(sort){
+                console.log(sort)
+                this.searchForm.orderby=sort.order;
+                this.searchForm.orderkey=sort.key;
+                this.getTableList();
             },
             async getPkgList() {
 
