@@ -1,10 +1,8 @@
 <style scoped>
-.ivu-table-row-highlight td, .ivu-table-stripe .ivu-table-body tr.ivu-table-row-highlight:nth-child(2n) td, .ivu-table-stripe .ivu-table-fixed-body tr.ivu-table-row-highlight:nth-child(2n) td, tr.ivu-table-row-highlight.ivu-table-row-hover td{
-    background-color:#CD7054;
+.ivu-table-row-highlight td,.ivu-table-row-highlight.ivu-table-row-hover td {
+    background-color: #f1bfb2;
 }
-.ivu-table-row-hover td{
-    background-color: #CD7054;
-}
+
 .current-setting{
     font-size: 14px;
     width:40%;
@@ -34,13 +32,13 @@
     <div v-show="Current_Step==0">
        <Row style="font-size:14px;font-weight: bold;">
             <RadioGroup v-model="FlowTypeModel" type="button" size="large"  @on-change='doChangeFlowType' >
-              <!--<Radio label="月包"></Radio>-->
+              <Radio v-if="IsAdmin" label="月包"></Radio>
               <Radio label="长周期包"></Radio>
               <Radio label="加油包"></Radio>
             </RadioGroup>               
       </Row>
       <Row style="font-size:14px;font-weight: bold;">
-       <Table highlight-row  ref="PkgTable" stripe size="small"   :columns="pkgColums" :data="pkgData" @on-current-change="pkgDataChange"></Table>
+       <Table highlight-row  ref="PkgTable" stripe size="small" :height="480"  :columns="pkgColums" :data="pkgData" @on-current-change="pkgDataChange"></Table>
       </Row>
 
       <Row style="color:red;font-size:14px;font-weight: bold" v-show="modalForm.operType=='1'">
@@ -100,6 +98,7 @@
 
 <script>
 import {addSimPkgOrder,Res_ExpensesPagedList,getCusRestCash} from './../../../api/getData'
+import Cookies from 'js-cookie'
 export default {
     props:{
       parentForm: {
@@ -194,7 +193,12 @@ export default {
         }
 
     },
+    computed: {
+        IsAdmin: function () {
+            return Cookies.get('roleName') === '管理员';
+        },
 
+    },
     watch:{
       modalShow(curVal,oldVal){
         this.IsModalShow = curVal;
@@ -271,7 +275,8 @@ export default {
         });
         this.modalForm.ValidMonth=this.selectedMonth;
         this.modalForm.TotalSimNum=TotalSimNum.join(',');
-          if (parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2))){
+           // 如果是管理员可以直接添加  非管理员需判断余额
+          if ((parseFloat(this.RestCash)<parseFloat(this.modalForm.TotalPrice.toFixed(2)))&&!this.IsAdmin){
               this.$Notice.error({
                   title: '支付失败',
                   duration: 8,
@@ -281,11 +286,20 @@ export default {
              this.modalForm_loading=true;
               let res = await addSimPkgOrder(this.modalForm);
               if (res.success){
-                  this.$Notice.success({
-                      title: '支付成功',
-                      duration: 8,
-                      desc: '余额支付成功，请等待后台审核订单。 '
-                  });
+                  if(!this.IsAdmin){
+                      this.$Notice.success({
+                          title: '支付成功',
+                          duration: 8,
+                          desc: '余额支付成功，请等待后台审核订单。 '
+                      });
+                  }else{
+                      this.$Notice.success({
+                          title: '提交成功',
+                          duration: 8,
+                          desc: '请等待后台审核订单。 '
+                      });
+                  }
+                 
                     this.$emit('listenModalForm');
               }else
               {

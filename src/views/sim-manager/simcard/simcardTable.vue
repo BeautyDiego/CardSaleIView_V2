@@ -44,8 +44,8 @@
                                 </Form-item>
                             </Row>
                             <Row>
-                                <Form-item label="流量池编号">
-                                    <Input v-model="searchForm.PoolNum"></Input>
+                                <Form-item label="组名">
+                                    <Input v-model="searchForm.GroupName"></Input>
                                 </Form-item>
                             </Row>
                             <Row>
@@ -228,7 +228,7 @@
                             }, text);
                         }
                     },
-              {
+                   {
                         align: 'center',
                         title: '运营商',
                         key: 'OperType',
@@ -306,7 +306,7 @@
                 },
                 searchForm: {
                     SimStatus: '全部',
-                    PoolNum: '',
+                    GroupName: '',
                     SimNum: '',
                     Company:'',
                     PkgName:'',
@@ -318,7 +318,7 @@
                     orderby:'',
                     orderkey:''
                 },
-                SimStatusList:[{value:'全部',label:'全部'},{value:'活卡待激活',label:'活卡待激活'},{value:'在用',label:'在用'},{value:'停机',label:'停机'}],
+                SimStatusList: [{value:'全部',label:'全部'},{value:'测试期',label:'测试期'},{value:'沉默期',label:'沉默期'},{value:'库存期',label:'库存期'},{value:'正使用',label:'正使用'},{value:'停机',label:'停机'},{value:'预约销户',label:'预约销户'},{value:'销户',label:'销户'},],
 
                 addFlowformShow: false,//修改备注窗体
                 importFormShow: false, //导入窗体
@@ -392,9 +392,12 @@
         },
         methods: {
             resetSearch() {
-                this.searchForm.PoolNum = '';
+                this.searchForm.GroupName = '';
                 this.searchForm.SimNum = '';
                 this.searchForm.SimStatus = '全部';
+                this.searchForm.ICCUID = '';
+                this.searchForm.Company = '';
+                this.searchForm.PkgName = '' ;
             },
             doSearchTableList() {
                 this.currentPage = 1;
