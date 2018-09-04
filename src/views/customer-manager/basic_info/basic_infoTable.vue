@@ -64,18 +64,18 @@
       </div>
     </Modal>
     <!--是否重置密码框-->
-    <!--<Modal v-model="resetModal" width="360">-->
-      <!--<p slot="header" style="color:#f60;text-align:center">-->
-        <!--<Icon type="information-circled"></Icon>-->
-        <!--<span>重置确认</span>-->
-      <!--</p>-->
-      <!--<div style="text-align:center">-->
-        <!--<p>重置后该用户密码为123456,是否继续？</p>-->
-      <!--</div>-->
-      <!--<div slot="footer">-->
-        <!--<Button type="warning" size="large" long  @click="comfirmReset">重置</Button>-->
-      <!--</div>-->
-    <!--</Modal>-->
+    <Modal v-model="resetModal" width="360">
+      <p slot="header" style="color:#f60;text-align:center">
+        <Icon type="information-circled"></Icon>
+        <span>重置确认</span>
+      </p>
+      <div style="text-align:center">
+        <p>重置后该用户密码为123456,是否继续？</p>
+      </div>
+      <div slot="footer">
+        <Button type="warning" size="large" long  @click="comfirmReset">重置</Button>
+      </div>
+    </Modal>
   </div>
 
 </template>
@@ -159,6 +159,7 @@
           {
             title: '操作',
             align: 'center',
+            width:260,
             render: (h, params) => {
               let actions=[];
               if (!this.IsCustomer){
@@ -168,6 +169,9 @@
                                       type: 'success',
                                       size: 'small'
                                     },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
                                     on: {
                                       click: () => {
                                         this.setDiscount(params.row)
@@ -175,11 +179,15 @@
                                     }
                                   }, '折扣率'));
                 }
+                
                
                 actions.push( h('Button', {
                   props: {
                     type: 'warning',
                     size: 'small'
+                  },
+                  style: {
+                      marginRight: '5px'
                   },
                   on: {
                     click: () => {
@@ -193,6 +201,9 @@
                     type: 'error',
                     size: 'small'
                   },
+                  style: {
+                      marginRight: '5px'
+                  },
                   on: {
                     click: () => {
                       this.delCustomer(params.row.Id)
@@ -200,6 +211,17 @@
                   }
                 }, '删除'));
               }
+                actions.push( h('Button', {
+                    props: {
+                        type: 'warning',
+                        size: 'small'
+                    },
+                    on: {
+                        click: () => {
+                            this.resetUserPwd(params.row.Sys_UsersId)
+                        }
+                    }
+                }, '重置密码'));
               return h('div', actions);
             }
           }

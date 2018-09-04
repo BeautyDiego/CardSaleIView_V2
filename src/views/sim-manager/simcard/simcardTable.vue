@@ -412,7 +412,6 @@
             },
             //排序
             onSIMTableSortChange(sort){
-                console.log(sort)
                 this.searchForm.orderby=sort.order;
                 this.searchForm.orderkey=sort.key;
                 this.getTableList();
