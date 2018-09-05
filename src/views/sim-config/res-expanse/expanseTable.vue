@@ -261,7 +261,7 @@
         delId:'', //删除的Id
         btnLoading:false,
         searchForm:{
-          OperType: '中国电信',
+          OperType: '中国移动',
           rows:10,
           page:1,
         }
