@@ -223,7 +223,7 @@ export default {
       }
     },
     created(){
-     // this.getRoleComboList();
+
     },
     mounted(){
     
@@ -233,7 +233,6 @@ export default {
           let res =await getSimCardDetail({simNum:this.modalForm.SimNum});
          // console.log(res)
           if (this.IsCMCC){
-              debugger;
               let result = JSON.parse(res.data);
               if (result.packages.list){
                   this.simCMCC = result;
@@ -250,7 +249,7 @@ export default {
       },
       async getFlowUsage(){
           let res =await getSimCardFlowUsage({simNum:this.modalForm.SimNum,month:''});
-         // console.log(res)
+          console.log(res)
         //  console.log(JSON.parse(res.data))
       },
 
