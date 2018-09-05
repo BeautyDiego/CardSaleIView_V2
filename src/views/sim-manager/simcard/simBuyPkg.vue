@@ -1,7 +1,4 @@
 <style scoped>
-.ivu-table-row-highlight td,.ivu-table-row-highlight.ivu-table-row-hover td {
-    background-color: #f1bfb2;
-}
 
 .current-setting{
     font-size: 14px;
@@ -47,8 +44,8 @@
 
      <Row style="font-size:14px;font-weight: bold;line-height:50px;">
          <RadioGroup v-model="effectNow" @on-change="effectChange">
-        <Radio label="立即生效" disabled></Radio>
-        <Radio label="下月生效" disabled></Radio>
+        <Radio label="立即生效"></Radio>
+        <Radio label="下月生效"></Radio>
     </RadioGroup>
       </Row>
        <Row style="font-size:14px;font-weight: bold" >
@@ -245,7 +242,7 @@ export default {
       },
       doChangeFlowType(){
         if(this.FlowTypeModel=='月包'){
-          this.effectNow='下月生效';
+         // this.effectNow='下月生效';
         }else{
           this.effectNow='立即生效';
         }
