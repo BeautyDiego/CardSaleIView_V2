@@ -144,16 +144,16 @@
                       return h('div', actions);
                   }
               },
-              {
-                  align:'center',
-                  title: '返回码',
-                  key: 'ResultCode',
-              },
-              {
-                  align:'center',
-                  title: '返回结果',
-                  key: 'ResultMsg',
-              }
+//              {
+//                  align:'center',
+//                  title: '返回码',
+//                  key: 'ResultCode',
+//              },
+//              {
+//                  align:'center',
+//                  title: '返回结果',
+//                  key: 'ResultMsg',
+//              }
           ],
         tableData: [
         ],
