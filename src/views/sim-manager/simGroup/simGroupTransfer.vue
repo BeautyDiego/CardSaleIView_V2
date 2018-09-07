@@ -324,9 +324,9 @@
             let paramsArr=this.GroupTableData.map((v, i, a) => {
                 return v.Id
             });
-            console.log(paramsArr)
+            let pp=paramsArr.join(',');
             try{
-              let result=await addSimToGroup({SimGroupId:this.modalForm.Id,SimCardIdList:paramsArr})
+              let result=await addSimToGroup({SimGroupId:this.modalForm.Id,SimCardId:pp})
               if (result.success) {
                 this.$Message.success('提交成功!');
                 this.$emit('listenModalForm');

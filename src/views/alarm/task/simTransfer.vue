@@ -15,7 +15,7 @@
       <Row >
         <Col span="11" style="height:500px;">
           <Row style="margin-bottom:5px;">
-            <Input v-model="searchForm.SimNum" placeholder="请输入sim卡号" clearable  @on-change="searchSIMTableList"></Input>
+            <Input v-model="searchForm.ICCUID" placeholder="请输入ICCID" clearable  @on-change="searchSIMTableList"></Input>
           </Row>
           <Row style="margin-bottom:5px;">
             <RadioGroup v-model="searchForm.OperType" type="button" size="large"  @on-change='doChangeOperType' >
@@ -82,10 +82,10 @@
         modalForm_loading:false,
         searchForm:{
           SimStatus:'全部',
-          SimNum: '',
+          ICCUID: '',
           rows:10,
           page:1,
-          OperType:'中国电信',
+          OperType:'中国移动',
           orderby:'asc'
         },
         total:0,
@@ -99,9 +99,9 @@
               },
               {
                   align:'center',
-                  title: 'SIM卡号',
+                  title: 'ICCID',
                   width:130,
-                  key: 'SimNum',
+                  key: 'ICCUID',
                   sortable: 'custom',
               },
               {
@@ -146,9 +146,9 @@
               },
               {
                   align:'center',
-                  title: 'SIM卡号',
+                  title: 'ICCID',
                   width:130,
-                  key: 'SimNum',
+                  key: 'ICCUID',
                   sortable: true,
               },
               {
@@ -196,7 +196,7 @@
       modalShow(curVal,oldVal){
         this.IsModalShow = curVal;
         if (curVal){
-          this.searchForm.SimNum='';
+          this.searchForm.ICCUID='';
           this.ChoosedSimTableData=[];
           this.getTableList();
         }
