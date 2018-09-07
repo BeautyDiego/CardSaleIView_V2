@@ -15,7 +15,7 @@
       <Row >
         <Col span="11" style="height:500px;">
           <Row style="margin-bottom:5px;">
-            <Input v-model="searchForm.SimNum" placeholder="请输入sim卡号" clearable  @on-change="searchSIMTableList"></Input>
+            <Input v-model="searchForm.ICCID" placeholder="请输入ICCID" clearable  @on-change="searchSIMTableList"></Input>
           </Row>
          <Row style="margin-bottom:5px;">
            <RadioGroup v-model="searchForm.OperType" type="button" size="large"  @on-change='doChangeOperType' >
@@ -98,10 +98,10 @@
         searchForm:{
           SimGroupId:'',
           SimStatus:'全部',
-          SimNum: '',
+          ICCID: '',
           rows:10,
           page:1,
-          OperType:'中国电信',
+          OperType:'中国移动',
           orderby:'asc'
         },
         total:0,
@@ -115,9 +115,9 @@
           },
           {
             align:'center',
-            title: 'SIM卡号',
+            title: 'ICCID',
             width:130,
-            key: 'SimNum',
+            key: 'ICCUID',
             sortable: 'custom',
           },
           {
@@ -162,9 +162,9 @@
               },
               {
                   align:'center',
-                  title: 'SIM卡号',
+                  title: 'ICCID',
                   width:130,
-                  key: 'SimNum',
+                  key: 'ICCUID',
                   sortable: true,
               },
               {
@@ -214,7 +214,7 @@
         this.IsModalShow = curVal;
         if (curVal){
           this.searchForm.SimGroupId= this.modalForm.Id;
-          this.searchForm.SimNum='';
+          this.searchForm.ICCID='';
           this.getTableList();
           this.getSimGroupSimCardTableList();
         }
@@ -272,6 +272,7 @@
           if ( this.GroupTableData.length>0){
             this.simCardSelection.forEach(function(item, index, array) {
               let flag=true;
+              console.log(item)
               for (let i=0;i<len;i++){
                 if(item.SimNum ===joinArr[i].SimNum){
                   flag=false;
@@ -323,6 +324,7 @@
             let paramsArr=this.GroupTableData.map((v, i, a) => {
                 return v.Id
             });
+            console.log(paramsArr)
             try{
               let result=await addSimToGroup({SimGroupId:this.modalForm.Id,SimCardIdList:paramsArr})
               if (result.success) {

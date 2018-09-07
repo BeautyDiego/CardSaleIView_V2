@@ -64,8 +64,8 @@
         tableColums: [
           {
             align:'center',
-            title: 'SIM卡号',
-            key: 'SimNum',
+            title: 'ICCID',
+            key: 'ICCUID',
           },
             {
                 align:'center',

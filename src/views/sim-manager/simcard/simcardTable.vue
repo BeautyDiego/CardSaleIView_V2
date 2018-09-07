@@ -36,7 +36,7 @@
                         <Form ref="searchForm" :model="searchForm" :label-width="80" value=true
                               style="min-width:300px;padding-top:20px;">
                             <Row>
-                                <Form-item label="ICCUID">
+                                <Form-item label="ICCID">
                                     <Input v-model="searchForm.ICCUID"></Input>
                                 </Form-item>
                                 <Form-item label="SIM卡号">
@@ -178,7 +178,7 @@
 
                     {
                         align: 'center',
-                        title: 'ICCUID',
+                        title: 'ICCID',
                          width: 175,
                         key: 'ICCUID',
                         render: (h, params) => {
