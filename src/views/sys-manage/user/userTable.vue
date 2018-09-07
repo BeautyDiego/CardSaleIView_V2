@@ -26,8 +26,10 @@
                 <Row>
                   <Form-item label="用户角色">
                     <Select v-model="searchForm.uType" :transfer="true">
-                      <Option value="1">管理员</Option>
-                      <Option value="2">代理商</Option>
+                      <Option :value="0">全部</Option>
+                      <Option :value="1">管理员</Option>
+                      <Option :value="2">代理商</Option>
+                      <Option :value="3">普通客户</Option>
                     </Select>
                   </Form-item>
                 </Row>
@@ -221,7 +223,7 @@
           uName: '',
           rows:10,
           page:1,
-          uType:'',
+          uType:0,
         },
       }
     },
@@ -239,7 +241,7 @@
     methods: {
       resetSearch(){
          this.searchForm.uName='';
-         this.searchForm.uType='';
+         this.searchForm.uType= 0;
       },
       doSearchTableList(){
         this.currentPage=1;

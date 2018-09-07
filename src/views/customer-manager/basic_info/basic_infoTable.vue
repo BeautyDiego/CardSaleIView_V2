@@ -19,7 +19,7 @@
             <div style="text-align:center" slot="content">
               <Form ref="searchForm" :model="searchForm" :label-width="80"  value=true  style="min-width:200px;padding-top:20px;border-top:1px solid #a3adba;border-bottom:1px solid #a3adba;">
                 <Row>
-                  <Form-item label="用户名称"  >
+                  <Form-item label="客户名称"  >
                     <Input v-model="searchForm.cus_Name" ></Input>
                   </Form-item>
                 </Row>
