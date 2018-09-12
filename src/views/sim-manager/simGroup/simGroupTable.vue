@@ -79,6 +79,19 @@
         <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmDel">删除</Button>
       </div>
     </Modal>
+    <!--是否释放框-->
+    <Modal v-model="releaseModal" width="360">
+      <p slot="header" style="color:#f60;text-align:center">
+        <Icon type="information-circled"></Icon>
+        <span>释放确认</span>
+      </p>
+      <div style="text-align:center">
+        <p>是否继续释放该卡组？</p>
+      </div>
+      <div slot="footer">
+        <Button type="error" size="large" long :loading="btnLoading"  @click="comfirmRelease">释放</Button>
+      </div>
+    </Modal>
   </div>
 
 </template>
@@ -91,7 +104,7 @@
   import simGroupDetail from './simGroupDetail.vue'
   import groupBindPool from './groupBindPool.vue'
   import groupToCustomer from './groupToCustomer.vue'
-  import {simGroupListPage,delSimGroup} from './../../../api/getData'
+  import {simGroupListPage,delSimGroup,releaseGroup} from './../../../api/getData'
   import {clearObj} from './../../../libs/util';
   export default {
     name:'simGroupTable',
@@ -144,20 +157,22 @@
             fixed:'right',
             render: (h, params) => {
               let actions=[];
-              actions.push( h('Button', {
-                props: {
-                  type: 'warning',
-                  size: 'small'
-                },
-                style: {
-                  marginRight: '5px'
-                },
-                on: {
-                  click: () => {
-                    this.editSIMGroup(params.row)
-                  }
+                if (!params.row.IsReleased){
+                    actions.push( h('Button', {
+                        props: {
+                            type: 'warning',
+                            size: 'small'
+                        },
+                        style: {
+                            marginRight: '5px'
+                        },
+                        on: {
+                            click: () => {
+                                this.editSIMGroup(params.row)
+                            }
+                        }
+                    }, '修改'));
                 }
-              }, '修改'));
 
               actions.push(  h('Button', {
                 props: {
@@ -230,19 +245,38 @@
                 }
                
 
-              }
-              
-                actions.push( h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small'
-                  },
-                  on: {
-                    click: () => {
-                      this.checkGroup(params.row)
-                    }
+              }else{
+                  if (this.IsAdmin&&!params.row.IsReleased){
+                      actions.push( h('Button', {
+                          props: {
+                              type: 'warning',
+                              size: 'small'
+                          },
+                          style: {
+                              marginRight: '5px'
+                          },
+                          on: {
+                              click: () => {
+                                  this.releaseGroup(params.row.Id)
+                              }
+                          }
+                      }, '释放卡组'));
                   }
-                }, '查看组员'));
+              }
+                if (!params.row.IsReleased){
+                    actions.push( h('Button', {
+                        props: {
+                            type: 'primary',
+                            size: 'small'
+                        },
+                        on: {
+                            click: () => {
+                                this.checkGroup(params.row)
+                            }
+                        }
+                    }, '查看组员'));
+                }
+               
               
              
               
@@ -273,6 +307,8 @@
         transferFormShow:false,
         delModal:false,
         delId:'', //删除的Id
+        releaseModal:false,
+        releaseId:'', //释放的Id
         detailFormShow:false,
         bindPoolShow:false,
         groupToCustomerShow:false,
@@ -366,6 +402,27 @@
           this.$Message.error('服务器异常，稍后再试');
         }
         this.btnLoading=false;
+      },
+      releaseGroup(Id){
+          this.releaseId=Id;
+          this.releaseModal=true;
+      },
+      async comfirmRelease(){
+          this.btnLoading=true;
+          try{
+              const res= await releaseGroup({SimGroupId:this.releaseId});
+              if (res.success) {
+                  this.$Message.success('释放成功!');
+                  this.getTableList();
+                  this.releaseModal=false;
+              }else{
+                  this.$Message.error(res.msg);
+              }
+          }catch(err){
+              console.log(err);
+              this.$Message.error('服务器异常，稍后再试');
+          }
+          this.btnLoading=false;
       },
       hideModel(){
         this.formShow=false;
