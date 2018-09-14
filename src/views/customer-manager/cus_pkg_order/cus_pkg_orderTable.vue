@@ -370,7 +370,7 @@
         try{
           const res= await examinePkgOrder({Id:this.examineId});
           if (res.success) {
-            this.$Message.success('审核通过!');
+            this.$Message.success('审核通过!'+res.msg);
             this.getTableList();
             this.examineModal=false;
           }else{

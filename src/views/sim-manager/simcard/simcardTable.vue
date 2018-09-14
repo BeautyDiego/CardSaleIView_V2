@@ -218,7 +218,7 @@
                         key: 'SimStatus',
                         render: (h, params) => {
                             const row = params.row;
-                            const color = formatter.simStatusColor(row.SimStatus);
+                            const color = formatter.simStatusColor(row.SimStatus.trim());
                             const text = row.SimStatus;
                             return h('Tag', {
                                 props: {
@@ -475,8 +475,8 @@
 
                 }else if (this.searchForm.OperType==2){//移动
                     this.SimStatusList =  [{value:'全部',label:'全部'},{value:'测试期',label:'测试期'},{value:'沉默期',label:'沉默期'},{value:'库存期',label:'库存期'},{value:'正使用',label:'正使用'},{value:'停机',label:'停机'},{value:'预约销户',label:'预约销户'},{value:'销户',label:'销户'},];
-                } else{
-                    this.SimStatusList=[];
+                } else if (this.searchForm.OperType==3){//联通
+                    this.SimStatusList=[{value:'可测试',label:'可测试'},{value:'可激活',label:'可激活'},{value:'已激活',label:'已激活'},{value:'已停用',label:'已停用'},{value:'已失效',label:'已失效'},{value:'库存',label:'库存'}];
                 }
                 this.getTableList();
                

@@ -1,17 +1,17 @@
 let formatter = {}
 formatter.simStatusColor = function (val) {
     let color = '#909399';
-    if (val === '正使用') {
+    if (val === '在用'||val=='已激活'||val === '正使用') {
         color = '#67c23a';
     }
-    if (val === '在用') {
-        color = '#67c23a';
+    if (val === '测试期'||val=='可测试') {
+        color = '#409eff';
     }
-    if (val === '测试期') {
-        color = '##409eff';
-    }
-    if (val === '停机') {
+    if (val === '停机'||val=='已停用') {
         color = '#f56c6c';
+    }
+    if (val === '可激活') {
+        color = 'yellow';
     }
     return color
 }
