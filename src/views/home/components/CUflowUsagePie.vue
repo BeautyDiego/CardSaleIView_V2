@@ -2,12 +2,12 @@
     <div style="height:300px;">
         <Row>
             <div style="text-align: center;line-height:50px;vertical-align:middle;">
-                    <span style="color:#82879d;font-size: 18px;vertical-align:middle;display:inline-block;">中国移动</span>
+                    <span style="color:#82879d;font-size: 18px;vertical-align:middle;display:inline-block;">中国联通</span>
                     <span style="color:#82879d;font-size: 30px;vertical-align:middle;display:inline-block;padding:0 10px;">{{pkgFlow}}</span>  
                     <span style="color:#0db9c0;vertical-align:middle;display:inline-block;">总流量(GB)</span>   
 
             </div>
-             <div style="width:100%;height:200px;" id="CMFlowId"></div>
+             <div style="width:100%;height:200px;" :id="CUFlowId"></div>
         </Row>
         <Row style="height:80px;">
             <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;height:80px;padding:10px 0;">
@@ -20,6 +20,7 @@
             </Col>
         </Row>
 
+
     </div>
 
 </template>
@@ -28,7 +29,7 @@
 import echarts from 'echarts';
 
 export default {
-    name: 'CMflowUsagePie',
+    name: 'CTflowUsagePie',
     props:{
         pieDataSource: {
             type: Object,
@@ -36,6 +37,10 @@ export default {
                 return {}
             }
         },
+        CUFlowId:{
+            type: String,
+            default: 'CUFlowId'
+        }
     },
     data () {
         return {}
@@ -73,7 +78,7 @@ export default {
     },
     methods:{
         initEchats(){
-                var CMflowUsagePie = echarts.init(document.getElementById('CMFlowId'));
+                var CUflowUsagePie = echarts.init(document.getElementById(this.CUFlowId));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [
                     {name:'已使用',
@@ -122,9 +127,9 @@ export default {
                         }
                     ]
                 };
-            CMflowUsagePie.setOption(option);
+                 CUflowUsagePie.setOption(option);
                 window.addEventListener('resize', function () {
-                    CMflowUsagePie.resize();
+                    CUflowUsagePie.resize();
                 });
         },
         async getGroupStatic(){
@@ -133,3 +138,4 @@ export default {
     }
 };
 </script>
+

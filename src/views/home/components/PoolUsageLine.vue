@@ -1,6 +1,6 @@
 <template>
     <div style="width:100%;">
-        <div   style="width:100%;height:300px;" id="PoolLine"></div>
+        <div   style="width:100%;height:332px;" id="PoolLine"></div>
 
         <div v-show="lineDataSource.length==0" style="text-align: center;width:100%;position:absolute;top:190px;left:0"> 暂未购买流量池卡</div>
     </div>

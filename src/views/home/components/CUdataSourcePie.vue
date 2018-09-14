@@ -1,6 +1,6 @@
 <template>
 
-              <div style="width:100%;height:298px;" id="CTPieId"></div>
+    <div style="width:100%;height:298px;" id="CUPieId"></div>
 
 </template>
 
@@ -8,9 +8,9 @@
 import echarts from 'echarts';
 
 export default {
-    name: 'dataSourcePie',
+    name: 'CMdataSourcePie',
     props:{
-        CTPieDataSource: {
+        CMPieDataSource: {
             type: Array,
             default: function () {
                 return []
@@ -21,7 +21,7 @@ export default {
         return {}
     },
     watch:{
-        CTPieDataSource(curVal,oldVal){
+        CMPieDataSource(curVal,oldVal){
             this.initEchats();
         }
     },
@@ -31,13 +31,13 @@ export default {
     methods:{
         initEchats(){
 
-                var CTdataSourcePie = echarts.init(document.getElementById('CTPieId'));
+                var CMdataSourcePie = echarts.init(document.getElementById('CUPieId'));
                 let colorArr = ['#9bd598','#fdd961','#0386b1'];
                 let seriesData = [];
                 let legendData=[];
-                let len=this.CTPieDataSource.length;
+                let len=this.CMPieDataSource.length;
                 for (let i = 0; i < len; i++) {
-                    let item=this.CTPieDataSource[i];
+                    let item=this.CMPieDataSource[i];
                     if (item.SimStatus){
                         seriesData.push({
                             name:item.SimStatus,
@@ -47,10 +47,10 @@ export default {
                     }
 
                 }
-                let optionCT = {
+                let optionCM = {
                     title : {
                         show:true,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                        text: '中国电信',//主标题文本，'\n'指定换行
+                        text: '中国联通',//主标题文本，'\n'指定换行
                         x:'center',//水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
                         y: 'top',//垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
                         backgroundColor: 'rgba(0,0,0,0)',//标题背景颜色，默认'rgba(0,0,0,0)'透明
@@ -94,9 +94,9 @@ export default {
                         }
                     ]
                 };
-                 CTdataSourcePie.setOption(optionCT);
+                 CMdataSourcePie.setOption(optionCM);
                 window.addEventListener('resize', function () {
-                    CTdataSourcePie.resize();
+                    CMdataSourcePie.resize();
                 });
         },
         async getGroupStatic(){

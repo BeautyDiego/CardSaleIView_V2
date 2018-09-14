@@ -1,6 +1,6 @@
 <template>
 
-    <div style="width:100%;height:306px;" id="CMPieId"></div>
+    <div style="width:100%;height:298px;" id="CMPieId"></div>
 
 </template>
 

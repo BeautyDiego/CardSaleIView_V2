@@ -1,30 +1,24 @@
 <template>
     <div style="height:300px;">
         <Row>
-            <Col :md="12" :lg="12">
-              <div style="width:100%;height:200px;" :id="FlowId"></div>
-            </Col>
-            <Col :md="12" :lg="12" >
-            <div style="padding:50px 0 30px;text-align: center">
-                <Row>
-                    <p style="color:#82879d;font-size: 18px;">中国电信</p>
-                    <p style="color:#82879d;font-size: 40px;">{{pkgFlow}}</p>
-                    <p style="color:#0db9c0;">套餐包含总流量(GB)</p>
-                </Row>
+            <div style="text-align: center;line-height:50px;vertical-align:middle;">
+                    <span style="color:#82879d;font-size: 18px;vertical-align:middle;display:inline-block;">中国电信</span>
+                    <span style="color:#82879d;font-size: 30px;vertical-align:middle;display:inline-block;padding:0 10px;">{{pkgFlow}}</span>  
+                    <span style="color:#0db9c0;vertical-align:middle;display:inline-block;">总流量(GB)</span>   
+
             </div>
-            </Col>
+             <div style="width:100%;height:200px;" :id="FlowId"></div>
         </Row>
-        <Row style="height:100px;">
-            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;height:90px;padding:20px 0;">
+        <Row style="height:80px;">
+            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;height:80px;padding:10px 0;">
                 <p style="color:#82879d;font-size: 30px;">{{usedFlow}}</p>
                 <p style="color:#82879d;">流量使用情况(GB)</p>
             </Col>
-            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;border-left:1px solid #eee;height:90px;padding:20px 0;">
+            <Col :md="12" :lg="12" style="text-align:center;border-top:1px solid #eee;border-left:1px solid #eee;height:80px;padding:10px 0;">
                 <p style="color:#f14676;font-size: 30px;">{{usedRatio}}</p>
                 <p style="color:#82879d;">流量使用占比</p>
             </Col>
         </Row>
-
 
     </div>
 
@@ -67,7 +61,7 @@ export default {
         },
         usedRatio:function () {
             if (this.pieDataSource.monthFlow){
-                return (this.pieDataSource.usedFlow/this.pieDataSource.monthFlow).toFixed(2)+'%'
+                return (this.pieDataSource.usedFlow/this.pieDataSource.monthFlow*100).toFixed(2)+'%'
             }else{
                 return 0+'%'
             }
