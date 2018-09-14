@@ -26,10 +26,14 @@
                     <FormItem label="用户手机：" >
                         <span>{{ userForm.ManagerMobile }}</span>
                     </FormItem>
+                    <FormItem v-if="IsNotAdmin" label="用户地址：">
+                        <span>{{ userForm.Cus_Address}}</span>
+                    </FormItem>
             
-                    <FormItem v-if="IsAdmin" label="可用余额：">
+                    <FormItem v-if="IsNotAdmin" label="可用余额：">
                         <span>￥{{ userForm.RestCash.toFixed(2) }}元</span>
                     </FormItem>
+
                     <FormItem label="修改密码：">
                         <Button type="warning" @click="showEditPassword">修改密码</Button>
                     </FormItem>
@@ -78,7 +82,7 @@ export default {
         return {
             userForm: {
                 Cus_Name: '',
-              LoginName:'',
+                LoginName:'',
                 ManagerMobile: '',
                 RoleName: '',
               RestCash:''
@@ -114,7 +118,7 @@ export default {
     ...mapState({
       adminInfo: state => state.user.adminInfo,
     }),
-    IsAdmin: function () {
+    IsNotAdmin: function () {
       return this.adminInfo.RoleName != "管理员";
     },
   },

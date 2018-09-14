@@ -179,7 +179,7 @@
                     {
                         align: 'center',
                         title: 'ICCID',
-                         width: 175,
+                        minWidth: 175,
                         key: 'ICCUID',
                         render: (h, params) => {
                             let actions = [];
@@ -205,16 +205,19 @@
                         align: 'center',
                         title: 'SIM卡号',
                         key: 'SimNum',
+                        minWidth: 160,
                         sortable: 'custom',
                     },
                      {
                         align: 'center',
                         title: '组名',
+                         minWidth: 170,
                         key: 'GroupName',
                     },
                     {
                         align: 'center',
                         title: '卡状态',
+                        width: 120,
                         key: 'SimStatus',
                         render: (h, params) => {
                             const row = params.row;
@@ -231,6 +234,7 @@
                    {
                         align: 'center',
                         title: '运营商',
+                       minWidth: 160,
                         key: 'OperType',
                         render: (h, params) => {
                             const row = params.row;
@@ -247,11 +251,13 @@
                     {
                         align: 'center',
                         title: '所属企业',
+                        minWidth: 170,
                         key: 'Company',
                     },
                     {
                         align: 'center',
                         title: '包含流量',
+                        width: 110,
                         key: 'MonthFlow', render: (h, params) => {
                         return (params.row.MonthFlow / 1024) + 'MB';
                     }
@@ -259,6 +265,7 @@
                     {
                         align: 'center',
                         title: '已用流量',
+                        width: 110,
                         key: 'NowFlow', render: (h, params) => {
                         return (params.row.NowFlow / 1024).toFixed(2) + 'MB';
                     }
@@ -267,13 +274,13 @@
                     {
                         align: 'center',
                         title: '套餐名',
-                        width: 200,
+                        minWidth: 200,
                         key: 'PkgName',
                     },
                     {
                         align: 'center',
                         title: '生效时间',
-                        width: 170,
+                        minWidth: 170,
                         key: 'EffDate',
                     },
                 ],

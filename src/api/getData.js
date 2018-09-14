@@ -180,6 +180,7 @@ export const getUnGroupPoolList = data => fetch('/Cus_FlowPool/Get_UnGroupFlowPo
 export const groupBindPool = data => fetch('/Sim_Group/SimGroup_Bind_Pool', data, 'POST');
 export const customerCombo = data => fetch('/Cus_Customer/Cus_Customer_Combo', data, 'POST');
 export const groupToCustomer = data => fetch('/Sim_Group/Group_To_Customer', data, 'POST');
+export const releaseGroup = data => fetch('/Sim_Group/ReleaseGroup', data, 'POST');
 //   endregion
 
 
