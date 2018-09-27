@@ -161,6 +161,7 @@ export const changeSimStatus = data => fetch('/Sim_StatusOrder/ChangeSimStatus',
 
 export const getSimCardDetail = data => fetch('/Sim_SimCard/SimSingleQuery', data, 'POST');
 export const getSimCardFlowUsage = data => fetch('/Sim_SimCard/SimMonthFlowQuery', data, 'POST');
+export const getSimCardHisFlowUsage = data => fetch('/Sim_SimCard/SimMonthFlowQuery', data, 'POST');
 export const getOperatorCombo = data => fetch('/Res_Operator/Res_Operator_Combo', data, 'POST');
 export const addSimPkgOrder = data => fetch('/Sim_PkgOrder/Add_Sim_PkgOrder', data, 'POST');
 export const listSimPkgOrder = data => fetch('/Sim_PkgOrder/List_Sim_PkgOrder', data, 'POST');

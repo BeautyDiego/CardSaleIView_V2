@@ -283,6 +283,12 @@
                         minWidth: 170,
                         key: 'EffDate',
                     },
+                     {
+                        align: 'center',
+                        title: '激活时间',
+                        minWidth: 170,
+                        key: 'ActivateTime',
+                    },
                 ],
                 tableData: [],
                 tableHeight: 600,
