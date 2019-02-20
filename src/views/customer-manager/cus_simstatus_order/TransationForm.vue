@@ -111,7 +111,7 @@ export default {
             return date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2)+' '+date.substr(8,2)+':'+date.substr(10,2)+':'+date.substr(12,2)
         },
         CMCCStatusFormat(resultCode,resultDesc){
-            if (resultCode==0&&resultDesc=="SUCCESS"){
+            if (resultCode==0&&resultDesc=="成功"){
                 return '成功';
             }else if (resultCode==1){
                 return '办理失败';
@@ -120,7 +120,7 @@ export default {
             }
         },
         StatusColorFormat(resultCode,resultDesc){
-            if (resultCode==0&&resultDesc=="SUCCESS"){
+            if (resultCode==0&&resultDesc=="成功"){
                 return 'green';
             }else{
                 return 'red';
