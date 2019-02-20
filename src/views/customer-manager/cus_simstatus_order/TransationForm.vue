@@ -111,16 +111,18 @@ export default {
             return date.substr(0,4)+'-'+date.substr(4,2)+'-'+date.substr(6,2)+' '+date.substr(8,2)+':'+date.substr(10,2)+':'+date.substr(12,2)
         },
         CMCCStatusFormat(resultCode,resultDesc){
-            if (resultCode==0&&resultDesc=="成功"){
+            if (resultCode==0){
                 return '成功';
             }else if (resultCode==1){
                 return '办理失败';
+            }else if (resultCode==2){
+                return '未处理';
             }else{
-                return '受理中';
+              return resultCode;
             }
         },
         StatusColorFormat(resultCode,resultDesc){
-            if (resultCode==0&&resultDesc=="成功"){
+            if (resultCode==0){
                 return 'green';
             }else{
                 return 'red';
